@@ -1,0 +1,109 @@
+<div class="row">
+  <div class="col-md-8">
+    <%= form_with(model: order, local: true) do |form| %>
+        <% if order.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+            <ul>
+            <% order.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="field">
+          <%= form.label "How many Meals?" %><br />
+          <%= form.number_field :quantity, id: :order_quantity, :required => true %>
+        </div>
+
+        <% if @meal && @meal.delivery_only %>
+        <div class="field">
+          <%= form.label "Address (Required)" %><br />
+          <%= form.text_area :delivery_address, id: :order_delivery_address, :required => true %>
+        </div>
+        <% elsif @meal && @meal.pickup_only %>
+        <% else  %>
+          <div class="field">
+            <%= form.label :pickup %><br />
+            <%= form.check_box :pickup, :second_name => "foo[1]", id: :order_pickup, :class => "radio" %>
+          </div>
+
+          <div class="field">
+            <%= form.label "Deliver"%><br />
+            <%= form.check_box :delivery, :second_name => "foo[1]", id: :order_delivery, :class => "radio" %>
+          </div>
+
+          <div class="field">
+            <%= form.label "Address (Required if Delivery is Requested)" %><br />
+            <%= form.text_area :delivery_address, id: :order_delivery_address %>
+          </div>
+        <% end%>
+
+        <br>
+        <div class="field">
+          <%= form.label "Select Date and Time of Delivery or Pickup " %><br />
+          <!-- <input type="text" name="pickup_datetime" id="datetime" required="true"/> -->
+          <% if @order.pickup_date %>
+            <input type="text" name="order[pickup_date]" id="datetime" value="<%= @pickup_date_formatted %>" required="true"/>
+          <% else %>
+            <input type="text" name="order[pickup_date]" id="datetime" required="true"/>
+          <% end %>
+              <div id="hidden-time">
+                  <input type="text" id="date"/>
+                  <input type="text" id="time"/>
+              </div>
+            <div id="outlet"></div>
+        </div>
+        <br>
+
+        <div class="field">
+          <%= form.label "Phone Number" %><br />
+          <%= form.text_field :customer_phone, id: :order_customer_phone %>
+        </div>
+
+        <div class="field" id="hidden">
+          <%= form.label :meal_id %><br />
+          <%= form.text_field :meal_id, id: :order_meal_id %>
+        </div>
+
+        <div class="total_meal">
+          <span id="meal_price_hidden" style="display:none"><%= @price %></span>
+          Total: $<span id="total"></span>
+        </div>
+
+        <div class="actions">
+          <%= if @order.quantity
+                form.submit "Change Order", id: "order_submit"
+              else
+                 form.submit "Order", id: "order_submit"
+              end %>
+        </div>
+      <% end %>
+  </div>
+  <div class="col-md-4">
+    <div class="row">
+      <div class="col-md-4">
+        <%= if @meal.images.to_s != ""
+              image_tag(@meal.images.to_s, class: "img-fluid")
+            else
+              image_tag("template/Default_Medium.jpeg", size: "640x415", class: "img-fluid")
+             end %>
+      </div>
+      <div class="col-md-8">
+        <%= render 'meals/meal_info' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+  <%= javascript_include_tag "form_datepicker" %>
+  <%= javascript_include_tag "form_helper_functions" %>

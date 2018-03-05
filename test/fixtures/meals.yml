@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyText
+  ingredients: MyText
+  availibility_from: 2018-01-13 12:28:45
+  availability_to: 2018-01-13 12:28:45
+  images: MyString
+  cost: 9.99
+  location: MyString
+  tags: MyString
+  meal_rating: 1
+  cook: one
+
+two:
+  title: MyText
+  ingredients: MyText
+  availibility_from: 2018-01-13 12:28:45
+  availability_to: 2018-01-13 12:28:45
+  images: MyString
+  cost: 9.99
+  location: MyString
+  tags: MyString
+  meal_rating: 1
+  cook: two

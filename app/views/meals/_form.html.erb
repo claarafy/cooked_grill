@@ -1,0 +1,114 @@
+<%= form_with(model: meal, local: true) do |form| %>
+  <% if meal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(meal.errors.count, "error") %> prohibited this meal from being saved:</h2>
+      <ul>
+      <% meal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Title" %>
+    <%= form.text_field :title, id: :meal_title, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :meal_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Ingredients" %>
+    <%= form.text_area :ingredients, id: :meal_ingredients %>
+  </div>
+
+  <br>
+  <div class="field">
+    <!-- <%= form.text_field :datetime_from, id: :datetime_from, :required => true, placeholder: "* Available From"%> -->
+    <%= form.label "Available From (Date/Time)" %>
+    <% if @meal.availability_from %>
+          <input type="text" name="meal[availability_from]" id="meal_availability_from" value="<%= @availability_from_formatted %>"/>
+    <% else %>
+         <input type="text" name="meal[availability_from]" id="meal_availability_from" required="true"/>
+    <% end %>
+      <div id="hidden-time">
+          <input type="text" id="date_from"/>
+          <input type="text" id="time_from"/>
+      </div>
+      <div id="outlet_from"></div>
+  </div>
+  <br>
+
+  <br>
+  <div class="field">
+    <%= form.label "Available To (Date/Time)" %>
+    <% if @meal.availability_from %>
+          <input type="text" name="meal[availability_to]" id="meal_availability_to" value="<%= @availability_to_formatted %>"/>
+    <% else %>
+         <input type="text" name="meal[availability_to]" id="meal_availability_to" required="true"/>
+    <% end %>
+      <div id="hidden-time">
+          <input type="text" id="date_to"/>
+          <input type="text" id="time_to"/>
+      </div>
+      <div id="outlet_to"></div>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= form.label :meal_cost %>
+    <%= form.number_field :meal_cost, id: :meal_meal_cost , :required => true, step: :any%>
+  </div>
+
+  <div class="field">
+    <%= form.label "Portion Info (e.g One Person, 14 meals or one weeks worth etc.)" %>
+    <%= form.text_area :portion_info, id: :meal_portion_info %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Location Address (Must be provided if pickup only)" %>
+    <%= form.text_field :location, id: :meal_location %>
+  </div>
+
+  <br>(Optional)<br>
+  <div class="field">
+    <%= form.label :pickup_only %>
+    <%= form.check_box :pickup_only, :second_name => "foo[1]", id: :meal_pickup_only, :class => "radio" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :delivery_only %>
+    <%= form.check_box :delivery_only, :second_name => "foo[1]", id: :meal_delivery_only, :class => "radio" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Tags (e.g. Mexican, Gluten-Free etc.)" %>
+    <%= form.text_field :tags, id: :meal_tags %>
+  </div>
+
+  <div class="field" id="hidden">
+    <%= form.label :cook_id %>
+    <%= form.text_field :cook_id, id: :meal_cook_id %>
+  </div>
+
+  <br>
+  <div class="field">
+      <%= form.label "Upload Image (Limited to one)" %><br><br>
+      <%= form.file_field :images %>
+  </div>
+  <br>
+
+  <div class="actions">
+    <%= if @meal.title
+          form.submit "Modify Meal"
+        else
+           form.submit "Offer Meal"
+        end %>
+  </div>
+<% end %>
+
+<%= javascript_include_tag "form_datepicker" %>
+<%= javascript_include_tag "form_helper_functions" %>

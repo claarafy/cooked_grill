@@ -1,0 +1,75 @@
+<p>
+  <strong>Number of Meals:</strong>
+  <%= @order.quantity %>
+</p>
+
+<p>
+  <strong>Total:$</strong>
+  <%= if @order.total_cost
+       "%.2f" % BigDecimal(@order.total_cost).truncate(2)
+      end %>
+</p>
+
+  <p>
+    <strong>Your Total :$</strong>
+    <span class="bold-red">
+    <%= if @order.cook_total
+         "%.2f" % BigDecimal(@order.cook_total).truncate(2)
+        end %>
+    </span>
+  </p>
+
+<p>
+  <strong>Pickup Address:</strong>
+  <%= @order.pickup_address %>
+</p>
+
+<p>
+  <strong>Delivery Address:</strong>
+  <%= @order.delivery_address %>
+</p>
+
+<p>
+  <strong>Order Date:</strong>
+  <%= @order.order_date.strftime(Constants::TIME_FORMAT) %>
+</p>
+
+<p>
+  <strong>Pickup/Delivery Date:</strong>
+  <%= if @order.pickup_date
+        @order.pickup_date.strftime(Constants::TIME_FORMAT)
+      end %>
+</p>
+
+<p>
+  <strong>Will Pickup?:</strong>
+  <%= if @order.pickup
+    "Yes"
+  else
+    "No"
+  end %>
+</p>
+
+<p>
+  <strong>Want Delivered?:</strong>
+  <%= if @order.delivery
+    "Yes"
+  else
+    "No"
+  end %>
+</p>
+
+<p>
+  <strong>Customer Phone:</strong>
+  <%= @order.customer_phone %>
+</p>
+
+<p>
+  <strong>Customer Email:</strong>
+  <%= @order.user.email %>
+</p>
+
+<p>
+  <strong>Meal:</strong>
+  <%= @order.meal.title %>
+</p>

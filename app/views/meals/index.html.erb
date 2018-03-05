@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+<div class="table-users">
+  <% @check_mark = "✓"
+     @false = "x" %>
+
+<table class="table table-striped order-meals">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">Available?</th>
+        <th scope="col" class="text-center">Title</th>
+        <th scope="col" class="text-center">Description</th>
+        <th scope="col" class="text-center">Ingredients</th>
+        <th scope="col" class="text-center">Availibility From</th>
+        <th scope="col" class="text-center">Availability To</th>
+        <th scope="col" class="text-center">Image</th>
+        <th scope="col" class="text-center">Cost</th>
+        <th scope="col" class="text-center">Location</th>
+        <th scope="col" class="text-center">Tags</th>
+        <th scope="col" class="text-center">Meal Rating</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @meals.each do |meal| %>
+        <tr>
+          <th scope="row"><%= if meal.active
+                    @check_mark
+                  else
+                    @false
+                  end %></th>
+          <td><%= meal.title %></td>
+          <td><%= if meal.description
+                    meal.description.truncate(100)
+                  end %></td>
+          <td><%= meal.ingredients %></td>
+          <td><%= if meal.availability_from
+                    meal.availability_from.strftime(Constants::TIME_FORMAT)
+                  end %></td>
+          <td><%= if meal.availability_from
+                    meal.availability_to.strftime(Constants::TIME_FORMAT)
+                  end %></td>
+          <td><%= if meal.images.thumb.url
+                    image_tag meal.images.thumb.url
+                  end %></td>
+          <td>$<%= if meal.meal_cost
+                    "%.2f" % BigDecimal(meal.meal_cost).truncate(2)
+                   end %></td>
+         <td><%= if meal.portion_info
+                   meal.portion_info
+                  end %></td>
+          <td><%= meal.location %></td>
+          <td><%= meal.tags %></td>
+          <td><%= meal.meal_rating %></td>
+          <!-- <td><%= meal.cook.email %></td> -->
+          <td><%= link_to 'Select', meal %></td>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+</div>

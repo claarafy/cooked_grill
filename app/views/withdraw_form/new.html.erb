@@ -1,0 +1,44 @@
+<p class="notice"><%= notice %></p>
+<div class='generic-form'>
+  <h2>Request a Payout</h2>
+
+  <%= form_for(@withdraw_form)  do |f| %>
+  <div class="field">
+    <%= f.label "Name" %><br />
+    <%= f.text_field :name, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Account Email" %><br />
+    <%= f.text_field :account_email, :required => true %>
+  </div>
+
+  <div class="payout_option">
+  <p><b>Please Enter ONE of the following</p></b>
+    <div class="field">
+      <%= f.label "Paypal Email (Faster Option)" %><br />
+      <%= f.text_field :paypal_email  %>
+    </div>
+
+    <div class="field">
+       <%= f.label "Address (For Checks)" %><br />
+       <%= f.text_field :address %>
+     </div>
+  </div>
+
+
+  <div class="field">
+    <%= f.label "Amount" %><br />
+    <%= f.text_field :amount_in_cents, :required => true %>
+  </div>
+
+  <div class= "hidden"><br />
+    <%= f.text_field :nickname, :hint => 'Leave this field blank!' %>
+  </div>
+
+    <div>
+      </br>
+      <%= f.submit 'Send Message', :class=> "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

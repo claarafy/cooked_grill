@@ -1,0 +1,29 @@
+<p class="notice"><%= notice %></p>
+<div class='generic-form'>
+  <h2>Send us a Message</h2>
+
+  <%= form_for(@contact)  do |f| %>
+  <div class="field">
+    <%= f.label "Name" %><br />
+    <%= f.text_field :name, :required => true %>
+  </div>
+  <div class="field">
+    <%= f.label "Email" %><br />
+    <%= f.text_field :email, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Message" %><br />
+    <%= f.text_field :message, :as => :text, :required => true %>
+  </div>
+
+  <div class= "hidden"><br />
+    <%= f.text_field :nickname, :hint => 'Leave this field blank!' %>
+  </div>
+
+    <div>
+      </br>
+      <%= f.submit 'Send Message', :class=> "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

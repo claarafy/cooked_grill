@@ -1,0 +1,89 @@
+<p>
+  <strong>Title:</strong>
+  <%= @meal.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @meal.description %>
+</p>
+
+<p>
+  <strong>Ingredients:</strong>
+  <%= @meal.ingredients %>
+</p>
+
+<p>
+  <strong>Available From:</strong>
+  <%= @meal.availability_from.strftime(Constants::TIME_FORMAT) %>
+</p>
+
+<p>
+  <strong>Available To:</strong>
+  <%= @meal.availability_to.strftime(Constants::TIME_FORMAT) %>
+</p>
+
+<p>
+  <strong>Cost Per Meal:</strong>
+  <span class=bold-red>
+  <%= if @meal.meal_cost
+       "$%.2f" % BigDecimal(@meal.meal_cost).truncate(2)
+      end %>
+  </span>
+</p>
+
+<p>
+  <strong>Portion Info:</strong>
+  <%= if @meal.portion_info
+       @meal.portion_info
+      end %>
+</p>
+
+<p>
+  <strong>Pickup Location:</strong>
+  <%= @meal.location %>
+</p>
+
+<p>
+  <strong>Pickup Only?:</strong>
+  <%= if @meal.pickup_only
+    "Yes"
+  else
+    "No"
+  end %>
+</p>
+
+<p>
+  <strong>Delivery Only?:</strong>
+  <%= if @meal.delivery_only
+    "Yes"
+  else
+    "No"
+  end %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @meal.tags %>
+</p>
+
+<p>
+  <strong>Meal Rating:</strong>
+  <%= @meal.meal_rating %>
+</p>
+
+<p>
+  <strong>Cook:</strong>
+  <%= if @cook.first_name
+       @cook.first_name
+      end %>
+</p>
+
+<p>
+  <strong>Currently Offered?:</strong>
+  <% if @meal.active %>
+      Yes
+  <% else %>
+      No
+  <% end %>
+</p>

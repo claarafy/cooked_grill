@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<div class="single_order_view">
+  <!--  Single Order View -->
+  <%= if cook_signed_in?
+    render 'order_details_cook'
+  else
+    render 'order_details_user'
+  end %>
+
+  <% if !@order.paid && @order.total_cost %>
+        <% if cook_signed_in? %>
+          <h3>Order Has NOT been Paid Yet.
+        <% else %>
+
+          <h3>Pay For Order</h3>
+
+          <% total = @order.total_cost %>
+          <% total_cents = @order.total_cost * 100 %>
+          <%= form_tag charges_path do %>
+            <%= hidden_field_tag :total_cents, total_cents %>
+            <%= hidden_field_tag :total, total %>
+            <%= hidden_field_tag :orderID, @order.id %>
+
+            <article>
+              <% if flash[:error].present? %>
+                <div id="error_explanation">
+                  <p><%= flash[:error] %></p>
+                </div>
+              <% end %>
+
+              <label class="amount">
+                <span>Amount: $<%= total %></span>
+              </label>
+
+            </article>
+
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                    data-description="Pay for a Meal"
+                    data-amount="<%= total_cents %>"
+                    data-locale="auto"></script>
+          <% end %>
+          <div class="meal-order-options">
+            <!--  Only User should be able to modify an order-->
+            <span class="single-option"><%= link_to 'Edit Order', edit_order_path(@order) %></span>
+            <span class="single-option"><%= link_to 'Cancel Order', order_path(@order), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+          </div>
+        <% end %>    
+      <% else %>
+        <span class=bold-red>Paid!<br><br></span>
+      <% end %>
+
+
+</div>

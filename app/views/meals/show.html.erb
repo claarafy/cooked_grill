@@ -1,0 +1,140 @@
+<p id="notice"><%= notice %></p>
+<div class="item-detail-page">
+  <div class="row">
+    <div class="col-md-4">
+      <%= if @meal.images.to_s != ""
+            # image_tag meal.images.thumb.url
+            image_tag(@meal.images.to_s, class: "img-fluid")
+          else
+            image_tag("template/Default_Medium.jpeg", size: "640x415", class: "img-fluid")
+           end %>
+    </div>
+    <div class="col-md-8">
+      <div class="title-price-container">
+          <!-- <strong>Title:</strong> -->
+          <div class="meal-title"><%= @meal.title %></div>
+          <div class="meal-price bold-red"><%=
+                if @meal.meal_cost
+                  "$%.2f" % BigDecimal(@meal.meal_cost).truncate(2)
+                end %></div>
+      </div>
+
+      <p>
+        <!-- <strong>Description:</strong> -->
+        <span class="meal-description"><%= @meal.description %></span>
+      </p>
+
+      <button class="btn btn-primary cooked-btn" type="button" data-toggle="collapse" data-target="#meal-more-info" aria-expanded="false" aria-controls="meal-more-info">
+        More Info...
+      </button>
+
+      <div class="collapse" id="meal-more-info">
+        <p>
+          <strong>Ingredients:</strong>
+          <%= @meal.ingredients %>
+        </p>
+
+        <p>
+          <strong>Available From:</strong>
+          <%= @meal.availability_from.strftime(Constants::TIME_FORMAT) %>
+        </p>
+
+        <p>
+          <strong>Available To:</strong>
+          <%= @meal.availability_to.strftime(Constants::TIME_FORMAT) %>
+        </p>
+
+        <p>
+          <strong>Cost Per Meal:</strong>
+          <span class=bold-red>
+          <%= if @meal.meal_cost
+               "$%.2f" % BigDecimal(@meal.meal_cost).truncate(2)
+              end %>
+          </span>
+        </p>
+
+        <p>
+          <strong>Portion Info:</strong>
+          <%= if @meal.portion_info
+               @meal.portion_info
+              end %>
+        </p>
+
+        <p>
+          <strong>Pickup Location:</strong>
+          <%= @meal.location %>
+        </p>
+
+        <p>
+          <strong>Pickup Only?:</strong>
+          <%= if @meal.pickup_only
+            "Yes"
+          else
+            "No"
+          end %>
+        </p>
+
+        <p>
+          <strong>Delivery Only?:</strong>
+          <%= if @meal.delivery_only
+            "Yes"
+          else
+            "No"
+          end %>
+        </p>
+
+        <p>
+          <strong>Tags:</strong>
+          <%= @meal.tags %>
+        </p>
+
+        <p>
+          <strong>Meal Rating:</strong>
+          <%= @meal.meal_rating %>
+        </p>
+
+        <p>
+          <strong>Cook:</strong>
+          <%= if @cook.first_name
+               @cook.first_name
+              end %>
+        </p>
+
+        <p>
+          <strong>Currently Offered?:</strong>
+          <% if @meal.active %>
+              Yes
+          <% else %>
+              No
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="btn btn-default btn-lg">
+        <!-- <%= link_to 'Order', new_order_path(:mealID => @meal.id), :class => "btn btn-default btn-lg" %>   -->
+        <%= if user_signed_in?
+              button_to 'Order', {:controller => "orders", :action => "new"}, :method => :get, :class => "btn btn-default btn-lg", params: { mealID: @meal.id}
+             else
+               "You must be logged in as a regular user to order.".html_safe
+             end %>
+      </div>
+    </div>
+
+    <% if current_cook && @meal.cook_id == current_cook.id || admin_signed_in? %>
+        <div class="col-md-8">
+          <span class="single-option"><%= link_to 'Change Details', edit_meal_path(@meal) %></span>
+
+          <% if @meal.active %>
+            <span class="single-option"><%= link_to 'Discontinue', meal_path(@meal), method: :delete %></span>
+          <% else %>
+            <span class="single-option"><%= link_to 'Offer Again', meal_path(@meal), method: :delete %></span>
+          <% end %>
+        </div>
+        <% end %>
+
+  </div>
+</div>

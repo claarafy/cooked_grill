@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<!-- PORTFOLIO -->
+	<div id="wrapper-container">
+		<div class="container object">
+			<div id="main-container-image">
+					<section class="work">
+						<% @meals.each do |meal| %>
+							<figure class="white">
+								<%= link_to meal do %>
+									<%= if meal.images.thumb.url
+												# image_tag meal.images.thumb.url
+												image_tag meal.images.to_s
+											else
+												image_tag("template/Default_Medium.jpeg")
+											end %>
+									<dl>
+										<dd><%= truncate(meal.description, :length => 220) %></dd>
+									</dl>
+								</a>
+								<div id="wrapper-part-info">
+									<div id="part-info"><dt><%= meal.title.truncate(25) %> <span class="index-price">$<%= sprintf('%.2f', meal.meal_cost) %></span></dt>
+									</div>
+								</div>
+							<% end %>
+						</figure>
+						<% end %>
+					</section>
+				</div>
+			</div>
+
+	<div id="main-container-footer">
+		<div class="container-footer">
+
+            <div id="row-1f">
+            	<div class="text-row-1f"><span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">Cooked.Me</span><br>Cooked.Me is a platform where neighbors can now offer their delicious home cooked meals to other neighbors!</div>
+            </div>
+
+            <div id="row-2f">
+            	<div class="text-row-2f"><span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">How Does it Work?</span><br>It's simple, sign up as a cook, create a meal, deliver your meals or allow others to pick it up OR simply sign up as a user and start ordering meals offered by your neighbors</div>
+            </div>
+
+						<div id="row-3f">
+							<div class="text-row-3f"><span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">Notice</span><br>Cooked.Me is in its alpha stage which means it is still in the testing phase. There will be bugs, sorry. Additionally we hope you understand that Cooked.Me is not responsible for any meal related incidents such as allergic reactions. <br></div>
+						</div>
+
+            <div id="row-4f">
+            	<div class="text-row-4f"><span style="font-weight:600;font-size:15px;color:#666;line-height:250%;text-transform:uppercase;letter-spacing:1.5px;">Help Center</span><br>Questions and Answers<br><%= link_to("Contact Us", contacts_path) %></div>
+            </div>
+      </div>
+		</div>
+	</div>
+
+    <div id="wrapper-copyright">
+			<div class="copyright">
+	    		<div class="copy-text object">Copyright © 2016. Template by <a style="color:#D0D1D4;" href="https://dcrazed.com/">Dcrazed</a></div>
+	    </div>
+    </div>
+</div>

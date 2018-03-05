@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 1
+  total: 9.99
+  pickup_address: MyText
+  delivery_address: MyText
+  order_date: 2018-01-13 12:23:19
+  pickup_date: 2018-01-13 12:23:19
+  customer_phone: MyString
+  user: one
+  meal: one
+
+two:
+  quantity: 1
+  total: 9.99
+  pickup_address: MyText
+  delivery_address: MyText
+  order_date: 2018-01-13 12:23:19
+  pickup_date: 2018-01-13 12:23:19
+  customer_phone: MyString
+  user: two
+  meal: two
