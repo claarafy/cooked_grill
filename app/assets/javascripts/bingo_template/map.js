@@ -1,5 +1,4 @@
 $(function() {
-	alert("Hey");
 	// GOOGLE MAP
 	$("#map-block").height($("#map-wrapper").height());	// Set Map Height
 	function initialize($) {

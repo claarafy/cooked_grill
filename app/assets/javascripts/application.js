@@ -10,14 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require  ./bingo_template/jquery-1.11.1.min
+//= require  ./bingo_template/jquery-migrate-1.2.1.min
 //= require rails-ujs
 //= require turbolinks
 //= require cable
-//= require bootstrap-sprockets
+//= require  ./bingo_template/bootstrap
 //= require  ./bingo_template/bootstrap-hover-dropdown.min
 //= require  ./bingo_template/jquery.magnific-popup.min
 //= require  ./bingo_template/owl.carousel.min
 //= require  ./bingo_template/custom
-//= require  ./bingo_template/ie8-responsive-file-warning
-//= require  ./bingo_template/map
