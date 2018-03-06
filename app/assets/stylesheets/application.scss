@@ -12,11 +12,9 @@
  *
  */
 
-@import "bootstrap";
-@import "default";
-@import "default.date";
-@import "default.time";
-@import "template/style";
+// @import "bootstrap";
+@import "bingo_template/*";
+
 
  div#hidden {        /* Hide meal_id */
    display:none;
