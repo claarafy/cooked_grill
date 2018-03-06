@@ -13,7 +13,6 @@
 //= require  ./bingo_template/jquery-1.11.1.min
 //= require  ./bingo_template/jquery-migrate-1.2.1.min
 //= require rails-ujs
-//= require turbolinks
 //= require cable
 //= require  ./bingo_template/bootstrap
 //= require  ./bingo_template/bootstrap-hover-dropdown.min
