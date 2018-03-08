@@ -90,12 +90,24 @@
 					<div class="col-sm-6 col-xs-12">
 						<ul class="list-unstyled list-inline header-links text-center">
 							<li><a href="#">Home</a></li>
-							<li><a href="#">Wish List(0)</a></li>
-							<li><a href="#">My Account</a></li>
-							<li><a href="#">Checkout</a></li>
-							<li><a href="#">Login</a></li>
+							<li style="display: none;"><a href="#">Wish List(0)</a></li>
+							<li style="display: none;"><a href="#">My Account</a></li>
+							<li style="display: none;"><a href="#">Checkout</a></li>
+							<li class="dropdown"><span class="dropbtn">Sign Up</span>
+								<div class="dropdown-content">
+						      <a href="#">User</a>
+						      <a href="#">Cook</a>
+					    	</div>
+							</li>
+							<li class="dropdown"><span class="dropbtn">Login</span>
+								<div class="dropdown-content">
+						      <a href="#">User</a>
+						      <a href="#">Cook</a>
+					    	</div>
+							</li>
 						</ul>
 					</div>
+
 				<!-- Header Links Ends -->
 				<!-- Cart Starts -->
 					<div class="col-sm-3 col-xs-12" style="visibility: hidden;">
@@ -199,7 +211,7 @@
 				<!-- Toll Free No Starts -->
 					<div class="col-md-3 col-sm-4 col-xs-12 text-center">
 						<h5>Neighborly and Wholesome</h5>
-						<h6 class="text-uppercase">Home Cooked Meals Close By</h6>
+						<h6 class="text-uppercase">Home Cooked Meals Near You</h6>
 					</div>
 				<!-- Toll Free No Ends -->
 				<!-- Logo Starts -->
@@ -327,675 +339,8 @@
 
 
 
+<%= yield %>
 
-
-
-
-
-	<!-- Slider Starts -->
-	<div id="main-carousel" class="carousel slide carousel-fade" data-ride="carousel">
-	<!-- Indicators Starts -->
-		<ol class="carousel-indicators hidden-sm hidden-xs">
-			<li data-target="#main-carousel" data-slide-to="0" class="active"></li>
-			<li data-target="#main-carousel" data-slide-to="1"></li>
-			<li data-target="#main-carousel" data-slide-to="2"></li>
-		</ol>
-	<!-- Indicators Ends -->
-	<!-- Wrapper For Slides Starts -->
-		<div class="carousel-inner">
-			<div class="item active">
-				<%= image_tag("images/slider-imgs/slide1-img.jpg", class:"img-responsive") %>
-			</div>
-			<div class="item">
-				<%= image_tag("images/slider-imgs/slide2-img.jpg", class:"img-responsive") %>
-			</div>
-			<div class="item">
-				<%= image_tag("images/slider-imgs/slide3-img.jpg", class:"img-responsive") %>
-			</div>
-		</div>
-	<!-- Wrapper For Slides Ends -->
-	<!-- Controls Starts -->
-			<a class="left carousel-control" href="#main-carousel" role="button" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-			</a>
-			<a class="right carousel-control" href="#main-carousel" role="button" data-slide="next">
-				<span class="glyphicon glyphicon-chevron-right"></span>
-			</a>
-		<!-- Controls Ends -->
-	</div>
-	<!-- Slider Ends -->
-	<!-- Main Container Starts -->
-	<div id="main-container" class="container">
-	<!-- Category Starts -->
-		<div class="row">
-			<div class="col-sm-4 col-xs-12">
-				<div class="category-banner-box">
-					<%= image_tag("images/banners/category-banner-img-1.jpg", class:"img-responsive img-center") %>
-				</div>
-			</div>
-			<div class="col-sm-4 col-xs-12">
-				<div class="category-banner-box">
-					<%= image_tag("images/banners/category-banner-img-2.jpg", class:"img-responsive img-center") %>
-				</div>
-				<div class="category-banner-box">
-					<%= image_tag("images/banners/category-banner-img-3.jpg", class:"img-responsive img-center") %>
-				</div>
-			</div>
-			<div class="col-sm-4 col-xs-12">
-				<div class="category-banner-box">
-					<%= image_tag("images/banners/category-banner-img-4.jpg", class:"img-responsive img-center") %>
-				</div>
-			</div>
-		</div>
-	<!-- Category Ends -->
-	<!-- Latest Products Starts -->
-		<section class="product-carousel">
-		<!-- Heading Starts -->
-			<h2 class="product-head text-uppercase">Near <strong>You</strong></h2>
-		<!-- Heading Ends -->
-		<!-- Products Row Starts -->
-			<div class="row">
-				<div class="col-xs-12">
-				<!-- Product Carousel Starts -->
-					<div id="owl-latest-product" class="owl-product-carousel owl-carousel">
-
-
-
-
-
-
-
-
-
-
-
-					<!-- Product #1 Starts -->
-						<div class="item">
-							<div class="product-col">
-								<div class="image">
-									<%= image_tag("images/product-images/1.jpg", class:"img-responsive") %>
-								</div>
-								<div class="caption">
-									<div class="price">
-										<span class="price-new">$5.99</span>
-										<span class="price-old" style="visibility: hidden;">$249.50</span>
-									</div>
-									<span class="price-tax">From: Monday March 12 @ 4 PM</span><br>
-									<span class="price-tax">To: Monday March 12 @ 8 PM</span>
-									<h4><a href="product.html">Healthy Turkey Burger </a></h4>
-									<div class="ratings">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<span><a href="#">1 review(s)</a></span>
-									</div>
-									<div class="cart-button button-group">
-										<button type="button" class="btn btn-cart">
-											<i class="fa fa-shopping-cart"></i>
-										</button>
-										<button type="button" title="Wishlist" class="btn btn-wishlist" style="display: none;">
-											<i class="fa fa-heart"></i>
-										</button>
-										<button type="button" title="Compare" class="btn btn-compare" style="display: none;">
-											<i class="fa fa-bar-chart-o"></i>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					<!-- Product #1 Ends -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<!-- Product #2 Starts -->
-						<div class="item">
-							<div class="product-col">
-								<div class="image">
-									<%= image_tag("images/product-images/2.jpg", class:"img-responsive") %>
-								</div>
-								<div class="caption">
-									<div class="price">
-										<span class="price-new">$199.50</span>
-										<span class="price-old" style="visibility: hidden;">$249.50</span>
-									</div>
-									<p class="price-tax">ex tax: $570.00</p>
-									<h4><a href="product.html">Quis Nostrud Exercitation </a></h4>
-									<div class="ratings">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<span><a href="#">1 review(s)</a></span>
-									</div>
-									<div class="cart-button button-group">
-										<button type="button" class="btn btn-cart">
-											<i class="fa fa-shopping-cart"></i>
-										</button>
-										<button type="button" title="Wishlist" class="btn btn-wishlist">
-											<i class="fa fa-heart"></i>
-										</button>
-										<button type="button" title="Compare" class="btn btn-compare">
-											<i class="fa fa-bar-chart-o"></i>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					<!-- Product #2 Ends -->
-					<!-- Product #3 Starts -->
-						<div class="item">
-							<div class="product-col">
-								<div class="image">
-									<%= image_tag("images/product-images/3.jpg", class:"img-responsive") %>
-								</div>
-								<div class="caption">
-									<div class="price">
-										<span class="price-new">$199.50</span>
-										<span class="price-old" style="visibility: hidden;">$249.50</span>
-									</div>
-									<p class="price-tax">ex tax: $570.00</p>
-									<h4><a href="product.html">Quis Nostrud Exercitation </a></h4>
-									<div class="ratings">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<span><a href="#">1 review(s)</a></span>
-									</div>
-									<div class="cart-button button-group">
-										<button type="button" class="btn btn-cart">
-											<i class="fa fa-shopping-cart"></i>
-										</button>
-										<button type="button" title="Wishlist" class="btn btn-wishlist">
-											<i class="fa fa-heart"></i>
-										</button>
-										<button type="button" title="Compare" class="btn btn-compare">
-											<i class="fa fa-bar-chart-o"></i>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					<!-- Product #3 Ends -->
-					<!-- Product #4 Starts -->
-						<div class="item">
-							<div class="product-col">
-								<div class="image">
-									<%= image_tag("images/product-images/4.jpg", class:"img-responsive") %>
-								</div>
-								<div class="caption">
-									<div class="price">
-										<span class="price-new">$199.50</span>
-										<span class="price-old" style="visibility: hidden;">$249.50</span>
-									</div>
-									<p class="price-tax">ex tax: $570.00</p>
-									<h4><a href="product.html">Quis Nostrud Exercitation </a></h4>
-									<div class="ratings">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<span><a href="#">1 review(s)</a></span>
-									</div>
-									<div class="cart-button button-group">
-										<button type="button" class="btn btn-cart">
-											<i class="fa fa-shopping-cart"></i>
-										</button>
-										<button type="button" title="Wishlist" class="btn btn-wishlist">
-											<i class="fa fa-heart"></i>
-										</button>
-										<button type="button" title="Compare" class="btn btn-compare">
-											<i class="fa fa-bar-chart-o"></i>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					<!-- Product #4 Ends -->
-					<!-- Product #5 Starts -->
-						<div class="item">
-							<div class="product-col">
-								<div class="image">
-									<%= image_tag("images/product-images/5.jpg", class:"img-responsive") %>
-								</div>
-								<div class="caption">
-									<div class="price">
-										<span class="price-new">$199.50</span>
-										<span class="price-old" style="visibility: hidden;">$249.50</span>
-									</div>
-									<p class="price-tax">ex tax: $570.00</p>
-									<h4><a href="product.html">Quis Nostrud Exercitation </a></h4>
-									<div class="ratings">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<span><a href="#">1 review(s)</a></span>
-									</div>
-									<div class="cart-button button-group">
-										<button type="button" class="btn btn-cart">
-											<i class="fa fa-shopping-cart"></i>
-										</button>
-										<button type="button" title="Wishlist" class="btn btn-wishlist">
-											<i class="fa fa-heart"></i>
-										</button>
-										<button type="button" title="Compare" class="btn btn-compare">
-											<i class="fa fa-bar-chart-o"></i>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					<!-- Product #6 Ends -->
-					<!-- Product #7 Starts -->
-						<div class="item">
-							<div class="product-col">
-								<div class="image">
-									<%= image_tag("images/product-images/7.jpg", class:"img-responsive") %>
-								</div>
-								<div class="caption">
-									<div class="price">
-										<span class="price-new">$199.50</span>
-										<span class="price-old" style="visibility: hidden;">$249.50</span>
-									</div>
-									<p class="price-tax">ex tax: $570.00</p>
-									<h4><a href="product.html">Quis Nostrud Exercitation </a></h4>
-									<div class="ratings">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<span><a href="#">1 review(s)</a></span>
-									</div>
-									<div class="cart-button button-group">
-										<button type="button" class="btn btn-cart">
-											<i class="fa fa-shopping-cart"></i>
-										</button>
-										<button type="button" title="Wishlist" class="btn btn-wishlist">
-											<i class="fa fa-heart"></i>
-										</button>
-										<button type="button" title="Compare" class="btn btn-compare">
-											<i class="fa fa-bar-chart-o"></i>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					<!-- Product #7 Ends -->
-					<!-- Product #8 Starts -->
-						<div class="item">
-							<div class="product-col">
-								<div class="image">
-									<%= image_tag("images/product-images/8.jpg", class:"img-responsive") %>
-								</div>
-								<div class="caption">
-									<div class="price">
-										<span class="price-new">$199.50</span>
-										<span class="price-old" style="visibility: hidden;">$249.50</span>
-									</div>
-									<p class="price-tax">ex tax: $570.00</p>
-									<h4><a href="product.html">Quis Nostrud Exercitation </a></h4>
-									<div class="ratings">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<span><a href="#">1 review(s)</a></span>
-									</div>
-									<div class="cart-button button-group">
-										<button type="button" class="btn btn-cart">
-											<i class="fa fa-shopping-cart"></i>
-										</button>
-										<button type="button" title="Wishlist" class="btn btn-wishlist">
-											<i class="fa fa-heart"></i>
-										</button>
-										<button type="button" title="Compare" class="btn btn-compare">
-											<i class="fa fa-bar-chart-o"></i>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					<!-- Product #8 Ends -->
-					</div>
-				<!-- Product Carousel Ends -->
-				</div>
-			</div>
-		<!-- Products Row Ends -->
-		</section>
-	<!-- Latest Products Ends -->
-	<!-- Two Column Banner Starts -->
-		<div class="row">
-		<!-- Banner #1 Starts -->
-			<div class="col-sm-6 col-xs-12">
-				<%= image_tag("images/banners/2col-banner-img1.jpg", class:"img-responsive img-center col2-banners") %>
-			</div>
-		<!-- Banner #1 Ends -->
-		<!-- Banner #2 Starts -->
-			<div class="col-sm-6 col-xs-12">
-				<%= image_tag("images/banners/2col-banner-img2.jpg", class:"img-responsive img-center col2-banners") %>
-			</div>
-		<!-- Banner #2 Ends -->
-		</div>
-	<!-- Two Column Banner Ends -->
-	<!-- Features & Popular Products Starts -->
-		<div class="row">
-		<!-- Featured Products Starts -->
-			<div class="col-md-6 col-xs-12">
-			<!-- Featured Products Starts -->
-				<section class="product-carousel">
-				<!-- Heading Starts -->
-					<h2 class="product-head text-uppercase">Family <strong>Portion</strong></h2>
-				<!-- Heading Ends -->
-				<!-- Products Row Starts -->
-					<div class="row">
-						<div class="col-xs-12">
-						<!-- Product Carousel Starts -->
-							<div id="owl-featured-product" class="owl-product-carousel owl-carousel">
-							<!-- Product #1 Starts -->
-								<div class="item">
-									<div class="product-col">
-										<div class="image">
-											<%= image_tag("images/product-images/9.jpg", class:"img-responsive") %>
-										</div>
-										<div class="caption">
-											<div class="price">
-												<span class="price-new">$199.50</span>
-												<span class="price-old" style="visibility: hidden;">$249.50</span>
-											</div>
-											<p class="price-tax">ex tax: $570.00</p>
-											<h4><a href="product.html">Quis Nostrud Exercitation </a></h4>
-											<div class="ratings">
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<span><a href="#">1 review(s)</a></span>
-											</div>
-											<div class="cart-button button-group">
-												<button type="button" class="btn btn-cart">
-													<i class="fa fa-shopping-cart"></i>
-												</button>
-												<button type="button" title="Wishlist" class="btn btn-wishlist">
-													<i class="fa fa-heart"></i>
-												</button>
-												<button type="button" title="Compare" class="btn btn-compare">
-													<i class="fa fa-bar-chart-o"></i>
-												</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							<!-- Product #1 Ends -->
-							<!-- Product #2 Starts -->
-								<div class="item">
-									<div class="product-col">
-										<div class="image">
-											<%= image_tag("images/product-images/10.jpg", class:"img-responsive") %>
-										</div>
-										<div class="caption">
-											<div class="price">
-												<span class="price-new">$199.50</span>
-												<span class="price-old" style="visibility: hidden;">$249.50</span>
-											</div>
-											<p class="price-tax">ex tax: $570.00</p>
-											<h4><a href="product.html">Quis Nostrud Exercitation </a></h4>
-											<div class="ratings">
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<span><a href="#">1 review(s)</a></span>
-											</div>
-											<div class="cart-button button-group">
-												<button type="button" class="btn btn-cart">
-													<i class="fa fa-shopping-cart"></i>
-												</button>
-												<button type="button" title="Wishlist" class="btn btn-wishlist">
-													<i class="fa fa-heart"></i>
-												</button>
-												<button type="button" title="Compare" class="btn btn-compare">
-													<i class="fa fa-bar-chart-o"></i>
-												</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							<!-- Product #2 Ends -->
-							<!-- Product #3 Starts -->
-								<div class="item">
-									<div class="product-col">
-										<div class="image">
-											<%= image_tag("images/product-images/11.jpg", class:"img-responsive") %>
-										</div>
-										<div class="caption">
-											<div class="price">
-												<span class="price-new">$199.50</span>
-												<span class="price-old" style="visibility: hidden;">$249.50</span>
-											</div>
-											<p class="price-tax">ex tax: $570.00</p>
-											<h4><a href="product.html">Quis Nostrud Exercitation </a></h4>
-											<div class="ratings">
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<span><a href="#">1 review(s)</a></span>
-											</div>
-											<div class="cart-button button-group">
-												<button type="button" class="btn btn-cart">
-													<i class="fa fa-shopping-cart"></i>
-												</button>
-												<button type="button" title="Wishlist" class="btn btn-wishlist">
-													<i class="fa fa-heart"></i>
-												</button>
-												<button type="button" title="Compare" class="btn btn-compare">
-													<i class="fa fa-bar-chart-o"></i>
-												</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							<!-- Product #3 Ends -->
-							<!-- Product #4 Starts -->
-								<div class="item">
-									<div class="product-col">
-										<div class="image">
-											<%= image_tag("images/product-images/12.jpg", class:"img-responsive") %>
-										</div>
-										<div class="caption">
-											<div class="price">
-												<span class="price-new">$199.50</span>
-												<span class="price-old" style="visibility: hidden;">$249.50</span>
-											</div>
-											<p class="price-tax">ex tax: $570.00</p>
-											<h4><a href="product.html">Quis Nostrud Exercitation </a></h4>
-											<div class="ratings">
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<span><a href="#">1 review(s)</a></span>
-											</div>
-											<div class="cart-button button-group">
-												<button type="button" class="btn btn-cart">
-													<i class="fa fa-shopping-cart"></i>
-												</button>
-												<button type="button" title="Wishlist" class="btn btn-wishlist">
-													<i class="fa fa-heart"></i>
-												</button>
-												<button type="button" title="Compare" class="btn btn-compare">
-													<i class="fa fa-bar-chart-o"></i>
-												</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							<!-- Product #4 Ends -->
-							</div>
-						<!-- Product Carousel Ends -->
-						</div>
-					</div>
-				<!-- Products Row Ends -->
-				</section>
-			<!-- Featured Products Ends -->
-			</div>
-		<!-- Featured Products Ends -->
-		<!-- Popular Products Starts -->
-			<div class="col-md-6 col-xs-12">
-				<section class="products-list">
-				<!-- Heading Starts -->
-					<h2 class="product-head text-uppercase">Weekly <strong>Portion</strong></h2>
-				<!-- Heading Ends -->
-				<!-- Products Row Starts -->
-					<div class="row">
-					<!-- Product #1 Starts -->
-						<div class="col-sm-6 col-xs-12">
-							<div class="product-col alt">
-								<div class="image">
-									<%= image_tag("images/product-images/11.jpg", class:"img-responsive") %>
-								</div>
-								<div class="caption">
-									<div class="price">
-										<span class="price-new">$199.50</span>
-										<span class="price-old" style="visibility: hidden;">$249.50</span>
-									</div>
-									<p class="price-tax">ex tax: $570.00</p>
-									<h4><a href="product.html">Quis Nostrud Exercitation </a></h4>
-									<div class="ratings">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<span><a href="#">1 review(s)</a></span>
-									</div>
-									<div class="cart-button button-group">
-										<button type="button" class="btn btn-cart">
-											<i class="fa fa-shopping-cart"></i>
-										</button>
-										<button type="button" title="Wishlist" class="btn btn-wishlist">
-											<i class="fa fa-heart"></i>
-										</button>
-										<button type="button" title="Compare" class="btn btn-compare">
-											<i class="fa fa-bar-chart-o"></i>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					<!-- Product #1 Ends -->
-					<!-- Product #2 Starts -->
-						<div class="col-sm-6 col-xs-12">
-							<div class="product-col alt">
-								<div class="image">
-									<%= image_tag("images/product-images/12.jpg", class:"img-responsive") %>
-								</div>
-								<div class="caption">
-									<div class="price">
-										<span class="price-new">$199.50</span>
-										<span class="price-old" style="visibility: hidden;">$249.50</span>
-									</div>
-									<p class="price-tax">ex tax: $570.00</p>
-									<h4><a href="product.html">Quis Nostrud Exercitation </a></h4>
-									<div class="ratings">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<span><a href="#">1 review(s)</a></span>
-									</div>
-									<div class="cart-button button-group">
-										<button type="button" class="btn btn-cart">
-											<i class="fa fa-shopping-cart"></i>
-										</button>
-										<button type="button" title="Wishlist" class="btn btn-wishlist">
-											<i class="fa fa-heart"></i>
-										</button>
-										<button type="button" title="Compare" class="btn btn-compare">
-											<i class="fa fa-bar-chart-o"></i>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					<!-- Product #2 Ends -->
-					</div>
-				<!-- Products Row Ends -->
-				</section>
-			</div>
-		<!-- Popular Products Ends -->
-		</div>
-	<!-- Features & Popular Products Ends -->
-	<!-- Top Brands Starts -->
-		<section class="products-list">
-		<!-- Heading Starts -->
-			<h2 class="product-head text-uppercase">Our Top <strong>Chefs</strong></h2>
-		<!-- Heading Ends -->
-		<!-- Nested Row Starts -->
-			<div class="row">
-			<!-- Brand #1 Starts -->
-				<div class="col-xs-2">
-					<%= image_tag("images/brands/profile_1.jpg", class:"img-responsive img-center") %>
-				</div>
-			<!-- Brand #1 Ends -->
-			<!-- Brand #2 Starts -->
-				<div class="col-xs-2">
-					<%= image_tag("images/brands/profile_2.jpg", class:"img-responsive img-center") %>
-				</div>
-			<!-- Brand #2 Ends -->
-			<!-- Brand #3 Starts -->
-				<div class="col-xs-2">
-					<%= image_tag("images/brands/profile_3.jpg", class:"img-responsive img-center") %>
-				</div>
-			<!-- Brand #3 Ends -->
-			<!-- Brand #4 Starts -->
-				<div class="col-xs-2">
-					<%= image_tag("images/brands/profile_4.jpg", class:"img-responsive img-center") %>
-				</div>
-			<!-- Brand #4 Ends -->
-			<!-- Brand #5 Starts -->
-				<div class="col-xs-2">
-					<%= image_tag("images/brands/profile_5.jpg", class:"img-responsive img-center") %>
-				</div>
-			<!-- Brand #5 Ends -->
-			<!-- Brand #6 Starts -->
-				<div class="col-xs-2">
-					<%= image_tag("images/brands/profile_6.jpg", class:"img-responsive img-center") %>
-				</div>
-			<!-- Brand #6 Ends -->
-			</div>
-		<!-- Nested Row Ends -->
-		</section>
-	<!-- Top Brands Ends -->
-	</div>
-	<!-- Main Container Ends -->
 
 
 
@@ -1022,7 +367,7 @@
 				<div class="row">
 				<!-- Foot Col#1 Starts -->
 					<div class="col-md-4 col-xs-12">
-						<h5>Subscription</h5>
+						<h5>Sign Up For Weekly Meal Deals</h5>
 						<div class="foot-subscription-form">
 							<div class="input-group">
 								<input type="text" class="form-control text-uppercase" placeholder="Your Email Address">
@@ -1036,10 +381,10 @@
 						<h5>Stay Connected</h5>
 						<ul class="list-unstyled list-inline foot-sm-links">
 							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+							<li style="display: none;"><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li style="display: none;"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							<li style="display: none;"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+							<li style="display: none;"><a href="#"><i class="fa fa-linkedin"></i></a></li>
 						</ul>
 					</div>
 				<!-- Foot Col#1 Ends -->
@@ -1056,7 +401,7 @@
 					</div>
 				<!-- My Account Ends -->
 				<!-- Customer Service Starts -->
-					<div class="col-md-2 col-sm-4 col-xs-12">
+					<div class="col-md-2 col-sm-4 col-xs-12" style="display:none;">
 						<h5>Customer Service</h5>
 						<ul>
 							<li><a href="contact.html">Contact Us</a></li>
@@ -1071,15 +416,27 @@
 					<div class="col-md-4 col-sm-4 col-xs-12 last">
 						<h5>Contact Us</h5>
 						<ul>
-							<li>My Company</li>
 							<li>
-								1247 LB Nagar Road, Hyderabad, Telangana - 35
+								Lawndale, CA
 							</li>
 							<li>
-								Email: <a href="#">info@demolink.com</a>
+								Email: hello@cooked.me
 							</li>
 						</ul>
-						<h4 class="lead">
+						<div class="foot-subscription-form">
+							<div class="input-group">
+								<input type="text" class="form-control text-uppercase" placeholder="Your Email Address">
+							</div>
+							<div class="input-group">
+								<input type="text" class="form-control text-uppercase" placeholder="Message">
+							</div>
+							<span class="input-group-btn">
+							<button class="btn text-uppercase" type="button">
+								Send
+							</button>
+							</span>
+						</div>
+						<h4 class="lead" style="display: none;">
 							Tel: <span>1(234) 567-9842</span>
 						</h4>
 					</div>
@@ -1098,13 +455,16 @@
 				<p class="pull-left">
 					&copy; 2017 Food Bingo Stores. Designed By <a href="http://sainathchillapuram.com">Sainath Chillapuram</a>
 				</p>
+				<p class="pull-right">
+					&copy; 2018 Cooked.Me
+				</p>
 			<!-- Ends -->
 			<!-- Payment Gateway Links Starts -->
-				<ul class="pull-right list-inline">
-					<li>
+				<ul class="list-inline">
+					<li style="display: none;">
 						<%= image_tag("images/payment-icon/cirrus.png", alt:"PaymentGateway") %>
 					</li>
-					<li>
+					<li style="display: none;">
 						<%= image_tag("images/payment-icon/paypal.png", alt:"PaymentGateway") %>
 					</li>
 					<li>
@@ -1134,6 +494,6 @@
 	<script src="js/owl.carousel.min.js"></script>
 	 <script src="js/custom.js"></script>  -->
 
-	  <%= yield %>
+
   </body>
 </html>
