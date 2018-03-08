@@ -18,4 +18,5 @@
 //= require  ./bingo_template/bootstrap-hover-dropdown.min
 //= require  ./bingo_template/jquery.magnific-popup.min
 //= require  ./bingo_template/owl.carousel.min
+//= require  ./slick/slick
 //= require  ./bingo_template/custom
