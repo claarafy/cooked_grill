@@ -93,18 +93,63 @@
 							<li style="display: none;"><a href="#">Wish List(0)</a></li>
 							<li style="display: none;"><a href="#">My Account</a></li>
 							<li style="display: none;"><a href="#">Checkout</a></li>
-							<li class="dropdown"><span class="dropbtn">Sign Up</span>
-								<div class="dropdown-content">
-						      <a href="#">User</a>
-						      <a href="#">Cook</a>
-					    	</div>
-							</li>
-							<li class="dropdown"><span class="dropbtn">Login</span>
-								<div class="dropdown-content">
-						      <a href="#">User</a>
-						      <a href="#">Cook</a>
-					    	</div>
-							</li>
+
+
+							<% if user_signed_in? %>
+								<li class="dropdown"><span class="dropbtn">My Account</span>
+									<div class="dropdown-content">
+							      <a href="#">Edit Profile</a>
+							      <a href="#">My Orders</a>
+						    	</div>
+								</li>
+								<li><a href="#">Logout</a></li>
+							<% elsif cook_signed_in? %>
+								<li class="dropdown"><span class="dropbtn">My Account</span>
+									<div class="dropdown-content">
+										<a href="#">Edit Profile</a>
+										<a href="#">Offer New Meal</a>
+										<a href="#">My Meals</a>
+										<a href="#">My Orders</a>
+										<a href="#">Request Payout</a>
+									</div>
+								</li>
+								<li><a href="#">Logout</a></li>
+							<% elsif admin_signed_in? %>
+								<li class="dropdown"><span class="dropbtn">View All</span>
+									<div class="dropdown-content">
+										<a href="#">Meals</a>
+										<a href="#">Orders</a>
+										<a href="#">Users</a>
+										<a href="#">Cooks</a>
+									</div>
+								</li>
+								<li><a href="#">Logout</a></li>
+							<% else %>
+								<li class="dropdown"><span class="dropbtn">Sign Up</span>
+									<div class="dropdown-content">
+							      <%= link_to "User", new_user_registration_path  %>
+							      <%= link_to "Cook", new_cook_registration_path%>
+						    	</div>
+								</li>
+								<li class="dropdown"><span class="dropbtn">Login</span>
+									<div class="dropdown-content">
+									<%= link_to "User", new_user_session_path  %>
+									<%= link_to "Cook", new_cook_session_path %>
+						    	</div>
+								</li>
+							<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
 						</ul>
 					</div>
 
@@ -244,11 +289,22 @@
 		</div>
 	<!-- Main Header Ends -->
 	<!-- Main Menu Starts -->
-		<nav id="main-menu" class="navbar" role="navigation" style="visibility: hidden;">
+		<nav id="main-menu" class="navbar" role="navigation">
 		<!-- Nested Container Starts -->
 			<div class="container">
 			<!-- Nav Header Starts -->
 				<div class="navbar-header">
+					<% if cook_signed_in? %>
+							Welcome <%= current_cook.first_name %><br>
+							<% if current_cook.balance %>
+								Balance: $ <%= (current_cook.balance / 100).round(2) %>
+							<% else %>
+								Balance: $ 0.00
+							<% end %>
+					<% end %>
+					<% if user_signed_in? %>
+							Welcome <%= current_user.first_name %>
+					<% end %>
 					<button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-cat-collapse">
 						<span class="sr-only">Toggle Navigation</span>
 						<i class="fa fa-bars"></i>
@@ -256,7 +312,7 @@
 				</div>
 			<!-- Nav Header Ends -->
 			<!-- Navbar Cat collapse Starts -->
-				<div class="collapse navbar-collapse navbar-cat-collapse">
+				<div class="collapse navbar-collapse navbar-cat-collapse"  style="visibility: hidden;">>
 					<ul class="nav navbar-nav">
 						<li><a href="category-list.html">Accessories</a></li>
 						<li class="dropdown">
