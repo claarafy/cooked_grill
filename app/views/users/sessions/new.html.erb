@@ -1,30 +1,95 @@
 <p id="notice"><%= notice %></p>
-<div class='generic-form'>
+<!-- Main Banner Starts -->
+	<div class="main-banner">
+	<!-- Nested Container Starts -->
+		<div class="container">
 
-  <h2>Log in</h2>
-
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
-
-    <% if devise_mapping.rememberable? -%>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
-    <% end -%>
-
-    <div class="actions">
-      <%= f.submit "Log in" %>
-    </div>
-  <% end %>
-
-<%= render "users/shared/links" %>
-</div>
+			<h2>There is no meal like a home cooked meal.</h2>
+		</div>
+	<!-- Nested Container Ends -->
+	</div>
+<!-- Main Banner Ends -->
+<!-- Main Container Starts -->
+	<div id="main-container" class="container">
+	<!-- Breadcrumb Starts -->
+		<ol class="breadcrumb">
+			<li><a href="index.html">Home</a></li>
+			<li class="active">User Login</li>
+		</ol>
+	<!-- Breadcrumb Ends -->
+	<!-- Main Heading Starts -->
+		<h2 class="main-heading text-center">
+			Login or create new account
+		</h2>
+	<!-- Main Heading Ends -->
+	<!-- Login Form Section Starts -->
+		<section class="login-area">
+			<div class="row">
+				<div class="col-sm-6">
+				<!-- Login Panel Starts -->
+					<div class="panel panel-smart">
+						<div class="panel-heading">
+							<h3 class="panel-title">User Login</h3>
+						</div>
+						<div class="panel-body">
+							<p>
+								Please login using your existing account
+							</p>
+						<!-- Login Form Starts -->
+							<form class="form-inline" role="form">
+								<div class="form-group">
+									<label class="sr-only" for="exampleInputEmail2">Username</label>
+									<input type="text" class="form-control" id="exampleInputEmail2" placeholder="Username">
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="exampleInputPassword2">Password</label>
+									<input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+								</div>
+								<button type="submit" class="btn btn-black">
+									Login
+								</button>
+							</form>
+						<!-- Login Form Ends -->
+						</div>
+					</div>
+				<!-- Login Panel Ends -->
+				</div>
+				<div class="col-sm-6">
+				<!-- Account Panel Starts -->
+					<div class="panel panel-smart">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								Create new user account
+							</h3>
+						</div>
+						<div class="panel-body">
+							<p>
+								Registration allows you to order meals and leave reviews
+							</p>
+							<a href="register.html" class="btn btn-black">
+								Register
+							</a>
+						</div>
+					</div>
+				<!-- Account Panel Ends -->
+				<!-- Guest Checkout Panel Starts -->
+					<div class="panel panel-smart">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								Want to Start Cooking?
+							</h3>
+						</div>
+						<div class="panel-body">
+							<p>
+								Sign up as a Cook instead!
+							</p>
+							<button class="btn btn-black">Cook Sign Up</button>
+						</div>
+					</div>
+				<!-- Guest Checkout Panel Ends -->
+				</div>
+			</div>
+		</section>
+	<!-- Login Form Section Ends -->
+	</div>
+<!-- Main Container Ends -->

@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
+
 <!-- Main Banner Starts -->
 	<div class="main-banner">
 	<!-- Nested Container Starts -->
 		<div class="container">
-			<h1 class="text-uppercase" style="display: none;">Meal</h1>
-			<h2>There is nothing like a home cooked meal</h2>
+
+			<h2>There is no meal like a home cooked meal.</h2>
 		</div>
 	<!-- Nested Container Ends -->
 	</div>
@@ -14,344 +15,391 @@
 	<!-- Breadcrumb Starts -->
 		<ol class="breadcrumb">
 			<li><a href="index.html">Home</a></li>
-			<li><a href="category-list.html">Near You</a></li>
+			<li><a href="category-grid.html">Near You</a></li>
 			<li class="active">Enchilladas</li>
 		</ol>
 	<!-- Breadcrumb Ends -->
-	<!-- Nested Row Starts -->
-		<div class="row">
-		<!-- Sidebar Starts -->
-			<div class="col-md-3 col-xs-12">
-			<!-- Categories Links Starts -->
-				<h3 class="side-heading">Tags</h3>
-				<div class="list-group categories">
-					<a href="category-grid.html" class="list-group-item">
-						<i class="fa fa-angle-right"></i>
-						Tag 1
-					</a>
-					<a href="category-grid.html" class="list-group-item">
-						<i class="fa fa-angle-right"></i>
-						Tag 2
-					</a>
-					<a href="category-grid.html" class="list-group-item">
-						<i class="fa fa-angle-right"></i>
-						Tag 3
-					</a>
-					<a href="category-grid.html" class="list-group-item">
-						<i class="fa fa-angle-right"></i>
-						Tag 4
-					</a>
-				</div>
-			<!-- Categories Links Ends -->
-
-			<!-- Shopping Options Starts -->
-				<h3 class="side-heading" style="display:none;">Shopping Options</h3>
-				<div class="list-group" style="display:none;">
-					<div class="list-group-item">
-						Brands
-					</div>
-					<div class="list-group-item">
-						<div class="filter-group">
-							<label class="checkbox">
-								<input name="filter1" type="checkbox" value="br1" checked="checked" />
-								Brand Name 1
-							</label>
-							<label class="checkbox">
-								<input name="filter2" type="checkbox" value="br2" />
-								Brand Name 2
-							</label>
-							<label class="checkbox">
-								<input name="filter2" type="checkbox" value="br2" />
-								Brand Name 3
-							</label>
-						</div>
-					</div>
-					<div class="list-group-item">
-						Manufacturer
-					</div>
-					<div class="list-group-item">
-						<div class="filter-group">
-							<label class="radio">
-								<input name="filter-manuf" type="radio" value="mr1" checked="checked" />
-								Manufacturer Name 1
-							</label>
-							<label class="radio">
-								<input name="filter-manuf" type="radio" value="mr2" />
-								Manufacturer Name 2
-							</label>
-							<label class="radio">
-								<input name="filter-manuf" type="radio" value="mr3" />
-								Manufacturer Name 3
-							</label>
-						</div>
-					</div>
-					<div class="list-group-item">
-						<button type="button" class="btn btn-main">Filter</button>
-					</div>
-				</div>
-			<!-- Shopping Options Ends -->
-			<!-- Bestsellers Links Starts -->
-				<h3 class="side-heading">Meet the Chef</h3>
-				<div class="product-col">
-					<div class="image">
-            <%= image_tag("images/brands/profile_1.jpg", class:"img-responsive img-center") %>
-					</div>
-					<div class="caption">
-						<div class="price" style="display:none;">
-							<span class="price-new">$199.50</span>
-							<span class="price-old">$249.50</span>
-						</div>
-						<p class="price-tax">Derek Belowski</p>
-						<h4><a href="product.html" style="display:none;">Quis Nostrud Exercitation </a></h4>
-						<div class="ratings">
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<span><a href="#">29 meal review(s)</a></span>
-						</div>
-						<div class="cart-button button-group" style="display:none;">
-							<button type="button" class="btn btn-cart">
-								<i class="fa fa-shopping-cart"></i>
-							</button>
-							<button type="button" title="Wishlist" class="btn btn-wishlist">
-								<i class="fa fa-heart"></i>
-							</button>
-							<button type="button" title="Compare" class="btn btn-compare">
-								<i class="fa fa-bar-chart-o"></i>
-							</button>
-						</div>
-					</div>
-				</div>
-			<!-- Bestsellers Links Ends -->
+	<!-- Product Info Starts -->
+		<div class="row product-info full">
+		<!-- Left Starts -->
+			<div class="col-sm-4 images-block">
+				<a href="images/product-images/big-pimg1.jpg">
+          <%= image_tag("images/product-images/11.jpg", class:"img-responsive") %>
+				</a>
+				<ul class="list-unstyled list-inline" style="visibility:hidden;">
+					<li>
+						<a href="images/product-images/big-pimg2.jpg">
+							<img src="images/product-images/thumb1.jpg" alt="Image" class="img-responsive thumbnail" />
+						</a>
+					</li>
+					<li>
+						<a href="images/product-images/big-pimg3.jpg">
+							<img src="images/product-images/thumb2.jpg" alt="Image" class="img-responsive thumbnail" />
+						</a>
+					</li>
+					<li>
+						<a href="images/product-images/big-pimg4.jpg">
+							<img src="images/product-images/thumb3.jpg" alt="Image" class="img-responsive thumbnail" />
+						</a>
+					</li>
+					<li>
+						<a href="images/product-images/big-pimg4.jpg">
+							<img src="images/product-images/thumb4.jpg" alt="Image" class="img-responsive thumbnail" />
+						</a>
+					</li>
+				</ul>
 			</div>
-		<!-- Sidebar Ends -->
-
-		<!-- Primary Content Starts -->
-			<div class="col-md-9 col-xs-12">
-			<!-- Product Info Starts -->
-				<div class="row product-info">
-				<!-- Left Starts -->
-					<div class="col-sm-5 images-block">
-						<p>
-              <%= image_tag("images/product-images/11.jpg", class:"img-responsive") %>
-						</p>
-						<ul class="list-unstyled list-inline" style="visibility:hidden;">
-							<li>
-								<img src="images/product-images/thumb1.jpg" alt="Image" class="img-responsive thumbnail" />
-							</li>
-							<li>
-								<img src="images/product-images/thumb2.jpg" alt="Image" class="img-responsive thumbnail" />
-							</li>
-							<li>
-								<img src="images/product-images/thumb3.jpg" alt="Image" class="img-responsive thumbnail" />
-							</li>
-							<li>
-								<img src="images/product-images/thumb4.jpg" alt="Image" class="img-responsive thumbnail" />
-							</li>
-						</ul>
-					</div>
-				<!-- Left Ends -->
-
-				<!-- Right Starts -->
-					<div class="col-sm-7 product-details">
-					<!-- Product Name Starts -->
-						<h2>Enchilladas</h2>
-					<!-- Product Name Ends -->
-						<hr />
-					<!-- Manufacturer Starts -->
-						<ul class="list-unstyled manufacturer">
+		<!-- Left Ends -->
+		<!-- Right Starts -->
+			<div class="col-sm-8 product-details">
+				<div class="panel-smart">
+          <!-- Product Name Starts -->
+            <h2>Enchilladas</h2>
+          <!-- Product Name Ends -->
+            <hr />
+          <!-- Manufacturer Starts -->
+            <ul class="list-unstyled manufacturer">
               <li>
-								<span>Availability From:</span> Mon March 23 @ 4 PM
-							</li>
+                <span>Availability From:</span> Mon March 23 @ 4 PM
+              </li>
               <li>
-								<span>Availability To:</span> Mon March 23 @ 8 PM
-							</li>
-							<li>
-								<span>Pickup/Delivery:</span> Delivery Only
-							</li>
-							<li><span>Portion Info:</span> Enough for One Person</li>
-							<li>
-								<span>Currently Offered?:</span> <strong class="label label-success"> YES</strong>
-							</li>
-						</ul>
-					<!-- Manufacturer Ends -->
-						<hr />
-					<!-- Price Starts -->
-						<div class="price">
-							<span class="price-head">Price :</span>
-							<span class="price-new">$9.50</span>
-						</div>
-					<!-- Price Ends -->
-						<hr />
-					<!-- Available Options Starts -->
-						<div class="options">
-							<div class="form-group">
-								<label class="control-label text-uppercase" for="input-quantity">Qty:</label>
-								<input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />
-							</div>
+                <span>Availability To:</span> Mon March 23 @ 8 PM
+              </li>
+              <li>
+                <span>Pickup/Delivery:</span> Delivery Only
+              </li>
+              <li><span>Portion Info:</span> Enough for One Person</li>
+              <li>
+                <span style="display: none;">Currently Offered?:</span> <strong class="label label-success" style="display:none;"> YES</strong>
+              </li>
+            </ul>
+          <!-- Manufacturer Ends -->
+            <hr />
+          <!-- Price Starts -->
+            <div class="price">
+              <span class="price-head">Price :</span>
+              <span class="price-new">$9.50</span>
+            </div>
+          <!-- Price Ends -->
+            <hr />
+          <!-- Available Options Starts -->
+            <div class="options">
+              <div class="form-group" style="display:none;">
+                <label class="control-label text-uppercase" for="input-quantity">Qty:</label>
+                <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />
+              </div>
               <a href="#" class="btn btn-block btn-danger btn-color"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a>
-  						<div class="cart-button button-group" style="display:none;">
-								<button type="button" title="Wishlist" class="btn btn-wishlist">
-									<i class="fa fa-heart"></i>
-								</button>
-								<button type="button" title="Compare" class="btn btn-compare">
-									<i class="fa fa-bar-chart-o"></i>
-								</button>
-								<button type="button" class="btn btn-cart">
-									Add to Cart
-								</button>
-							</div>
-						</div>
-					<!-- Available Options Ends -->
-						<hr />
-					</div>
-				<!-- Right Ends -->
+              <div class="cart-button button-group" style="display:none;">
+                <button type="button" title="Wishlist" class="btn btn-wishlist">
+                  <i class="fa fa-heart"></i>
+                </button>
+                <button type="button" title="Compare" class="btn btn-compare">
+                  <i class="fa fa-bar-chart-o"></i>
+                </button>
+                <button type="button" class="btn btn-cart">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+				<!-- Available Options Ends -->
 				</div>
-			<!-- product Info Ends -->
-			<!-- Product Description Starts -->
-				<div class="product-info-box">
-					<h4 class="heading">Description</h4>
-					<div class="content panel-smart">
-						<p>
-							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-						</p>
-						<p>
-							It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-						</p>
-					</div>
+			</div>
+		<!-- Right Ends -->
+		</div>
+	<!-- Product Info Ends -->
+	<!-- Tabs Starts -->
+		<div class="tabs-panel panel-smart">
+		<!-- Nav Tabs Starts -->
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="#tab-description">Description</a>
+				</li>
+				<li>
+					<a href="#tab-specification">Ingredients</a>
+				</li>
+				<li><a href="#tab-ainfo">Meet The Chef</a></li>
+				<li><a href="#tab-review">Reviews</a></li>
+			</ul>
+		<!-- Nav Tabs Ends -->
+		<!-- Tab Content Starts -->
+			<div class="tab-content clearfix">
+			<!-- Description Starts -->
+				<div class="tab-pane active" id="tab-description">
+					<p>
+						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+					</p>
+					<p>
+						It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+					</p>
 				</div>
-			<!-- Product Description Ends -->
+			<!-- Description Ends -->
+			<!-- Specification Starts -->
+				<div class="tab-pane" id="tab-specification">
+					<table class="table table-bordered">
+						<thead>
+						  <tr>
+							<td colspan="2"><strong>Name</strong></td>
+						  </tr>
+						</thead>
+						<tbody>
+						  <tr>
+							<td>Name</td>
+							<td>Attribute Specification</td>
+						  </tr>
+						</tbody>
+					</table>
+					<table class="table table-bordered">
+						<thead>
+						  <tr>
+							<td colspan="2"><strong>Name</strong></td>
+						  </tr>
+						</thead>
+						<tbody>
+						  <tr>
+							<td>Name</td>
+							<td>Attribute Specification</td>
+						  </tr>
+						</tbody>
+					</table>
+				</div>
+			<!-- Specification Ends -->
 			<!-- Additional Information Starts -->
-				<div class="product-info-box">
-					<h4 class="heading">Ingredients</h4>
-					<div class="content panel-smart">
-						<p>
-							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-						</p>
-					</div>
+				<div class="tab-pane" id="tab-ainfo">
+          <h3 class="side-heading">Meet the Chef</h3>
+  				<div class="product-col">
+  					<div class="image">
+              <%= image_tag("images/brands/profile_1.jpg", class:"img-responsive img-center") %>
+  					</div>
+  					<div class="caption">
+  						<div class="price" style="display:none;">
+  							<span class="price-new">$199.50</span>
+  							<span class="price-old">$249.50</span>
+  						</div>
+  						<p class="price-tax">Derek Belowski</p>
+  						<h4><a href="product.html" style="display:none;">Quis Nostrud Exercitation </a></h4>
+  						<div class="ratings">
+  							<i class="fa fa-star"></i>
+  							<i class="fa fa-star"></i>
+  							<i class="fa fa-star"></i>
+  							<i class="fa fa-star"></i>
+  							<i class="fa fa-star"></i>
+  							<span><a href="#">Average Meal Reviews (29 review(s))</a></span>
+  						</div>
+  						<div class="cart-button button-group" style="display:none;">
+  							<button type="button" class="btn btn-cart">
+  								<i class="fa fa-shopping-cart"></i>
+  							</button>
+  							<button type="button" title="Wishlist" class="btn btn-wishlist">
+  								<i class="fa fa-heart"></i>
+  							</button>
+  							<button type="button" title="Compare" class="btn btn-compare">
+  								<i class="fa fa-bar-chart-o"></i>
+  							</button>
+  						</div>
+  					</div>
+  				</div>
 				</div>
 			<!-- Additional Information Ends -->
-			<!-- Related Products Starts -->
-				<div class="product-info-box">
-					<h4 class="heading">Related Products</h4>
-				<!-- Products Row Starts -->
-					<div class="row">
-					<!-- Product #1 Starts -->
-						<div class="col-md-4 col-sm-6 col-xs-12">
-              <div class="product-col">
-                <div class="image">
-                  <%= image_tag("images/product-images/1.jpg", class:"img-responsive") %>
-                </div>
-                <div class="caption">
-                  <div class="price">
-                    <span class="price-new">$5.99</span>
-                    <span class="price-old" style="visibility: hidden;">$249.50</span>
-                  </div>
-                  <h4><a href="product.html">Healthy Turkey Burger </a></h4>
-                  <div class="ratings">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <span><a href="#">1 review(s)</a></span>
-                  </div>
-                  <span class="availability-info">Available Now!</span><br>
-                  <a href="#" class="btn btn-block btn-danger btn-color"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a>
-                  <div class="cart-button button-group">
-                    <button type="button" class="btn btn-cart" style="display: none;">
-                      <i class="fa fa-shopping-cart"></i>
-                    </button>
-                    <button type="button" title="Wishlist" class="btn btn-wishlist" style="display: none;">
-                      <i class="fa fa-heart"></i>
-                    </button>
-                    <button type="button" title="Compare" class="btn btn-compare" style="display: none;">
-                      <i class="fa fa-bar-chart-o"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
+			<!-- Review Starts -->
+				<div class="tab-pane" id="tab-review">
+					<form class="form-horizontal">
+						<div class="form-group required">
+							<label class="col-sm-2 control-label" for="input-name">Name</label>
+							<div class="col-sm-10">
+							<input type="text" name="name" value="" id="input-name" class="form-control" />
+							</div>
 						</div>
-					<!-- Product #1 Ends -->
-					<!-- Product #2 Starts -->
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="product-col">
-              <div class="image">
-                <%= image_tag("images/product-images/2.jpg", class:"img-responsive") %>
-              </div>
-              <div class="caption">
-                <div class="price">
-                  <span class="price-new">$12.99</span>
-                  <span class="price-old" style="visibility: hidden;">$249.50</span>
-                </div>
-                <h4><a href="product.html">Strawberry Cupcakes</a></h4>
-                <div class="ratings">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <span><a href="#">14 review(s)</a></span>
-                </div>
-                <span class="availability-info">Available Now!</span><br>
-                <a href="#" class="btn btn-block btn-danger btn-color"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a>
-                <div class="cart-button button-group">
-                  <button type="button" class="btn btn-cart" style="display: none;">
-                    <i class="fa fa-shopping-cart"></i>
-                  </button>
-                  <button type="button" title="Wishlist" class="btn btn-wishlist" style="display: none;">
-                    <i class="fa fa-heart"></i>
-                  </button>
-                  <button type="button" title="Compare" class="btn btn-compare" style="display: none;">
-                    <i class="fa fa-bar-chart-o"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-					<!-- Product #2 Ends -->
-					<!-- Product #3 Starts -->
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="product-col">
-              <div class="image">
-                <%= image_tag("images/product-images/3.jpg", class:"img-responsive") %>
-              </div>
-              <div class="caption">
-                <div class="price">
-                  <span class="price-new">$15.99</span>
-                  <span class="price-old" style="visibility: hidden;">$249.50</span>
-                </div>
-                <h4><a href="product.html">Norwegian Pizza</a></h4>
-                <div class="ratings">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <span><a href="#">132 review(s)</a></span>
-                </div>
-                <span class="availability-info">Available Now!</span><br>
-                <a href="#" class="btn btn-block btn-danger btn-color"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a>
-                <div class="cart-button button-group">
-                  <button type="button" class="btn btn-cart" style="display: none;">
-                    <i class="fa fa-shopping-cart"></i>
-                  </button>
-                  <button type="button" title="Wishlist" class="btn btn-wishlist" style="display: none;">
-                    <i class="fa fa-heart"></i>
-                  </button>
-                  <button type="button" title="Compare" class="btn btn-compare" style="display: none;">
-                    <i class="fa fa-bar-chart-o"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-					<!-- Product #3 Ends -->
-					</div>
-				<!-- Products Row Ends -->
+						<div class="form-group required">
+							<label class="col-sm-2 control-label" for="input-review">Review</label>
+							<div class="col-sm-10">
+								<textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
+								<div class="help-block">
+									Some note goes here..
+								</div>
+							</div>
+						</div>
+						<div class="form-group required">
+							<label class="col-sm-2 control-label ratings">Ratings</label>
+							<div class="col-sm-10">
+								Bad&nbsp;
+								<input type="radio" name="rating" value="1" />
+								&nbsp;
+								<input type="radio" name="rating" value="2" />
+								&nbsp;
+								<input type="radio" name="rating" value="3" />
+								&nbsp;
+								<input type="radio" name="rating" value="4" />
+								&nbsp;
+								<input type="radio" name="rating" value="5" />
+								&nbsp;Good
+							</div>
+						</div>
+						<div class="buttons">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="button" id="button-review" class="btn btn-main">
+									Submit
+								</button>
+							</div>
+						</div>
+					</form>
 				</div>
-			<!-- Related Products Ends -->
+			<!-- Review Ends -->
 			</div>
-		<!-- Primary Content Ends -->
+		<!-- Tab Content Ends -->
 		</div>
-	<!-- Nested Row Ends -->
+	<!-- Tabs Ends -->
+	<!-- Related Products Starts -->
+		<div class="product-info-box">
+			<h4 class="heading">Related Meals</h4>
+		<!-- Products Row Starts -->
+			<div class="row">
+			<!-- Product #1 Starts -->
+				<div class="col-md-3 col-sm-6">
+					<div class="product-col">
+            <div class="image">
+              <%= image_tag("images/product-images/1.jpg", class:"img-responsive") %>
+            </div>
+            <div class="caption">
+              <div class="price">
+                <span class="price-new">$5.99</span>
+                <span class="price-old" style="visibility: hidden;">$249.50</span>
+              </div>
+              <h4><a href="product.html">Healthy Turkey Burger </a></h4>
+              <div class="ratings">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <span><a href="#">1 review(s)</a></span>
+              </div>
+              <span class="availability-info">Available Now!</span><br>
+              <a href="#" class="btn btn-block btn-danger btn-color"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a>
+              <div class="cart-button button-group">
+                <button type="button" class="btn btn-cart" style="display: none;">
+                  <i class="fa fa-shopping-cart"></i>
+                </button>
+                <button type="button" title="Wishlist" class="btn btn-wishlist" style="display: none;">
+                  <i class="fa fa-heart"></i>
+                </button>
+                <button type="button" title="Compare" class="btn btn-compare" style="display: none;">
+                  <i class="fa fa-bar-chart-o"></i>
+                </button>
+              </div>
+            </div>
+					</div>
+				</div>
+			<!-- Product #1 Ends -->
+			<!-- Product #2 Starts -->
+				<div class="col-md-3 col-sm-6">
+					<div class="product-col">
+            <div class="image">
+              <%= image_tag("images/product-images/2.jpg", class:"img-responsive") %>
+            </div>
+            <div class="caption">
+              <div class="price">
+                <span class="price-new">$12.99</span>
+                <span class="price-old" style="visibility: hidden;">$249.50</span>
+              </div>
+              <h4><a href="product.html">Strawberry Cupcakes</a></h4>
+              <div class="ratings">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <span><a href="#">14 review(s)</a></span>
+              </div>
+              <span class="availability-info">Available Now!</span><br>
+              <a href="#" class="btn btn-block btn-danger btn-color"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a>
+              <div class="cart-button button-group">
+                <button type="button" class="btn btn-cart" style="display: none;">
+                  <i class="fa fa-shopping-cart"></i>
+                </button>
+                <button type="button" title="Wishlist" class="btn btn-wishlist" style="display: none;">
+                  <i class="fa fa-heart"></i>
+                </button>
+                <button type="button" title="Compare" class="btn btn-compare" style="display: none;">
+                  <i class="fa fa-bar-chart-o"></i>
+                </button>
+              </div>
+            </div>
+					</div>
+				</div>
+			<!-- Product #2 Ends -->
+			<!-- Product #3 Starts -->
+				<div class="col-md-3 col-sm-6">
+					<div class="product-col">
+            <div class="image">
+              <%= image_tag("images/product-images/3.jpg", class:"img-responsive") %>
+            </div>
+            <div class="caption">
+              <div class="price">
+                <span class="price-new">$15.99</span>
+                <span class="price-old" style="visibility: hidden;">$249.50</span>
+              </div>
+              <h4><a href="product.html">Norwegian Pizza</a></h4>
+              <div class="ratings">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <span><a href="#">132 review(s)</a></span>
+              </div>
+              <span class="availability-info">Available Now!</span><br>
+              <a href="#" class="btn btn-block btn-danger btn-color"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a>
+              <div class="cart-button button-group">
+                <button type="button" class="btn btn-cart" style="display: none;">
+                  <i class="fa fa-shopping-cart"></i>
+                </button>
+                <button type="button" title="Wishlist" class="btn btn-wishlist" style="display: none;">
+                  <i class="fa fa-heart"></i>
+                </button>
+                <button type="button" title="Compare" class="btn btn-compare" style="display: none;">
+                  <i class="fa fa-bar-chart-o"></i>
+                </button>
+              </div>
+            </div>
+					</div>
+				</div>
+			<!-- Product #3 Ends -->
+			<!-- Product #4 Starts -->
+				<div class="col-md-3 col-sm-6">
+					<div class="product-col">
+            <div class="image">
+              <%= image_tag("images/product-images/1.jpg", class:"img-responsive") %>
+            </div>
+            <div class="caption">
+              <div class="price">
+                <span class="price-new">$5.99</span>
+                <span class="price-old" style="visibility: hidden;">$249.50</span>
+              </div>
+              <h4><a href="product.html">Healthy Turkey Burger </a></h4>
+              <div class="ratings">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <span><a href="#">1 review(s)</a></span>
+              </div>
+              <span class="availability-info">Available Now!</span><br>
+              <a href="#" class="btn btn-block btn-danger btn-color"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a>
+              <div class="cart-button button-group">
+                <button type="button" class="btn btn-cart" style="display: none;">
+                  <i class="fa fa-shopping-cart"></i>
+                </button>
+                <button type="button" title="Wishlist" class="btn btn-wishlist" style="display: none;">
+                  <i class="fa fa-heart"></i>
+                </button>
+                <button type="button" title="Compare" class="btn btn-compare" style="display: none;">
+                  <i class="fa fa-bar-chart-o"></i>
+                </button>
+              </div>
+            </div>
+					</div>
+				</div>
+			<!-- Product #4 Ends -->
+			</div>
+		<!-- Products Row Ends -->
+		</div>
+	<!-- Related Products Ends -->
 	</div>
 <!-- Main Container Ends -->
