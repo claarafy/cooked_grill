@@ -505,7 +505,7 @@ hr {
 .main-banner {
 	padding-top: 50px;
 	padding-bottom: 50px;
-	background: url(../images/banners/main-banner-img1.jpg) no-repeat center;
+	background: url(asset_path("images/banners/main-banner-img1.jpg")) no-repeat center;
 }
 	.main-banner h1 {
 		font-size: 60px;

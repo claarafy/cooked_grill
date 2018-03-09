@@ -134,7 +134,7 @@
                 <span class="price-new">$<%= sprintf('%.2f', meal.meal_cost) %></span>
                 <span class="price-old" style="visibility: hidden;">$249.50</span>
               </div>
-              <h4><a href="product.html"><%= meal.title.truncate(25) %></a></h4>
+              <h4><%= link_to meal.title.truncate(25), meal %></h4>
               <div class="ratings">
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
