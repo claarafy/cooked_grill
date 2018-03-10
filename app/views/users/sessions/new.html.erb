@@ -36,19 +36,18 @@
 								Please login using your existing account
 							</p>
 						<!-- Login Form Starts -->
-							<form class="form-inline" role="form">
+							<%= form_for(resource, as: resource_name, url: session_path(resource_name),  html: { class: "form-inline"}) do |f| %>
+								<%= devise_error_messages! %>
 								<div class="form-group">
-									<label class="sr-only" for="exampleInputEmail2">Username</label>
-									<input type="text" class="form-control" id="exampleInputEmail2" placeholder="Username">
+									<%= f.label "Email: ", class: "sr-only" %>
+									<%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", placeholder: "Email" %>
 								</div>
 								<div class="form-group">
-									<label class="sr-only" for="exampleInputPassword2">Password</label>
-									<input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+									<%= f.label :password, class: "sr-only" %>
+									<%= f.password_field :password,  class: "form-control", autocomplete: "off",  placeholder: "Password"%>
 								</div>
-								<button type="submit" class="btn btn-black">
-									Login
-								</button>
-							</form>
+								<%= f.submit "Log In", class: "btn btn-black" %>
+							<% end %>
 						<!-- Login Form Ends -->
 						</div>
 					</div>
@@ -59,16 +58,14 @@
 					<div class="panel panel-smart">
 						<div class="panel-heading">
 							<h3 class="panel-title">
-								Create new user account
+								Create New User Account
 							</h3>
 						</div>
 						<div class="panel-body">
 							<p>
 								Registration allows you to order meals and leave reviews
 							</p>
-							<a href="register.html" class="btn btn-black">
-								Register
-							</a>
+							<%= link_to "User Sign Up", new_user_registration_path, { :class => "btn btn-black" } %>
 						</div>
 					</div>
 				<!-- Account Panel Ends -->
@@ -83,7 +80,7 @@
 							<p>
 								Sign up as a Cook instead!
 							</p>
-							<button class="btn btn-black">Cook Sign Up</button>
+							<%= link_to "Cook Sign Up", new_cook_registration_path, { :class => "btn btn-black" } %>
 						</div>
 					</div>
 				<!-- Guest Checkout Panel Ends -->

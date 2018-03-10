@@ -2,7 +2,7 @@
 module Accessible
   extend ActiveSupport::Concern
   included do
-    # before_action :check_user
+    before_action :check_user
   end
 
   protected

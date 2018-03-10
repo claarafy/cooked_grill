@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   # before_action :authenticate_user!, :except => [:index]
 
   # Temp for HTTP Verification
+  # TODO remove later. Not needed anymore. 
   def download_file
     send_file 'app/assets/videos/B7C7017DAF6B1432EB6A73124F6494CC.txt'
   end
