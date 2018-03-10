@@ -15,12 +15,12 @@
 	<!-- Breadcrumb Starts -->
 		<ol class="breadcrumb">
 			<li><a href="index.html">Home</a></li>
-			<li class="active">Register</li>
+			<li class="active">Sign Up</li>
 		</ol>
 	<!-- Breadcrumb Ends -->
 	<!-- Main Heading Starts -->
 		<h2 class="main-heading text-center">
-			Register <br />
+			Sign Up <br />
 			<span>Create New Account</span>
 		</h2>
 	<!-- Main Heading Ends -->
@@ -39,149 +39,56 @@
 							<!-- Personal Information Starts -->
 
 							<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-							  <%= devise_error_messages! %>
+								<%= devise_error_messages! %>
 								<div class="form-group">
-									<label for="inputFname" class="col-sm-3 control-label">Name :</label>
+									<%= f.label "Name", class: "col-sm-3 control-label"%>
 									<div class="col-sm-9">
-										<%= f.text_field :first_name, autocomplete: "first_name", :required => true%>
-										<input type="text" class="form-control" id="inputFname" placeholder="Name">
-									</div>
-								</div>
-
-
-								<div class="form-group" style="display: none;">
-									<label for="inputLname" class="col-sm-3 control-label">Last Name :</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control" id="inputLname" placeholder="Last Name">
+										<%= f.text_field :first_name, class: "form-control", autocomplete: "first_name", :required => true, placeholder: "Name" %>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail" class="col-sm-3 control-label">Email :</label>
+									<%= f.label "Email", class: "col-sm-3 control-label"%>
 									<div class="col-sm-9">
-										<input type="email" class="form-control" id="inputEmail" placeholder="Email">
-									</div>
-								</div>
-								<div class="form-group"  style="display: none;">
-									<label for="inputPhone" class="col-sm-3 control-label">Phone :</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control" id="inputPhone" placeholder="Phone">
-									</div>
-								</div>
-								<div class="form-group" style="display: none;">
-									<label for="inputFax" class="col-sm-3 control-label">Fax :</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control" id="inputFax" placeholder="Fax">
+										<%= f.email_field :email, autofocus: true, class: "form-control", autocomplete: "email", :required => true, placeholder: "Email" %>
 									</div>
 								</div>
 							<!-- Personal Information Ends -->
-								<h3 class="panel-heading inner"  style="display: none;">
-									Delivery Information
-								</h3>
-							<!-- Delivery Information Starts -->
-								<div class="form-group"  style="display: none;">
-									<label for="inputCompany" class="col-sm-3 control-label">Company :</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control" id="inputCompany" placeholder="Company">
-									</div>
-								</div>
-								<div class="form-group" style="display: none;">
-									<label for="inputCompanyId" class="col-sm-3 control-label">Company ID :</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control" id="inputCompanyId" placeholder="Company ID">
-									</div>
-								</div>
-								<div class="form-group" style="display: none;">
-									<label for="inputAddress1" class="col-sm-3 control-label">Address/1 :</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control" id="inputAddress1" placeholder="Address/1">
-									</div>
-								</div>
-								<div class="form-group" style="display: none;">
-									<label for="inputAddress2" class="col-sm-3 control-label">Address/2 :</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control" id="inputAddress2" placeholder="Address/2">
-									</div>
-								</div>
-								<div class="form-group" style="display: none;">
-									<label for="inputCity" class="col-sm-3 control-label">City :</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control" id="inputCity" placeholder="City">
-									</div>
-								</div>
-								<div class="form-group" style="display: none;">
-									<label for="inputPostCode" class="col-sm-3 control-label">Postal Code :</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control" id="inputPostCode" placeholder="Postal Code">
-									</div>
-								</div>
-								<div class="form-group" style="display: none;">
-									<label for="inputCountry" class="col-sm-3 control-label">Country :</label>
-									<div class="col-sm-9">
-										<select class="form-control" id="inputCountry">
-											<option>- All Countries -</option>
-											<option>India</option>
-											<option>USA</option>
-											<option>UK</option>
-											<option>China</option>
-										</select>
-									</div>
-								</div>
-								<div class="form-group" style="display: none;">
-									<label for="inputRegion" class="col-sm-3 control-label">Region :</label>
-									<div class="col-sm-9">
-										<select class="form-control" id="inputRegion">
-											<option>- All Regions -</option>
-										</select>
-									</div>
-								</div>
-							<!-- Delivery Information Ends -->
 								<h3 class="panel-heading inner">
 									Password
 								</h3>
 							<!-- Password Area Starts -->
 								<div class="form-group">
-									<label for="inputPassword" class="col-sm-3 control-label">Password :</label>
+									<%= f.label :password, class: "col-sm-3 control-label"%>
+									<!-- <label for="inputPassword" class="col-sm-3 control-label">Password :</label> -->
 									<div class="col-sm-9">
-										<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+										<!--  TODO Change later. Harcoded password requirement -->
+										<%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password (6 characters minimum)"%>
+										<!-- <input type="password" class="form-control" id="inputPassword" placeholder="Password"> -->
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputRePassword" class="col-sm-3 control-label">Re-Password :</label>
+									<%= f.label "Re-Password", class: "col-sm-3 control-label"%>
+									<!-- <label for="inputPassword" class="col-sm-3 control-label">Password :</label> -->
 									<div class="col-sm-9">
-										<input type="password" class="form-control" id="inputRePassword" placeholder="Re-Password">
-									</div>
-								</div>
-								<div class="form-group" style="display: none;">>
-									<span class="col-sm-3 control-label">Newsletter :</span>
-									<div class="col-sm-9">
-										<div class="radio">
-											<label>
-												<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-												Subscribe
-											</label>
-										</div>
-										<div class="radio">
-											<label>
-												<input type="radio" name="optionsRadios" id="optionsRadios2" value="option1">
-												Unsubscribe
-											</label>
-										</div>
+										<!--  TODO Change later. Harcoded password requirement -->
+										<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Re-Password (6 characters minimum)"%>
+										<!-- <input type="password" class="form-control" id="inputPassword" placeholder="Password"> -->
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-9">
 										<div class="checkbox">
 											<label>
-												<input type="checkbox"> I have read and agreed to the Terms & Conditions
+												<input type="checkbox" required="required"> I have read and agreed to the Terms & Conditions
 											</label>
 										</div>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-9">
-										<button type="submit" class="btn btn-black">
-											Register
-										</button>
+										<div class="actions">
+											<%= f.submit "Sign up", class: "btn btn-black" %>
+										</div>
 									</div>
 								</div>
 								<% end %>
