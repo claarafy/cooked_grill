@@ -84,22 +84,12 @@
             <hr />
           <!-- Available Options Starts -->
             <div class="options">
-              <div class="form-group" style="display:none;">
-                <label class="control-label text-uppercase" for="input-quantity">Qty:</label>
-                <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />
-              </div>
-              <a href="#" class="btn btn-block btn-danger btn-color"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a>
-              <div class="cart-button button-group" style="display:none;">
-                <button type="button" title="Wishlist" class="btn btn-wishlist">
-                  <i class="fa fa-heart"></i>
-                </button>
-                <button type="button" title="Compare" class="btn btn-compare">
-                  <i class="fa fa-bar-chart-o"></i>
-                </button>
-                <button type="button" class="btn btn-cart">
-                  Add to Cart
-                </button>
-              </div>
+              <!-- <a href="#" class="btn btn-block btn-danger btn-color"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a> -->
+							<%= if user_signed_in?
+										button_to 'Order', {:controller => "orders", :action => "new"}, :method => :get, :class => "btn btn-block btn-danger btn-color", params: { mealID: @meal.id}
+									 else
+										 link_to "Sign in to Order", new_user_session_path, { :class => "btn btn-black" }
+									 end %>
             </div>
 				<!-- Available Options Ends -->
 				</div>

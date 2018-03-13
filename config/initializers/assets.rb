@@ -10,6 +10,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 # Unused, Remove Later?
 Rails.application.config.assets.precompile += %w( form_helper_functions.js )
+Rails.application.config.assets.precompile += %w( pickadate/form_datepicker.js )
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets

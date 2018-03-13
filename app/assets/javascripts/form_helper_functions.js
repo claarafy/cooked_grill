@@ -1,15 +1,85 @@
-// var total = $("#order_quantity").val() * parseFloat($("#meal_price_hidden").text());
-// document.getElementById('total').innerHTML = total.toFixed(2);
-// alert("claculate_total ran");
-$("#order_quantity").on('change', function(){
-      var total = $("#order_quantity").val() * parseFloat($("#meal_price_hidden").text()) ;
-      document.getElementById('total').innerHTML = total.toFixed(2);
+// Calcualte taxes, subtotal, total based on quantity and Price
+// $("#order_quantity").on('change', function(){
+//       var sub_total = $("#order_quantity").val() * parseFloat($("#meal_price_hidden").text()) ;
+//       var taxes = sub_total * 0.095
+//       var total = sub_total + taxes;
+//       document.getElementById('total').innerHTML = sub_total.toFixed(2);
+//       document.getElementById('sub_total').innerHTML = sub_total.toFixed(2);
+//       document.getElementById('tax_amount').innerHTML = taxes.toFixed(2);
+//       document.getElementById('total_amount').innerHTML = total.toFixed(2);
+// });
+//
+if ($("#order_quantity").val() == null && $("#order_quantity").val() == ""){
+  $("#order_quantity").val(1);
+}
+var sub_total = $("#order_quantity").val() * parseFloat($("#meal_price_hidden").text());
+var taxes = sub_total * 0.095
+var total = sub_total + taxes;
+divs = document.getElementsByClassName( 'sub_total' );
+
+[].slice.call( divs ).forEach(function ( div ) {
+    div.innerHTML = sub_total.toFixed(2);;
+});
+document.getElementById('tax_amount').innerHTML = taxes.toFixed(2);
+document.getElementById('total_amount').innerHTML = total.toFixed(2);
+
+// Increment Quantity
+$("#increment_qty").on("click", function() {
+  var oldValue = $("#order_quantity").val();
+	var newVal = parseFloat(oldValue) + 1;
+  $("#order_quantity").val(newVal);
+
+  var sub_total = $("#order_quantity").val() * parseFloat($("#meal_price_hidden").text());
+  var taxes = sub_total * 0.095
+  var total = sub_total + taxes;
+  divs = document.getElementsByClassName( 'sub_total' );
+
+  [].slice.call( divs ).forEach(function ( div ) {
+      div.innerHTML = sub_total.toFixed(2);;
+  });
+  document.getElementById('tax_amount').innerHTML = taxes.toFixed(2);
+  document.getElementById('total_amount').innerHTML = total.toFixed(2);
+});
+// Decrement Quantity
+$("#decrement_qty").on("click", function() {
+  var oldValue = $("#order_quantity").val();
+  if(oldValue > 1){
+    var newVal = parseFloat(oldValue) - 1;
+  } else {
+    var newVal = 1;
+  }
+  $("#order_quantity").val(newVal);
+
+  var sub_total = $("#order_quantity").val() * parseFloat($("#meal_price_hidden").text());
+  var taxes = sub_total * 0.095
+  var total = sub_total + taxes;
+  divs = document.getElementsByClassName( 'sub_total' );
+  [].slice.call( divs ).forEach(function ( div ) {
+      div.innerHTML = sub_total.toFixed(2);;
+  });
+  document.getElementById('tax_amount').innerHTML = taxes.toFixed(2);
+  document.getElementById('total_amount').innerHTML = total.toFixed(2);
 });
 
-if ($("#order_quantity").val() != null && $("#order_quantity").val() != ""){
-  var total = $("#order_quantity").val() * parseFloat($("#meal_price_hidden").text());
-  document.getElementById('total').innerHTML = total.toFixed(2);
-}
+// Handle Delivery and Pickup Dropdown Selection on change
+$("#inputPickupDelivery").on("change", function() {
+   if (this.value == "Delivery"){
+     $('#delivery-panel').show();
+     $('#order_delivery_address').prop('required',true);
+   } else {
+     $('#delivery-panel').hide();
+     $('#order_delivery_address').prop('required',false);
+   }
+});
+
+// Handle Delivery and Pickup Dropdown Selection on load
+ if ($("#inputPickupDelivery").val() == "Delivery"){
+   $('#delivery-panel').show();
+   $('#delivery-panel').prop('required',true);
+ } else {
+   $('#delivery-panel').hide();
+   $('#delivery-panel').prop('required',false);
+ }
 
 $("input:checkbox").on('click', function() {
   // in the handler, 'this' refers to the box clicked on

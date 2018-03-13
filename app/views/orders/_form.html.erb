@@ -1,5 +1,321 @@
-  
+<!-- Main Container Starts -->
+	<div id="main-container" class="container">
+	<!-- Breadcrumb Starts -->
+		<ol class="breadcrumb">
+			<li><a href="index.html">Home</a></li>
+			<li class="active">Order</li>
+		</ol>
+	<!-- Breadcrumb Ends -->
+	<!-- Main Heading Starts -->
+		<h2 class="main-heading text-center">
+			Order Details
+		</h2>
+	<!-- Main Heading Ends -->
+  <!-- Rails Form Starts -->
+  <%= form_with(model: order, local: true) do |form| %>
+      <% if order.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+          <ul>
+          <% order.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+  <!-- Shopping Cart Table Starts -->
+	<!-- Shopping Cart Table Starts -->
+		<div class="table-responsive shopping-cart-table">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<td class="text-center">
+							Image
+						</td>
+						<td class="text-center">
+							Product Details
+						</td>
+						<td class="text-center">
+							Quantity
+						</td>
+						<td class="text-center">
+							Price
+						</td>
+						<td class="text-center">
+							Total
+						</td>
+						<td class="text-center">
+							Change Quantity
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="text-center">
+              <%= link_to @meal do %>
+                <!--  TODO Review -->
+                <%= if @meal.images.to_s != ""
+                      image_tag(@meal.images.thumb.url, class: "img-fluid")
+                    else
+                      image_tag("images/Default_Medium.jpeg", size: "640x415", class: "img-fluid")
+                     end %>
+              <% end %>
+						</td>
+						<td class="text-center">
+              <!--  TODO Review -->
+              <%= link_to @meal do %>
+                <%= @meal.title %>
+              <% end %>
+						</td>
+						<td class="text-center">
+              <div class="input-group btn-block">
+                <%= form.number_field :quantity, value: "1", id: :order_quantity, :required => true , class: "form-control", readonly: true%>
+              </div>
+						</td>
+						<td class="text-center">
+							$<%= @meal.meal_cost %>
+						</td>
+						<td class="text-center">
+              <span id="meal_price_hidden" style="display:none"><%= @price %></span>
+              $<span id="total" class="sub_total"></span>
+            </td>
+						<td class="text-center">
+							<button type="button" id="increment_qty" title="increase" class="btn btn-default tool-tip">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+							<button type="button" id="decrement_qty" title="decrease" class="btn btn-default tool-tip">
+								<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+							</button>
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+					  <td colspan="4" class="text-right">
+						<strong>Total :</strong>
+					  </td>
+					  <td colspan="2" class="text-left">
+						$<span class="sub_total"></span>
+					  </td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	<!-- Shopping Cart Table Ends -->
+	<!-- Shipping Section Starts -->
+		<section class="registration-area">
+			<div class="row">
+			<!-- Shipping & Shipment Block Starts -->
+				<div class="col-sm-6">
+				<!-- Taxes Block Starts -->
+					<div class="panel panel-smart">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								Delivery / Pickup (Please Select One)
+							</h3>
+						</div>
+						<div class="panel-body">
+						<!-- Form Div Starts -->
+							<div class="form-horizontal" role="form">
+								<div class="form-group">
+									<!-- <label for="inputCountry" class="col-sm-3 control-label">I would like:</label> -->
+									<div class="col-sm-9">
+										<select class="form-control" id="inputPickupDelivery">
+                      <option>- Select One -</option>
+                      <% if @meal && @meal.delivery_only %>
+											  <option>Delivery</option>
+                      <% elsif @meal && @meal.pickup_only %>
+                        <option>Pickup</option>
+                      <% else  %>
+                        <option>Pickup</option>
+  											<option>Delivery</option>
+                      <% end%>
+										</select>
+									</div>
+								</div>
+							</div>
+						<!-- Form Div Ends -->
+						</div>
+					</div>
+				<!-- Taxes Block Ends -->
+				<!-- Delivery Information Block Starts -->
+					<div class="panel panel-smart" id="delivery-panel">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								Delivery Address
+							</h3>
+						</div>
+						<div class="panel-body">
+						<!-- Form Div Starts -->
+  							<div class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="inputFname" class="col-sm-3 control-label">Address :</label>
+									<div class="col-sm-9">
+                    <%= form.text_area :delivery_address, id: :order_delivery_address, :required => true, class: "form-control", placeholder: "Street City, State Zip" %>
+									</div>
+								</div>
+							</div>
+						<!-- Form Div Ends -->
+						</div>
+					</div>
+				<!-- Delivery Information Block Ends -->
+        <!-- Pickup Address Information Block Starts -->
+					<div class="panel panel-smart" id="delivery-panel">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								Pickup Address
+							</h3>
+						</div>
+						<div class="panel-body">
+						<!-- Form Div Starts -->
+							<div class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="inputFname" class="col-sm-3 control-label">Address :</label>
+									<div class="col-sm-9">
+                    <!-- <%= form.text_area :delivery_address, id: :order_delivery_address, class: "form-control", placeholder: "Street City, State Zip" %> -->
+									</div>
+								</div>
+							</div>
+						<!-- Form Div Ends -->
+						</div>
+					</div>
+				<!-- Pickup Address Block Ends -->
+				<!-- Order Information Block Starts -->
+					<div class="panel panel-smart">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								Order Info
+							</h3>
+						</div>
+						<div class="panel-body">
+						<!-- Form Div Starts -->
+							<div class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="inputFname" class="col-sm-3 control-label">Phone Number :</label>
+									<div class="col-sm-9">
+                    <%= form.text_field :customer_phone, id: :order_customer_phone, class: "form-control", placeholder: "Phone Number" %>
+									</div>
+								</div>
+							</div>
+						<!-- Form Div Ends -->
+						<!-- Form Div Starts -->
+							<div class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="inputFname" class="col-sm-3 control-label">Pickup/Delivery:</label>
+									<div class="col-sm-9">
+                    <% if @order.pickup_date %>
+                      <input type="text" name="order[pickup_date]" id="datetime" value="<%= @pickup_date_formatted %>" required="true"/>
+                    <% else %>
+                      <input type="text" name="order[pickup_date]" id="datetime" required="true" placeholder="Select Date and Time"/>
+                    <% end %>
+                        <div id="hidden-time">
+                            <input type="text" id="date"/>
+                            <input type="text" id="time"/>
+                        </div>
+                    <div id="outlet"></div>
+									</div>
+								</div>
+							</div>
+						<!-- Form Div Ends -->
+						</div>
+					</div>
+				<!-- Order Information Block Ends -->
+				</div>
+			<!-- Shipping & Shipment Block Ends -->
+			<!-- Discount & Conditions Blocks Starts -->
+				<div class="col-sm-6">
+				<!-- Discount Coupon Block Starts -->
+					<div class="panel panel-smart">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								Discount Coupon Code
+							</h3>
+						</div>
+						<div class="panel-body">
+						<!-- Form Div Starts -->
+							<div class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="inputCouponCode" class="col-sm-3 control-label">Coupon Code :</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="inputCouponCode" placeholder="Coupon Code">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-sm-9">
+										<button type="button" class="btn btn-default">
+											Apply Coupon
+										</button>
+									</div>
+								</div>
+							</div>
+						<!-- Form Div Ends -->
+						</div>
+					</div>
+				<!-- Discount Coupon Block Ends -->
+				<!-- Conditions Panel Starts -->
+					<div class="panel panel-smart">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								Terms &amp; Conditions
+							</h3>
+						</div>
+						<div class="panel-body">
+							<p>
+								HTML Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula.
+							</p>
+							<p>
+								Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi.
+							</p>
+							<p>
+								Duis sapien sem, aliquet nec, commodo eget, consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, felis nisl adipiscing sapien, sed malesuada diam lacus eget erat. Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat.
+							</p>
+						</div>
+					</div>
+				<!-- Conditions Panel Ends -->
+				<!-- Total Panel Starts -->
+					<div class="panel panel-smart">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								Total
+							</h3>
+						</div>
+						<div class="panel-body">
+							<dl class="dl-horizontal">
+								<dt>Subtotal :</dt>
+								<dd>$<span id="sub_total" class="sub_total"></span></dd>
+								<dt>Coupon Discount :</dt>
+								<dd>$0.00</dd>
+								<dt>Delivery Fee :</dt>
+								<dd>$0.00</dd>
+								<dt>Taxes :</dt>
+								<dd>$<span id="tax_amount"></span></dd>
+							</dl>
+							<hr />
+							<dl class="dl-horizontal total">
+								<dt>Total :</dt>
+								<dd>$<span id="total_amount"></span></dd>
+							</dl>
+							<hr />
+              <div class="field" id="hidden">
+                <%= form.label :meal_id %><br />
+                <%= form.text_field :meal_id, id: :order_meal_id %>
+              </div>
+							<div class="text-uppercase clearfix">
+								<!-- <a href="#" class="btn btn-default pull-right"> -->
+                  <%= form.submit "Checkout", id: "order_submit", class: "btn btn-default pull-right"%>
+								<!-- </a> -->
+							</div>
+						</div>
+					</div>
+				<!-- Total Panel Ends -->
+				</div>
+			<!-- Discount & Conditions Blocks Ends -->
+			</div>
+		</section>
+	<!-- Shipping Section Ends -->
+	</div>
+<!-- Main Container Ends -->
+<% end %>
+<!-- Rails Form Ends -->
 
-
-  <%= javascript_include_tag "form_datepicker" %>
-  <%= javascript_include_tag "form_helper_functions" %>
+<%= javascript_include_tag "pickadate/form_datepicker" %>
+<%= javascript_include_tag "form_helper_functions" %>

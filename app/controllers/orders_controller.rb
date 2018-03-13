@@ -53,7 +53,7 @@ class OrdersController < ApplicationController
       @meal = Meal.find(params[:mealID])
       @cook = Cook.find(@meal.cook_id)
       @price =  Meal.find(@meal.id).meal_cost
-      #  Currently not used
+      #  TODO Currently not used
       delivery_pickup = ""
       if @meal.delivery_only
         delivery_pickup = "delivery"

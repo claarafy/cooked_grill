@@ -20,3 +20,7 @@
 //= require  ./bingo_template/owl.carousel.min
 //= require  ./slick/slick
 //= require  ./bingo_template/custom
+//= require ./pickadate/picker
+//= require ./pickadate/picker.date
+//= require ./pickadate/picker.time
+//= require  ./pickadate/form_datepicker

@@ -68,21 +68,27 @@ hr {
 }
 
 /* Added by AV */
+#delivery-panel {
+	display: none;
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
 #logo {
 	text-align: center;
 	font-size: 62px;
 	padding-top: 14px;
 }
-
 #logo a:hover {
 	color: #ec2f2f;
 	text-decoration: none;
 }
-
 .availability-info {
-	// padding-top:15px;
-	// font-size:14px;
-	// color:#212121;
 	text-transform:uppercase;
 	color: #24ad2f;
 	font-size: 12px;
@@ -97,11 +103,6 @@ hr {
 }
 
 .dropbtn {
-    // background-color: #4CAF50;
-    // color: white;
-    // padding: 16px;
-    // font-size: 16px;
-    // border: none;
 }
 
 .dropdown {
@@ -112,16 +113,10 @@ hr {
 .dropdown-content {
     display: none;
     position: absolute;
-		// list-style: none;
-    // background-color: #f1f1f1;
     min-width: 10px;
-    // box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    // z-index: 1;
 }
 
 .dropdown-content a {
-    // color: black;
-    // padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
@@ -135,9 +130,29 @@ hr {
 }
 
 .dropdown:hover .dropbtn {
-    // background-color: #ec2f2f;
 }
 /* END of Added by AV */
+
+/*-------------------------*/
+/* Date time picker  */
+/*-------------------------*/
+#hidden-time {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+#datetime {
+    position: relative;
+    z-index: 10;
+    margin: 0;
+    padding: 4px;
+    border: 1px solid #999;
+    font-size: 1em;
+    width: 300px;
+}
 
 /* Form & Buttons Styles Starts */
 

@@ -15,7 +15,9 @@
 // @import "bootstrap";
 @import "bingo_template/*";
 @import "slick/*";
-
+@import "pickadate/default";
+@import "pickadate/default.date";
+@import "pickadate/default.time";
 
  div#hidden {        /* Hide meal_id */
    display:none;
