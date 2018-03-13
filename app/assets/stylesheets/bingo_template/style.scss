@@ -5,7 +5,6 @@ body {
 }
 
 /* Standard Styles Starts */
-
 a {
 	color: #ec2f2f;
 }
@@ -68,6 +67,19 @@ hr {
 }
 
 /* Added by AV */
+@media only screen and (max-width: 768px) {
+	.edit-registration{
+		width: 80% !important;
+	}
+}
+.edit-registration{
+	margin: auto;
+	width: 35%;
+}
+.edit-registration-title{
+	margin: auto;
+	text-align: center;
+}
 #delivery-panel {
 	display: none;
 }
@@ -94,42 +106,28 @@ input[type=number] {
 	font-size: 12px;
 	display: block;
 }
-.container {
-	// text-align: center;
-}
 .btn-color{
 	background-color: #ec2f2f;
   border-color: #ec2f2f;
 }
-
-.dropbtn {
-}
-
 .dropdown {
     position: relative;
     display: inline-block;
 }
-
 .dropdown-content {
     display: none;
     position: absolute;
     min-width: 10px;
 }
-
 .dropdown-content a {
     text-decoration: none;
     display: block;
 }
-
 .dropdown-content a:hover {
 	background-color: #ec2f2f
 }
-
 .dropdown:hover .dropdown-content {
     display: block;
-}
-
-.dropdown:hover .dropbtn {
 }
 /* END of Added by AV */
 
