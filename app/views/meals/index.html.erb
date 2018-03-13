@@ -1,61 +1,103 @@
 <p id="notice"><%= notice %></p>
-<div class="table-users">
-  <% @check_mark = "✓"
-     @false = "x" %>
+<% @check_mark = "✓"
+   @false = "x" %>
 
-<table class="table table-striped order-meals">
-    <thead>
-      <tr>
-        <th scope="col" class="text-center">Available?</th>
-        <th scope="col" class="text-center">Title</th>
-        <th scope="col" class="text-center">Description</th>
-        <th scope="col" class="text-center">Ingredients</th>
-        <th scope="col" class="text-center">Availibility From</th>
-        <th scope="col" class="text-center">Availability To</th>
-        <th scope="col" class="text-center">Image</th>
-        <th scope="col" class="text-center">Cost</th>
-        <th scope="col" class="text-center">Location</th>
-        <th scope="col" class="text-center">Tags</th>
-        <th scope="col" class="text-center">Meal Rating</th>
-      </tr>
-    </thead>
 
-    <tbody>
-      <% @meals.each do |meal| %>
-        <tr>
-          <th scope="row"><%= if meal.active
-                    @check_mark
-                  else
-                    @false
-                  end %></th>
-          <td><%= meal.title %></td>
-          <td><%= if meal.description
-                    meal.description.truncate(100)
-                  end %></td>
-          <td><%= meal.ingredients %></td>
-          <td><%= if meal.availability_from
-                    meal.availability_from.strftime(Constants::TIME_FORMAT)
-                  end %></td>
-          <td><%= if meal.availability_from
-                    meal.availability_to.strftime(Constants::TIME_FORMAT)
-                  end %></td>
-          <td><%= if meal.images.thumb.url
-                    image_tag meal.images.thumb.url
-                  end %></td>
-          <td>$<%= if meal.meal_cost
-                    "%.2f" % BigDecimal(meal.meal_cost).truncate(2)
-                   end %></td>
-         <td><%= if meal.portion_info
-                   meal.portion_info
-                  end %></td>
-          <td><%= meal.location %></td>
-          <td><%= meal.tags %></td>
-          <td><%= meal.meal_rating %></td>
-          <!-- <td><%= meal.cook.email %></td> -->
-          <td><%= link_to 'Select', meal %></td>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
+<!-- Main Container Starts -->
+	<div id="main-container" class="container">
+	<!-- Breadcrumb Starts -->
+		<ol class="breadcrumb">
+			<li><a href="index.html">Home</a></li>
+			<li class="active">Meals</li>
+		</ol>
+	<!-- Breadcrumb Ends -->
+	<!-- Main Heading Starts -->
+		<h2 class="main-heading text-center">
+			My Meals
+		</h2>
+	<!-- Main Heading Ends -->
+	<!-- Shopping Cart Table Starts -->
+		<div class="table-responsive shopping-cart-table">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<td class="text-center">
+							Available
+						</td>
+						<td class="text-center">
+							Title
+						</td>
+						<td class="text-center">
+							Description
+						</td>
+						<td class="text-center">
+							Ingredients
+						</td>
+						<td class="text-center">
+							Available From
+						</td>
+						<td class="text-center">
+							Available To
+						</td>
+            <td class="text-center">
+							Image
+						</td>
+            <td class="text-center">
+							Price
+						</td>
+            <td class="text-center">
+							Portion Info
+						</td>
+            <td class="text-center">
+							Location
+						</td>
+            <td class="text-center">
+							Tags
+						</td>
+            <td class="text-center">
+							Meal Rating
+						</td>
+            <td class="text-center">
+							Option
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+          <% @meals.each do |meal| %>
+            <tr>
+              <th class="text-center" scope="row"><%= if meal.active
+                        @check_mark
+                      else
+                        @false
+                      end %></th>
+              <td class="text-center"><%= meal.title %></td>
+              <td class="text-center"><%= if meal.description
+                        meal.description.truncate(100)
+                      end %></td>
+              <td class="text-center"><%= meal.ingredients %></td>
+              <td class="text-center"><%= if meal.availability_from
+                        meal.availability_from.strftime(Constants::TIME_FORMAT)
+                      end %></td>
+              <td class="text-center"><%= if meal.availability_to
+                        meal.availability_to.strftime(Constants::TIME_FORMAT)
+                      end %></td>
+              <td class="text-center"><%= if meal.images.thumb.url
+                        image_tag meal.images.thumb.url
+                      end %></td>
+              <td class="text-center">$<%= if meal.meal_cost
+                        "%.2f" % BigDecimal(meal.meal_cost).truncate(2)
+                       end %></td>
+             <td class="text-center"><%= if meal.portion_info
+                       meal.portion_info
+                      end %></td>
+              <td class="text-center"><%= meal.location %></td>
+              <td class="text-center"><%= meal.tags %></td>
+              <td class="text-center"><%= meal.meal_rating %></td>
+              <td class="text-center"><%= link_to 'Select', meal %></td>
+          <% end %>
+				</tbody>
+			</table>
+		</div>
+	<!-- Shopping Cart Table Ends -->
 </div>
+<!-- Main Container Ends -->
