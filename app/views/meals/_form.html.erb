@@ -1,3 +1,18 @@
+<!-- Main Container Starts -->
+	<div id="main-container" class="container">
+	<!-- Breadcrumb Starts -->
+		<ol class="breadcrumb">
+			<li><a href="index.html">Home</a></li>
+			<li class="active">Meal</li>
+		</ol>
+	<!-- Breadcrumb Ends -->
+	<!-- Main Heading Starts -->
+		<h2 class="main-heading text-center">
+			Meal Details
+		</h2>
+	<!-- Main Heading Ends -->
+
+  <!-- Rails Form Starts -->
 <%= form_with(model: meal, local: true) do |form| %>
   <% if meal.errors.any? %>
     <div id="error_explanation">
@@ -9,106 +24,165 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label "Title" %>
-    <%= form.text_field :title, id: :meal_title, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :meal_description %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Ingredients" %>
-    <%= form.text_area :ingredients, id: :meal_ingredients %>
-  </div>
-
-  <br>
-  <div class="field">
-    <!-- <%= form.text_field :datetime_from, id: :datetime_from, :required => true, placeholder: "* Available From"%> -->
-    <%= form.label "Available From (Date/Time)" %>
-    <% if @meal.availability_from %>
-          <input type="text" name="meal[availability_from]" id="meal_availability_from" value="<%= @availability_from_formatted %>"/>
-    <% else %>
-         <input type="text" name="meal[availability_from]" id="meal_availability_from" required="true"/>
-    <% end %>
-      <div id="hidden-time">
-          <input type="text" id="date_from"/>
-          <input type="text" id="time_from"/>
+  <div class="panel panel-smart">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        Information
+      </h3>
+    </div>
+    <div class="panel-body">
+    <!-- Form Div Starts -->
+        <div class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="inputFname" class="col-sm-3 control-label">Title :</label>
+          <div class="col-sm-9">
+            <%= form.text_field :title, id: :meal_title, :required => true, class: "form-control", placeholder: "Meal Title" %>
+            <!-- <%= form.text_area :delivery_address, id: :order_delivery_address, :required => true, class: "form-control", placeholder: "Street City, State Zip" %> -->
+          </div>
+        </div>
       </div>
-      <div id="outlet_from"></div>
-  </div>
-  <br>
-
-  <br>
-  <div class="field">
-    <%= form.label "Available To (Date/Time)" %>
-    <% if @meal.availability_from %>
-          <input type="text" name="meal[availability_to]" id="meal_availability_to" value="<%= @availability_to_formatted %>"/>
-    <% else %>
-         <input type="text" name="meal[availability_to]" id="meal_availability_to" required="true"/>
-    <% end %>
-      <div id="hidden-time">
-          <input type="text" id="date_to"/>
-          <input type="text" id="time_to"/>
+    <!-- Form Div Ends -->
+    <!-- Form Div Starts -->
+      <div class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="inputFname" class="col-sm-3 control-label">Description :</label>
+          <div class="col-sm-9">
+            <%= form.text_area :description, id: :meal_description, class: "form-control", placeholder: "Description" %>
+          </div>
+        </div>
       </div>
-      <div id="outlet_to"></div>
+    <!-- Form Div Ends -->
+    <!-- Form Div Starts -->
+      <div class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="inputFname" class="col-sm-3 control-label">Ingredients :</label>
+          <div class="col-sm-9">
+            <%= form.text_area :ingredients, id: :meal_ingredients, class: "form-control", placeholder: "Ingredients" %>
+          </div>
+        </div>
+      </div>
+    <!-- Form Div Ends -->
+    <!-- Form Div Starts -->
+      <div class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="inputFname" class="col-sm-3 control-label">Available From :</label>
+          <div class="col-sm-9">
+            <% if @meal.availability_from %>
+                  <input type="text" name="meal[availability_from]" id="meal_availability_from" value="<%= @availability_from_formatted %>"/>
+            <% else %>
+                 <input type="text" name="meal[availability_from]" id="meal_availability_from" required="true" placeholder="Select Date and Time"/>
+            <% end %>
+              <div id="hidden-time">
+                  <input type="text" id="date_from"/>
+                  <input type="text" id="time_from"/>
+              </div>
+              <div id="outlet_from"></div>
+          </div>
+        </div>
+      </div>
+    <!-- Form Div Ends -->
+    <!-- Form Div Starts -->
+      <div class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="inputFname" class="col-sm-3 control-label">Available To :</label>
+          <div class="col-sm-9">
+            <% if @meal.availability_from %>
+                  <input type="text" name="meal[availability_to]" id="meal_availability_to" value="<%= @availability_to_formatted %>"/>
+            <% else %>
+                 <input type="text" name="meal[availability_to]" id="meal_availability_to" required="true" placeholder="Select Date and Time"/>
+            <% end %>
+              <div id="hidden-time">
+                  <input type="text" id="date_to"/>
+                  <input type="text" id="time_to"/>
+              </div>
+              <div id="outlet_to"></div>
+          </div>
+        </div>
+      </div>
+    <!-- Form Div Ends -->
+    <!-- Form Div Starts -->
+      <div class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="inputFname" class="col-sm-3 control-label">Portion Info :</label>
+          <div class="col-sm-9">
+                <%= form.text_area :portion_info, id: :meal_portion_info, class: "form-control", placeholder: "Portion Info (e.g. Enough for one Adult)" %>
+          </div>
+        </div>
+      </div>
+    <!-- Form Div Ends -->
+    <!-- Form Div Starts -->
+      <div class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="inputFname" class="col-sm-3 control-label">(Optional):</label>
+          <div class="col-sm-9">
+            <%= form.label :pickup_only %>
+            <%= form.check_box :pickup_only, :second_name => "foo[1]", id: :meal_pickup_only, :class => "radio form-control" %>
+            <%= form.label :delivery_only %>
+            <%= form.check_box :delivery_only, :second_name => "foo[1]", id: :meal_delivery_only, :class => "radio form-control" %>
+          </div>
+        </div>
+      </div>
+    <!-- Form Div Ends -->
+    <!-- Form Div Starts -->
+      <div class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="inputFname" class="col-sm-3 control-label">Pickup Location :</label>
+          <div class="col-sm-9">
+            <%= form.text_field :location, id: :meal_location, class: "form-control", placeholder: "Location Address (Must be provided if pickup only)" %>
+          </div>
+        </div>
+      </div>
+    <!-- Form Div Ends -->
+    <!-- Form Div Starts -->
+      <div class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="inputFname" class="col-sm-3 control-label">Tags :</label>
+          <div class="col-sm-9">
+            <%= form.text_field :tags, id: :meal_tags, class: "form-control", placeholder: "Tags (e.g. Mexican, Gluten-Free etc.)" %>
+          </div>
+        </div>
+      </div>
+    <!-- Form Div Ends -->
+    <!-- Form Div Starts -->
+      <div class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="inputFname" class="col-sm-3 control-label">Price :</label>
+          <div class="col-sm-9">
+            <%= form.number_field :meal_cost, id: :meal_meal_cost , :required => true, step: :any, class: "form-control", placeholder: "Meal Price" %>
+          </div>
+        </div>
+      </div>
+    <!-- Form Div Ends -->
+    <!-- Form Div Starts -->
+      <div class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="inputFname" class="col-sm-3 control-label">Upload One Image :</label>
+          <div class="col-sm-9">
+            <%= form.file_field :images %>
+          </div>
+        </div>
+      </div>
+    <!-- Form Div Ends -->
+    <!-- Hidden Div Starts -->
+    <div class="field" id="hidden">
+      <%= form.label :cook_id %>
+      <%= form.text_field :cook_id, id: :meal_cook_id %>
+    </div>
+    <!-- Hidden Div Ends -->
+    </div>
   </div>
-  <br>
-
-  <div class="field">
-    <%= form.label :meal_cost %>
-    <%= form.number_field :meal_cost, id: :meal_meal_cost , :required => true, step: :any%>
-  </div>
-
-  <div class="field">
-    <%= form.label "Portion Info (e.g One Person, 14 meals or one weeks worth etc.)" %>
-    <%= form.text_area :portion_info, id: :meal_portion_info %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Location Address (Must be provided if pickup only)" %>
-    <%= form.text_field :location, id: :meal_location %>
-  </div>
-
-  <br>(Optional)<br>
-  <div class="field">
-    <%= form.label :pickup_only %>
-    <%= form.check_box :pickup_only, :second_name => "foo[1]", id: :meal_pickup_only, :class => "radio" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :delivery_only %>
-    <%= form.check_box :delivery_only, :second_name => "foo[1]", id: :meal_delivery_only, :class => "radio" %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Tags (e.g. Mexican, Gluten-Free etc.)" %>
-    <%= form.text_field :tags, id: :meal_tags %>
-  </div>
-
-  <div class="field" id="hidden">
-    <%= form.label :cook_id %>
-    <%= form.text_field :cook_id, id: :meal_cook_id %>
-  </div>
-
-  <br>
-  <div class="field">
-      <%= form.label "Upload Image (Limited to one)" %><br><br>
-      <%= form.file_field :images %>
-  </div>
-  <br>
-
-  <div class="actions">
+  <div class="col-sm-offset-2 col-sm-10">
     <%= if @meal.title
-          form.submit "Modify Meal"
+          form.submit "Modify Meal", class: "btn btn-black text-uppercase"
         else
-           form.submit "Offer Meal"
+           form.submit "Offer Meal", class: "btn btn-black text-uppercase"
         end %>
   </div>
-<% end %>
+  <% end %>
+	<!-- Rails Form Ends -->
+	</div>
+<!-- Main Container Ends -->
 
-<%= javascript_include_tag "form_datepicker" %>
+
+<%= javascript_include_tag "pickadate/form_datepicker" %>
 <%= javascript_include_tag "form_helper_functions" %>

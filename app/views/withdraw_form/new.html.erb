@@ -1,44 +1,82 @@
 <p class="notice"><%= notice %></p>
-<div class='generic-form'>
-  <h2>Request a Payout</h2>
+<!-- Main Container Starts -->
+	<div id="main-container" class="container">
+	<!-- Breadcrumb Starts -->
+		<ol class="breadcrumb">
+			<li><a href="index.html">Home</a></li>
+			<li class="active">Request Payout</li>
+		</ol>
+	<!-- Breadcrumb Ends -->
+	<!-- Main Heading Starts -->
+		<h2 class="main-heading text-center">
+			Payout Request <br />
+		</h2>
+	<!-- Main Heading Ends -->
 
-  <%= form_for(@withdraw_form)  do |f| %>
-  <div class="field">
-    <%= f.label "Name" %><br />
-    <%= f.text_field :name, :required => true %>
-  </div>
+  <!-- Registration Section Starts -->
+    <section class="registration-area">
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- Registration Block Starts -->
+            <div class="panel panel-smart">
+              <div class="panel-heading">
+                <h3 class="panel-title">Request Info</h3>
+              </div>
+              <div class="panel-body">
+                <!-- Registration Form Starts -->
+                <!-- Personal Information Starts -->
+                <%= form_for(@withdraw_form,  html: { class: "form-horizontal"})  do |f| %>
+                <div class="form-group">
+                  <%= f.label "Name", class: "col-sm-3 control-label"%>
+                  <div class="col-sm-9">
+                    <%= f.text_field :name, class: "form-control", autocomplete: "name", :required => true, placeholder: "Name" %>
+                  </div>
+                </div>
 
-  <div class="field">
-    <%= f.label "Account Email" %><br />
-    <%= f.text_field :account_email, :required => true %>
-  </div>
+                <div class="form-group">
+                  <%= f.label "Account Email", class: "col-sm-3 control-label"%>
+                  <div class="col-sm-9">
+                    <%= f.email_field :account_email, autofocus: true, class: "form-control", autocomplete: "email", :required => true, placeholder: "Email" %>
+                  </div>
+                </div>
 
-  <div class="payout_option">
-  <p><b>Please Enter ONE of the following</p></b>
-    <div class="field">
-      <%= f.label "Paypal Email (Faster Option)" %><br />
-      <%= f.text_field :paypal_email  %>
-    </div>
+                <div class="form-group">
+                  <%= f.label "Paypal Email (Faster Option)", class: "col-sm-3 control-label"%>
+                  <div class="col-sm-9">
+                    <%= f.email_field :paypal_email, autofocus: true, class: "form-control", autocomplete: "paypal_email", placeholder: "Paypal Email" %>
+                  </div>
+                </div>
 
-    <div class="field">
-       <%= f.label "Address (For Checks)" %><br />
-       <%= f.text_field :address %>
-     </div>
-  </div>
+                <div class="form-group">
+                  <%= f.label "Mailing Address (If you prefer a check)", class: "col-sm-3 control-label"%>
+                  <div class="col-sm-9">
+                    <%= f.text_area :address, autofocus: true, class: "form-control", autocomplete: "address", placeholder: "Name, Street, City, State, Zip" %>
+                  </div>
+                </div>
 
+                <div class="form-group">
+                  <%= f.label "Amount Requested", class: "col-sm-3 control-label"%>
+                  <div class="col-sm-9">
+                    <%= f.text_field :amount_in_cents, class: "form-control", :required => true, placeholder: "Amount" %>
+                  </div>
+                </div>
 
-  <div class="field">
-    <%= f.label "Amount" %><br />
-    <%= f.text_field :amount_in_cents, :required => true %>
-  </div>
+                <div class= "hidden"><br />
+                  <%= f.text_field :nickname, :hint => 'Leave this field blank!' %>
+                </div>
 
-  <div class= "hidden"><br />
-    <%= f.text_field :nickname, :hint => 'Leave this field blank!' %>
-  </div>
+                  <div>
+                    </br>
+                    <%= f.submit 'Submit Request', :class=> "btn btn-primary" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <!-- Registration Block Ends -->
+        </div>
+      </div>
+    </section>
+    <!-- Registration Section Ends -->
 
-    <div>
-      </br>
-      <%= f.submit 'Send Message', :class=> "btn btn-primary" %>
-    </div>
-  <% end %>
 </div>
+<!-- Main Container Ends -->

@@ -23,7 +23,6 @@
           </ul>
         </div>
       <% end %>
-  <!-- Shopping Cart Table Starts -->
 	<!-- Shopping Cart Table Starts -->
 		<div class="table-responsive shopping-cart-table">
 			<table class="table table-bordered">
@@ -117,7 +116,6 @@
 						<!-- Form Div Starts -->
 							<div class="form-horizontal" role="form">
 								<div class="form-group">
-									<!-- <label for="inputCountry" class="col-sm-3 control-label">I would like:</label> -->
 									<div class="col-sm-9">
 										<select class="form-control" id="inputPickupDelivery">
                       <option>- Select One -</option>
@@ -301,7 +299,7 @@
               </div>
 							<div class="text-uppercase clearfix">
 								<!-- <a href="#" class="btn btn-default pull-right"> -->
-                  <%= form.submit "Checkout", id: "order_submit", class: "btn btn-default pull-right"%>
+                  <%= form.submit "Checkout", id: "order_submit", class: "btn btn-default pull-right" %>
 								<!-- </a> -->
 							</div>
 						</div>
@@ -312,10 +310,11 @@
 			</div>
 		</section>
 	<!-- Shipping Section Ends -->
+	<% end %>
+	<!-- Rails Form Ends -->
 	</div>
 <!-- Main Container Ends -->
-<% end %>
-<!-- Rails Form Ends -->
+
 
 <%= javascript_include_tag "pickadate/form_datepicker" %>
 <%= javascript_include_tag "form_helper_functions" %>
