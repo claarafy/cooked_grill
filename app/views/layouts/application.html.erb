@@ -50,6 +50,7 @@
 			<div class="container">
 			<!-- Nested Row Starts -->
 				<div class="row">
+					<p id="notice" class="bold-red"><%= notice %></p>
 				<!-- Currency & Languages Starts -->
 					<div class="col-sm-3 col-xs-12" style="visibility: hidden;">
 						<div class="pull-left">
@@ -235,16 +236,41 @@
 				<!-- Foot Col#1 Starts -->
 					<div class="col-md-4 col-xs-12">
 						<h5>Sign Up For Weekly Meal Deals</h5>
-						<div class="foot-subscription-form">
-							<div class="input-group">
-								<input type="text" class="form-control text-uppercase" placeholder="Your Email Address">
-								<span class="input-group-btn">
-								<button class="btn text-uppercase" type="button">
-									Subscribe
-								</button>
-								</span>
-							</div>
-						</div>
+
+
+
+						<% if notice %>
+							<p id="notice"><%= notice %></p>
+						<% else %>
+							<%= form_for @contact, url: subscribe_create_path(@contact, :anchor => 'footer-area')  do |f| %>
+								<div class="foot-subscription-form">
+									<div class="input-group">
+										<div class="input-group email hidden">
+											<%= f.text_field :name, :required => true, class: "form-control text-uppercase", placeholder: "Name", value: "Website User" %>
+										</div>
+										<div class="input-group message hidden">
+											<%= f.text_field :message, :as => :text, :required => true,  class: "form-control text-uppercase", placeholder:"Message", value: "Subscribe Me"%>
+										</div>
+										<div class= "hidden"><br />
+											<%= f.text_field :nickname, :hint => 'Leave this field blank!' %>
+										</div>
+										<%= f.email_field :email, :required => true, class: "form-control text-uppercase", placeholder: "Your Email Address"%>
+										<span class="input-group-btn">
+											<%= f.submit 'Subscribe', :class=> "btn text-uppercase" %>
+										</span>
+									</div>
+								</div>
+							<% end %>
+						<% end %>
+
+
+
+
+
+
+
+
+
 						<h5>Stay Connected</h5>
 						<ul class="list-unstyled list-inline foot-sm-links">
 							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -288,30 +314,9 @@
 							<li>
 								Email: hello@cooked.me
 							</li>
-						</ul>
-						<div class="foot-contact-form">
-							<% if notice %>
-								<p id="notice"><%= notice %></p>
-							<% else %>
-								<%= form_for @contact, url: contact_create_path  do |f| %>
-									<div class="input-group email">
-										<%= f.text_field :name, :required => true, class: "form-control text-uppercase", placeholder: "Name"%>
-									</div>
-									<div class="input-group email">
-										<%= f.email_field :email, :required => true, class: "form-control text-uppercase", placeholder: "Your Email Address"%>
-									</div>
-									<div class="input-group message">
-										<%= f.text_field :message, :as => :text, :required => true,  class: "form-control text-uppercase", placeholder:"Message" %>
-									</div>
-									<div class= "hidden"><br />
-										<%= f.text_field :nickname, :hint => 'Leave this field blank!' %>
-									</div>
-									<div>
-										<%= f.submit 'Send Message', :class=> "btn text-uppercase" %>
-									</div>
-								<% end %>
-							<% end %>
-						</div>
+							<li>
+								Contact Us
+							</li>
 						<h4 class="lead" style="display: none;">
 							Tel: <span>1(234) 567-9842</span>
 						</h4>

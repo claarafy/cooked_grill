@@ -46,6 +46,6 @@ Rails.application.routes.draw do
   match '/.well-known/pki-validation/*all', to: 'application#download_file', via: 'get'
 
   # Contact us form in the Footer
-  match '/contact_us', to: 'home#contact_create', as: 'contact_create', via: 'post'
+  match '/subscribe_success', to: 'home#subscribe_create', as: 'subscribe_create', via: 'post'
 
 end
