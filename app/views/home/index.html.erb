@@ -32,6 +32,14 @@
 <!-- Slider Ends -->
 <!-- Main Container Starts -->
 <p id="notice"><%= notice %></p>
+<div class="flash-alert">
+  <% flash.each do |key, value| %>
+    <div>
+      <a href="#" data-dismiss="alert">×</a>
+        <%= value %>
+    </div>
+  <% end %>
+</div>
 <div id="main-container" class="container">
 <!-- Category Starts -->
   <div class="row"  style="display: none;">

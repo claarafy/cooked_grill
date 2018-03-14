@@ -290,17 +290,27 @@
 							</li>
 						</ul>
 						<div class="foot-contact-form">
-							<div class="input-group email">
-								<input type="text" class="form-control text-uppercase" placeholder="Your Email Address">
-							</div>
-							<div class="input-group message">
-								<input type="text" class="form-control text-uppercase" placeholder="Message">
-							</div>
-							<span class="input-group-btn">
-							<button class="btn text-uppercase" type="button">
-								Send
-							</button>
-							</span>
+							<% if notice %>
+								<p id="notice"><%= notice %></p>
+							<% else %>
+								<%= form_for @contact, url: contact_create_path  do |f| %>
+									<div class="input-group email">
+										<%= f.text_field :name, :required => true, class: "form-control text-uppercase", placeholder: "Name"%>
+									</div>
+									<div class="input-group email">
+										<%= f.email_field :email, :required => true, class: "form-control text-uppercase", placeholder: "Your Email Address"%>
+									</div>
+									<div class="input-group message">
+										<%= f.text_field :message, :as => :text, :required => true,  class: "form-control text-uppercase", placeholder:"Message" %>
+									</div>
+									<div class= "hidden"><br />
+										<%= f.text_field :nickname, :hint => 'Leave this field blank!' %>
+									</div>
+									<div>
+										<%= f.submit 'Send Message', :class=> "btn text-uppercase" %>
+									</div>
+								<% end %>
+							<% end %>
 						</div>
 						<h4 class="lead" style="display: none;">
 							Tel: <span>1(234) 567-9842</span>
