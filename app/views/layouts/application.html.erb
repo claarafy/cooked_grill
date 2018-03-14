@@ -40,7 +40,6 @@
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/fav-72.png">
 	<link rel="apple-touch-icon-precomposed" href="images/fav-57.png">
 	<link rel="shortcut icon" href="images/fav.png">
-
 	</head>
 	<body>
 	<!-- Header Section Starts -->
@@ -87,161 +86,92 @@
 					</div>
 				<!-- Currency & Languages Ends -->
 				<!-- Header Links Starts -->
-					<div class="col-sm-6 col-xs-12">
-						<ul class="list-unstyled list-inline header-links text-center">
-							<li><a href="/">Home</a></li>
-							<% if user_signed_in? %>
-								<li class="dropdown"><span class="dropbtn">My Account</span>
-									<div class="dropdown-content">
-										<%= link_to 'Profile', edit_user_registration_path %>
-										<%= link_to "My Orders", orders_path %>
-						    	</div>
-								</li>
-								<li><%= link_to "Logout", destroy_user_session_path,  { method: :delete} %></li>
-							<% elsif cook_signed_in? %>
-								<li class="dropdown"><span class="dropbtn">My Account</span>
-									<div class="dropdown-content">
-										<%= link_to 'Edit Profile', edit_cook_registration_path %>
-										<%= link_to "Offer Meal", new_meal_path %>
-										<%= link_to "My Meals", meals_path  %>
-										<%= link_to "My Orders", orders_path  %>
-										<%= link_to "Request Payout", withdraw_forms_new_path  %>
-									</div>
-								</li>
-								<li><%= link_to "Logout", destroy_cook_session_path,  { method: :delete} %></li>
-							<% elsif admin_signed_in? %>
-								<li class="dropdown"><span class="dropbtn">View All</span>
-									<div class="dropdown-content">
-										<a href="#">Meals</a>
-										<a href="#">Orders</a>
-										<a href="#">Users</a>
-										<a href="#">Cooks</a>
-									</div>
-								</li>
-								<li><a href="#">Logout</a></li>
-							<% else %>
-								<li class="dropdown"><span class="dropbtn">Sign Up</span>
-									<div class="dropdown-content">
-							      <%= link_to "User", new_user_registration_path  %>
-							      <%= link_to "Cook", new_cook_registration_path%>
-						    	</div>
-								</li>
-								<li class="dropdown"><span class="dropbtn">Login</span>
-									<div class="dropdown-content">
-									<%= link_to "User", new_user_session_path  %>
-									<%= link_to "Cook", new_cook_session_path %>
-						    	</div>
-								</li>
-							<% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-						</ul>
-					</div>
-
-				<!-- Header Links Ends -->
-				<!-- Cart Starts -->
-					<div class="col-sm-3 col-xs-12" style="visibility: hidden;">
-						<div id="cart" class="btn-group btn-block">
-							<button type="button" data-toggle="dropdown" class="btn btn-block btn-lg dropdown-toggle text-uppercase">
-								<i class="fa fa-shopping-cart"></i>
-								<strong>Shopping Cart</strong>
-								<span id="cart-total">2 Items</span>
-								<i class="fa fa-angle-down"></i>
-							</button>
-							<ul class="dropdown-menu pull-right">
-								<li>
-									<table class="table hcart">
-										<tr>
-											<td class="text-center">
-												<a href="product.html">
-													<!-- <%= image_tag("images/product-images/hcart-thumb1.jpg", class:"img-thumbnail img-responsive") %>  -->
-													<%= image_tag("images/product-images/hcart-thumb1.jpg", class: "img-thumbnail img-responsive") %>
-												</a>
-											</td>
-											<td class="text-left">
-												<a href="product-full.html">
-													Seeds
-												</a>
-											</td>
-											<td class="text-right">x 1</td>
-											<td class="text-right">$120.68</td>
-											<td class="text-center">
-												<a href="#">
-													<i class="fa fa-times"></i>
-												</a>
-											</td>
-										</tr>
-										<tr>
-											<td class="text-center">
-												<a href="product.html">
-													<%= image_tag("images/product-images/hcart-thumb2.jpg", class:"img-thumbnail img-responsive") %>
-												</a>
-											</td>
-											<td class="text-left">
-												<a href="product-full.html">
-													Organic
-												</a>
-											</td>
-											<td class="text-right">x 2</td>
-											<td class="text-right">$240.00</td>
-											<td class="text-center">
-												<a href="#">
-													<i class="fa fa-times"></i>
-												</a>
-											</td>
-										</tr>
-									</table>
-								</li>
-								<li>
-									<table class="table table-bordered total">
-										<tbody>
-											<tr>
-												<td class="text-right"><strong>Sub-Total</strong></td>
-												<td class="text-left">$1,101.00</td>
-											</tr>
-											<tr>
-												<td class="text-right"><strong>Eco Tax (-2.00)</strong></td>
-												<td class="text-left">$4.00</td>
-											</tr>
-											<tr>
-												<td class="text-right"><strong>VAT (17.5%)</strong></td>
-												<td class="text-left">$192.68</td>
-											</tr>
-											<tr>
-												<td class="text-right"><strong>Total</strong></td>
-												<td class="text-left">$1,297.68</td>
-											</tr>
-										</tbody>
-									</table>
-									<p class="text-right btn-block1">
-										<a href="cart.html">
-											View Cart
+				<nav id="main-menu" class="navbar" role="navigation">
+					<!-- Nested Container Starts -->
+					<div class="container">
+						<!-- Nav Header Starts -->
+							<div class="navbar-header">
+								<button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-cat-collapse">
+									<span class="sr-only">Toggle Navigation</span>
+									<i class="fa fa-bars"></i>
+								</button>
+							</div>
+						<!-- Nav Header Ends -->
+						<!-- Navbar Cat collapse Starts -->
+						<div class="collapse navbar-collapse navbar-cat-collapse">
+							<ul class="nav navbar-nav">
+									<li><a href="/">Home</a></li>
+									<% if user_signed_in? %>
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="10">
+												My Account
+											</a>
+											<ul class="dropdown-menu" role="menu">
+												<li><%= link_to 'Profile', edit_user_registration_path %></li>
+												<li><%= link_to "My Orders", orders_path %></li>
+								    	</ul>
+										</li>
+										<li><%= link_to "Logout", destroy_user_session_path,  { method: :delete} %></li>
+									<% elsif cook_signed_in? %>
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="10">
+												My Account
+											</a>
+											<ul class="dropdown-menu" role="menu">
+												<li><%= link_to 'Edit Profile', edit_cook_registration_path %></li>
+												<li><%= link_to "Offer Meal", new_meal_path %></li>
+												<li><%= link_to "My Meals", meals_path  %></li>
+												<li><%= link_to "My Orders", orders_path  %></li>
+												<li><%= link_to "Request Payout", withdraw_forms_new_path  %></li>
+											</ul>
+										</li>
+										<li><%= link_to "Logout", destroy_cook_session_path,  { method: :delete} %></li>
+									<% elsif admin_signed_in? %>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="10">
+											Admin Dashboard
 										</a>
-										<a href="#">
-											Checkout
+										<ul class="dropdown-menu" role="menu">
+											<li><%= link_to "Meals", meals_path %></li>
+											<li><%= link_to "Orders", orders_path  %></li>
+											<li><%= link_to "Users", users_path  %></li>
+											<li><%= link_to "Cooks", cooks_path  %></li>
+											<li><%= link_to "Payouts", payouts_path  %></li>
+										</ul>
+									</li>
+									<li><%= link_to "Logout", destroy_admin_session_path,  { method: :delete} %></li>
+									<% else %>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="10">
+											Sign Up
 										</a>
-									</p>
-								</li>
-							</ul>
+										<ul class="dropdown-menu" role="menu">
+											<li><%= link_to "User", new_user_registration_path  %></li>
+											<li><%= link_to "Cook", new_cook_registration_path%></li>
+										</ul>
+									</li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="10">
+											Login
+										</a>
+										<ul class="dropdown-menu" role="menu">
+											<li><%= link_to "User", new_user_session_path  %></li>
+											<li><%= link_to "Cook", new_cook_session_path %></li>
+										</ul>
+									</li>
+									<% end %>
+								</ul>
+							</div>
+						<!-- Navbar Cat collapse Ends -->
 						</div>
-					</div>
-				<!-- Cart Ends -->
-				</div>
-			<!-- Nested Row Ends -->
+					<!-- Nested Container Ends -->
+					</nav>
+				<!-- Main Menu Ends -->
 			</div>
-		<!-- Nested Container Ends -->
+		<!-- Nested Row Ends -->
 		</div>
-	<!-- Header Top Ends -->
+	<!-- Nested Container Ends -->
+	</div>
 	<!-- Main Header Starts -->
 		<div class="main-header">
 		<!-- Nested Container Starts -->
@@ -283,109 +213,14 @@
 		<!-- Nested Container Ends -->
 		</div>
 	<!-- Main Header Ends -->
-	<!-- Main Menu Starts -->
-		<nav id="main-menu" class="navbar" role="navigation">
-		<!-- Nested Container Starts -->
-			<div class="container">
-			<!-- Nav Header Starts -->
-				<div class="navbar-header">
-					<% if cook_signed_in? %>
-							Welcome <%= current_cook.first_name %><br>
-							<% if current_cook.balance %>
-								Balance: $ <%= (current_cook.balance / 100).round(2) %>
-							<% else %>
-								Balance: $ 0.00
-							<% end %>
-					<% end %>
-					<% if user_signed_in? %>
-							Welcome <%= current_user.first_name %>
-					<% end %>
-					<button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-cat-collapse">
-						<span class="sr-only">Toggle Navigation</span>
-						<i class="fa fa-bars"></i>
-					</button>
-				</div>
-			<!-- Nav Header Ends -->
-			<!-- Navbar Cat collapse Starts -->
-				<div class="collapse navbar-collapse navbar-cat-collapse"  style="visibility: hidden;">>
-					<ul class="nav navbar-nav">
-						<li><a href="category-list.html">Accessories</a></li>
-						<li class="dropdown">
-							<a href="category-list.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="10">
-								Appliances
-							</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a tabindex="-1" href="#">Mixer</a></li>
-								<li><a tabindex="-1" href="#">Washing Machine</a></li>
-								<li><a tabindex="-1" href="#">Micro Oven</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="category-list.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="10">Audio</a>
-							<div class="dropdown-menu">
-								<div class="dropdown-inner">
-									<ul class="list-unstyled">
-										<li class="dropdown-header">Sub Category</li>
-										<li><a tabindex="-1" href="#">item 1</a></li>
-										<li><a tabindex="-1" href="#">item 2</a></li>
-										<li><a tabindex="-1" href="#">item 3</a></li>
-									</ul>
-									<ul class="list-unstyled">
-										<li class="dropdown-header">Sub Category</li>
-										<li><a tabindex="-1" href="#">item 1</a></li>
-										<li><a tabindex="-1" href="#">item 2</a></li>
-										<li><a tabindex="-1" href="#">item 3</a></li>
-									</ul>
-									<ul class="list-unstyled">
-										<li class="dropdown-header">Sub Category</li>
-										<li><a tabindex="-1" href="#">item 1</a></li>
-										<li><a tabindex="-1" href="#">item 2</a></li>
-										<li><a tabindex="-1" href="#">item 3</a></li>
-									</ul>
-								</div>
-							</div>
-						</li>
-						<li><a href="category-list.html">Computers</a></li>
-						<li><a href="category-list.html">Laptops</a></li>
-						<li><a href="category-list.html">DSLR Cameras</a></li>
-						<li><a href="category-list.html">Smart Phones</a></li>
-						<li class="dropdown">
-							<a href="category-list.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="10">
-								Pages
-							</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a tabindex="-1" href="index.html">Home</a></li>
-								<li><a tabindex="-1" href="about.html">About</a></li>
-								<li><a tabindex="-1" href="category-list.html">Category List</a></li>
-								<li><a tabindex="-1" href="category-grid.html">Category Grid</a></li>
-								<li><a tabindex="-1" href="product.html">Product</a></li>
-								<li><a tabindex="-1" href="product-full.html">Product Full Width</a></li>
-								<li><a tabindex="-1" href="cart.html">Cart</a></li>
-								<li><a tabindex="-1" href="login.html">Login</a></li>
-								<li><a tabindex="-1" href="compare.html">Compare Products</a></li>
-								<li><a tabindex="-1" href="typography.html">Typography</a></li>
-								<li><a tabindex="-1" href="register.html">Register</a></li>
-								<li><a tabindex="-1" href="contact.html">Contact</a></li>
-								<li><a tabindex="-1" href="404.html">404</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			<!-- Navbar Cat collapse Ends -->
-			</div>
-		<!-- Nested Container Starts -->
-		</nav>
-	<!-- Main Menu Ends -->
+	<!-- Nested Container Starts -->
+	<div class="container"></div>
 	</header>
 	<!-- Header Section Ends -->
 
 
 
-
-
 <%= yield %>
-
-
 
 
 

@@ -1,9 +1,6 @@
 <p id="notice"><%= notice %></p>
 <% @check_mark = "✓"
    @unpaid = "X" %>
-
-
-
    <!-- Main Container Starts -->
    	<div id="main-container" class="container">
    	<!-- Breadcrumb Starts -->
@@ -72,7 +69,6 @@
                              end %>
                        </td>
                 <% end %>
-
                  <td class="text-center"><%= if order.paid
                             @check_mark
                            else

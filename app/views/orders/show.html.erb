@@ -10,7 +10,7 @@
 
   <% if !@order.paid && @order.total_cost %>
         <% if cook_signed_in? %>
-          <h3>Order Has NOT been Paid Yet.
+          <h3 class="bold-red">Order Has NOT been Paid Yet.</h3>
         <% else %>
 
           <h3>Pay For Order</h3>
@@ -46,9 +46,9 @@
             <span class="single-option"><%= link_to 'Edit Order', edit_order_path(@order) %></span>
             <span class="single-option"><%= link_to 'Cancel Order', order_path(@order), method: :delete, data: { confirm: 'Are you sure?' } %></span>
           </div>
-        <% end %>    
+        <% end %>
       <% else %>
-        <span class=bold-red>Paid!<br><br></span>
+        <span class="bold-red">Paid!<br><br></span>
       <% end %>
 
 

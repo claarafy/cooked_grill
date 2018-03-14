@@ -1,75 +1,175 @@
-<p>
-  <strong>Number of Meals:</strong>
-  <%= @order.quantity %>
-</p>
+<!-- Main Container Starts -->
+	<div id="main-container" class="container">
+	<!-- Breadcrumb Starts -->
+		<ol class="breadcrumb">
+			<li><a href="index.html">Home</a></li>
+			<li class="active">Order</li>
+		</ol>
+	<!-- Breadcrumb Ends -->
+	<!-- Main Heading Starts -->
+		<h2 class="main-heading text-center">
+		</h2>
+	<!-- Main Heading Ends -->
 
-<p>
-  <strong>Total:$</strong>
-  <%= if @order.total_cost
-       "%.2f" % BigDecimal(@order.total_cost).truncate(2)
-      end %>
-</p>
+  <!-- Rails Form Starts -->
+	<!-- Order Info Section Starts -->
+		<section class="registration-area">
+			<div class="row">
+			<!-- Order Info Block Starts -->
+				<div class="col-sm-6">
+				<!-- Sub-Order Information Block Starts -->
+					<div class="panel panel-smart" >
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								Order Details
+							</h3>
+						</div>
+						<div class="panel-body">
+						<!-- Form Div Starts -->
+  							<div class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="inputFname" class="col-sm-3 control-label">Number of Meals :</label>
+									<div class="col-sm-9 detail-info">
+                    <%= @order.quantity %>
+									</div>
+								</div>
+							</div>
+						<!-- Form Div Ends -->
+            <!-- Form Div Starts -->
+  							<div class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="inputFname" class="col-sm-3 control-label">Meal :</label>
+									<div class="col-sm-9 detail-info">
+                    <%= @order.meal.title %>
+									</div>
+								</div>
+							</div>
+						<!-- Form Div Ends -->
+            <!-- Form Div Starts -->
+  							<div class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="inputFname" class="col-sm-3 control-label">Total :</label>
+									<div class="col-sm-9 detail-info">
+                    $<%= if @order.total_cost
+                         "%.2f" % BigDecimal(@order.total_cost).truncate(2)
+                        end %>
+									</div>
+								</div>
+							</div>
+						<!-- Form Div Ends -->
+            <!-- Form Div Starts -->
+                <div class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="inputFname" class="col-sm-3 control-label">Your Total :</label>
+                  <div class="col-sm-9 detail-info">
+                    $<%= if @order.cook_total
+                         "%.2f" % BigDecimal(@order.cook_total).truncate(2)
+                        end %>
+                  </div>
+                </div>
+              </div>
+            <!-- Form Div Ends -->
+            <!-- Form Div Starts -->
+  							<div class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="inputFname" class="col-sm-3 control-label">Pickup Address :</label>
+									<div class="col-sm-9 detail-info">
+                    <%= @order.pickup_address %>
+									</div>
+								</div>
+							</div>
+						<!-- Form Div Ends -->
+            <!-- Form Div Starts -->
+  							<div class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="inputFname" class="col-sm-3 control-label">Delivery Address :</label>
+									<div class="col-sm-9 detail-info">
+                    <%= @order.delivery_address %>
+									</div>
+								</div>
+							</div>
+						<!-- Form Div Ends -->
+            <!-- Form Div Starts -->
+  							<div class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="inputFname" class="col-sm-3 control-label">Order Date :</label>
+									<div class="col-sm-9 detail-info">
+                    <%= @order.order_date.strftime(Constants::TIME_FORMAT) %>
+									</div>
+								</div>
+							</div>
+						<!-- Form Div Ends -->
+            <!-- Form Div Starts -->
+  							<div class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="inputFname" class="col-sm-3 control-label">Pickup/Delivery Date :</label>
+									<div class="col-sm-9 detail-info">
+                    <%= if @order.pickup_date
+                          @order.pickup_date.strftime(Constants::TIME_FORMAT)
+                        end %>
+									</div>
+								</div>
+							</div>
+						<!-- Form Div Ends -->
+            <!-- Form Div Starts -->
+  							<div class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="inputFname" class="col-sm-3 control-label">Will Pickup? :</label>
+									<div class="col-sm-9 detail-info">
+                    <%= if @order.pickup
+                      "Yes"
+                    else
+                      "No"
+                    end %>
+									</div>
+								</div>
+							</div>
+						<!-- Form Div Ends -->
+            <!-- Form Div Starts -->
+  							<div class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="inputFname" class="col-sm-3 control-label">Want Delivered? :</label>
+									<div class="col-sm-9 detail-info">
+                    <%= if @order.delivery
+                      "Yes"
+                    else
+                      "No"
+                    end %>
+									</div>
+								</div>
+							</div>
+						<!-- Form Div Ends -->
+            <!-- Form Div Starts -->
+  							<div class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="inputFname" class="col-sm-3 control-label">Customer Phone :</label>
+									<div class="col-sm-9 detail-info detail-info">
+                    <%= @order.customer_phone %>
+									</div>
+								</div>
+							</div>
+						<!-- Form Div Ends -->
+            <!-- Form Div Starts -->
+  							<div class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="inputFname" class="col-sm-3 control-label">Customer Email :</label>
+									<div class="col-sm-9 detail-info">
+                    <%= @order.user.email %>
+									</div>
+								</div>
+							</div>
+						<!-- Form Div Ends -->
+						</div>
+					</div>
+				<!-- Sub-Order Block Ends -->
+				</div>
+			<!-- Order Info Block Ends -->
+			</div>
+		</section>
+	<!-- Order Info Section Ends -->
+	</div>
+<!-- Main Container Ends -->
 
-  <p>
-    <strong>Your Total :$</strong>
-    <span class="bold-red">
-    <%= if @order.cook_total
-         "%.2f" % BigDecimal(@order.cook_total).truncate(2)
-        end %>
-    </span>
-  </p>
 
-<p>
-  <strong>Pickup Address:</strong>
-  <%= @order.pickup_address %>
-</p>
-
-<p>
-  <strong>Delivery Address:</strong>
-  <%= @order.delivery_address %>
-</p>
-
-<p>
-  <strong>Order Date:</strong>
-  <%= @order.order_date.strftime(Constants::TIME_FORMAT) %>
-</p>
-
-<p>
-  <strong>Pickup/Delivery Date:</strong>
-  <%= if @order.pickup_date
-        @order.pickup_date.strftime(Constants::TIME_FORMAT)
-      end %>
-</p>
-
-<p>
-  <strong>Will Pickup?:</strong>
-  <%= if @order.pickup
-    "Yes"
-  else
-    "No"
-  end %>
-</p>
-
-<p>
-  <strong>Want Delivered?:</strong>
-  <%= if @order.delivery
-    "Yes"
-  else
-    "No"
-  end %>
-</p>
-
-<p>
-  <strong>Customer Phone:</strong>
-  <%= @order.customer_phone %>
-</p>
-
-<p>
-  <strong>Customer Email:</strong>
-  <%= @order.user.email %>
-</p>
-
-<p>
-  <strong>Meal:</strong>
-  <%= @order.meal.title %>
-</p>
+<%= javascript_include_tag "pickadate/form_datepicker" %>
+<%= javascript_include_tag "form_helper_functions" %>
