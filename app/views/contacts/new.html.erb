@@ -1,29 +1,67 @@
-<p class="notice"><%= notice %></p>
-<div class='generic-form'>
-  <h2>Send us a Message</h2>
+<!-- Main Container Starts -->
+	<div id="main-container" class="container">
+	<!-- Breadcrumb Starts -->
+		<ol class="breadcrumb">
+			<li><a href="index.html">Home</a></li>
+			<li class="active">Contact</li>
+		</ol>
+	<!-- Breadcrumb Ends -->
+	<!-- Main Heading Starts -->
+		<h2 class="main-heading text-center">
+			Send Us a Message <br />
+		</h2>
+	<!-- Main Heading Ends -->
 
-  <%= form_for(@contact)  do |f| %>
-  <div class="field">
-    <%= f.label "Name" %><br />
-    <%= f.text_field :name, :required => true %>
-  </div>
-  <div class="field">
-    <%= f.label "Email" %><br />
-    <%= f.text_field :email, :required => true %>
-  </div>
+  <!-- Registration Section Starts -->
+    <section class="registration-area">
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- Registration Block Starts -->
+            <div class="panel panel-smart">
+              <div class="panel-heading">
+                <h3 class="panel-title">Message Info</h3>
+              </div>
+              <div class="panel-body">
+                <!-- Registration Form Starts -->
+                <!-- Personal Information Starts -->
+                <%= form_for(@contact,  html: { class: "form-horizontal"})  do |f| %>
+                <div class="form-group">
+                  <%= f.label "Name", class: "col-sm-3 control-label"%>
+                  <div class="col-sm-9">
+                    <%= f.text_field :name, class: "form-control", autocomplete: "name", :required => true, placeholder: "Name" %>
+                  </div>
+                </div>
 
-  <div class="field">
-    <%= f.label "Message" %><br />
-    <%= f.text_field :message, :as => :text, :required => true %>
-  </div>
+                <div class="form-group">
+                  <%= f.label "Email", class: "col-sm-3 control-label"%>
+                  <div class="col-sm-9">
+                    <%= f.email_field :email, autofocus: true, class: "form-control", autocomplete: "email", :required => true, placeholder: "Email" %>
+                  </div>
+                </div>
 
-  <div class= "hidden"><br />
-    <%= f.text_field :nickname, :hint => 'Leave this field blank!' %>
-  </div>
+                <div class="form-group">
+                  <%= f.label "Message", class: "col-sm-3 control-label"%>
+                  <div class="col-sm-9">
+                    <%= f.text_area :message, autofocus: true, class: "form-control", placeholder: "Type Message Here" %>
+                  </div>
+                </div>
 
-    <div>
-      </br>
-      <%= f.submit 'Send Message', :class=> "btn btn-primary" %>
-    </div>
-  <% end %>
+                <div class= "hidden"><br />
+                  <%= f.text_field :nickname, :hint => 'Leave this field blank!' %>
+                </div>
+
+                  <div>
+                    </br>
+                    <%= f.submit 'Send Message', :class=> "btn btn-primary" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <!-- Registration Block Ends -->
+        </div>
+      </div>
+    </section>
+    <!-- Registration Section Ends -->
+
 </div>
+<!-- Main Container Ends -->

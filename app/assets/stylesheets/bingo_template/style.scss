@@ -100,7 +100,7 @@ input[type=number] {
 }
 #logo {
 	text-align: center;
-	font-size: 62px;
+	font-size: 52px;
 	padding-top: 14px;
 }
 #logo a:hover {
@@ -409,9 +409,9 @@ input[type=number] {
 				border-radius: 0;
 	}
 		#main-menu .navbar-nav > li a {
-			padding: 15px 20px 10px;
+			padding: 5px 10px 5px;
 			color: #fff;
-			font-weight: bold;
+			font-weight: normal;
 			text-transform: uppercase;
 		}
 		#main-menu .navbar-nav > li.active a,

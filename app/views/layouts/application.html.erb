@@ -237,10 +237,8 @@
 					<div class="col-md-4 col-xs-12">
 						<h5>Sign Up For Weekly Meal Deals</h5>
 
-
-
-						<% if notice %>
-							<p id="notice"><%= notice %></p>
+						<% if flash[:notice_subscribe] %>
+							<p id="notice" class="bold-red"><%= flash[:notice_subscribe] %></p>
 						<% else %>
 							<%= form_for @contact, url: subscribe_create_path(@contact, :anchor => 'footer-area')  do |f| %>
 								<div class="foot-subscription-form">
@@ -262,14 +260,6 @@
 								</div>
 							<% end %>
 						<% end %>
-
-
-
-
-
-
-
-
 
 						<h5>Stay Connected</h5>
 						<ul class="list-unstyled list-inline foot-sm-links">
@@ -315,7 +305,7 @@
 								Email: hello@cooked.me
 							</li>
 							<li>
-								Contact Us
+								<%= link_to "Contact Us", contacts_path %>
 							</li>
 						<h4 class="lead" style="display: none;">
 							Tel: <span>1(234) 567-9842</span>
