@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'abouts/about_cook'
+
+  get 'abouts/about_delivery'
+
+  get 'abouts/about_health'
+
+  get 'abouts/about_payment'
+
   get 'withdraw_form/new'
 
   get 'withdraw_form/create'
@@ -47,11 +55,5 @@ Rails.application.routes.draw do
 
   # Contact us form in the Footer
   match '/subscribe_success', to: 'home#subscribe_create', as: 'subscribe_create', via: 'post'
-
-  # About Passages
-  match '/about_cook', to: 'home#about_cook', as: 'about_cook', via: 'get'
-  match '/about_delivery', to: 'home#about_delivery', as: 'about_delivery', via: 'get'
-  match '/about_health', to: 'home#about_health', as: 'about_health', via: 'get'
-  match '/about_payment', to: 'home#about_payment', as: 'about_payment', via: 'get'
 
 end
