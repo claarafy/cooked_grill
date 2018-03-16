@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   $timeFormat = "%b %e, %l:%M %p %Z"
 
+  private
   def set_contact
     @contact = Contact.new
   end

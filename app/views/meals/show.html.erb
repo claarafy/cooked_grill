@@ -1,22 +1,10 @@
-<p id="notice"><%= notice %></p>
-
-<!-- Main Banner Starts -->
-	<div class="main-banner">
-	<!-- Nested Container Starts -->
-		<div class="container">
-
-			<h2>There is no meal like a home cooked meal.</h2>
-		</div>
-	<!-- Nested Container Ends -->
-	</div>
-<!-- Main Banner Ends -->
 <!-- Main Container Starts -->
 	<div id="main-container" class="container">
 	<!-- Breadcrumb Starts -->
 		<ol class="breadcrumb">
 			<li><a href="index.html">Home</a></li>
-			<li><a href="category-grid.html">Near You</a></li>
-			<li class="active">Enchilladas</li>
+			<li><%= controller_name %></a></li>
+			<li class="active"><%= @meal.title %></li>
 		</ol>
 	<!-- Breadcrumb Ends -->
 	<!-- Product Info Starts -->
@@ -24,7 +12,13 @@
 		<!-- Left Starts -->
 			<div class="col-sm-4 images-block">
 				<a href="images/product-images/big-pimg1.jpg">
-          <%= image_tag("images/product-images/11.jpg", class:"img-responsive") %>
+					<%= if @meal.images.to_s != ""
+								# image_tag meal.images.thumb.url
+								image_tag(@meal.images.to_s, class: "img-responsive")
+							else
+								image_tag("template/Default_Medium.jpeg", size: "640x415", class: "img-responsive")
+							 end %>
+
 				</a>
 				<ul class="list-unstyled list-inline" style="visibility:hidden;">
 					<li>
@@ -54,21 +48,33 @@
 			<div class="col-sm-8 product-details">
 				<div class="panel-smart">
           <!-- Product Name Starts -->
-            <h2>Enchilladas</h2>
+            <h2><%= @meal.title %></h2>
           <!-- Product Name Ends -->
             <hr />
           <!-- Manufacturer Starts -->
             <ul class="list-unstyled manufacturer">
               <li>
-                <span>Availability From:</span> Mon March 23 @ 4 PM
+                <span>Availability From:</span> <%= @meal.availability_from.strftime(Constants::TIME_FORMAT) %>
               </li>
               <li>
-                <span>Availability To:</span> Mon March 23 @ 8 PM
+                <span>Availability To:</span> <%= @meal.availability_to.strftime(Constants::TIME_FORMAT) %>
               </li>
               <li>
-                <span>Pickup/Delivery:</span> Delivery Only
+                <span>Pickup/Delivery:</span>
+								<% if @meal.pickup_only %>
+									Pickup Only
+								<% elsif @meal.delivery_only %>
+									Delivery Only
+								<% else %>
+									Pickup Or Delivery
+								<% end %>
               </li>
-              <li><span>Portion Info:</span> Enough for One Person</li>
+              <li><span>Portion Info:</span>
+								<%= @meal.portion_info %>
+							</li>
+							<li><span>Rating:</span>
+								<%= @meal.meal_rating %>
+							</li>
               <li>
                 <span style="display: none;">Currently Offered?:</span> <strong class="label label-success" style="display:none;"> YES</strong>
               </li>
@@ -78,13 +84,12 @@
           <!-- Price Starts -->
             <div class="price">
               <span class="price-head">Price :</span>
-              <span class="price-new">$9.50</span>
+              <span class="price-new"> $<%= "%.2f" % BigDecimal(@meal.meal_cost).truncate(2) %></span>
             </div>
           <!-- Price Ends -->
             <hr />
           <!-- Available Options Starts -->
             <div class="options">
-              <!-- <a href="#" class="btn btn-block btn-danger btn-color"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a> -->
 							<%= if user_signed_in?
 										button_to 'Order', {:controller => "orders", :action => "new"}, :method => :get, :class => "btn btn-block btn-danger btn-color", params: { mealID: @meal.id}
 									 else
@@ -116,41 +121,15 @@
 			<!-- Description Starts -->
 				<div class="tab-pane active" id="tab-description">
 					<p>
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-					</p>
-					<p>
-						It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+					<%= @meal.description %>
 					</p>
 				</div>
 			<!-- Description Ends -->
 			<!-- Specification Starts -->
 				<div class="tab-pane" id="tab-specification">
-					<table class="table table-bordered">
-						<thead>
-						  <tr>
-							<td colspan="2"><strong>Name</strong></td>
-						  </tr>
-						</thead>
-						<tbody>
-						  <tr>
-							<td>Name</td>
-							<td>Attribute Specification</td>
-						  </tr>
-						</tbody>
-					</table>
-					<table class="table table-bordered">
-						<thead>
-						  <tr>
-							<td colspan="2"><strong>Name</strong></td>
-						  </tr>
-						</thead>
-						<tbody>
-						  <tr>
-							<td>Name</td>
-							<td>Attribute Specification</td>
-						  </tr>
-						</tbody>
-					</table>
+					<p>
+					<%= @meal.ingredients %>
+					</p>
 				</div>
 			<!-- Specification Ends -->
 			<!-- Additional Information Starts -->
@@ -161,11 +140,7 @@
               <%= image_tag("images/brands/profile_1.jpg", class:"img-responsive img-center") %>
   					</div>
   					<div class="caption">
-  						<div class="price" style="display:none;">
-  							<span class="price-new">$199.50</span>
-  							<span class="price-old">$249.50</span>
-  						</div>
-  						<p class="price-tax">Derek Belowski</p>
+  						<p class="price-tax"><%= @meal.cook.first_name %></p>
   						<h4><a href="product.html" style="display:none;">Quis Nostrud Exercitation </a></h4>
   						<div class="ratings">
   							<i class="fa fa-star"></i>

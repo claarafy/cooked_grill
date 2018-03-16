@@ -106,12 +106,14 @@
         <div class="item">
           <div class="product-col">
             <div class="image">
+              <%= link_to meal do  %>
               <%= if meal.images.thumb.url
                     # image_tag meal.images.thumb.url
                     image_tag(meal.images.home_page.to_s, class:"img-responsive")
                   else
                     image_tag("template/Default_Medium.jpeg", class:"img-responsive")
                   end %>
+              <% end %>
             </div>
             <div class="caption">
               <div class="price">
@@ -132,7 +134,11 @@
                   meal.availability_from.strftime(Constants::TIME_FORMAT)
                 end %>
               </span><br>
-              <a href="#" class="btn btn-block btn-danger btn-color"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a>
+              <%= if user_signed_in?
+                    button_to 'Order', {:controller => "orders", :action => "new"}, :method => :get, :class => "btn btn-block btn-danger btn-color", params: { mealID: meal.id}
+                   else
+                     link_to "Sign in to Order", new_user_session_path, { :class => "btn btn-black" }
+                   end %>
               <div class="cart-button button-group">
                 <button type="button" class="btn btn-cart" style="display: none;">
                   <i class="fa fa-shopping-cart"></i>
@@ -184,7 +190,7 @@
     <!-- Featured Products Starts -->
       <section class="product-carousel">
       <!-- Heading Starts -->
-        <h2 class="product-head text-uppercase">Family <strong>Meals </strong>(Coming Soon)</h2>
+        <h2 class="product-head text-uppercase">Family <strong>Meals </strong>(Enough for 5)</h2>
       <!-- Heading Ends -->
       <!-- Products Row Starts -->
         <div class="row">
@@ -212,7 +218,7 @@
                       <span><a href="#">20 review(s)</a></span>
                     </div>
                     <span class="availability-info">Cooking starts Soon...</span><br>
-                    <a href="#" class="btn btn-block btn-danger">Coming Soon</a>
+                    <span class="btn btn-block btn-danger">Coming Soon</span>
                     <div class="cart-button button-group">
                       <button type="button" class="btn btn-cart" style="display: none;">
                         <i class="fa fa-shopping-cart"></i>
@@ -248,7 +254,7 @@
                       <span><a href="#">12 review(s)</a></span>
                     </div>
                     <span class="availability-info">Cooking starts Soon...</span><br>
-                    <a href="#" class="btn btn-block btn-danger">Coming Soon</a>
+                    <span class="btn btn-block btn-danger">Coming Soon</span>
                     <div class="cart-button button-group">
                       <button type="button" class="btn btn-cart" style="display: none;">
                         <i class="fa fa-shopping-cart"></i>
@@ -283,7 +289,7 @@
                       <span><a href="#">1 review(s)</a></span>
                     </div>
                     <span class="availability-info">Cooking starts Soon...</span><br>
-                    <a href="#" class="btn btn-block btn-danger">Coming Soon</a>
+                    <span class="btn btn-block btn-danger">Coming Soon</span>
                     <div class="cart-button button-group">
                       <button type="button" class="btn btn-cart" style="display: none;">
                         <i class="fa fa-shopping-cart"></i>
@@ -320,7 +326,7 @@
                       <span><a href="#">100 review(s)</a></span>
                     </div>
                     <span class="availability-info">Cooking starts Soon...</span><br>
-                    <a href="#" class="btn btn-block btn-danger">Coming Soon</a>
+                    <span class="btn btn-block btn-danger">Coming Soon</span>
                     <div class="cart-button button-group">
                       <button type="button" class="btn btn-cart" style="display: none;">
                         <i class="fa fa-shopping-cart"></i>
@@ -350,7 +356,7 @@
     <div class="col-md-6 col-xs-12">
       <section class="products-list">
       <!-- Heading Starts -->
-        <h2 class="product-head text-uppercase">Weekly <strong>Meals </strong>(Coming Soon)</h2>
+        <h2 class="product-head text-uppercase">One Week <strong>Meals </strong>(14 Meals!)</h2>
       <!-- Heading Ends -->
       <!-- Products Row Starts -->
         <div class="row">
@@ -373,7 +379,7 @@
                   <span><a href="#">1 review(s)</a></span>
                 </div>
                 <span class="availability-info">Cooking starts Soon...</span><br>
-                <a href="#" class="btn btn-block btn-danger">Coming Soon</a>
+                <span class="btn btn-block btn-danger">Coming Soon</span>
                 <div class="cart-button button-group">
                   <button type="button" class="btn btn-cart" style="display: none;">
                     <i class="fa fa-shopping-cart"></i>
@@ -410,7 +416,7 @@
                   <span><a href="#">100 review(s)</a></span>
                 </div>
                 <span class="availability-info">Cooking starts Soon...</span><br>
-                <a href="#" class="btn btn-block btn-danger">Coming Soon</a>
+                <span class="btn btn-block btn-danger">Coming Soon</span>
                 <div class="cart-button button-group">
                   <button type="button" class="btn btn-cart" style="display: none;">
                     <i class="fa fa-shopping-cart"></i>
