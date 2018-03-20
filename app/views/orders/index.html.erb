@@ -53,7 +53,7 @@
    							View Order
    						</td>
               <td class="text-center">
-               Review Option
+               Reviews
              </td>
    					</tr>
    				</thead>
@@ -87,10 +87,12 @@
                 <td class="text-center"><%= order.meal.title %></td>
 
                 <td class="text-center"><%= link_to 'View', order %></td>
-                <% if order.reviewed || !order.paid%>
-                  <td class="text-center">N/A</td>
-                <% else %>
+                <% if canLeaveFeedback(order) %>
                   <td class="text-center"><%= link_to 'Leave Review', {controller: "reviews", action: "new", order: order.id } %></td>
+                <% elsif order.reviewed && order.review.rating %>
+                  <td class="text-center"><%= order.review.rating %> </td>
+                <% else %>
+                  <td class="text-center">N/A</td>
                 <% end %>
             <% end %>
    				</tbody>

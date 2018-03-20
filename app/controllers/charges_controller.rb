@@ -32,6 +32,8 @@ class ChargesController < ApplicationController
     end
     @cook.save
     @order.paid = true
+    @order.review = Review.new
+      
     if !@order.save
       flash[:error] = "Sorry, Order did not go through!"
     else

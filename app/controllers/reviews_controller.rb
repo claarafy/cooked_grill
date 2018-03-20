@@ -3,7 +3,6 @@ class ReviewsController < ApplicationController
   before_action :user_logged_in, only: [:new, :create, :edit, :update, :destroy, :index]
 
 
-
   # GET /reviews
   # GET /reviews.json
   def index
@@ -22,19 +21,9 @@ class ReviewsController < ApplicationController
       raise "Must Provide Order ID"
     end
     @order = Order.find(params[:order])
-
-    # Make sure current user has purchased the meal and the order has been paid.
-    if @order.user_id != current_user.id
-      raise "Logged in user is not associated with this order"
-    elsif !@order.paid
-      raise "Sorry, but you cannot leave a review for an unpaid order"
+    if !canLeaveFeedback(@order)
+      raise "Sorry, cannot leave feedback. You might have already left feedback on this meal."
     end
-    # Make sure current user has not yet left a review
-    foo = Review.where(["user_id = ? and meal_id = ?", @order.user_id, @order.meal_id])
-    if foo.any?
-      raise "Sorry, you have already left a review"
-    end
-
 
   end
 
@@ -50,6 +39,9 @@ class ReviewsController < ApplicationController
     @review.meal_id = params[:review][:meal].to_f
     @order = Order.find(params[:review][:order_id])
     @order.reviewed = true
+    @review.order = @order
+    @order.review = @review
+    
     respond_to do |format|
       if @review.save && @order.save
         format.html { redirect_to @review, notice: 'Review was successfully created.' }

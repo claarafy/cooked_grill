@@ -3,7 +3,6 @@ class OrdersController < ApplicationController
   before_action :user_or_cook_authorized
   before_action :user_only, only: [:edit, :destroy]
 
-
   def validDate?(params, meal, order)
     pickup_date = Time.zone.parse(params[:pickup_date])
     valid_from = meal.availability_from
@@ -125,6 +124,9 @@ class OrdersController < ApplicationController
       # order_date
       now = Time.zone.now
       @order.order_date = now
+
+      # Attach a empty review
+      @order.review = Review.new
 
       respond_to do |format|
         if validDate?(order_params, @meal, @order) && @order.save
