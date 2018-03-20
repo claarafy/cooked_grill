@@ -5,8 +5,9 @@
    	<div id="main-container" class="container">
    	<!-- Breadcrumb Starts -->
    		<ol class="breadcrumb">
-   			<li><a href="index.html">Home</a></li>
-   			<li class="active">Orders</li>
+        <li><%= link_to "Home", root_path  %></li>
+        <li><%= controller_name %></li>
+        <li class="active"><%= params[:action] %></li>
    		</ol>
    	<!-- Breadcrumb Ends -->
    	<!-- Main Heading Starts -->

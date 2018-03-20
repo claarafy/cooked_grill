@@ -50,7 +50,7 @@
 			<div class="container">
 			<!-- Nested Row Starts -->
 				<div class="row">
-					<p id="notice" class="bold-red">
+					<p id="notice">
 					<% flash.each do |name, msg| %>
 					  <% if msg.class == Array %>
 					    <% msg.each do |message| %>
@@ -306,14 +306,8 @@
 				<!-- Customer Service Ends -->
 				<!-- Contact Us Starts -->
 					<div class="col-md-4 col-sm-4 col-xs-12 last">
-						<h5>Contact Us</h5>
+						<h5>Have a Question or Concern?</h5>
 						<ul>
-							<li>
-								Lawndale, CA
-							</li>
-							<li>
-								Email: hello@cooked.me
-							</li>
 							<li>
 								<%= link_to "Contact Us", contacts_path %>
 							</li>

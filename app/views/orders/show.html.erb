@@ -1,61 +1,107 @@
-<p id="notice"><%= notice %></p>
+<% if !@order.paid && @order.total_cost %>
+  <% if !cook_signed_in? %>
+    <!-- Main Banner Starts -->
+    	<div class="main-banner">
+    	<!-- Nested Container Starts -->
+    		<div class="container">
+    			<h1 class="text-uppercase">Step 2 of 2</h1>
+    			<h2>Pay For Order</h2>
+    		</div>
+    	<!-- Nested Container Ends -->
+    	</div>
+    <!-- Main Banner Ends -->
+  <% end %>
+<% end %>
 
-<div class="single_order_view">
-  <!--  Single Order View -->
-  <%= if cook_signed_in?
-    render 'order_details_cook'
-  else
-    render 'order_details_user'
-  end %>
+<p id="notice" class="notice-center"><%= notice %></p>
 
-  <% if !@order.paid && @order.total_cost %>
-        <% if cook_signed_in? %>
-          <h3 class="bold-red">Order Has NOT been Paid Yet.</h3>
-        <% else %>
+<div id="main-container" class="container">
+  <!-- Breadcrumb Starts -->
+    <ol class="breadcrumb">
+      <li><%= link_to "Home", root_path  %></li>
+      <li><%= controller_name %></li>
+      <li class="active"><%= params[:action] %></li>
+    </ol>
+    <!-- Breadcrumb Ends -->
+  <section class="login-area">
+    <div class="row">
 
-          <h3>Pay For Order</h3>
-
-          <% total = @order.total_cost %>
-          <% total_cents = @order.total_cost * 100 %>
-          <%= form_tag charges_path do %>
-            <%= hidden_field_tag :total_cents, total_cents %>
-            <%= hidden_field_tag :total, total %>
-            <%= hidden_field_tag :orderID, @order.id %>
-
-            <article>
-              <% if flash[:error].present? %>
-                <div id="error_explanation">
-                  <p><%= flash[:error] %></p>
-                </div>
-              <% end %>
-
-              <label class="amount">
-                <span>Amount: $<%= total %></span>
-              </label>
-
-            </article>
-
-            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                    data-description="Pay for a Meal"
-                    data-amount="<%= total_cents %>"
-                    data-locale="auto"></script>
-          <% end %>
-          <div class="meal-order-options">
-            <!--  Only User should be able to modify an order-->
-            <span class="single-option"><%= link_to 'Edit Order', edit_order_path(@order) %></span>
-             | <span class="single-option"><%= link_to 'Cancel Order', order_path(@order), method: :delete, data: { confirm: 'Are you sure?' } %></span>
-            <% if @order.paid && !@order.reviewed %>
-               | <span class="single-option"><%= link_to 'Leave Review', new_review_path(@order) %></span>
-            <% end %>
+      <div class="col-sm-6">
+      <!-- Login Panel Starts -->
+        <div class="panel panel-smart">
+          <div class="panel-heading">
+            <h3 class="panel-title">Order Details</h3>
           </div>
-        <% end %>
-      <% else %>
-        <span class="bold-red">Paid!</span>
-        <% if @order.paid && !@order.reviewed %>
-           | <span class="single-option"><%= link_to 'Leave Review', new_review_path(@order) %></span>
-        <% end %>
-      <% end %>
+          <div class="panel-body">
+          <!--Starts -->
+          <%= if cook_signed_in?
+            render 'order_details_cook'
+          else
+            render 'order_details_user'
+          end %>
+          <!-- Ends -->
+          </div>
+        </div>
+        <!-- Login Panel Ends -->
+      </div>
 
+      <div class="col-sm-6">
+      <!-- Account Panel Starts -->
+        <div class="panel panel-smart">
+          <div class="panel-heading">
+            <h3 class="panel-title">Order Options</h3>
+          </div>
+          <div class="panel-body">
+            <!--  Order Options Start -->
+            <div class="order-options">
+              <% if !@order.paid && @order.total_cost %>
+                    <% if cook_signed_in? %>
+                      <h3 class="bold-red">Order Has NOT been Paid Yet.</h3>
+                    <% else %>
+                      <% total = @order.total_cost %>
+                      <% total_cents = @order.total_cost * 100 %>
+                      <%= form_tag charges_path do %>
+                        <%= hidden_field_tag :total_cents, total_cents %>
+                        <%= hidden_field_tag :total, total %>
+                        <%= hidden_field_tag :orderID, @order.id %>
+                        <article>
+                          <% if flash[:error].present? %>
+                            <div id="error_explanation">
+                              <p><%= flash[:error] %></p>
+                            </div>
+                          <% end %>
+                          <label class="amount">
+                            <h3>Amount: $<%= total %></h3>
+                          </label>
+                        </article>
+                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                                data-description="Pay for a Meal"
+                                data-amount="<%= total_cents %>"
+                                data-locale="auto"></script>
+                      <% end %>
 
+                      <div class="meal-order-options">
+                        <!--  Only User should be able to modify an order-->
+                        <span class="single-option"><%= link_to 'Edit Order', edit_order_path(@order) %></span>
+                         | <span class="single-option"><%= link_to 'Cancel Order', order_path(@order), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+                        <% if @order.paid && !@order.reviewed %>
+                           | <span class="single-option"><%= link_to 'Leave Review', new_review_path(@order) %></span>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <span class="bold-red">Paid!</span>
+                    <% if @order.paid && !@order.reviewed %>
+                       | <span class="single-option"><%= link_to 'Leave Review', new_review_path(@order) %></span>
+                    <% end %>
+                  <% end %>
+            </div>
+          <!--  Order Options End -->
+          </div>
+        </div>
+      <!-- Account Panel Ends -->
+      </div>
+    </div>
+  </section>
 </div>

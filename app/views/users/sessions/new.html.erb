@@ -2,8 +2,9 @@
 	<div id="main-container" class="container">
 	<!-- Breadcrumb Starts -->
 		<ol class="breadcrumb">
-			<li><a href="index.html">Home</a></li>
-			<li class="active">User Login</li>
+			<li><%= link_to "Home", root_path  %></li>
+      <li><%= controller_name %></li>
+      <li class="active"><%= params[:action] %></li>
 		</ol>
 	<!-- Breadcrumb Ends -->
 	<!-- Main Heading Starts -->
@@ -39,8 +40,19 @@
 							<% end %>
 						<!-- Login Form Ends -->
 						</div>
+						<p id="notice">
+							<% flash.each do |name, msg| %>
+								<% if msg.class == Array %>
+									<% msg.each do |message| %>
+										<%= content_tag :div, message, id: "flash_#{name}", class: "bold-red" %>
+									<% end %>
+								<% else %>
+									<%= content_tag :div, msg, id: "flash_#{name}", class: "bold-red" %>
+								<% end  #don't forget the extra end %>
+							<% end %>
+						</p>
 					</div>
-				<!-- Login Panel Ends -->
+					<!-- Login Panel Ends -->
 				</div>
 				<div class="col-sm-6">
 				<!-- Account Panel Starts -->

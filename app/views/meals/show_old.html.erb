@@ -2,9 +2,9 @@
 	<div id="main-container" class="container">
 	<!-- Breadcrumb Starts -->
 		<ol class="breadcrumb">
-			<li><a href="index.html">Home</a></li>
-			<li><a href="category-list.html">Near You</a></li>
-			<li class="active">Enchilladas</li>
+			<li><%= link_to "Home", root_path  %></li>
+      <li><%= controller_name %></li>
+      <li class="active"><%= params[:action] %></li>
 		</ol>
 	<!-- Breadcrumb Ends -->
 	<!-- Nested Row Starts -->

@@ -130,7 +130,7 @@ class OrdersController < ApplicationController
 
       respond_to do |format|
         if validDate?(order_params, @meal, @order) && @order.save
-          format.html { redirect_to @order, notice: 'Order was successfully created.' }
+          format.html { redirect_to @order, notice: 'Pay to Finish the Transaction.' }
           format.json { render :show, status: :created, location: @order }
         else
           format.html { render :new }
@@ -151,6 +151,7 @@ class OrdersController < ApplicationController
     total = quantity * price
     @order.total_cost = total
     @order.cook_total = (total * 0.78)
+    @order.review = Review.new
 
     respond_to do |format|
       if validDate?(order_params, @meal, @order) && @order.update(order_params)
