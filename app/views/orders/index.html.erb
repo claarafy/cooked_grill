@@ -50,13 +50,16 @@
    							Meal
    						</td>
                <td class="text-center">
-   							Option
+   							View Order
    						</td>
+              <td class="text-center">
+               Review Option
+             </td>
    					</tr>
    				</thead>
    				<tbody>
             <% @orders.each do |order| %>
-              <tr data-href= "<%= order %>">
+              <tr>
                 <th class="text-center" scope="row"><%= order.quantity %></th>
                 <td class="text-center">$<%= if order.total_cost
                           "%.2f" % BigDecimal(order.total_cost).truncate(2)
@@ -83,7 +86,12 @@
                 <td class="text-center"><%= order.customer_phone %></td>
                 <td class="text-center"><%= order.meal.title %></td>
 
-                <td class="text-center"><%= link_to 'Select', order %></td>
+                <td class="text-center"><%= link_to 'View', order %></td>
+                <% if order.reviewed || !order.paid%>
+                  <td class="text-center">N/A</td>
+                <% else %>
+                  <td class="text-center"><%= link_to 'Leave Review', {controller: "reviews", action: "new", order: order.id } %></td>
+                <% end %>
             <% end %>
    				</tbody>
    			</table>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reviews
   get 'abouts/about_cook'
 
   get 'abouts/about_delivery'

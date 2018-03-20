@@ -61,6 +61,23 @@
                 </div>
               </div>
            <!-- Current Password Area Ends -->
+           <!-- Profile Image Upload Starts -->
+              <h3 class="panel-heading inner">
+                Update Profile Image
+              </h3>
+              <div class="form-group">
+                <%= f.label "Current Profile Image", class: "col-sm-3 control-label"%>
+                <div class="col-sm-9">
+                  <%= image_tag(resource.profile_image.to_s, size: "140x115", class: "img-responsive") %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label "Select New Image", class: "col-sm-3 control-label"%>
+                <div class="col-sm-9">
+                  <%= f.file_field :profile_image %>
+                </div>
+              </div>
+            <!-- Profile Image Upload Ends -->
               <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9">
                   <div class="actions">

@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <!-- Main Banner Starts -->
 	<div class="main-banner">
 	<!-- Nested Container Starts -->
@@ -50,10 +49,10 @@
 										</div>
 									</div>
 								<!-- Personal Information Ends -->
+								<!-- Password Area Starts -->
 									<h3 class="panel-heading inner">
 										Password
 									</h3>
-								<!-- Password Area Starts -->
 									<div class="form-group">
 										<%= f.label :password, class: "col-sm-3 control-label"%>
 										<div class="col-sm-9">
@@ -68,25 +67,36 @@
 											<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Re-Password (6 characters minimum)"%>
 										</div>
 									</div>
-									<div class="form-group">
-										<div class="col-sm-offset-3 col-sm-9">
-											<div class="checkbox">
-												<label>
-													<input type="checkbox" required="required"> I have read and agreed to the Terms & Conditions
-												</label>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-sm-offset-3 col-sm-9">
-											<div class="actions">
-												<%= f.submit "Sign Up", class: "btn btn-black" %>
-											</div>
-										</div>
-									</div>
-									<% end %>
 								<!-- Password Area Ends -->
-							<!-- Registration Form Starts -->
+								<!-- Profile Image Upload Starts -->
+									<h3 class="panel-heading inner">
+										Upload a Profile Image
+									</h3>
+									<div class="form-group">
+										<%= f.label "Profile Image", class: "col-sm-3 control-label"%>
+										<div class="col-sm-9">
+											<%= f.file_field :profile_image %>
+										</div>
+									</div>
+								<!-- Profile Image Upload Ends -->
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-sm-9">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" required="required"> I have read and agreed to the Terms & Conditions
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-sm-9">
+										<div class="actions">
+											<%= f.submit "Sign Up", class: "btn btn-black" %>
+										</div>
+									</div>
+								</div>
+								<% end %>
+							<!-- Registration Form Ends -->
 							</div>
 						</div>
 					<!-- Registration Block Ends -->

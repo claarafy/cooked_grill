@@ -35,11 +35,11 @@
 		<![endif]-->
 
 	<!-- Fav and touch icons -->
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/fav-144.png">
+	<!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/fav-144.png">
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/fav-114.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/fav-72.png">
 	<link rel="apple-touch-icon-precomposed" href="images/fav-57.png">
-	<link rel="shortcut icon" href="images/fav.png">
+	<link rel="shortcut icon" href="images/fav.png"> -->
 	</head>
 	<body>
 	<!-- Header Section Starts -->
@@ -50,7 +50,17 @@
 			<div class="container">
 			<!-- Nested Row Starts -->
 				<div class="row">
-					<p id="notice" class="bold-red"><%= notice %></p>
+					<p id="notice" class="bold-red">
+					<% flash.each do |name, msg| %>
+					  <% if msg.class == Array %>
+					    <% msg.each do |message| %>
+					      <%= content_tag :div, message, id: "flash_#{name}", class: "bold-red" %>
+					    <% end %>
+					  <% else %>
+					    <%= content_tag :div, msg, id: "flash_#{name}", class: "bold-red" %>
+					  <% end  #don't forget the extra end %>
+					<% end %>
+					</p>
 				<!-- Currency & Languages Starts -->
 					<div class="col-sm-3 col-xs-12" style="visibility: hidden;">
 						<div class="pull-left">
