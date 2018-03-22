@@ -65,7 +65,7 @@
       <!-- Product Carousel Starts -->
         <div id="owl-latest-product" class="owl-product-carousel owl-carousel">
         <!-- Demo Product Starts -->
-          <div class="item">
+          <!-- <div class="item">
             <div class="product-col">
               <div class="image">
                 <%= image_tag("images/product-images/1.jpg", class:"img-responsive") %>
@@ -99,9 +99,9 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         <!-- Demo Product Ends -->
-        <!-- Actual Product Starts -->
+        <!-- Products Starts -->
         <% @meals.each do |meal| %>
         <div class="item">
           <div class="product-col">
@@ -121,14 +121,15 @@
                 <span class="price-old" style="visibility: hidden;">$249.50</span>
               </div>
               <h4><%= link_to meal.title.truncate(25), meal %></h4>
-              <div class="ratings">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <span><a href="#">1 review(s)</a></span>
-              </div>
+                <div class="star-ratings-css-meal">
+                  <div class="star-ratings-css-top-meal" style="width:<%= meal.cook.reviews.average(:rating).to_f * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                  <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                </div>
+                <% if meal.reviews.count > 0 %>
+                  <span class="rating-count"><%= meal.reviews.count %> review(s)</span>
+                <% else %>
+                  <span class="rating-count">No Reviews Yet</span>
+                  <% end %>
               <span class="availability-info">
                 Cooking starts on <%= if meal.availability_from
                   meal.availability_from.strftime(Constants::TIME_FORMAT)
@@ -154,13 +155,7 @@
           </div>
         </div>
         <% end %>
-        <!-- Product #2 Ends -->
-
-
-
-
-
-
+        <!-- Products Ends -->
         </div>
       <!-- Product Carousel Ends -->
       </div>
@@ -208,15 +203,12 @@
                       <span class="price-new">$29.99</span>
                       <span class="price-old" style="visibility: hidden;">$249.50</span>
                     </div>
-                    <h4><a href="product.html">Tacos</a></h4>
-                    <div class="ratings">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <span><a href="#">20 review(s)</a></span>
+                    <h4>Tacos</h4>
+                    <div class="star-ratings-css-meal">
+                      <div class="star-ratings-css-top-meal" style="width:80%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                      <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                     </div>
+                    <span class="rating-count">22 review(s)</span>
                     <span class="availability-info">Cooking starts Soon...</span><br>
                     <span class="btn btn-block btn-danger">Coming Soon</span>
                     <div class="cart-button button-group">
@@ -245,14 +237,12 @@
                       <span class="price-new">$35.99</span>
                       <span class="price-old" style="visibility: hidden;">$249.50</span>
                     </div>
-                    <h4><a href="product.html">Steak</a></h4>
-                    <div class="ratings">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <span><a href="#">12 review(s)</a></span>
+                    <h4>Steak</h4>
+                    <div class="star-ratings-css-meal">
+                      <div class="star-ratings-css-top-meal" style="width:90%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                      <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                     </div>
+                    <span class="rating-count">129 review(s)</span>
                     <span class="availability-info">Cooking starts Soon...</span><br>
                     <span class="btn btn-block btn-danger">Coming Soon</span>
                     <div class="cart-button button-group">
@@ -281,13 +271,12 @@
                       <span class="price-new">$24.99</span>
                       <span class="price-old" style="visibility: hidden;">$249.50</span>
                     </div>
-                    <h4><a href="product.html">Spaghetti </a></h4>
-                    <div class="ratings">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <span><a href="#">1 review(s)</a></span>
+                    <h4>Spaghetti </h4>
+                    <div class="star-ratings-css-meal">
+                      <div class="star-ratings-css-top-meal" style="width:100%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                      <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                     </div>
+                    <span class="rating-count">1 review(s)</span>
                     <span class="availability-info">Cooking starts Soon...</span><br>
                     <span class="btn btn-block btn-danger">Coming Soon</span>
                     <div class="cart-button button-group">
@@ -316,15 +305,12 @@
                       <span class="price-new">$19.99</span>
                       <span class="price-old" style="visibility: hidden;">$249.50</span>
                     </div>
-                    <h4><a href="product.html">Mongolian Grill Mix </a></h4>
-                    <div class="ratings">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <span><a href="#">100 review(s)</a></span>
+                    <h4>Mongolian Grill Mix </h4>
+                    <div class="star-ratings-css-meal">
+                      <div class="star-ratings-css-top-meal" style="width:95%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                      <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                     </div>
+                    <span class="rating-count">62 review(s)</span>
                     <span class="availability-info">Cooking starts Soon...</span><br>
                     <span class="btn btn-block btn-danger">Coming Soon</span>
                     <div class="cart-button button-group">
@@ -371,13 +357,12 @@
                   <span class="price-new">$64.99</span>
                   <span class="price-old" style="visibility: hidden;">$249.50</span>
                 </div>
-                <h4><a href="product.html">Spaghetti </a></h4>
-                <div class="ratings">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <span><a href="#">1 review(s)</a></span>
+                <h4>Spaghetti </h4>
+                <div class="star-ratings-css-meal">
+                  <div class="star-ratings-css-top-meal" style="width:88%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                  <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                 </div>
+                <span class="rating-count">43 review(s)</span>
                 <span class="availability-info">Cooking starts Soon...</span><br>
                 <span class="btn btn-block btn-danger">Coming Soon</span>
                 <div class="cart-button button-group">
@@ -406,15 +391,12 @@
                   <span class="price-new">$49.99</span>
                   <span class="price-old" style="visibility: hidden;">$249.50</span>
                 </div>
-                <h4><a href="product.html">Mongolian Grill Mix </a></h4>
-                <div class="ratings">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <span><a href="#">100 review(s)</a></span>
+                <h4>Mongolian Grill Mix </h4>
+                <div class="star-ratings-css-meal">
+                  <div class="star-ratings-css-top-meal" style="width:93%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                  <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                 </div>
+                <span class="rating-count">3 review(s)</span>
                 <span class="availability-info">Cooking starts Soon...</span><br>
                 <span class="btn btn-block btn-danger">Coming Soon</span>
                 <div class="cart-button button-group">
@@ -447,36 +429,26 @@
   <!-- Heading Ends -->
   <!-- Nested Row Starts -->
     <div class="row featured-chefs">
-    <!-- Chef #1 Starts -->
-      <div class="col-xs-2">
-        <%= image_tag("images/brands/profile_1.jpg", class:"img-responsive img-center") %>
-      </div>
-    <!-- Chef #1 Ends -->
-    <!-- Chef #2 Starts -->
-      <div class="col-xs-2">
-        <%= image_tag("images/brands/profile_2.jpg", class:"img-responsive img-center") %>
-      </div>
-    <!-- Chef #2 Ends -->
-    <!-- Chef #3 Starts -->
-      <div class="col-xs-2">
-        <%= image_tag("images/brands/profile_3.jpg", class:"img-responsive img-center") %>
-      </div>
-    <!-- Chef #3 Ends -->
-    <!-- Chef #4 Starts -->
-      <div class="col-xs-2">
-        <%= image_tag("images/brands/profile_4.jpg", class:"img-responsive img-center") %>
-      </div>
-    <!-- Chef #4 Ends -->
-    <!-- Chef #5 Starts -->
-      <div class="col-xs-2">
-        <%= image_tag("images/brands/profile_5.jpg", class:"img-responsive img-center") %>
-      </div>
-    <!-- Chef #5 Ends -->
-    <!-- Chef #6 Starts -->
-      <div class="col-xs-2">
-        <%= image_tag("images/brands/profile_6.jpg", class:"img-responsive img-center") %>
-      </div>
-    <!-- Chef #6 Ends -->
+
+    <!-- Chef List Starts -->
+    <% @chefs.each do |cook| %>
+      <% if cook.profile_image.to_s != "" %>
+        <div class="col-xs-2">
+          <%= image_tag(cook.profile_image.to_s, size: "440", class: "img-responsive img-center") %>
+          <div class="cook-name-review"><%= cook.first_name %>
+            <% if cook.reviews.count > 0 %>
+            <div class="star-ratings-css-cook">
+              <div class="star-ratings-css-top-cook" style="width:<%= cook.reviews.average(:rating).to_f * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+              <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            </div>
+            <% else %>
+               <span class="no-reviews">No Reviews Yet</span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <!-- Chef List Ends -->
     </div>
   <!-- Nested Row Ends -->
   </section>

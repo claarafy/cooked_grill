@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Heroku prefers the ruby version to be specified
-ruby "~> 2.3.1"
+ruby '~> 2.3.1'
 
 # Enviroment gem
 gem 'envyable'
@@ -30,13 +30,13 @@ gem 'pickadate-rails'
 gem 'omniauth'
 
 # paperclip for image uploads (might not be used)
-gem "paperclip", "~> 5.2.1"
+gem 'paperclip', '~> 5.2.1'
 
 # carrierwave for carrierwave stuff
 gem 'carrierwave', '~> 1.0'
 
 # mini_magick for mini_magick stuff
-gem "mini_magick"
+gem 'mini_magick'
 
 # stripe for stripe stuff
 gem 'stripe'

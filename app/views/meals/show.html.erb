@@ -45,6 +45,7 @@
 			</div>
 		<!-- Left Ends -->
 		<!-- Right Starts -->
+
 			<div class="col-sm-8 product-details">
 				<div class="panel-smart">
           <!-- Product Name Starts -->
@@ -72,13 +73,21 @@
               <li><span>Portion Info:</span>
 								<%= @meal.portion_info %>
 							</li>
-							<li><span>Rating:</span>
-								<%= @meal.meal_rating %>
-							</li>
-              <li>
-                <span style="display: none;">Currently Offered?:</span> <strong class="label label-success" style="display:none;"> YES</strong>
-              </li>
-            </ul>
+						</ul>
+								<div class="star-ratings-css-meal">
+									<div class="star-ratings-css-top-meal" style="width:<%= @meal.cook.reviews.average(:rating).to_f * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+									<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+								</div>
+								<% if @meal.reviews.count > 0 %>
+									<span class="rating-count"><%= @meal.reviews.count %> review(s)</span>
+								<% else %>
+									<span class="rating-count">No Reviews Yet</span>
+									<% end %>
+							<!-- </li> -->
+              <!-- <li> -->
+                <!-- <span style="display: none;">Currently Offered?:</span> <strong class="label label-success" style="display:none;"> YES</strong> -->
+              <!-- </li> -->
+
           <!-- Manufacturer Ends -->
             <hr />
           <!-- Price Starts -->
@@ -139,75 +148,51 @@
   					<div class="image">
               <%= image_tag("images/brands/profile_1.jpg", class:"img-responsive img-center") %>
   					</div>
-  					<div class="caption">
-  						<p class="price-tax"><%= @meal.cook.first_name %></p>
-  						<h4><a href="product.html" style="display:none;">Quis Nostrud Exercitation </a></h4>
-  						<div class="ratings">
-  							<i class="fa fa-star"></i>
-  							<i class="fa fa-star"></i>
-  							<i class="fa fa-star"></i>
-  							<i class="fa fa-star"></i>
-  							<i class="fa fa-star"></i>
-  							<span><a href="#">Average Meal Reviews (29 review(s))</a></span>
-  						</div>
-  						<div class="cart-button button-group" style="display:none;">
-  							<button type="button" class="btn btn-cart">
-  								<i class="fa fa-shopping-cart"></i>
-  							</button>
-  							<button type="button" title="Wishlist" class="btn btn-wishlist">
-  								<i class="fa fa-heart"></i>
-  							</button>
-  							<button type="button" title="Compare" class="btn btn-compare">
-  								<i class="fa fa-bar-chart-o"></i>
-  							</button>
-  						</div>
+  					<div class="caption center-info">
+  						<h4><%= @meal.cook.first_name %></h4>
+							<div class="star-ratings-css-cook">
+							  <div class="star-ratings-css-top-cook" style="width:<%= @meal.cook.reviews.average(:rating).to_f * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+							  <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+							</div>
+							<%= @meal.reviews.count %> review(s)
   					</div>
   				</div>
 				</div>
 			<!-- Additional Information Ends -->
 			<!-- Review Starts -->
 				<div class="tab-pane" id="tab-review">
-					<form class="form-horizontal">
-						<div class="form-group required">
-							<label class="col-sm-2 control-label" for="input-name">Name</label>
-							<div class="col-sm-10">
-							<input type="text" name="name" value="" id="input-name" class="form-control" />
+
+					<% @reviews.each do |review| %>
+						<div class="form-horizontal">
+							<div class="form-group required">
+								<!-- <label class="col-sm-2 control-label" for="input-name">Left By: </label> -->
+								<div class="col-sm-10">
+									<%= review.user.first_name %>
+									 <% if review.text && review.text != "" %>
+												said "<%= review.text %>""
+											<% end %>
+								</div>
 							</div>
-						</div>
+							<!-- <div class="form-group required">
+								<label class="col-sm-2 control-label" for="input-name">Review Text</label>
+								<div class="col-sm-10">
+									<%= review.text %>
+								</div>
+							</div> -->
 						<div class="form-group required">
-							<label class="col-sm-2 control-label" for="input-review">Review</label>
+							<!-- <label class="col-sm-2 control-label" for="input-name">Review Score</label> -->
 							<div class="col-sm-10">
-								<textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
-								<div class="help-block">
-									Some note goes here..
+								<div class="star-ratings-css-meal">
+									<div class="star-ratings-css-top-meal" style="width:<%= review.rating.to_f * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+									<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
 								</div>
 							</div>
 						</div>
-						<div class="form-group required">
-							<label class="col-sm-2 control-label ratings">Ratings</label>
-							<div class="col-sm-10">
-								Bad&nbsp;
-								<input type="radio" name="rating" value="1" />
-								&nbsp;
-								<input type="radio" name="rating" value="2" />
-								&nbsp;
-								<input type="radio" name="rating" value="3" />
-								&nbsp;
-								<input type="radio" name="rating" value="4" />
-								&nbsp;
-								<input type="radio" name="rating" value="5" />
-								&nbsp;Good
-							</div>
-						</div>
-						<div class="buttons">
-							<div class="col-sm-offset-2 col-sm-10">
-								<button type="button" id="button-review" class="btn btn-main">
-									Submit
-								</button>
-							</div>
-						</div>
-					</form>
-				</div>
+					</div>
+					<hr>
+				<% end %>
+
+			</div>
 			<!-- Review Ends -->
 			</div>
 		<!-- Tab Content Ends -->

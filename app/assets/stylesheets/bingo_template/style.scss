@@ -66,7 +66,75 @@ hr {
 	border-color: #8c8f92;
 }
 
+/* Star Rating Start */
+.star-ratings-css-cook {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 25px;
+  height: 25px;
+  width: 125px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0;
+  text-shadow: 0px 1px 0 #a2a2a2;
+}
+.star-ratings-css-meal {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 15px;
+  height: 15px;
+  width: 75px;
+  // margin: 0 auto;
+	margin-bottom: 5px;
+  position: relative;
+  padding: 0;
+  text-shadow: 0px 1px 0 #a2a2a2;
+	float: left;
+}
+.star-ratings-css-top-cook {
+  color: #e7711b;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.star-ratings-css-top-meal {
+  color: #ffbf4f;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.star-ratings-css-bottom {
+  padding: 0;
+  display: block;
+  z-index: 0;
+}
+/* Star Rating End */
+
 /* Added by AV */
+.no-reviews{
+	font-style: italic;
+	float: right;
+}
+.cook-name-review{
+	margin-top: 10px;
+
+}
+.rating-count{
+	font-size: 12px !important;
+	color: #787878;
+	padding-left: 10px;
+}
+.center-info {
+	text-align: center;
+}
 .notice-center{
 	text-align: center;
 }
@@ -115,6 +183,7 @@ input[type=number] {
 	color: #24ad2f;
 	font-size: 12px;
 	display: block;
+	margin-top: 10px;
 }
 .btn-color{
 	background-color: #ec2f2f;

@@ -4,6 +4,8 @@ class HomeController < ApplicationController
     if !@contact
       @contact = Contact.new
     end
+    # TODO temp fix, change later
+    @chefs = Cook.limit(10)
   end
 
   def subscribe_create

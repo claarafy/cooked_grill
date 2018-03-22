@@ -51,10 +51,10 @@
    							Meal
    						</td>
                <td class="text-center">
-   							View Order
+   							Order Option(s)
    						</td>
               <td class="text-center">
-               Reviews
+               Review Option(s)
              </td>
    					</tr>
    				</thead>
@@ -91,7 +91,13 @@
                 <% if canLeaveFeedback(order) %>
                   <td class="text-center"><%= link_to 'Leave Review', {controller: "reviews", action: "new", order: order.id } %></td>
                 <% elsif order.reviewed && order.review.rating %>
-                  <td class="text-center"><%= order.review.rating %> </td>
+                  <td class="text-center">
+                    <div class="star-ratings-css-meal">
+    									<div class="star-ratings-css-top-meal" style="width:<%= order.review.rating.to_f * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+    									<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+    								</div>
+                  </td>
+                  <!-- <td class="text-center"><%= order.review.rating %></td> -->
                 <% else %>
                   <td class="text-center">N/A</td>
                 <% end %>

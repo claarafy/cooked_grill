@@ -36,6 +36,7 @@ class MealsController < ApplicationController
   # GET /meals/1.json
   def show
     @cook = Cook.where('id' => @meal.cook_id).first
+    @reviews = @meal.reviews
   end
 
   # GET /meals/new
