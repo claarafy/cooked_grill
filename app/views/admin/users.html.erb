@@ -17,11 +17,11 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= user.first_name %></td>
-          <td><%= user.email %></td>
-          <td><%= user.last_sign_in_at.strftime(Constants::TIME_FORMAT) %></td>
-          <td><%= user.current_sign_in_at.strftime(Constants::TIME_FORMAT) %></td>
-          <td><%= user.created_at.strftime(Constants::TIME_FORMAT) %></td>
+          <td class="text-center"><%= user.first_name %></td>
+          <td class="text-center"><%= user.email %></td>
+          <td class="text-center"><%= user.last_sign_in_at.strftime(Constants::TIME_FORMAT) %></td>
+          <td class="text-center"><%= user.current_sign_in_at.strftime(Constants::TIME_FORMAT) %></td>
+          <td class="text-center"><%= user.created_at.strftime(Constants::TIME_FORMAT) %></td>
 
       <% end %>
     </tbody>

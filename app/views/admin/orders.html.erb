@@ -7,9 +7,7 @@
        <tr>
          <th scope="col" class="text-center"># of Meals</th>
          <th scope="col" class="text-center">Total</th>
-         <% if cook_signed_in? %>
-          <th scope="col" class="text-center">Your Total</th>
-          <% end %>
+          <th scope="col" class="text-center">Cook Total</th>
          <th scope="col" class="text-center">Paid</th>
          <th scope="col" class="text-center">Pickup Address</th>
          <th scope="col" class="text-center">Delivery Address</th>
@@ -22,34 +20,34 @@
      <tbody>
        <% @orders.each do |order| %>
          <tr data-href= "<%= order %>">
-           <th scope="row"><%= order.quantity %></th>
-           <td>$<%= if order.total_cost
+           <th scope="row" class="text-center"><%= order.quantity %></th>
+           <td class="text-center">$<%= if order.total_cost
                      "%.2f" % BigDecimal(order.total_cost).truncate(2)
                     end %></td>
 
+              <td class="text-center">
+                <%= if order.cook_total
+                      "%.2f" % BigDecimal(order.cook_total).truncate(2)
+                    end %>
+              </td>
 
-            <td>
-              <%= if order.cook_total
-                    "%.2f" % BigDecimal(order.cook_total).truncate(2)
-                  end %>
-            </td>
 
 
-            <td><%= if order.paid
+            <td class="text-center"><%= if order.paid
                        @check_mark
                       else
                        @unpaid
                     end %></td>
-           <td><%= order.pickup_address %></td>
-           <td><%= order.delivery_address %></td>
-           <td><%= order.order_date.strftime(Constants::TIME_FORMAT) %></td>
-           <td><%= if order.pickup_date
+           <td class="text-center"><%= order.pickup_address %></td>
+           <td class="text-center"><%= order.delivery_address %></td>
+           <td class="text-center"><%= order.order_date.strftime(Constants::TIME_FORMAT) %></td>
+           <td class="text-center"><%= if order.pickup_date
                      order.pickup_date.strftime(Constants::TIME_FORMAT)
                     end %></td>
-           <td><%= order.customer_phone %></td>
-           <td><%= order.meal.title %></td>
+           <td class="text-center"><%= order.customer_phone %></td>
+           <td class="text-center"><%= order.meal.title %></td>
 
-           <td><%= link_to 'Select', order %></td>
+           <td class="text-center"><%= link_to 'Select', order %></td>
        <% end %>
      </tbody>
    </table>

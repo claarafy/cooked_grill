@@ -18,4 +18,13 @@ class AdminController < ApplicationController
   def cooks
     @cooks = Cook.all
   end
+
+  def payouts
+    # Change later TODO
+    @cooks = Cook.all
+  end
+
+  def reviews
+    @reviews = Review.all
+  end
 end

@@ -11,7 +11,7 @@
         <th scope="col" class="text-center">Last Login</th>
         <th scope="col" class="text-center">Joined</th>
         <th scope="col" class="text-center">Balance</th>
-        <th scope="col" class="text-center">Pay Out</th>
+        
 
 
       </tr>
@@ -20,12 +20,16 @@
     <tbody>
       <% @cooks.each do |cook| %>
         <tr>
-          <td><%= cook.first_name %></td>
-          <td><%= cook.email %></td>
-          <td><%= cook.last_sign_in_at.strftime(Constants::TIME_FORMAT) %></td>
-          <td><%= cook.current_sign_in_at.strftime(Constants::TIME_FORMAT) %></td>
-          <td><%= cook.created_at.strftime(Constants::TIME_FORMAT) %></td>
-          <td>$<%= (cook.balance / 100).round(2) %></td>
+          <td class="text-center"><%= cook.first_name %></td>
+          <td class="text-center"><%= cook.email %></td>
+          <td class="text-center"><%= cook.last_sign_in_at.strftime(Constants::TIME_FORMAT) %></td>
+          <td class="text-center"><%= cook.current_sign_in_at.strftime(Constants::TIME_FORMAT) %></td>
+          <td class="text-center"><%= cook.created_at.strftime(Constants::TIME_FORMAT) %></td>
+          <% if cook.balance %>
+            <td class="text-center">$<%= (cook.balance / 100).round(2) %></td>
+          <% else %>
+            <td class="text-center">Balance was nil</td>
+          <% end %>
 
       <% end %>
     </tbody>

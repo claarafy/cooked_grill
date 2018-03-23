@@ -1,20 +1,45 @@
-<p id="notice"><%= notice %></p>
-<div class='generic-form'>
+<div id="main-container" class="container">
+<!-- Login Form Section Starts -->
+  <section class="login-area">
+    <div class="row">
+      <div class="col-sm-6">
+      <!-- Login Panel Starts -->
+        <div class="panel panel-smart">
+          <div class="panel-heading">
+            <h3 class="panel-title">  Forgot your user password?</h3>
+          </div>
+          <div class="panel-body">
+          <!-- Forgot PasswordForm Starts -->
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <%= devise_error_messages! %>
 
-  <h2>Forgot your password?</h2>
+            <div class="field form-group">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
 
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-    <%= devise_error_messages! %>
-
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <div class="actions form-group">
+              <%= f.submit "Send me reset password instructions" %>
+            </div>
+          <% end %>
+          <%= render "users/shared/links" %>
+        <!-- Forgot Password Form Ends -->
+      </div>
+      <p id="notice">
+        <% flash.each do |name, msg| %>
+          <% if msg.class == Array %>
+            <% msg.each do |message| %>
+              <%= content_tag :div, message, id: "flash_#{name}", class: "bold-red" %>
+            <% end %>
+          <% else %>
+            <%= content_tag :div, msg, id: "flash_#{name}", class: "bold-red" %>
+          <% end  #don't forget the extra end %>
+        <% end %>
+      </p>
     </div>
-
-    <div class="actions">
-      <%= f.submit "Send me reset password instructions" %>
-    </div>
-  <% end %>
-
-  <%= render "users/shared/links" %>
+    <!-- Login Panel Ends -->
+  </div>
+ </div>
+</section>
+<!-- Login Form Section Ends -->
 </div>

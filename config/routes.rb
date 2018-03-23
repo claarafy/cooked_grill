@@ -50,6 +50,8 @@ Rails.application.routes.draw do
   match '/admin/orders', to: 'admin#orders', as: 'admin_orders', via: 'get'
   match '/admin/users', to: 'admin#users', as: 'admin_users', via: 'get'
   match '/admin/cooks', to: 'admin#cooks', as: 'admin_cooks', via: 'get'
+  match '/admin/payouts', to: 'admin#payouts', as: 'admin_payouts', via: 'get'
+  match '/admin/reviews', to: 'admin#reviews', as: 'admin_reviews', via: 'get'
 
   # HTTP Verification (file download)
   match '/.well-known/pki-validation/*all', to: 'application#download_file', via: 'get'

@@ -143,11 +143,12 @@
 											Admin Dashboard
 										</a>
 										<ul class="dropdown-menu" role="menu">
-											<li><%= link_to "Meals", meals_path %></li>
-											<li><%= link_to "Orders", orders_path  %></li>
-											<li><%= link_to "Users", users_path  %></li>
-											<li><%= link_to "Cooks", cooks_path  %></li>
-											<li><%= link_to "Payouts", payouts_path  %></li>
+											<li><%= link_to "Meals", admin_meals_path %></li>
+											<li><%= link_to "Orders", admin_orders_path  %></li>
+											<li><%= link_to "Users", admin_users_path  %></li>
+											<li><%= link_to "Cooks", admin_cooks_path  %></li>
+											<li><%= link_to "Payouts", admin_payouts_path  %></li>
+											<li><%= link_to "Reviews", admin_reviews_path  %></li>
 										</ul>
 									</li>
 									<li><%= link_to "Logout", destroy_admin_session_path,  { method: :delete} %></li>
@@ -273,7 +274,7 @@
 
 						<h5>Stay Connected</h5>
 						<ul class="list-unstyled list-inline foot-sm-links">
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
 							<li style="display: none;"><a href="#"><i class="fa fa-twitter"></i></a></li>
 							<li style="display: none;"><a href="#"><i class="fa fa-google-plus"></i></a></li>
 							<li style="display: none;"><a href="#"><i class="fa fa-pinterest"></i></a></li>
@@ -285,10 +286,10 @@
 					<div class="col-md-4 col-sm-4 col-xs-12">
 						<h5>Info Center</h5>
 						<ul>
+							<li><%= link_to "California Health and Safety Code", abouts_about_health_path %></li>
 							<li><%= link_to "Becoming a Cook", abouts_about_cook_path %></li>
 							<li><%= link_to "Delivery and Pickup", abouts_about_delivery_path %></li>
 							<li><%= link_to "Payments and Refunds", abouts_about_payment_path %></li>
-							<li><%= link_to "California Health and Safety Code", abouts_about_health_path %></li>
 						</ul>
 					</div>
 				<!-- My Account Ends -->
