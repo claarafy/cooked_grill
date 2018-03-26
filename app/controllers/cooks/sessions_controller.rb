@@ -3,6 +3,8 @@ include Accessible
 
 class Cooks::SessionsController < Devise::SessionsController
   before_action :already_logged_in, :except => [:destroy, :create]
+  skip_before_action :verify_authenticity_token
+
 
   def already_logged_in
    if user_signed_in? || cook_signed_in?
