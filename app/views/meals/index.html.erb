@@ -73,9 +73,9 @@
                       end %></th>
               <td class="text-center"><%= meal.title %></td>
               <td class="text-center"><%= if meal.description
-                        meal.description.truncate(100)
+                        meal.description.truncate(50)
                       end %></td>
-              <td class="text-center"><%= meal.ingredients %></td>
+              <td class="text-center"><%= meal.ingredients.truncate(50) %></td>
               <td class="text-center"><%= if meal.availability_from
                         meal.availability_from.strftime(Constants::TIME_FORMAT)
                       end %></td>

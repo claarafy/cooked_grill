@@ -88,16 +88,13 @@
                 <td class="text-center"><%= order.meal.title %></td>
 
                 <td class="text-center"><%= link_to 'View', order %></td>
-                <% if canLeaveFeedback(order) %>
-                  <td class="text-center"><%= link_to 'Leave Review', {controller: "reviews", action: "new", order: order.id } %></td>
-                <% elsif order.reviewed && order.review.rating %>
-                  <td class="text-center">
-                    <div class="star-ratings-css-meal">
-    									<div class="star-ratings-css-top-meal" style="width:<%= order.review.rating.to_f * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-    									<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-    								</div>
-                  </td>
-                  <!-- <td class="text-center"><%= order.review.rating %></td> -->
+                <% if order.reviewed && order.review.rating  %>
+                <td class="text-center">
+                  <div class="star-ratings-css-meal">
+                    <div class="star-ratings-css-top-meal" style="width:<%= order.review.rating.to_f * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                    <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                  </div>
+                </td>
                 <% else %>
                   <td class="text-center">N/A</td>
                 <% end %>

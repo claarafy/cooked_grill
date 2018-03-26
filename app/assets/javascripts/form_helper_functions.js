@@ -9,6 +9,7 @@
 //       document.getElementById('total_amount').innerHTML = total.toFixed(2);
 // });
 //
+
 if ($("#order_quantity").val() == null && $("#order_quantity").val() == ""){
   $("#order_quantity").val(1);
 }
@@ -16,12 +17,13 @@ var sub_total = $("#order_quantity").val() * parseFloat($("#meal_price_hidden").
 var taxes = sub_total * 0.095
 var total = sub_total + taxes;
 divs = document.getElementsByClassName( 'sub_total' );
-
 [].slice.call( divs ).forEach(function ( div ) {
     div.innerHTML = sub_total.toFixed(2);;
 });
-document.getElementById('tax_amount').innerHTML = taxes.toFixed(2);
-document.getElementById('total_amount').innerHTML = total.toFixed(2);
+if(document.getElementById('tax_amount') != null && document.getElementById('total_amount') != null){
+  document.getElementById('tax_amount').innerHTML = taxes.toFixed(2);
+  document.getElementById('total_amount').innerHTML = total.toFixed(2);
+}
 
 // Increment Quantity
 $("#increment_qty").on("click", function() {
@@ -60,6 +62,11 @@ $("#decrement_qty").on("click", function() {
   document.getElementById('tax_amount').innerHTML = taxes.toFixed(2);
   document.getElementById('total_amount').innerHTML = total.toFixed(2);
 });
+
+
+
+
+
 
 // Handle Delivery and Pickup Dropdown Selection on change
 $("#inputPickupDelivery").on("change", function() {

@@ -11,14 +11,14 @@
 		<div class="row product-info full">
 		<!-- Left Starts -->
 			<div class="col-sm-4 images-block">
-				<a href="images/product-images/big-pimg1.jpg">
-					<%= if @meal.images.to_s != ""
-								# image_tag meal.images.thumb.url
-								image_tag(@meal.images.to_s, class: "img-responsive")
-							else
-								image_tag("template/Default_Medium.jpeg", size: "640x415", class: "img-responsive")
-							 end %>
-
+					<% if @meal.images.to_s != "" %>
+								<!-- # image_tag meal.images.thumb.url -->
+								<a href="<%= @meal.images.to_s %>">
+								<%= image_tag(@meal.images.to_s, class: "img-responsive") %>
+							 <% else %>
+							 	<a href="<%= image_url('images/Default_Medium.jpeg') %>">
+								<%= image_tag("images/Default_Medium.jpeg", size: "415", class: "img-responsive") %>
+							 <% end %>
 				</a>
 				<ul class="list-unstyled list-inline" style="visibility:hidden;">
 					<li>

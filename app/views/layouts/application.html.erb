@@ -61,6 +61,7 @@
 					  <% end  #don't forget the extra end %>
 					<% end %>
 					</p>
+
 				<!-- Currency & Languages Starts -->
 					<div class="col-sm-3 col-xs-12" style="visibility: hidden;">
 						<div class="pull-left">
@@ -205,6 +206,7 @@
 					</div>
 				<!-- Logo Ends -->
 
+
 				<!-- Search Starts -->
 					<div class="col-md-3 col-sm-4 col-xs-12" style="visibility: hidden;">
 						<div id="search">
@@ -226,7 +228,14 @@
 		</div>
 	<!-- Main Header Ends -->
 	<!-- Nested Container Starts -->
-	<div class="container"></div>
+	<div class="container right-content">
+		<% if cook_signed_in? %>
+			<span class="white-font">Welcome  <%= current_cook.first_name %>! You have a balance of  </span><span class="balance"> $<%= (current_cook.balance / 100).round(2) %></span>
+		<% end %>
+		<% if user_signed_in? %>
+			<span class="white-font">Welcome  <%= current_cook.first_name %>! </span>
+		<% end %>
+</div>
 	</header>
 	<!-- Header Section Ends -->
 

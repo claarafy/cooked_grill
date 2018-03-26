@@ -111,7 +111,7 @@
                     # image_tag meal.images.thumb.url
                     image_tag(meal.images.home_page.to_s, class:"img-responsive")
                   else
-                    image_tag("template/Default_Medium.jpeg", class:"img-responsive")
+                    image_tag("images/Default_Medium.jpeg", class:"img-responsive")
                   end %>
               <% end %>
             </div>
@@ -122,7 +122,7 @@
               </div>
               <h4><%= link_to meal.title.truncate(25), meal %></h4>
                 <div class="star-ratings-css-meal">
-                  <div class="star-ratings-css-top-meal" style="width:<%= meal.cook.reviews.average(:rating).to_f * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                  <div class="star-ratings-css-top-meal" style="width:<%= meal.reviews.average(:rating).to_f * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                   <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                 </div>
                 <% if meal.reviews.count > 0 %>
@@ -185,7 +185,7 @@
     <!-- Featured Products Starts -->
       <section class="product-carousel">
       <!-- Heading Starts -->
-        <h2 class="product-head text-uppercase">Family <strong>Meals </strong>(Enough for 5)</h2>
+        <h2 class="product-head text-uppercase">Family <strong>Pack </strong>(Enough for 5)</h2>
       <!-- Heading Ends -->
       <!-- Products Row Starts -->
         <div class="row">
@@ -342,7 +342,7 @@
     <div class="col-md-6 col-xs-12">
       <section class="products-list">
       <!-- Heading Starts -->
-        <h2 class="product-head text-uppercase">One Week <strong>Meals </strong>(14 Meals!)</h2>
+        <h2 class="product-head text-uppercase">Low Carb <strong>Meals </strong>(Eat Healthy)</h2>
       <!-- Heading Ends -->
       <!-- Products Row Starts -->
         <div class="row">
