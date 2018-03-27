@@ -11,6 +11,7 @@ class HomeController < ApplicationController
   def subscribe_create
     @contact = Contact.new(params[:contact])
     @contact.request = request
+    @chefs = Cook.limit(10)
     if @contact.deliver
       flash.now[:notice_subscribe] = 'Thank you. You have been subscribed!'
       @meals = Meal.where("availability_to > ?", Time.zone.now.beginning_of_day).where(active: true)
