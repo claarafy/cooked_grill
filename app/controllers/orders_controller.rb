@@ -63,7 +63,7 @@ class OrdersController < ApplicationController
       end
       # End of unused code
     else
-      raise "Must provide mealID and must be signed in as a non-cook user"
+        redirect_to root_path, :alert => "Must provide mealID and must be signed in as a non-cook user"
     end
   end
 

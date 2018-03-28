@@ -59,7 +59,10 @@
 							Meal Rating
 						</td>
             <td class="text-center">
-							Option
+							View
+						</td>
+            <td class="text-center">
+							Edit
 						</td>
 					</tr>
 				</thead>
@@ -94,7 +97,8 @@
               <td class="text-center"><%= meal.location %></td>
               <td class="text-center"><%= meal.tags %></td>
               <td class="text-center"><%= meal.meal_rating %></td>
-              <td class="text-center"><%= link_to 'Select', meal %></td>
+              <td class="text-center"><%= link_to 'View', meal %></td>
+              <td class="text-center"><%= link_to 'Edit',  edit_meal_path(meal) %></td>
           <% end %>
 				</tbody>
 			</table>

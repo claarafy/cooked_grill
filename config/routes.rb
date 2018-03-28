@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   match '/admin/reviews', to: 'admin#reviews', as: 'admin_reviews', via: 'get'
 
   # HTTP Verification (file download)
-  match '/.well-known/pki-validation/*all', to: 'application#download_file', via: 'get'
+  # match '/.well-known/pki-validation/*all', to: 'application#download_file', via: 'get'
 
   # Contact us form in the Footer
   match '/subscribe_success', to: 'home#subscribe_create', as: 'subscribe_create', via: 'post'
