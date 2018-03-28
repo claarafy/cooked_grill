@@ -8,7 +8,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def already_logged_in
    if user_signed_in? || cook_signed_in?
-     raise "Please log out first"
+     redirect_to root_path, :alert => "Please log out first"
    end
   end
   # before_action :configure_sign_in_params, only: [:create]

@@ -8,7 +8,7 @@ class Cooks::SessionsController < Devise::SessionsController
 
   def already_logged_in
    if user_signed_in? || cook_signed_in?
-     raise "Not permitted"
+     redirect_to root_path, :alert => "You are already Logged In. Please log out first"
    end
   end
 

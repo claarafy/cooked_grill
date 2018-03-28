@@ -18,11 +18,11 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     if !params[:order]
-      raise "Must Provide Order ID"
+      redirect_to root_path, :alert => "Can't create review. Missing param."
     end
     @order = Order.find(params[:order])
     if !canLeaveFeedback(@order)
-      raise "Sorry, cannot leave feedback. You might have already left feedback on this meal."
+      redirect_to root_path, :alert => "Sorry, cannot leave feedback. You might have already left feedback on this meal."
     end
 
   end
@@ -41,13 +41,13 @@ class ReviewsController < ApplicationController
     @order.reviewed = true
     @review.order = @order
     @order.review = @review
-    
+
     respond_to do |format|
       if @review.save && @order.save
         format.html { redirect_to @review, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
-        flash[:error] = "Sorry, something went wrong :()"
+        flash[:error] = "Sorry, something went wrong"
         format.html { redirect_to controller: 'reviews', action: 'new', order: @order.id }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
@@ -92,7 +92,7 @@ class ReviewsController < ApplicationController
     # Make sure we have the appropriate user
     def user_logged_in
       if !user_signed_in?
-        raise "A User Must be Logged In"
+        redirect_to root_path, :alert => "A User Must be Logged In"
       end
     end
 end

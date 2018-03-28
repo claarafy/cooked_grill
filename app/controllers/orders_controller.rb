@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
 
   def user_only
     if !user_signed_in? && !admin_signed_in?
-      raise "Only users can delete or edit an order"
+      redirect_to root_path, :alert => "Only users can delete or edit an order"
     end
   end
 
@@ -70,7 +70,7 @@ class OrdersController < ApplicationController
   # GET /orders/1/edit
   def edit
     if @order.paid
-      raise "Sorry this order has already been paid and cannot be modified or canceled"
+      redirect_to orders_path, :alert => "Sorry this order has already been paid and cannot be modified or canceled"
     end
     @meal = Meal.find(@order.meal_id)
     @cook = Cook.find(@meal.cook_id)
@@ -88,7 +88,7 @@ class OrdersController < ApplicationController
 
       # Make sure User is logged in
       if !user_signed_in?
-        raise "Must be signed in as non-cook user"
+        redirect_to root_path, :alert => "Must be signed in as non-cook user"
       end
 
       # Getting Order and Meal objects
@@ -111,7 +111,7 @@ class OrdersController < ApplicationController
       if user_signed_in?
         @order.user_id = current_user.id
       else
-        raise "User is not logged in"
+        redirect_to root_path, :alert => "User is not logged in"
       end
 
       # Total Cost
@@ -170,7 +170,7 @@ class OrdersController < ApplicationController
   def destroy
     @order = Order.find(params[:id])
     if @order != nil && @order.paid
-      raise "Sorry this order has already been paid and cannot be modified or canceled"
+      redirect_to root_path, :alert => "Sorry this order has already been paid and cannot be modified or canceled"
     end
     @user = User.find(@order.user_id)
     meal = Meal.find(@order.meal_id)
@@ -186,7 +186,7 @@ class OrdersController < ApplicationController
         end
       end
     else
-      raise "Failed to CANCEL Order, please contact the administrator"
+      redirect_to root_path, :alert => "Failed to CANCEL Order, please contact the administrator"
     end
   end
 
@@ -196,13 +196,13 @@ class OrdersController < ApplicationController
       @order = Order.find(params[:id])
       if user_signed_in?
         unless current_user.id == @order.user_id
-          raise "Not a valid order for logged in user"
+          redirect_to root_path, :alert => "Not a valid order for logged in user"
         end
       end
       if cook_signed_in?
         meal = Meal.where('id' => @order.meal_id)
         unless current_cook.id == meal.first.cook_id
-          raise "Not a valid order for logged in cook"
+          redirect_to root_path, :alert => "Not a valid order for logged in cook"
         end
       end
     end
