@@ -119,11 +119,17 @@ hr {
 /* Star Rating End */
 
 /* Added by AV */
+.inline {
+	display: inline;
+}
 .white-font{
 	color: white;
 }
 .right-content{
 	text-align: right;
+}
+.float-right-content{
+	float: right;
 }
 .balance {
 	color: #85bb65 !important;

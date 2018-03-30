@@ -98,6 +98,13 @@ class OrdersController < ApplicationController
       @cook = Cook.find(@meal.cook_id)
       @price =  @meal.meal_cost
 
+      # Pickup / Delivery TODO somewhat sloppy. Doesn't handle errors.
+      if params[:inputPickupDelivery] == "Delivery"
+        @order.delivery = true
+      else params[:inputPickupDelivery] == "Pickup"
+        @order.pickup = true
+      end
+
       # Pickup/Delivery DateTime
       pickup_datetime_string = order_params[:pickup_date]
       pickup_datetime = DateTime.parse(pickup_datetime_string + @tz)
@@ -125,7 +132,7 @@ class OrdersController < ApplicationController
       now = Time.zone.now
       @order.order_date = now
 
-      # Attach a empty review
+      # Attach an empty review
       @order.review = Review.new
 
       respond_to do |format|
@@ -145,6 +152,7 @@ class OrdersController < ApplicationController
     @meal = Meal.find(@order.meal_id)
     @cook = Cook.find(@meal.cook_id)
     @price =  @meal.meal_cost
+
     # Total Cost
     quantity = order_params[:quantity].to_i
     price = @meal.meal_cost
@@ -152,6 +160,13 @@ class OrdersController < ApplicationController
     @order.total_cost = total
     @order.cook_total = (total * 0.78)
     @order.review = Review.new
+
+    # Pickup / Delivery TODO somewhat sloppy. Doesn't handle errors.
+    if params[:inputPickupDelivery] == "Delivery"
+      @order.delivery = true
+    else params[:inputPickupDelivery] == "Pickup"
+      @order.pickup = true
+    end
 
     respond_to do |format|
       if validDate?(order_params, @meal, @order) && @order.update(order_params)
@@ -209,6 +224,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:quantity, :delivery_address, :delivery, :pickup, :order_date, :pickup_date, :customer_phone, :meal_id)
+      params.require(:order).permit(:quantity, :delivery_address, :delivery, :pickup, :order_date, :pickup_date, :customer_phone, :meal_id, :inputPickupDelivery)
     end
 end

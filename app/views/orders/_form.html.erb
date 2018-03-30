@@ -57,7 +57,7 @@
                 <%= if @meal.images.to_s != ""
                       image_tag(@meal.images.thumb.url, class: "img-fluid")
                     else
-                      image_tag("images/Default_Medium.jpeg", size: "640x415", class: "img-fluid")
+                      image_tag("images/Default_Medium.jpeg", size: "50x50", class: "img-fluid")
                      end %>
               <% end %>
 						</td>
@@ -69,7 +69,11 @@
 						</td>
 						<td class="text-center">
               <div class="input-group btn-block">
-                <%= form.number_field :quantity, value: "1", id: :order_quantity, :required => true , class: "form-control", readonly: true%>
+								<% if @order.quantity && @order.quantity > 1 %>
+									<%= form.number_field :quantity, id: :order_quantity, :required => true , class: "form-control", readonly: true%>
+								<% else %>
+                	<%= form.number_field :quantity, value: "1", id: :order_quantity, :required => true , class: "form-control", readonly: true%>
+								<% end %>
               </div>
 						</td>
 						<td class="text-center">
@@ -118,17 +122,14 @@
 							<div class="form-horizontal" role="form">
 								<div class="form-group">
 									<div class="col-sm-9">
-										<select class="form-control" id="inputPickupDelivery">
-                      <option>- Select One -</option>
-                      <% if @meal && @meal.delivery_only %>
-											  <option>Delivery</option>
-                      <% elsif @meal && @meal.pickup_only %>
-                        <option>Pickup</option>
-                      <% else  %>
-                        <option>Pickup</option>
-  											<option>Delivery</option>
-                      <% end%>
-										</select>
+
+										  <% if @meal && @meal.delivery_only %>
+												<%= select_tag(:inputPickupDelivery, options_for_select([['- Select One -', 'No_Selection'],['Delivery', 'Delivery']]), class: "form-control") %>
+											<% elsif @meal && @meal.pickup_only %>
+												<%= select_tag(:inputPickupDelivery, options_for_select([['- Select One -', 'No_Selection'], ['Pickup', 'Pickup']]), class: "form-control") %>
+											<% else %>
+												<%= select_tag(:inputPickupDelivery, options_for_select([['- Select One -', 'No_Selection'],['Delivery', 'Delivery'], ['Pickup', 'Pickup']]), class: "form-control") %>
+											<% end %>
 									</div>
 								</div>
 							</div>

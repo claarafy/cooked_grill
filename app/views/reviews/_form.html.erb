@@ -9,7 +9,13 @@
 	<!-- Breadcrumb Ends -->
 	<!-- Main Heading Starts -->
 		<h2 class="main-heading text-center">
-			Leave Feedback <br />
+			<% if params[:action] == "show" %>
+				 Feedback <br />
+			<% elsif params[:action] == "new" %>
+				 Leave Feedback <br />
+			<% else %>
+				Edit Review <br />
+			<% end %>
 		</h2>
 	<!-- Main Heading Ends -->
 
@@ -75,7 +81,13 @@
 					        <div class="buttons">
 					          <div class="col-sm-offset-2 col-sm-10">
 					            <!-- <button type="button" id="button-review" class="btn btn-main actions"> -->
-					              <%= form.submit "Submit Review", id: "button-review", class: "btn btn-main actions" %>
+											<% if params[:action] == "show" %>
+
+ 											<% elsif params[:action] == "new" %>
+												<%= form.submit "Submit Review", id: "button-review", class: "btn btn-main actions" %>
+											<% else %>
+												<%= form.submit "Update Review", id: "button-review", class: "btn btn-main actions" %>
+											<% end %>
 					            <!-- </button> -->
 					          </div>
 					        </div>

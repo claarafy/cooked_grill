@@ -95,6 +95,12 @@
                     <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                   </div>
                 </td>
+                <% elsif order.paid && !order.reviewed %>
+                  <% if user_signed_in? && canLeaveFeedback(order) %>
+                    <td class="text-center"><%= link_to 'Leave Review', new_review_path(order: order.id) %></td>
+                  <% else %>
+                    <td class="text-center">N/A</td>  
+                  <% end %>
                 <% else %>
                   <td class="text-center">N/A</td>
                 <% end %>

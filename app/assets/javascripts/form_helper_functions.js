@@ -122,14 +122,19 @@ $("input:checkbox").on('click', function() {
     $box.prop("checked", false);
   }
 });
-
-// Make sure at least one checkbox is checked
+// Make sure at least one checkbox selection is checked
 $('#order_submit').click(function() {
      checked = $("input[type=checkbox]:checked").length;
      checkboxes_exist = $("input[type=checkbox]").length;
+     dropdown_selection = $("#inputPickupDelivery").val();
+
+     if(dropdown_selection != "Pickup" && dropdown_selection != "Delivery"){
+       alert("Please select either pickup or delivery");
+       return false;
+     }
+
      if(!checked && checkboxes_exist) {
        alert("Please check either the pickup or delivery option.");
        return false;
      }
-
    });

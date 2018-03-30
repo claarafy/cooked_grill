@@ -6,12 +6,15 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
+    if user_signed_in?
+      @reviews = Review.where("user_id = ?", current_user.id)
+    end
   end
 
   # GET /reviews/1
   # GET /reviews/1.json
   def show
+    @order = Order.find(@review.order_id)
   end
 
   # GET /reviews/new
@@ -29,6 +32,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
+    @order = Order.find(@review.order_id)
   end
 
   # POST /reviews
@@ -40,11 +44,12 @@ class ReviewsController < ApplicationController
     @order = Order.find(params[:review][:order_id])
     @order.reviewed = true
     @review.order = @order
+    @review.order_id = @order.id
     @order.review = @review
 
     respond_to do |format|
       if @review.save && @order.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
+        format.html { redirect_to @review, notice: 'You have successfully left a review.' }
         format.json { render :show, status: :created, location: @review }
       else
         flash[:error] = "Sorry, something went wrong"
@@ -73,7 +78,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     respond_to do |format|
-      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
+      format.html { redirect_to reviews_url, notice: 'Review was successfully removed.' }
       format.json { head :no_content }
     end
   end

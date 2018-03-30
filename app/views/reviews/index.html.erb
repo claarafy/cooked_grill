@@ -1,25 +1,68 @@
-<p id="notice"><%= notice %></p>
+<!-- Main Container Starts -->
+	<div id="main-container" class="container">
+	<!-- Breadcrumb Starts -->
+		<ol class="breadcrumb">
+			<li><%= link_to "Home", root_path  %></li>
+      <li><%= controller_name %></li>
+      <li class="active"><%= params[:action] %></li>
+		</ol>
+	<!-- Breadcrumb Ends -->
+	<!-- Main Heading Starts -->
+		<h2 class="main-heading text-center">
+				 Feedback <br />
+		</h2>
 
-<h1>Reviews</h1>
+<section class="registration-area">
+  <div class="row">
+    <div class="col-sm-6">
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
     <% @reviews.each do |review| %>
-      <tr>
-        <td><%= link_to 'Show', review %></td>
-        <td><%= link_to 'Edit', edit_review_path(review) %></td>
-        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <!-- Registration Block Starts -->
+      <div class="panel panel-smart">
+        <div class="panel-heading">
+          <h3 class="panel-title inline">Review</h3>
 
-<br>
+            <%= link_to 'Edit', edit_review_path(review), class: "btn btn-danger btn-xs float-right-content" %>
 
-<%= link_to 'New Review', new_review_path %>
+        </div>
+        <div class="panel-body">
+    <!-- Review Starts -->
+      <div class="tab-pane" id="tab-review">
+        <form class="form-horizontal">
+          <div class="form-group required">
+            <label class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+              <%= review.user.first_name %>
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label">Comment</label>
+            <div class="col-sm-10">
+              <%= review.text %>
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label ratings">Ratings</label>
+            <div class="col-sm-10">
+              <div class="star-ratings-css-meal">
+                <div class="star-ratings-css-top-meal" style="width:<%= review.rating.to_f * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+              </div>
+            </div>
+            <br />
+          </div>
+        </form>
+      </div>
+    <!-- Review Ends -->
+      </div>
+    </div>
+  <% end %>
+
+  <!-- Registration Block Ends -->
+    </div>
+  </div>
+</section>
+<!-- Registration Section Ends -->
+</div>
+<!-- Main Container Ends -->

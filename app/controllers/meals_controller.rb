@@ -37,6 +37,8 @@ class MealsController < ApplicationController
   def show
     @cook = Cook.where('id' => @meal.cook_id).first
     @reviews = @meal.reviews
+    @meals = Meal.where("availability_to > ?", Time.zone.now.beginning_of_day).where(active: true).limit(4)
+
   end
 
   # GET /meals/new
