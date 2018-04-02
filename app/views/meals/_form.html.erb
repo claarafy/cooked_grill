@@ -9,7 +9,11 @@
 	<!-- Breadcrumb Ends -->
 	<!-- Main Heading Starts -->
 		<h2 class="main-heading text-center">
-			Meal Details
+			<% if params[:action] == "edit" %>
+				Edit Meal
+			<% else %>
+				Meal Details
+			<% end %>
 		</h2>
 	<!-- Main Heading Ends -->
 
@@ -157,12 +161,30 @@
     <!-- Form Div Starts -->
       <div class="form-horizontal" role="form">
         <div class="form-group">
-          <label for="inputFname" class="col-sm-3 control-label">Upload One Image :</label>
+					<% if params[:action] == "edit" %>
+          	<label for="inputFname" class="col-sm-3 control-label">Replace Image (Optional) :</label>
+					<% else %>
+						<label for="inputFname" class="col-sm-3 control-label">Upload One Image :</label>
+					<% end %>
           <div class="col-sm-9">
             <%= form.file_field :images %>
           </div>
         </div>
       </div>
+    <!-- Form Div Ends -->
+		<!-- Form Div Starts -->
+		<% if params[:action] == "edit" %>
+      <div class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="inputFname" class="col-sm-3 control-label">Active? (Uncheck if you want to discontinue meal) :</label>
+          <div class="col-sm-9">
+						<% if params[:action] == "edit" %>
+            	<%= form.check_box :active, class: "radio form-control" %>
+						<% end %>
+          </div>
+        </div>
+      </div>
+			<% end %>
     <!-- Form Div Ends -->
     <!-- Hidden Div Starts -->
     <div class="field" id="hidden">
@@ -173,7 +195,7 @@
     </div>
   </div>
   <div class="col-sm-offset-2 col-sm-10">
-    <%= if @meal.title
+    <%= if params[:action] == "edit"
           form.submit "Modify Meal", class: "btn btn-black text-uppercase"
         else
            form.submit "Offer Meal", class: "btn btn-black text-uppercase"

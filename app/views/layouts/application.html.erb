@@ -230,7 +230,12 @@
 	<!-- Nested Container Starts -->
 	<div class="container right-content">
 		<% if cook_signed_in? %>
-			<span class="white-font">Welcome  <%= current_cook.first_name %>! You have a balance of  </span><span class="balance"> $<%= (current_cook.balance / 100).round(2) %></span>
+			<span class="white-font">Welcome  <%= current_cook.first_name %>! You have a balance of  </span>
+			<% if current_cook.balance %>
+				<span class="balance"> $<%= (current_cook.balance / 100).round(2) %></span>
+			<% else %>
+				<span class="balance"> $0.00</span>
+			<% end %>
 		<% end %>
 		<% if user_signed_in? %>
 			<span class="white-font">Welcome  <%= current_user.first_name %>! </span>

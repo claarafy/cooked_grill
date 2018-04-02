@@ -146,7 +146,7 @@
           <h3 class="side-heading">Meet the Chef</h3>
   				<div class="product-col">
   					<div class="image">
-              <%= image_tag("images/brands/profile_1.jpg", class:"img-responsive img-center") %>
+							<%= image_tag(@meal.cook.profile_image.to_s, size: "340", class: "img-responsive img-center") %>
   					</div>
   					<div class="caption center-info">
   						<h4><%= @meal.cook.first_name %></h4>
@@ -161,7 +161,6 @@
 			<!-- Additional Information Ends -->
 			<!-- Review Starts -->
 				<div class="tab-pane" id="tab-review">
-
 					<% @reviews.each do |review| %>
 						<div class="form-horizontal">
 							<div class="form-group required">

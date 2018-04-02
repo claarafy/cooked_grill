@@ -87,7 +87,7 @@
                 <td class="text-center"><%= order.customer_phone %></td>
                 <td class="text-center"><%= order.meal.title %></td>
 
-                <td class="text-center"><%= link_to 'View', order %></td>
+                <td class="text-center"><%= button_to 'View', order, class: "btn btn-danger btn-xs" %></td>
                 <% if order.reviewed && order.review.rating  %>
                 <td class="text-center">
                   <div class="star-ratings-css-meal">
@@ -97,9 +97,9 @@
                 </td>
                 <% elsif order.paid && !order.reviewed %>
                   <% if user_signed_in? && canLeaveFeedback(order) %>
-                    <td class="text-center"><%= link_to 'Leave Review', new_review_path(order: order.id) %></td>
+                    <td class="text-center"><%= button_to 'Leave Review', new_review_path(order: order.id), class: "btn btn-danger btn-xs" %></td>
                   <% else %>
-                    <td class="text-center">N/A</td>  
+                    <td class="text-center">N/A</td>
                   <% end %>
                 <% else %>
                   <td class="text-center">N/A</td>

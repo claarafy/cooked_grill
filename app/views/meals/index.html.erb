@@ -23,7 +23,7 @@
 				<thead>
 					<tr>
 						<td class="text-center">
-							Available
+							Active?
 						</td>
 						<td class="text-center">
 							Title
@@ -97,8 +97,8 @@
               <td class="text-center"><%= meal.location %></td>
               <td class="text-center"><%= meal.tags %></td>
               <td class="text-center"><%= meal.meal_rating %></td>
-              <td class="text-center"><%= link_to 'View', meal %></td>
-              <td class="text-center"><%= link_to 'Edit',  edit_meal_path(meal) %></td>
+              <td class="text-center"><%= button_to 'View', meal, class: "btn btn-danger btn-xs" %></td>
+              <td class="text-center"><%= button_to 'Edit',  edit_meal_path(meal), class: "btn btn-danger btn-xs" %></td>
           <% end %>
 				</tbody>
 			</table>
