@@ -97,8 +97,8 @@
               <td class="text-center"><%= meal.location %></td>
               <td class="text-center"><%= meal.tags %></td>
               <td class="text-center"><%= meal.meal_rating %></td>
-              <td class="text-center"><%= button_to 'View', meal, class: "btn btn-danger btn-xs" %></td>
-              <td class="text-center"><%= button_to 'Edit',  edit_meal_path(meal), class: "btn btn-danger btn-xs" %></td>
+              <td class="text-center"><%= button_to 'View', meal, class: "btn btn-danger btn-xs", method: :get %></td>
+              <td class="text-center"><%= button_to 'Edit',  edit_meal_path(meal), class: "btn btn-danger btn-xs", method: :get %></td>
           <% end %>
 				</tbody>
 			</table>

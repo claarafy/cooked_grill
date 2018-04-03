@@ -103,7 +103,7 @@ class OrdersController < ApplicationController
       # Pickup / Delivery TODO somewhat sloppy. Doesn't handle errors.
       if params[:inputPickupDelivery] == "Delivery"
         @order.delivery = true
-      else params[:inputPickupDelivery] == "Pickup"
+      elsif params[:inputPickupDelivery] == "Pickup"
         @order.pickup = true
       end
 
