@@ -8,6 +8,9 @@ end
 # Heroku prefers the ruby version to be specified
 ruby '~> 2.3.1'
 
+# fog for interacting and hosting on amazon s3
+gem 'fog'
+
 # Enviroment gem
 gem 'envyable'
 
