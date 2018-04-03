@@ -2,6 +2,8 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update]
   before_action :user_or_cook_authorized
   before_action :user_only, only: [:edit, :destroy]
+  skip_before_action :verify_authenticity_token
+
 
   def validDate?(params, meal, order)
     pickup_date = Time.zone.parse(params[:pickup_date])

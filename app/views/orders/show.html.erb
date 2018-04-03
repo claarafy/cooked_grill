@@ -83,17 +83,14 @@
 
                       <div class="meal-order-options">
                         <!--  Only User should be able to modify an order-->
-                        <span class="single-option"><%= link_to 'Edit Order', edit_order_path(@order) %></span>
-                         | <span class="single-option"><%= link_to 'Cancel Order', order_path(@order), method: :delete, data: { confirm: 'Are you sure?' } %></span>
-                        <% if @order.paid && !@order.reviewed %>
-                           | <span class="single-option"><%= link_to 'Leave Review', new_review_path(@order) %></span>
-                        <% end %>
+                        <span class="single-option"><%= button_to 'Edit Order', edit_order_path(@order) , class: "btn btn-danger btn-xs", method: :get %></span>
+                          <span class="single-option"><%= button_to 'Cancel Order', order_path(@order), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"%></span>
                       </div>
                     <% end %>
                   <% else %>
-                    <span class="bold-red">Paid!</span>
-                    <% if @order.paid && !@order.reviewed %>
-                       | <span class="single-option"><%= link_to 'Leave Review', new_review_path(@order) %></span>
+                    <span class="bold-red meal-order-options">Paid!</span>
+                    <% if @order.paid && !@order.reviewed && canLeaveFeedback(@order)%>
+                        <span class="single-option"><%= button_to 'Leave Review', new_review_path, params: {order: @order.id},class: "btn btn-danger btn-xs", method: :get %></span>
                     <% end %>
                   <% end %>
             </div>

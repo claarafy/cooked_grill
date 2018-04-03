@@ -54,7 +54,7 @@
    							Order Option(s)
    						</td>
               <td class="text-center">
-               Review Option(s)
+               My Review 
              </td>
    					</tr>
    				</thead>
@@ -87,7 +87,7 @@
                 <td class="text-center"><%= order.customer_phone %></td>
                 <td class="text-center"><%= order.meal.title %></td>
 
-                <td class="text-center"><%= button_to 'View', order, class: "btn btn-danger btn-xs" %></td>
+                <td class="text-center"><%= button_to 'View', order, class: "btn btn-danger btn-xs" , method: :get%></td>
                 <% if order.reviewed && order.review.rating  %>
                 <td class="text-center">
                   <div class="star-ratings-css-meal">
@@ -97,7 +97,7 @@
                 </td>
                 <% elsif order.paid && !order.reviewed %>
                   <% if user_signed_in? && canLeaveFeedback(order) %>
-                    <td class="text-center"><%= button_to 'Leave Review', new_review_path(order: order.id), class: "btn btn-danger btn-xs" %></td>
+                    <td class="text-center"><%= button_to 'Leave Review', new_review_path, params: {order: order.id},class: "btn btn-danger btn-xs", method: :get%></td>
                   <% else %>
                     <td class="text-center">N/A</td>
                   <% end %>

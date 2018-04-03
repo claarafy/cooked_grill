@@ -1,6 +1,8 @@
 class MealsController < ApplicationController
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
   before_action :admin_or_cook, :except => [:show]
+  skip_before_action :verify_authenticity_token
+
 
 
   def admin_or_cook

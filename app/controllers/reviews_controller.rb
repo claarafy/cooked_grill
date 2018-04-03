@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :user_logged_in, only: [:new, :create, :edit, :update, :destroy, :index]
+  skip_before_action :verify_authenticity_token
 
 
   # GET /reviews
@@ -96,7 +97,7 @@ class ReviewsController < ApplicationController
 
     # Make sure we have the appropriate user
     def user_logged_in
-      if !user_signed_in?
+      if !user_signed_in? && !admin_signed_in?
         redirect_to root_path, :alert => "A User Must be Logged In"
       end
     end
