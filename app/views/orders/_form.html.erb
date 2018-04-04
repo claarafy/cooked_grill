@@ -150,7 +150,7 @@
 								<div class="form-group">
 									<label for="inputFname" class="col-sm-3 control-label">Address :</label>
 									<div class="col-sm-9">
-                    <%= form.text_area :delivery_address, id: :order_delivery_address, :required => true, class: "form-control", placeholder: "Street City, State Zip" %>
+                    <%= form.text_area :delivery_address, id: :order_delivery_address, :required => true, class: "form-control", placeholder: "Your Name, Street, City, State Zip" %>
 									</div>
 								</div>
 							</div>
@@ -212,6 +212,17 @@
                             <input type="text" id="time"/>
                         </div>
                     <div id="outlet"></div>
+										<span class="availability-info">
+											 <% if @meal.availability_from %>
+												Available from
+			                  <b><%= @meal.availability_from.strftime(Constants::TIME_FORMAT) %></b>
+			                <% end %>
+											<br />
+											<% if @meal.availability_to %>
+											 Available to
+											 <b><%= @meal.availability_to.strftime(Constants::TIME_FORMAT) %></b>
+										 <% end %>
+			              </span>
 									</div>
 								</div>
 							</div>

@@ -69,7 +69,7 @@
                             </div>
                           <% end %>
                           <label class="amount">
-                            <h3>Amount: $<%= total %></h3>
+                            <h3>Amount: $<%= sprintf( "%0.02f", total) %></h3>
                           </label>
                         </article>
                         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"

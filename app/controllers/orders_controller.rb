@@ -127,6 +127,7 @@ class OrdersController < ApplicationController
       quantity = order_params[:quantity].to_i
       price = Meal.find(@mealID).meal_cost
       total = quantity * price
+      total = total + (total * 0.095)
       @order.total_cost = total
       @order.cook_total = (total * 0.78)
 

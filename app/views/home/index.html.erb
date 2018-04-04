@@ -434,7 +434,7 @@
     <% @chefs.each do |cook| %>
       <% if cook.profile_image.to_s != "" %>
         <div class="col-xs-2">
-          <%= image_tag(cook.profile_image.to_s, size: "440", class: "img-responsive img-center") %>
+          <%= image_tag(cook.profile_image.to_s, size: "200", class: "img-responsive img-center") %>
           <div class="cook-name-review"><%= cook.first_name %>
             <% if cook.reviews.count > 0 %>
             <div class="star-ratings-css-cook">

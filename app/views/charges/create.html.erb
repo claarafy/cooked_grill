@@ -3,5 +3,8 @@
     <p><%= flash[:error] %></p>
   </div>
   <% else %>
-  <h3>Thanks, you paid <strong>$<%= @amount %></strong>!</h3>
+  <div class="thank-you">
+  <h3>Thanks, you paid <strong>$<%= sprintf( "%0.02f", @amount) %></strong>!</h3>
+  <%= link_to "Back Home", root_path %>
+  </div>
 <% end %>
