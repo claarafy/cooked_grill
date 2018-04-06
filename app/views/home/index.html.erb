@@ -30,9 +30,10 @@
   <!-- Controls Ends -->
 </div>
 <!-- Slider Ends -->
+
 <!-- Main Container Starts -->
 <div id="main-container" class="container">
-<!-- Category Starts -->
+<!-- Category Starts HIDDEN -->
   <div class="row"  style="display: none;">
     <div class="col-sm-4 col-xs-12">
       <div class="category-banner-box">
@@ -53,8 +54,8 @@
       </div>
     </div>
   </div>
-<!-- Category Ends -->
-<!-- Latest Products Starts -->
+<!-- Category Ends HIDDEN -->
+<!-- Near You Meals Starts -->
   <section class="product-carousel">
   <!-- Heading Starts -->
     <h2 class="product-head text-uppercase">Near <strong>You</strong></h2>
@@ -62,66 +63,66 @@
   <!-- Products Row Starts -->
     <div class="row">
       <div class="col-xs-12">
-      <!-- Product Carousel Starts -->
+        <!-- Product Carousel Starts -->
         <div id="owl-latest-product" class="owl-product-carousel owl-carousel">
         <!-- Products Starts -->
-        <% @meals.each do |meal| %>
-        <div class="item">
-          <div class="product-col">
-            <div class="image">
-              <%= link_to meal do  %>
-              <%= if meal.images.thumb.url
-                    # image_tag meal.images.thumb.url
-                    image_tag(meal.images.home_page.to_s, class:"img-responsive")
-                  else
-                    image_tag("images/Default_Medium.jpeg", class:"img-responsive")
-                  end %>
-              <% end %>
-            </div>
-            <div class="caption">
-              <div class="price">
-                <span class="price-new">$<%= sprintf('%.2f', meal.meal_cost) %></span>
-                <span class="price-old" style="visibility: hidden;">$249.50</span>
-              </div>
-              <h4><%= link_to meal.title.truncate(25), meal %></h4>
-                <div class="star-ratings-css-meal">
-                  <div class="star-ratings-css-top-meal" style="width:<%= meal.reviews.average(:rating).to_f * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                  <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                </div>
-                <% if meal.reviews.count > 0 %>
-                  <span class="rating-count"><%= meal.reviews.count %> review(s)</span>
-                <% else %>
-                  <span class="rating-count">No Reviews Yet</span>
+          <% @meals.each do |meal| %>
+            <div class="item">
+              <div class="product-col">
+                <div class="image">
+                  <%= link_to meal do  %>
+                  <%= if meal.images.thumb.url
+                        # image_tag meal.images.thumb.url
+                        image_tag(meal.images.home_page.to_s, class:"img-responsive")
+                      else
+                        image_tag("images/Default_Medium.jpeg", class:"img-responsive")
+                      end %>
                   <% end %>
-              <span class="availability-info">
-                <% if meal.availability_from < Time.current && meal.availability_to > Time.current %>
-                  Available Now!
-                <% else %>
-                  Cooking starts on <%= if meal.availability_from
-                    meal.availability_from.strftime(Constants::TIME_FORMAT)
-                  end %>
-                <% end %>
-              </span><br>
-              <%= if user_signed_in?
-                    button_to 'Order', {:controller => "orders", :action => "new"}, :method => :get, :class => "btn btn-block btn-danger btn-color", params: { mealID: meal.id}
-                   else
-                     link_to "Sign in to Order", new_user_session_path, { :class => "btn btn-black" }
-                   end %>
-              <div class="cart-button button-group">
-                <button type="button" class="btn btn-cart" style="display: none;">
-                  <i class="fa fa-shopping-cart"></i>
-                </button>
-                <button type="button" title="Wishlist" class="btn btn-wishlist" style="display: none;">
-                  <i class="fa fa-heart"></i>
-                </button>
-                <button type="button" title="Compare" class="btn btn-compare" style="display: none;">
-                  <i class="fa fa-bar-chart-o"></i>
-                </button>
+                </div>
+                <div class="caption">
+                  <div class="price">
+                    <span class="price-new">$<%= sprintf('%.2f', meal.meal_cost) %></span>
+                    <span class="price-old" style="visibility: hidden;">$249.50</span>
+                  </div>
+                  <h4><%= link_to meal.title.truncate(25), meal %></h4>
+                    <div class="star-ratings-css-meal">
+                      <div class="star-ratings-css-top-meal" style="width:<%= meal.reviews.average(:rating).to_f * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                      <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                    </div>
+                    <% if meal.reviews.count > 0 %>
+                      <span class="rating-count"><%= meal.reviews.count %> review(s)</span>
+                    <% else %>
+                      <span class="rating-count">No Reviews Yet</span>
+                      <% end %>
+                  <span class="availability-info">
+                    <% if meal.availability_from < Time.current && meal.availability_to > Time.current %>
+                      Available Now!
+                    <% else %>
+                      Cooking starts on <%= if meal.availability_from
+                        meal.availability_from.strftime(Constants::TIME_FORMAT)
+                      end %>
+                    <% end %>
+                  </span><br>
+                  <%= if user_signed_in?
+                        button_to 'Order', {:controller => "orders", :action => "new"}, :method => :get, :class => "btn btn-block btn-danger btn-color", params: { mealID: meal.id}
+                       else
+                         link_to "Sign in to Order", new_user_session_path, { :class => "btn btn-black" }
+                       end %>
+                  <div class="cart-button button-group">
+                    <button type="button" class="btn btn-cart" style="display: none;">
+                      <i class="fa fa-shopping-cart"></i>
+                    </button>
+                    <button type="button" title="Wishlist" class="btn btn-wishlist" style="display: none;">
+                      <i class="fa fa-heart"></i>
+                    </button>
+                    <button type="button" title="Compare" class="btn btn-compare" style="display: none;">
+                      <i class="fa fa-bar-chart-o"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <% end %>
+          <% end %>
         <!-- Products Ends -->
         </div>
       <!-- Product Carousel Ends -->
@@ -129,7 +130,8 @@
     </div>
   <!-- Products Row Ends -->
   </section>
-<!-- Latest Products Ends -->
+<!-- Near You Meals Ends -->
+
 <!-- Two Column Banner Starts -->
   <div class="row">
   <!-- Banner #1 Starts -->
@@ -145,11 +147,11 @@
   </div>
 <!-- Two Column Banner Ends -->
 
-<!-- Features & Popular Products Starts -->
+<!-- Family & Low Carb Meals Starts -->
   <div class="row">
-  <!-- Featured Products Starts -->
+  <!-- Family Meals Starts -->
     <div class="col-md-6 col-xs-12">
-    <!-- Featured Products Starts -->
+    <!-- Family Meals Section Starts -->
       <section class="product-carousel" >
       <!-- Heading Starts -->
         <h2 class="product-head text-uppercase">Family <strong>Deal </strong>(Enough for 5)</h2>
@@ -158,42 +160,67 @@
         <div class="row">
           <div class="col-xs-12">
           <!-- Product Carousel Starts -->
-            <div id="owl-featured-product" class="owl-product-carousel owl-carousel">
-            <!-- Product #1 Starts -->
-              <div class="item">
-                <div class="product-col">
-                  <div class="image">
-                    <%= image_tag("images/Taco.jpg", class:"img-responsive") %>
-                  </div>
-                  <div class="caption">
-                    <div class="price">
-                      <span class="price-new">$29.99</span>
-                      <span class="price-old" style="visibility: hidden;">$249.50</span>
+            <div id="owl-family-product" class="owl-product-carousel owl-carousel">
+              <!-- Meals Starts -->
+              <% @family_meals.each do |meal| %>
+                <div class="item">
+                  <div class="product-col">
+                    <div class="image">
+                      <%= link_to meal do  %>
+                      <%= if meal.images.thumb.url
+                            # image_tag meal.images.thumb.url
+                            image_tag(meal.images.home_page.to_s, class:"img-responsive")
+                          else
+                            image_tag("images/Default_Medium.jpeg", class:"img-responsive")
+                          end %>
+                      <% end %>
                     </div>
-                    <h4>Tacos</h4>
-                    <div class="star-ratings-css-meal">
-                      <div class="star-ratings-css-top-meal" style="width:80%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                      <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                    </div>
-                    <span class="rating-count">22 review(s)</span>
-                    <span class="availability-info">Cooking starts Soon...</span><br>
-                    <span class="btn btn-block btn-danger">Coming Soon</span>
-                    <div class="cart-button button-group">
-                      <button type="button" class="btn btn-cart" style="display: none;">
-                        <i class="fa fa-shopping-cart"></i>
-                      </button>
-                      <button type="button" title="Wishlist" class="btn btn-wishlist" style="display: none;">
-                        <i class="fa fa-heart"></i>
-                      </button>
-                      <button type="button" title="Compare" class="btn btn-compare" style="display: none;">
-                        <i class="fa fa-bar-chart-o"></i>
-                      </button>
+                    <div class="caption">
+                      <div class="price">
+                        <span class="price-new">$<%= sprintf('%.2f', meal.meal_cost) %></span>
+                        <span class="price-old" style="visibility: hidden;">$249.50</span>
+                      </div>
+                      <h4><%= link_to meal.title.truncate(25), meal %></h4>
+                        <div class="star-ratings-css-meal">
+                          <div class="star-ratings-css-top-meal" style="width:<%= meal.reviews.average(:rating).to_f * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                          <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                        </div>
+                        <% if meal.reviews.count > 0 %>
+                          <span class="rating-count"><%= meal.reviews.count %> review(s)</span>
+                        <% else %>
+                          <span class="rating-count">No Reviews Yet</span>
+                          <% end %>
+                      <span class="availability-info">
+                        <% if meal.availability_from < Time.current && meal.availability_to > Time.current %>
+                          Available Now!
+                        <% else %>
+                          Cooking starts on <%= if meal.availability_from
+                            meal.availability_from.strftime(Constants::TIME_FORMAT)
+                          end %>
+                        <% end %>
+                      </span><br>
+                      <%= if user_signed_in?
+                            button_to 'Order', {:controller => "orders", :action => "new"}, :method => :get, :class => "btn btn-block btn-danger btn-color", params: { mealID: meal.id}
+                           else
+                             link_to "Sign in to Order", new_user_session_path, { :class => "btn btn-black" }
+                           end %>
+                      <div class="cart-button button-group">
+                        <button type="button" class="btn btn-cart" style="display: none;">
+                          <i class="fa fa-shopping-cart"></i>
+                        </button>
+                        <button type="button" title="Wishlist" class="btn btn-wishlist" style="display: none;">
+                          <i class="fa fa-heart"></i>
+                        </button>
+                        <button type="button" title="Compare" class="btn btn-compare" style="display: none;">
+                          <i class="fa fa-bar-chart-o"></i>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            <!-- Product #1 Ends -->
-            <!-- Product #2 Starts -->
+              <% end %>
+              <!-- Meals Ends -->
+              <!-- Demo Product #1 Starts -->
               <div class="item">
                 <div class="product-col">
                   <div class="image">
@@ -226,8 +253,8 @@
                   </div>
                 </div>
               </div>
-            <!-- Product #2 Ends -->
-            <!-- Product #3 Starts -->
+              <!-- Product #1 Ends -->
+              <!-- Product #2 Starts -->
               <div class="item">
                 <div class="product-col">
                   <div class="image">
@@ -260,8 +287,8 @@
                   </div>
                 </div>
               </div>
-            <!-- Product #3 Ends -->
-            <!-- Product #4 Starts -->
+            <!-- Product #2 Ends -->
+            <!-- Product #3 Starts -->
               <div class="item">
                 <div class="product-col">
                   <div class="image">
@@ -294,100 +321,167 @@
                   </div>
                 </div>
               </div>
-            <!-- Product #4 Ends -->
+            <!-- Product #3 Ends -->
             </div>
           <!-- Product Carousel Ends -->
           </div>
         </div>
       <!-- Products Row Ends -->
       </section>
-    <!-- Featured Products Ends -->
+    <!-- Family Meals Section Ends -->
     </div>
-  <!-- Featured Products Ends -->
+  <!-- Family Meals Ends -->
 
-  <!-- Popular Products Starts -->
+  <!-- Low Carb Meals Starts -->
     <div class="col-md-6 col-xs-12">
-      <section class="products-list">
+    <!-- Featured Products Starts -->
+      <section class="product-carousel" >
       <!-- Heading Starts -->
-        <h2 class="product-head text-uppercase">Low Carb <strong>Meals </strong>(Eat Healthy)</h2>
+        <h2 class="product-head text-uppercase">Low <strong>Carb </strong>(Eat Healthy)</h2>
       <!-- Heading Ends -->
       <!-- Products Row Starts -->
         <div class="row">
-        <!-- Product #1 Starts -->
-          <div class="col-sm-6 col-xs-12">
-            <div class="product-col alt">
-              <div class="image">
-                <%= image_tag("images/Philly_Cheese_Steak_Bowl.jpg", class:"img-responsive") %>
-              </div>
-              <div class="caption">
-                <div class="price">
-                  <span class="price-new">$9.99</span>
-                  <span class="price-old" style="visibility: hidden;">$249.50</span>
+          <div class="col-xs-12">
+          <!-- Meals Starts -->
+            <div id="owl-carb-product" class="owl-product-carousel owl-carousel">
+              <% @low_carb_meals.each do |meal| %>
+                <div class="item">
+                  <div class="product-col">
+                    <div class="image">
+                      <%= link_to meal do  %>
+                      <%= if meal.images.thumb.url
+                            # image_tag meal.images.thumb.url
+                            image_tag(meal.images.home_page.to_s, class:"img-responsive")
+                          else
+                            image_tag("images/Default_Medium.jpeg", class:"img-responsive")
+                          end %>
+                      <% end %>
+                    </div>
+                    <div class="caption">
+                      <div class="price">
+                        <span class="price-new">$<%= sprintf('%.2f', meal.meal_cost) %></span>
+                        <span class="price-old" style="visibility: hidden;">$249.50</span>
+                      </div>
+                      <h4><%= link_to meal.title.truncate(25), meal %></h4>
+                        <div class="star-ratings-css-meal">
+                          <div class="star-ratings-css-top-meal" style="width:<%= meal.reviews.average(:rating).to_f * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                          <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                        </div>
+                        <% if meal.reviews.count > 0 %>
+                          <span class="rating-count"><%= meal.reviews.count %> review(s)</span>
+                        <% else %>
+                          <span class="rating-count">No Reviews Yet</span>
+                          <% end %>
+                      <span class="availability-info">
+                        <% if meal.availability_from < Time.current && meal.availability_to > Time.current %>
+                          Available Now!
+                        <% else %>
+                          Cooking starts on <%= if meal.availability_from
+                            meal.availability_from.strftime(Constants::TIME_FORMAT)
+                          end %>
+                        <% end %>
+                      </span><br>
+                      <%= if user_signed_in?
+                            button_to 'Order', {:controller => "orders", :action => "new"}, :method => :get, :class => "btn btn-block btn-danger btn-color", params: { mealID: meal.id}
+                           else
+                             link_to "Sign in to Order", new_user_session_path, { :class => "btn btn-black" }
+                           end %>
+                      <div class="cart-button button-group">
+                        <button type="button" class="btn btn-cart" style="display: none;">
+                          <i class="fa fa-shopping-cart"></i>
+                        </button>
+                        <button type="button" title="Wishlist" class="btn btn-wishlist" style="display: none;">
+                          <i class="fa fa-heart"></i>
+                        </button>
+                        <button type="button" title="Compare" class="btn btn-compare" style="display: none;">
+                          <i class="fa fa-bar-chart-o"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <h4>Philly Cheesesteak Bowl </h4>
-                <div class="star-ratings-css-meal">
-                  <div class="star-ratings-css-top-meal" style="width:88%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                  <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+              <% end %>
+              <!-- Meals End -->
+              <!-- Demo Meal #1 Starts -->
+              <div class="item">
+                <div class="product-col">
+                    <div class="image">
+                      <%= image_tag("images/Philly_Cheese_Steak_Bowl.jpg", class:"img-responsive") %>
+                    </div>
+                    <div class="caption">
+                      <div class="price">
+                        <span class="price-new">$9.99</span>
+                        <span class="price-old" style="visibility: hidden;">$249.50</span>
+                      </div>
+                      <h4>Philly Cheesesteak Bowl </h4>
+                      <div class="star-ratings-css-meal">
+                        <div class="star-ratings-css-top-meal" style="width:88%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                        <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                      </div>
+                      <span class="rating-count">43 review(s)</span>
+                      <span class="availability-info">Cooking starts Soon...</span><br>
+                      <span class="btn btn-block btn-danger">Coming Soon</span>
+                      <div class="cart-button button-group">
+                        <button type="button" class="btn btn-cart" style="display: none;">
+                          <i class="fa fa-shopping-cart"></i>
+                        </button>
+                        <button type="button" title="Wishlist" class="btn btn-wishlist" style="display: none;">
+                          <i class="fa fa-heart"></i>
+                        </button>
+                        <button type="button" title="Compare" class="btn btn-compare" style="display: none;">
+                          <i class="fa fa-bar-chart-o"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <span class="rating-count">43 review(s)</span>
-                <span class="availability-info">Cooking starts Soon...</span><br>
-                <span class="btn btn-block btn-danger">Coming Soon</span>
-                <div class="cart-button button-group">
-                  <button type="button" class="btn btn-cart" style="display: none;">
-                    <i class="fa fa-shopping-cart"></i>
-                  </button>
-                  <button type="button" title="Wishlist" class="btn btn-wishlist" style="display: none;">
-                    <i class="fa fa-heart"></i>
-                  </button>
-                  <button type="button" title="Compare" class="btn btn-compare" style="display: none;">
-                    <i class="fa fa-bar-chart-o"></i>
-                  </button>
+              <!-- Demo Meal #1 Ends -->
+              <!-- Demo Meal #2 Starts -->
+              <div class="item">
+                <div class="product-col">
+                    <div class="image">
+                      <%= image_tag("images/Pesto_Chicken.jpg", class:"img-responsive") %>
+                    </div>
+                    <div class="caption">
+                      <div class="price">
+                        <span class="price-new">$12.99</span>
+                        <span class="price-old" style="visibility: hidden;">$249.50</span>
+                      </div>
+                      <h4>Pesto Chicken</h4>
+                      <div class="star-ratings-css-meal">
+                        <div class="star-ratings-css-top-meal" style="width:93%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                        <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                      </div>
+                      <span class="rating-count">3 review(s)</span>
+                      <span class="availability-info">Cooking starts Soon...</span><br>
+                      <span class="btn btn-block btn-danger">Coming Soon</span>
+                      <div class="cart-button button-group">
+                        <button type="button" class="btn btn-cart" style="display: none;">
+                          <i class="fa fa-shopping-cart"></i>
+                        </button>
+                        <button type="button" title="Wishlist" class="btn btn-wishlist" style="display: none;">
+                          <i class="fa fa-heart"></i>
+                        </button>
+                        <button type="button" title="Compare" class="btn btn-compare" style="display: none;">
+                          <i class="fa fa-bar-chart-o"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              <!-- Demo Meal #2 Ends -->
             </div>
+          <!-- Product Carousel Ends -->
           </div>
-        <!-- Product #1 Ends -->
-        <!-- Product #2 Starts -->
-          <div class="col-sm-6 col-xs-12">
-            <div class="product-col alt">
-              <div class="image">
-                <%= image_tag("images/Pesto_Chicken.jpg", class:"img-responsive") %>
-              </div>
-              <div class="caption">
-                <div class="price">
-                  <span class="price-new">$12.99</span>
-                  <span class="price-old" style="visibility: hidden;">$249.50</span>
-                </div>
-                <h4>Pesto Chicken</h4>
-                <div class="star-ratings-css-meal">
-                  <div class="star-ratings-css-top-meal" style="width:93%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                  <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                </div>
-                <span class="rating-count">3 review(s)</span>
-                <span class="availability-info">Cooking starts Soon...</span><br>
-                <span class="btn btn-block btn-danger">Coming Soon</span>
-                <div class="cart-button button-group">
-                  <button type="button" class="btn btn-cart" style="display: none;">
-                    <i class="fa fa-shopping-cart"></i>
-                  </button>
-                  <button type="button" title="Wishlist" class="btn btn-wishlist" style="display: none;">
-                    <i class="fa fa-heart"></i>
-                  </button>
-                  <button type="button" title="Compare" class="btn btn-compare" style="display: none;">
-                    <i class="fa fa-bar-chart-o"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        <!-- Product #2 Ends -->
         </div>
       <!-- Products Row Ends -->
       </section>
+    <!-- Low Carb Products Section Ends -->
     </div>
-  <!-- Popular Products Ends -->
+  <!-- Low Carb Products Ends -->
+
   </div>
-<!-- Features & Popular Products Ends -->
+<!-- Family & Low Carb Meals Ends -->
 
 <!-- Top Chefs Starts -->
   <section class="products-list">
@@ -422,5 +516,6 @@
   <!-- Nested Row Ends -->
   </section>
 <!-- Top Chefs Ends -->
+
 </div>
 <!-- Main Container Ends -->
