@@ -19,6 +19,6 @@ class MessageMailer < ApplicationMailer
     @cook = cook
     @order = order
     @url  = # generate confirmation url
-    mail(to: @cook.email, bcc: ENV["DEFAULT_TO_EMAIL"], subject: "Cooked.Me Order Has Been CANCELED")
+    mail(to: @cook.email, bcc: ENV["DEFAULT_TO_EMAIL"], subject: "CookedNearby.Com Order Has Been CANCELED")
   end
 end

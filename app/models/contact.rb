@@ -8,7 +8,7 @@ class Contact < MailForm::Base
   # in ActionMailer accepts.
   def headers
     {
-      :subject => "You Got a Message from Cooked.Me.",
+      :subject => "You Got a Message from CookedNearby.Com.",
       :to => ENV["DEFAULT_TO_EMAIL"],
       :from => %("#{name}" <#{email}>)
     }

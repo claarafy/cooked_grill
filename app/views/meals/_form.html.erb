@@ -148,6 +148,19 @@
         </div>
       </div>
     <!-- Form Div Ends -->
+		<!-- Form Div Starts -->
+      <div class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="inputFname" class="col-sm-3 control-label">Category (Optional):</label>
+          <div class="col-sm-9">
+            <%= form.label "Family Deal (Price below is for 5 People)" %>
+            <%= form.check_box :family_deal, :second_name => "foo[2]", id: :meal_family_deal, :class => "radio form-control" %>
+            <%= form.label :low_carb %>
+            <%= form.check_box :low_carb, :second_name => "foo[2]", id: :meal_low_carb, :class => "radio form-control" %>
+          </div>
+        </div>
+      </div>
+    <!-- Form Div Ends -->
     <!-- Form Div Starts -->
       <div class="form-horizontal" role="form">
         <div class="form-group">

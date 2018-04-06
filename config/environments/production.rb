@@ -31,7 +31,7 @@ Rails.application.configure do
   end
   # Setting default URL for Devise mailer
   # config.action_mailer.default_url_options = { host: 'boiling-tor-54337.herokuapp.com'}
-  config.action_mailer.default_url_options = { host: 'http://www.cooked.me/' }
+  config.action_mailer.default_url_options = { host: 'http://www.CookedNearby.Com/' }
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true

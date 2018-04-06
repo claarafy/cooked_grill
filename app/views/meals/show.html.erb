@@ -22,7 +22,7 @@
 				</a>
 
 
-					<div class="fb-share-button" data-href="https://www.cooked.me/meals/<%= @meal.id %>" data-layout="button" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.cooked.me/meals/<%= @meal.id %>" class="fb-xfbml-parse-ignore">Share</a></div>
+					<div class="fb-share-button" data-href="https://www.CookedNearby.Com/meals/<%= @meal.id %>" data-layout="button" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.CookedNearby.Com/meals/<%= @meal.id %>" class="fb-xfbml-parse-ignore">Share</a></div>
 
 				<ul class="list-unstyled list-inline" style="visibility:hidden;">
 					<li>
@@ -76,6 +76,15 @@
               </li>
               <li><span>Portion Info:</span>
 								<%= @meal.portion_info %>
+							</li>
+							<li><span>Special Category:</span>
+								<% if @meal.family_deal %>
+									Family Deal (Enough 5 People)
+								<% elsif @meal.low_carb %>
+									Low Carb
+								<% else %>
+									N/A
+								<% end %>
 							</li>
 						</ul>
 								<div class="star-ratings-css-meal">
@@ -165,36 +174,34 @@
 			<!-- Additional Information Ends -->
 			<!-- Review Starts -->
 				<div class="tab-pane" id="tab-review">
-					<% @reviews.each do |review| %>
-						<div class="form-horizontal">
+					<% if @reviews.count && @reviews.count < 1 %>
+						<div class="thank-you">
+							No Reviews Yet
+						</div>
+					<% else %>
+						<% @reviews.each do |review| %>
+							<div class="form-horizontal">
+								<div class="form-group required">
+									<!-- <label class="col-sm-2 control-label" for="input-name">Left By: </label> -->
+									<div class="col-sm-10">
+										<%= review.user.first_name %>
+										 <% if review.text && review.text != "" %>
+													said "<%= review.text %>""
+												<% end %>
+									</div>
+								</div>
 							<div class="form-group required">
-								<!-- <label class="col-sm-2 control-label" for="input-name">Left By: </label> -->
 								<div class="col-sm-10">
-									<%= review.user.first_name %>
-									 <% if review.text && review.text != "" %>
-												said "<%= review.text %>""
-											<% end %>
-								</div>
-							</div>
-							<!-- <div class="form-group required">
-								<label class="col-sm-2 control-label" for="input-name">Review Text</label>
-								<div class="col-sm-10">
-									<%= review.text %>
-								</div>
-							</div> -->
-						<div class="form-group required">
-							<!-- <label class="col-sm-2 control-label" for="input-name">Review Score</label> -->
-							<div class="col-sm-10">
-								<div class="star-ratings-css-meal">
-									<div class="star-ratings-css-top-meal" style="width:<%= review.rating.to_f * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-									<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+									<div class="star-ratings-css-meal">
+										<div class="star-ratings-css-top-meal" style="width:<%= review.rating.to_f * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+										<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<hr>
+						<hr>
+					<% end %>
 				<% end %>
-
 			</div>
 			<!-- Review Ends -->
 			</div>

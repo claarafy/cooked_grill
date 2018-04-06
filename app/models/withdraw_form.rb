@@ -10,7 +10,7 @@ class WithdrawForm < MailForm::Base
   # in ActionMailer accepts.
   def headers
     {
-      :subject => "You got a Payout Request from Cooked.Me.",
+      :subject => "You got a Payout Request from CookedNearby.Com.",
       :to => ENV["DEFAULT_TO_EMAIL"],
       :from => %("#{name}" <#{account_email}>)
     }
