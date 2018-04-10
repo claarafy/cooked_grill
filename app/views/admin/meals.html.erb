@@ -7,6 +7,7 @@
       <tr>
         <th scope="col" class="text-center">Available?</th>
         <th scope="col" class="text-center">Title</th>
+        <th scope="col" class="text-center">Category</th>
         <th scope="col" class="text-center">Description</th>
         <th scope="col" class="text-center">Ingredients</th>
         <th scope="col" class="text-center">Availibility From</th>
@@ -18,7 +19,6 @@
         <th scope="col" class="text-center">Tags</th>
         <th scope="col" class="text-center">Avg Meal Rating</th>
         <th scope="col" class="text-center">Meal Option(s)</th>
-        <th scope="col" class="text-center">Delete</th>
       </tr>
     </thead>
 
@@ -31,9 +31,19 @@
                     @false
                   end %></th>
           <td class="text-center"><%= meal.title %></td>
+          <td class="text-center">
+            <% if meal.family_deal %>
+                Family Deal
+            <% elsif  meal.low_carb %>
+                Low Carb
+            <% else %>
+                N/A
+            <% end %>
+          </td>
           <td class="text-center"><%= if meal.description
                     meal.description.truncate(50)
                   end %></td>
+
           <td class="text-center"><%= meal.ingredients.truncate(50) %></td>
           <td class="text-center"><%= if meal.availability_from
                     meal.availability_from.strftime(Constants::TIME_FORMAT)
@@ -53,8 +63,11 @@
           <td class="text-center"><%= meal.location %></td>
           <td class="text-center"><%= meal.tags %></td>
           <td class="text-center"><%= meal.reviews.average(:rating) %></td>
-          <td class="text-center"><%= link_to 'Select', meal %></td>
-          <td class="text-center"><%= link_to 'Delete', meal_path(action: :delete,id: meal.id),method: :delete, data: {confirm: "Are you sure?"} %></td>
+          <td class="text-center">
+            <%= link_to 'View', meal %><br />
+            <%= link_to 'Edit', edit_meal_path(meal) %><br />
+            <%= link_to 'Delete', meal_path(action: :delete,id: meal.id),method: :delete, data: {confirm: "Are you sure?"} %>
+          </td>
       <% end %>
     </tbody>
   </table>

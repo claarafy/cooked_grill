@@ -9,14 +9,15 @@
          <th scope="col" class="text-center">Total</th>
           <th scope="col" class="text-center">Cook Total</th>
          <th scope="col" class="text-center">Paid</th>
+         <th scope="col" class="text-center">User</th>
+         <th scope="col" class="text-center">Cook</th>
          <th scope="col" class="text-center">Pickup Address</th>
          <th scope="col" class="text-center">Delivery Address</th>
          <th scope="col" class="text-center">Order Date</th>
          <th scope="col" class="text-center">Pickup Date</th>
          <th scope="col" class="text-center">Customer Phone Number</th>
          <th scope="col" class="text-center">Meal</th>
-         <th scope="col" class="text-center">Option</th>
-         <th scope="col" class="text-center">DELETE</th>
+         <th scope="col" class="text-center">Order Option(s)</th>
        </tr>
      </thead>
      <tbody>
@@ -36,6 +37,8 @@
                       else
                        @unpaid
                     end %></td>
+            <td class="text-center"><%= order.user.first_name %></td>
+            <td class="text-center"><%= order.meal.cook.first_name %></td>
            <td class="text-center"><%= order.pickup_address %></td>
            <td class="text-center"><%= order.delivery_address %></td>
            <td class="text-center"><%= order.order_date.strftime(Constants::TIME_FORMAT) %></td>
@@ -45,8 +48,10 @@
            <td class="text-center"><%= order.customer_phone %></td>
            <td class="text-center"><%= order.meal.title %></td>
 
-           <td class="text-center"><%= link_to 'Select', order %></td>
-           <td class="text-center"><%= link_to 'Delete', order_path(action: :delete,id: order.id),method: :delete, data: {confirm: "Are you sure?"} %></td>
+           <td class="text-center"><%= link_to 'View', order %><br />
+                                   <%= link_to 'Edit', edit_order_path(order) %><br />
+                                   <%= link_to 'Delete', order_path(action: :delete,id: order.id),method: :delete, data: {confirm: "Are you sure?"} %><br />
+           </td>
        <% end %>
      </tbody>
    </table>
