@@ -150,6 +150,11 @@
 								<div class="form-group">
 									<label for="inputFname" class="col-sm-3 control-label">Address :</label>
 									<div class="col-sm-9">
+										<!-- <%= form.text_field :address_name, id: :order_address_name, :required => true, class: "form-control", placeholder: "Your Name" %>
+										<%= form.text_field :address_street, id: :order_address_street, :required => true, class: "form-control", placeholder: "Building Number and Street" %>
+										<%= form.text_field :address_city, id: :order_address_city, :required => true, class: "form-control", placeholder: "City" %>
+										<%= form.text_field :address_state, id: :order_address_state, :required => true, class: "form-control", placeholder: "State" %>
+										<%= form.text_field :address_zip, id: :order_address_zip, :required => true, class: "form-control", placeholder: "Zip Code" %> <br /> -->
                     <%= form.text_area :delivery_address, id: :order_delivery_address, :required => true, class: "form-control", placeholder: "Your Name, Street, City, State Zip" %>
 									</div>
 								</div>

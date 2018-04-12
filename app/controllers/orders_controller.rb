@@ -116,6 +116,15 @@ class OrdersController < ApplicationController
       pickupAddress = @meal.location
       @order.pickup_address = pickupAddress
 
+      # Delivery Address
+      # address_name = params[:order][:address_name]
+      # address_street = params[:order][:address_street]
+      # address_city = params[:order][:address_city]
+      # address_state = params[:order][:address_state]
+      # address_zip = params[:order][:address_zip]
+      # byebug
+      # @order.delivery_address = address_name + " " + address_street + " " + address_city + " " + address_state + " " + address_zip
+
       # Buyer/User
       if user_signed_in?
         @order.user_id = current_user.id
