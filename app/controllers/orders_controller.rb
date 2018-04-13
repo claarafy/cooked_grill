@@ -134,11 +134,11 @@ class OrdersController < ApplicationController
 
       # Total Cost
       quantity = order_params[:quantity].to_i
-      price = Meal.find(@mealID).meal_cost
+      price = @meal.meal_cost
       total = quantity * price
-      total = total + (total * 0.095)
+      @order.cook_total = (total * Constants::COOKS_NET_PRECENTAGE)
+      total = total + (total * Constants::TAX_RATE_LAWNDALE)
       @order.total_cost = total
-      @order.cook_total = (total * 0.78)
 
       # order_date
       now = Time.zone.now
@@ -169,8 +169,11 @@ class OrdersController < ApplicationController
     quantity = order_params[:quantity].to_i
     price = @meal.meal_cost
     total = quantity * price
+    @order.cook_total = (total * Constants::COOKS_NET_PRECENTAGE)
+    total = total + (total * Constants::TAX_RATE_LAWNDALE)
     @order.total_cost = total
-    @order.cook_total = (total * 0.78)
+
+    # Attach an empty review
     @order.review = Review.new
 
     # Pickup / Delivery TODO somewhat sloppy. Doesn't handle errors.

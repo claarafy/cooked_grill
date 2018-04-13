@@ -26,14 +26,14 @@ class ChargesController < ApplicationController
     @user = User.find(@order.user_id)
     # Logic of adding cooks balance here
     if @cook.balance
-      @cook.balance = @cook.balance + (@amount_cents * 0.78)
+      @cook.balance = @cook.balance + (@amount_cents * Constants::COOKS_NET_PRECENTAGE)
     else
-      @cook.balance = (@amount_cents * 0.78)
+      @cook.balance = (@amount_cents * Constants::COOKS_NET_PRECENTAGE)
     end
     @cook.save
     @order.paid = true
     @order.review = Review.new
-      
+
     if !@order.save
       flash[:error] = "Sorry, Order did not go through!"
     else
