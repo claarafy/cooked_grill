@@ -6,6 +6,7 @@
     <thead>
       <tr>
         <th scope="col" class="text-center">Available?</th>
+        <th scope="col" class="text-center">Cook</th>
         <th scope="col" class="text-center">Title</th>
         <th scope="col" class="text-center">Category</th>
         <th scope="col" class="text-center">Description</th>
@@ -30,6 +31,7 @@
                   else
                     @false
                   end %></th>
+          <td class="text-center"><%= meal.cook.first_name %></td>
           <td class="text-center"><%= meal.title %></td>
           <td class="text-center">
             <% if meal.family_deal %>
@@ -62,7 +64,9 @@
                   end %></td>
           <td class="text-center"><%= meal.location %></td>
           <td class="text-center"><%= meal.tags %></td>
-          <td class="text-center"><%= meal.reviews.average(:rating) %></td>
+          <td class="text-center"><%= if meal.reviews.average(:rating)
+                  "%.2f" % BigDecimal(meal.reviews.average(:rating)).truncate(2)
+                end %></td>
           <td class="text-center">
             <%= link_to 'View', meal %><br />
             <%= link_to 'Edit', edit_meal_path(meal) %><br />
