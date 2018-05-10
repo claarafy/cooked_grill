@@ -77,6 +77,7 @@ class MealsController < ApplicationController
     @meal.availability_to = available_to
     respond_to do |format|
       if validDates?(meal_params, @meal) &&  @meal.save
+        MessageMailer.new_meal(@meal).deliver_now
         format.html { redirect_to @meal, notice: 'Meal was successfully created.' }
         format.json { render :show, status: :created, location: @meal }
       else

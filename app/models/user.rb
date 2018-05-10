@@ -5,4 +5,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+
+   validate :valid_zip_code
+
+   def valid_zip_code
+     if ZipCodes.identify(zip) == nil
+       errors.add(:zip, " is invalid")
+     end
+   end
+   
 end

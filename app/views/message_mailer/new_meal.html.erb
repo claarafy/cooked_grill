@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @meal.title %> has successfully been uploaded to Cooked Nearby</h1><br />
+    <div>Your meal is available from <%= @meal.availability_from.strftime(Constants::TIME_FORMAT) %> to <%= @meal.availability_to.strftime(Constants::TIME_FORMAT) %></div>
+    <% if @meal.delivery_only %>
+      You have indicated you will deliver your meals
+    <% elsif @meal.pickup_only %>
+      You have indicated you will allow customers to pick up their orders
+    <% else %>
+      You have indicated that you will either allow customers to pick up their orders or deliver them
+    <% end %>
+    <br />
+    Please be sure to pay attention to your email inbox. You will receive an email if an order has been placed.
+    <br />
+    Happy Cooking!
+  </body>
+</html>

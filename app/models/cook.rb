@@ -9,4 +9,12 @@ class Cook < ApplicationRecord
 
   mount_uploader :profile_image, ImageUploader
 
+  validate :valid_zip_code
+
+  def valid_zip_code
+    if ZipCodes.identify(zip) == nil
+      errors.add(:zip, " is invalid")
+    end
+  end
+
 end

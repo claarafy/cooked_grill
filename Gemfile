@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Look up state, city info using zip Code
+gem 'zip-codes'
+
 # Heroku prefers the ruby version to be specified
 ruby '~> 2.3.1'
 

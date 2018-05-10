@@ -6,11 +6,11 @@ class Cooks::RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    params.require(:cook).permit(:first_name, :email, :password, :password_confirmation, :profile_image)
+    params.require(:cook).permit(:first_name, :email, :password, :password_confirmation, :profile_image, :about_me, :zip)
   end
 
   def account_update_params
-    params.require(:cook).permit(:first_name, :email, :password, :password_confirmation, :current_password, :profile_image)
+    params.require(:cook).permit(:first_name, :email, :password, :password_confirmation, :current_password, :profile_image, :about_me, :zip)
   end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
@@ -63,8 +63,9 @@ class Cooks::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
+    cook = Cook.find_by email: params["cook"]["email"]
+    MessageMailer.new_cook(cook).deliver_now
     super(resource)
-    byebug
   end
 
   # The path used after sign up for inactive accounts.
