@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get 'withdraw_form/create'
 
+  get 'landing_page/new_cook'
+
   devise_for :admins
   get 'admin' => 'admin#home'
 
@@ -52,7 +54,7 @@ Rails.application.routes.draw do
   match '/admin/cooks', to: 'admin#cooks', as: 'admin_cooks', via: 'get'
   match '/admin/payouts', to: 'admin#payouts', as: 'admin_payouts', via: 'get'
   match '/admin/reviews', to: 'admin#reviews', as: 'admin_reviews', via: 'get'
-  # match '/admins/sign_out', to: 'admins/sessions#destroy', as: 'my_destroy_admin_session', via: 'get' 
+  # match '/admins/sign_out', to: 'admins/sessions#destroy', as: 'my_destroy_admin_session', via: 'get'
 
   # HTTP Verification (file download)
   # match '/.well-known/pki-validation/*all', to: 'application#download_file', via: 'get'

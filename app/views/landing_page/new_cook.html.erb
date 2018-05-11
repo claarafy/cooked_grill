@@ -1,0 +1,1282 @@
+<!-- Bootstrap core CSS -->
+<!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+<%= stylesheet_link_tag 'landing_page/bootstrap.min', media: 'all' %>
+
+<!-- Overwrite bootstrap style -->
+<!-- <link href="css/overwrite.css" rel="stylesheet"> -->
+<%= stylesheet_link_tag 'landing_page/overwrite', media: 'all' %>
+
+<!-- Font -->
+<!-- <link href="fonts/open-sans/stylesheet.css" rel="stylesheet"> -->
+<%= stylesheet_link_tag 'landing_page/stylesheet', media: 'all' %>
+
+<!-- Icons -->
+<!-- <link href="css/icons.css" rel="stylesheet"> -->
+<%= stylesheet_link_tag 'landing_page/icons', media: 'all' %>
+
+<!-- Jssor Slider -->
+<!-- <link href="css/jssor-slider.css" rel="stylesheet"> -->
+<%= stylesheet_link_tag 'landing_page/jssor-slider', media: 'all' %>
+
+<!-- Jwg Slider -->
+<!-- <link href="css/jwgslider.css" rel="stylesheet"> -->
+<%= stylesheet_link_tag 'landing_page/jwgslider', media: 'all' %>
+
+<!-- prettyPhoto -->
+<!-- <link href="css/prettyPhoto.css" rel="stylesheet"> -->
+<%= stylesheet_link_tag 'landing_page/prettyPhoto', media: 'all' %>
+
+<!-- Owl carousel -->
+<!-- <link href="css/owl.carousel.css" rel="stylesheet"> -->
+<!-- <link href="css/owl.theme.css" rel="stylesheet"> -->
+<!-- <link href="css/owl.transitions.css" rel="stylesheet"> -->
+<%= stylesheet_link_tag 'landing_page/owl.carousel', media: 'all' %>
+<%= stylesheet_link_tag 'landing_page/owl.theme', media: 'all' %>
+<%= stylesheet_link_tag 'landing_page/owl.transitions', media: 'all' %>
+
+<!-- Jwg Slider -->
+<!-- <link href="css/masonry.css" rel="stylesheet"> -->
+<%= stylesheet_link_tag 'landing_page/masonry', media: 'all' %>
+
+<!-- Custom styles for this template -->
+<!-- <link href="css/style.css" rel="stylesheet"> -->
+<%= stylesheet_link_tag 'landing_page/style', media: 'all' %>
+
+<!-- Skins style -->
+<!-- <link href="skins/default.css" rel="stylesheet"> -->
+<%= stylesheet_link_tag 'landing_page/default', media: 'all' %>
+
+<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+<!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+<!-- <script src="js/ie-emulation-modes-warning.js"></script> -->
+<%= javascript_include_tag "landing_page/ie-emulation-modes-warning" %>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+<![endif]-->
+
+<!--[if IE 8]>
+    <link href="css/style.ie8.css" rel="stylesheet">
+<![endif]-->
+
+</head>
+
+<body id="home">
+<!-- Start preloading -->
+<div id="loading" class="loading-invisible">
+<div class="loading-center">
+  <div class="loading-center-absolute">
+    <div class="object" id="object_four"></div>
+    <div class="object" id="object_three"></div>
+    <div class="object" id="object_two"></div>
+    <div class="object" id="object_one"></div>
+  </div>
+  <p>Please wait...</p>
+</div>
+</div>
+<script type="text/javascript">
+  document.getElementById("loading").className = "loading-visible";
+  var hideDiv = function(){document.getElementById("loading").className = "loading-invisible";};
+  var oldLoad = window.onload;
+  var newLoad = oldLoad ? function(){hideDiv.call(this);oldLoad.call(this);} : hideDiv;
+  window.onload = newLoad;
+</script>
+<!-- End preloading -->
+
+<!-- Start navbar -->
+<nav class="navbar navbar-fixed-top">
+<div class="container relative">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <span class="icon icon-menu"></span>
+    </button>
+    <a class="navbar-brand" href="#">
+      <%= image_tag "img/logo.png" %>
+      <img src="img/logo.png" alt="" />
+    </a>
+  </div>
+  <div id="navbar" class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+      <li class="page-scroll active"><a href="#home">Home</a></li>
+      <li class="page-scroll"><a href="#about">About us</a></li>
+      <li class="page-scroll"><a href="#features">Features</a></li>
+      <li class="page-scroll"><a href="#gallery">Gallery</a></li>
+      <li class="page-scroll"><a href="#pricing">Pricing</a></li>
+      <li class="page-scroll"><a href="#team">Team</a></li>
+      <li class="page-scroll"><a href="#blog">Blog</a></li>
+      <li class="page-scroll"><a href="#contact">Contact</a></li>
+    </ul>
+            <ul class="navbar-right">
+      <li><a href="#" class="btn btn-link"><i class="icon-lock"></i> Login</a></li>
+      <li><a href="#" class="btn btn-primary btn-bavel">Register</a></li>
+    </ul>
+  </div><!--/.nav-collapse -->
+</div>
+</nav>
+<!-- End navbar -->
+
+<!-- Start featured -->
+<div class="featured">
+<div class="container">
+  <div class="row form-wrapper">
+    <div class="col-md-10 col-sm-12">
+      <img src="img/slider/jssor/man1.png" class="img-responsive" alt="" />
+    </div>
+    <div class="main-form">
+      <h3>Bootstrap <span>landing_page</span></h3>
+      <p>
+      Vis dolorem omittam adipiscing cu, ei esse facete consequuntur eum. Mel dicant accumsan ex. Cu omnes regione meliore mei, et tibique corpora abhorreant mei ipsum choro complectitur.
+      </p>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <div class="col-lg-12">
+            <label>Name :</label>
+            <input type="text" class="form-control form-block" placeholder="Enter your full name">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-12">
+            <label>Email :</label>
+            <input type="text" class="form-control form-block" placeholder="Enter your email address">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-12">
+            <button class="btn btn-primary btn-bavel">Join with us</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<!-- End featured -->
+
+<div class="clearfix"></div>
+
+<!-- Start Client -->
+<div class="dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 wrap-carousel">
+                <!-- Start Client Slide -->
+                <div id="client" class="owl-carousel owl-theme client">
+                  <div class="item-client"><a href="#"><img src="img/client/logo-1.png" alt=""></a></div>
+                  <div class="item-client"><a href="#"><img src="img/client/logo-2.png" alt=""></a></div>
+                  <div class="item-client"><a href="#"><img src="img/client/logo-3.png" alt=""></a></div>
+                  <div class="item-client"><a href="#"><img src="img/client/logo-4.png" alt=""></a></div>
+                  <div class="item-client"><a href="#"><img src="img/client/logo-5.png" alt=""></a></div>
+                  <div class="item-client"><a href="#"><img src="img/client/logo-1.png" alt=""></a></div>
+                  <div class="item-client"><a href="#"><img src="img/client/logo-2.png" alt=""></a></div>
+                  <div class="item-client"><a href="#"><img src="img/client/logo-3.png" alt=""></a></div>
+                </div>
+                <!-- End Client Slide -->
+                <!-- Start Direction -->
+                <div class="direction-middle">
+                    <div class="direction-nav">
+                        <span class="direct-prev prev-client"><i class="icon-circle-left"></i></span>
+                        <span class="direct-next next-client"><i class="icon-circle-right"></i></span>
+                    </div>
+                </div>
+                <!-- End Direction -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Client -->
+
+<div class="clearfix"></div>
+
+<!-- Start About Us -->
+<section id="about" class="about">
+    <div class="container">
+        <!-- Start title -->
+        <div class="title-section">
+            <h3>Who We Are <strong>About Us</strong></h3>
+        </div>
+        <!-- End title -->
+        <div class="row">
+            <div class="col-md-6 col-md-push-6"><img src="img/about/girl.jpg" class="img-responsive" alt=""></div>
+            <div class="col-md-6 col-md-pull-6">
+                <!-- Start Tabs Features -->
+                <div id="tab-slider" class="jwg_slider_module">
+                    <!-- Start Navigation Tab -->
+                    <div class="tabbed_navigation">
+                      <ul>
+                        <li class="active">What We Do</li>
+          <li>Who We Are</li>
+                        <li>How It Work</li>
+                      </ul>
+                    </div>
+                    <!-- End Navigation Tab -->
+                    <!-- Start Tab Slides -->
+                    <div class="slides">
+                        <!-- Start Slide 01 -->
+                        <div class="slide">
+                            <p>
+                            Saepe malorum appareat ad duo. Dicat tamquam aliquando has ut constituam temporibus qui an. No qui nominati salutandi, mei ne malis dicit vivendo. Ut his vidit verterem complectitur duo ut adversarium intellegebat, qui propriae liberavisse te. Pri alii percipit definiebas et. Aliquip ceteros percipitur cum eu.
+                            </p>
+                            <p></p>
+                            <!-- Start Services -->
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 box-icon">
+                                    <span class="icon icon-basket icon-primary"></span>
+                                    <h5>E-Commerce</h5>
+                                    <p>
+                                    Dicunt philosophia. Et suas labores vix, elaboraret conclusionemque quo cu. Nec dolor perfecto ne.
+                                    </p>
+                                </div>
+                                <div class="col-md-6 col-sm-6 box-icon">
+                                    <span class="icon icon-magnifying-glass icon-tertiary"></span>
+                                    <h5>S.E.O Services</h5>
+                                    <p>
+                                    Dicunt philosophia. Et suas labores vix, elaboraret conclusionemque quo cu. Nec dolor perfecto ne.
+                                    </p>
+                                </div>
+                                <div class="col-md-6 col-sm-6 box-icon">
+                                    <span class="icon icon-laptop icon-secondary"></span>
+                                    <h5>landing_page</h5>
+                                    <p>
+                                    Dicunt philosophia. Et suas labores vix, elaboraret conclusionemque quo cu. Nec dolor perfecto ne.
+                                    </p>
+                                </div>
+                                <div class="col-md-6 col-sm-6 box-icon">
+                                    <span class="icon icon-linegraph icon-quaternary"></span>
+                                    <h5>Social Network</h5>
+                                    <p>
+                                    Dicunt philosophia. Et suas labores vix, elaboraret conclusionemque quo cu. Nec dolor perfecto ne.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- End Services -->
+                        </div>
+                        <!-- End Slide 01 -->
+                        <!-- Start Slide 02 -->
+                        <div class="slide">
+            <p>
+            Consetetur id sed alia invidunt usu cu. Vim purto percipit menandri no. Sit ocurreret vituperatoribus an. Nobis referrentur sit te, has quis dictas discere et. Natum utamur habemus nam cu, vim novum sonet ceteros id.
+            </p>
+            <blockquote>
+              <p>
+              His in labores deserunt concludaturque. Vix in mucius aliquip tractatos, vix cu munere legere verear. Pertinax partiendo maiestatis sit id sea eirmod.
+              </p>
+            </blockquote>
+            <p>
+            Pertinax partiendo maiestatis sit id, sea eirmod appellantur reprehendunt cu. Has putant vituperata ei, ullum alienum ei vis. Mei lorem atomorum no, sed aeque commodo minimum an, ut mel porro salutatus tincidunt.
+            </p>
+            <p><a href="#" class="btn btn-bavel btn-primary">Get started with us</a> <a href="#" class="btn btn-bavel btn-secondary">View our features</a></p>
+                        </div>
+                        <!-- End Slide 02 -->
+                        <!-- Start Slide 03 -->
+                        <div class="slide">
+                            <p>
+                            Fabulas detraxit mei no, sea facete appellantur interpretaris cu. Ea per deseruisse quaerendum. Debet principes an vis. Porro debitis adversarium ne pri, alia decore placerat cu duo. Nobis referrentur sit te, has quis dictas discere et.
+                            </p>
+            <ul class="list-unstyled">
+              <li>
+                 <span class="icon icon-download icon-3x icon-primary alignleft"></span>
+                <h5>Download template</h5>
+                <p>
+                Pertinax partiendo maiestatis sit id, sea eirmod appellantur has putant vituperata ei, ullum alienum ei vis mei lorem atomorum no..
+                </p>
+              </li>
+              <li>
+                 <span class="icon icon-tools-2 icon-3x icon-tertiary alignleft"></span>
+                <h5>Customize template</h5>
+                <p>
+                Pertinax partiendo maiestatis sit id, sea eirmod appellantur has putant vituperata ei, ullum alienum ei vis mei lorem atomorum no..
+                </p>
+              </li>
+              <li>
+                 <span class="icon icon-browser icon-3x icon-secondary alignleft"></span>
+                <h5>Awesome website</h5>
+                <p>
+                Pertinax partiendo maiestatis sit id, sea eirmod appellantur has putant vituperata ei, ullum alienum ei vis mei lorem atomorum no..
+                </p>
+              </li>
+              <li>
+                 <span class="icon icon-clock icon-3x icon-quaternary alignleft"></span>
+                <h5>24/7 support</h5>
+                <p>
+                Pertinax partiendo maiestatis sit id, sea eirmod appellantur has putant vituperata ei, ullum alienum ei vis mei lorem atomorum no..
+                </p>
+              </li>
+                            </ul>
+                        </div>
+                        <!-- End Slide 03 -->
+                    </div>
+                    <!-- End Tab Slides -->
+                </div>
+                <!-- End Tabs Features -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End About Us -->
+
+<div class="clearfix"></div>
+
+<!-- Start Features -->
+<section id="features" class="gray">
+    <div class="container">
+        <!-- Start title -->
+        <div class="title-section">
+            <h3>Why Choose Us <strong>Features</strong></h3>
+        </div>
+        <!-- End title -->
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Start Background Content -->
+                <div class="bg-content">
+                    <div class="content">
+                        <h4>Get it today <b>We are you waiting for</b></h4>
+                        <p>
+                        Eu vivendum leifend eam, id mei velit scripserit, his alterum euripidis reprimique ei. Vis dolore tempor neglegentur ne. Nec dolor perfecto appareat cu mel, vel id quodsi mediocrem urbanitas.
+                        </p>
+                        <a href="#" class="btn btn-primary btn-bavel btn-lg btn-x-lg">Join with us <i class="icon-arrow-right2"></i></a>
+                    </div>
+                </div>
+                <!-- End Background Content -->
+            </div>
+            <div class="col-md-6">
+                <!-- Start Accordion -->
+                <div class="panel-group" id="accordion">
+                    <!-- Start Accordion 01 -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <span class="icon icon-adjustments icon-primary"></span>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Easy To Setting</a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <p>
+                                Harum tibique ancillae quo no, erat fierent per ut. Diam tibique qui eu, per dolore eripuit an. Nam quis ferri theophrastus id. Eu vivendum eleifend eam, id mei velit scripserit, his alterum euripidis reprimique ei. Vis dolore tempor neglegentur ne. Nec dolor perfecto ne appareat cu mel, vel id quodsi mediocrem urbanitas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Accordion 01 -->
+                    <!-- Start Accordion 02 -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <span class="icon icon-mobile icon-tertiary"></span>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#mobile">Responsive Design</a>
+                            </h4>
+                        </div>
+                        <div id="mobile" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>
+                                Harum tibique ancillae quo no, erat fierent per ut. Diam tibique qui eu, per dolore eripuit an. Nam quis ferri theophrastus id. Eu vivendum eleifend eam, id mei velit scripserit, his alterum euripidis reprimique ei. Vis dolore tempor neglegentur ne. Nec dolor perfecto ne appareat cu mel, vel id quodsi mediocrem urbanitas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Accordion 02 -->
+                    <!-- Start Accordion 03 -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <span class="icon icon-beaker icon-secondary"></span>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#beaker">Clean and Modern</a>
+                            </h4>
+                        </div>
+                        <div id="beaker" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>
+                                Harum tibique ancillae quo no, erat fierent per ut. Diam tibique qui eu, per dolore eripuit an. Nam quis ferri theophrastus id. Eu vivendum eleifend eam, id mei velit scripserit, his alterum euripidis reprimique ei. Vis dolore tempor neglegentur ne. Nec dolor perfecto ne appareat cu mel, vel id quodsi mediocrem urbanitas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Accordion 03 -->
+                    <!-- Start Accordion 04 -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <span class="icon icon-display icon-quaternary"></span>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#browser">Cross Browser</a>
+                            </h4>
+                        </div>
+                        <div id="browser" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>
+                                Harum tibique ancillae quo no, erat fierent per ut. Diam tibique qui eu, per dolore eripuit an. Nam quis ferri theophrastus id. Eu vivendum eleifend eam, id mei velit scripserit, his alterum euripidis reprimique ei. Vis dolore tempor neglegentur ne. Nec dolor perfecto ne appareat cu mel, vel id quodsi mediocrem urbanitas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Accordion 04 -->
+                </div>
+                <!-- End Accordion -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Features -->
+
+<div class="clearfix"></div>
+
+<!-- Start Testimonial -->
+<section class="parallax bg-testimonial" data-background="img/parallax/1.jpg" data-speed="0.4">
+    <div class="overlay"></div>
+    <div class="container">
+        <!-- Start title -->
+        <div class="title-section small">
+            <h4>People Said About Sono <strong>Testimonilas</strong></h4>
+        </div>
+        <!-- End title -->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Start Testimonial item -->
+                <div id="testimonail" class="testimonial">
+        <!-- Start testimoni 1 -->
+                  <div class="item-testimonial">
+                    <div class="avatar">
+                        <img src="img/testimonial/1.jpg" class="img-responsive" alt="">
+                    </div>
+                    <div class="content">
+                        <blockquote>
+                            <p>
+                            An simul suscipit dissentiet sit nam harum constituto vis dolore tempor neglegentur ne.
+                            </p>
+                            <footer>Sakonnah - <a href="#">Bemlong corp</a></footer>
+                        </blockquote>
+                    </div>
+                  </div>
+         <!-- End testimoni 1 -->
+
+         <!-- Start testimoni 2 -->
+                  <div class="item-testimonial">
+                    <div class="avatar">
+                        <img src="img/testimonial/2.jpg" class="img-responsive" alt="">
+                    </div>
+                    <div class="content">
+                        <blockquote>
+                            <p>
+                            Pri alii percipit definiebas et. Aliquip ceteros percipitur cum eu, pri id dicunt instructior. Labitur epicuri.
+                            </p>
+                            <footer>Sukkim - <a href="#">Morti corp</a></footer>
+                        </blockquote>
+                    </div>
+                  </div>
+         <!-- End testimoni 2 -->
+
+         <!-- Start testimoni 3 -->
+                  <div class="item-testimonial">
+                    <div class="avatar">
+                        <img src="img/testimonial/3.jpg" class="img-responsive" alt="">
+                    </div>
+                    <div class="content">
+                        <blockquote>
+                            <p>
+                            Dicat tamquam aliquando has  cibo constituam temporibus qui an qui nominati salutandi, mei ne maliso ut.
+                            </p>
+                            <footer>Juwariah - <a href="#">Belekok corp</a></footer>
+                        </blockquote>
+                    </div>
+                  </div>
+        <!-- End testimoni 3 -->
+
+        <!-- Start testimoni 4 -->
+                  <div class="item-testimonial">
+                    <div class="avatar">
+                        <img src="img/testimonial/4.jpg" class="img-responsive" alt="">
+                    </div>
+                    <div class="content">
+                        <blockquote>
+                            <p>
+                            Fabulas detraxit mei no, sea facete appellantur interpretaris cu. Ea per deseruisse quaerendum debet vis.
+                            </p>
+                            <footer>Sukkiem - <a href="#">Kimpot corp</a></footer>
+                        </blockquote>
+                    </div>
+                  </div>
+         <!-- End testimoni 4 -->
+
+         <!-- Start testimoni 5 -->
+                  <div class="item-testimonial">
+                    <div class="avatar">
+                        <img src="img/testimonial/5.jpg" class="img-responsive" alt="">
+                    </div>
+                    <div class="content">
+                        <blockquote>
+                            <p>
+                            His in labores deserunt concludaturque. Vix in mucius aliquip tractatos, vix cu munere legere pertinax parti.
+                            </p>
+                            <footer>Tarmizzi - <a href="#">TRXT corp</a></footer>
+                        </blockquote>
+                    </div>
+                  </div>
+         <!-- End testimoni 5 -->
+
+         <!-- Start testimoni 6 -->
+                  <div class="item-testimonial">
+                    <div class="avatar">
+                        <img src="img/testimonial/6.jpg" class="img-responsive" alt="">
+                    </div>
+                    <div class="content">
+                        <blockquote>
+                            <p>
+                            Suscipit vulputate usu an, cu cum possit placerat. Iudico blandit sapientem ex per, ut diam dicit qui partiendo.
+                            </p>
+                            <footer>Pakumis - <a href="#">Mista corp</a></footer>
+                        </blockquote>
+                    </div>
+                  </div>
+        <!-- End testimoni 6 -->
+
+        <!-- Start testimoni 7 -->
+                  <div class="item-testimonial">
+                    <div class="avatar">
+                        <img src="img/testimonial/7.jpg" class="img-responsive" alt="">
+                    </div>
+                    <div class="content">
+                        <blockquote>
+                            <p>
+                            it et tale dicat mazim, ipsum ceteros eu sed, mel ne euismod pertinax tincidunt quo eu animal
+                            </p>
+                            <footer>Ecih sukaesih - <a href="#">Ecih corp</a></footer>
+                        </blockquote>
+                    </div>
+                  </div>
+         <!-- End testimoni 7 -->
+
+         <!-- Start testimoni 8 -->
+                  <div class="item-testimonial">
+                    <div class="avatar">
+                        <img src="img/testimonial/8.jpg" class="img-responsive" alt="">
+                    </div>
+                    <div class="content">
+                        <blockquote>
+                            <p>
+                            Zril consetetur id sed, alia invidunt usu cu. Vim purto percipit menandri no sit ocurreret.
+                            </p>
+                            <footer>Ennok - <a href="#">BOB corp</a></footer>
+                        </blockquote>
+                    </div>
+                  </div>
+         <!-- End testimoni 8 -->
+
+         <!-- Start testimoni 9 -->
+                  <div class="item-testimonial">
+                    <div class="avatar">
+                        <img src="img/testimonial/9.jpg" class="img-responsive" alt="">
+                    </div>
+                    <div class="content">
+                        <blockquote>
+                            <p>
+                            Pertinax partiendo maiestatis sit id, sea eirmod appellantur reprehendunt cu has putant vituperata.
+                            </p>
+                            <footer>Taklid - <a href="#">Lidun corp</a></footer>
+                        </blockquote>
+                    </div>
+                  </div>
+        <!-- End testimoni 9 -->
+                </div>
+                <!-- End Testimonial item -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Testimonial -->
+
+<div class="clearfix"></div>
+
+<!-- Start Gallery -->
+<section id="gallery" class="gallery">
+    <!-- Start title -->
+    <div class="title-section">
+        <h3>Prooduct Screenshot <strong>Gallery</strong></h3>
+    </div>
+    <!-- End title -->
+    <!-- Start gallery filter  -->
+    <ul class="filter-items">
+        <li data-filter="" class="active"><span>All</span></li>
+        <li data-filter="web"><span>Web</span></li>
+        <li data-filter="graphic"><span>Graphic</span></li>
+        <li data-filter="logo"><span>Logo</span></li>
+        <li data-filter="photos"><span>Photos</span></li>
+    </ul>
+    <!-- End gallery filter -->
+    <!-- Start Gallery -->
+    <div id="masonry" class="masonry">
+        <div class="grid-sizer col-md-3 col-sm-4 col-xs-6"></div>
+        <div data-filter="web" class="grid-item col-md-3 col-sm-4 col-xs-6 img-hover">
+            <div class="dh-overlay">
+                <div class="option">
+                    <a href="img/gallery/1.jpg" class="zoom" data-pretty="prettyPhoto"><span class="icon icon-magnifying-glass"></span></a>
+                    <h5>
+                        <a href="portfolio-detail.html" class="title">Amquam Tractatos</a>
+                        <a href="#" class="category">Web Design</a>
+                    </h5>
+                </div>
+            </div>
+            <img src="img/gallery/1.jpg" class="img-responsive" alt="">
+        </div>
+        <div data-filter="graphic" class="grid-item col-md-6 col-sm-4 col-xs-6 img-hover">
+            <div class="dh-overlay">
+                <div class="option">
+                    <a href="img/gallery/2.jpg" class="zoom" data-pretty="prettyPhoto"><span class="icon icon-magnifying-glass"></span></a>
+                    <h5>
+                        <a href="portfolio-detail.html" class="title">Lorem Ipsum</a>
+                        <a href="#" class="category">Design Grafic</a>
+                    </h5>
+                </div>
+            </div>
+            <img src="img/gallery/2.jpg" class="img-responsive" alt="">
+        </div>
+        <div data-filter="logo" class="grid-item col-md-3 col-sm-4 col-xs-6 img-hover">
+            <div class="dh-overlay">
+                <div class="option">
+                    <a href="img/gallery/3.jpg" class="zoom" data-pretty="prettyPhoto"><span class="icon icon-magnifying-glass"></span></a>
+                    <h5>
+                        <a href="portfolio-detail.html" class="title">Jengkol Atah</a>
+                        <a href="#" class="category">Logo Design</a>
+                    </h5>
+                </div>
+            </div>
+            <img src="img/gallery/3.jpg" class="img-responsive" alt="">
+        </div>
+        <div data-filter="photos" class="grid-item col-md-3 col-sm-4 col-xs-6 img-hover">
+            <div class="dh-overlay">
+                <div class="option">
+                    <a href="img/gallery/6.jpg" class="zoom" data-pretty="prettyPhoto"><span class="icon icon-magnifying-glass"></span></a>
+                    <h5>
+                        <a href="portfolio-detail.html" class="title">Amquam Tractatos</a>
+                        <a href="#" class="category">Web Design</a>
+                    </h5>
+                </div>
+            </div>
+            <img src="img/gallery/6.jpg" class="img-responsive" alt="">
+        </div>
+        <div data-filter="web" class="grid-item col-md-3 col-sm-4 col-xs-6 img-hover">
+            <div class="dh-overlay">
+                <div class="option">
+                    <a href="img/gallery/5.jpg" class="zoom" data-pretty="prettyPhoto"><span class="icon icon-magnifying-glass"></span></a>
+                    <h5>
+                        <a href="portfolio-detail.html" class="title">Omet Tialit</a>
+                        <a href="#" class="category">Web Development</a>
+                    </h5>
+                </div>
+            </div>
+            <img src="img/gallery/5.jpg" class="img-responsive" alt="">
+        </div>
+        <div data-filter="graphic" class="grid-item col-md-3 col-sm-4 col-xs-6 img-hover">
+            <div class="dh-overlay">
+                <div class="option">
+                    <a href="img/gallery/4.jpg" class="zoom" data-pretty="prettyPhoto"><span class="icon icon-magnifying-glass"></span></a>
+                    <h5>
+                        <a href="portfolio-detail.html" class="title">Lorem Tempe</a>
+                        <a href="#" class="category">Design Graphic</a>
+                    </h5>
+                </div>
+            </div>
+            <img src="img/gallery/4.jpg" class="img-responsive" alt="">
+        </div>
+        <div data-filter="graphic" class="grid-item col-md-3 col-sm-4 col-xs-6 img-hover">
+            <div class="dh-overlay">
+                <div class="option">
+                    <a href="img/gallery/7.jpg" class="zoom" data-pretty="prettyPhoto"><span class="icon icon-magnifying-glass"></span></a>
+                    <h5>
+                        <a href="portfolio-detail.html" class="title">Robot Jadul</a>
+                        <a href="#" class="category">Design Graphic</a>
+                    </h5>
+                </div>
+            </div>
+            <img src="img/gallery/7.jpg" class="img-responsive" alt="">
+        </div>
+    </div>
+    <!-- End Gallery -->
+</section>
+<!-- Start Gallery -->
+
+<div class="clearfix"></div>
+
+<!-- Start Pricing -->
+<section id="pricing">
+    <div class="container">
+        <!-- Start title -->
+        <div class="title-section">
+            <h3>Download Package <strong>Pricing</strong></h3>
+        </div>
+        <!-- End title -->
+        <!-- Start Pricing Table -->
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Start Pricing Default -->
+                <div class="pricing-table">
+                    <div class="pricing-header">
+                        <h4>$<span class="price">0</span><span class="mon">/mon</span></h4>
+                    </div>
+                    <div class="pricing-title">
+                        <h5>Free</h5>
+                    </div>
+                    <div class="pricing-list">
+                        <ul>
+                            <li><b>GPL</b> Licence</li>
+                            <li><b>No</b> PSD</li>
+                            <li><b>Personal</b> Use</li>
+                            <li><b>no</b> Support</li>
+                            <li>Documentation</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#" class="btn btn-default btn-bavel">Get it now</a>
+                    </div>
+                </div>
+                <!-- End Pricing Default -->
+            </div>
+            <div class="col-md-3">
+                <!-- Start Pricing Primary -->
+                <div class="pricing-table primary">
+                    <div class="pricing-header">
+                        <h4>$<span class="price">14</span><span class="mon">/mon</span></h4>
+                    </div>
+                    <div class="pricing-title">
+                        <h5>Personal</h5>
+                    </div>
+                    <div class="pricing-list">
+                        <ul>
+                            <li><b>Single</b> Licence</li>
+                            <li><b>Free</b> PSD</li>
+                            <li><b>Personal</b> Use</li>
+                            <li><b>24/7</b> Support</li>
+                            <li>Documentation</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#" class="btn btn-primary btn-bavel">Get it now</a>
+                    </div>
+                </div>
+                <!-- End Pricing Primary -->
+            </div>
+            <div class="col-md-3">
+                <!-- Start Pricing Secondary -->
+                <div class="pricing-table secondary">
+                    <div class="pricing-header">
+                        <h4>$<span class="price">24</span><span class="mon">/mon</span></h4>
+                    </div>
+                    <div class="pricing-title">
+                        <h5>Team</h5>
+                    </div>
+                    <div class="pricing-list">
+                        <ul>
+                            <li><b>Single</b> Licence</li>
+                            <li><b>Free</b> PSD</li>
+                            <li><b>Commercial</b> Use</li>
+                            <li><b>24/7</b> Support</li>
+                            <li>Documentation</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#" class="btn btn-secondary btn-bavel">Get it now</a>
+                    </div>
+                </div>
+                <!-- End Pricing Secondary -->
+            </div>
+            <div class="col-md-3">
+                <!-- Start Pricing Tertiary -->
+                <div class="pricing-table tertiary">
+                    <div class="pricing-header">
+                        <h4>$<span class="price">32</span><span class="mon">/mon</span></h4>
+                    </div>
+                    <div class="pricing-title">
+                        <h5>Business</h5>
+                    </div>
+                    <div class="pricing-list">
+                        <ul>
+                            <li><b>Multi</b> Licence</li>
+                            <li><b>Free</b> PSD</li>
+                            <li><b>Commercial</b> Use</li>
+                            <li><b>24/7</b> Support</li>
+                            <li>Documentation</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#" class="btn btn-tertiary btn-bavel">Get it now</a>
+                    </div>
+                </div>
+                <!-- End Pricing Tertiary -->
+            </div>
+        </div>
+        <!-- End Pricing Table -->
+    </div>
+</section>
+<!-- End Pricing -->
+
+<div class="clearfix"></div>
+
+<!-- Start Team -->
+<section id="team" class="gray">
+     <div class="container">
+        <!-- Start title -->
+        <div class="title-section">
+            <h3>Profile Behind Sonno <strong>Our Team</strong></h3>
+        </div>
+        <!-- End title -->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Start Direction -->
+                <div class="direction">
+                    <div class="direction-nav">
+                        <span class="direct-prev prev-team"><i class="icon-arrow-left2"></i></span>
+                        <span class="direct-next next-team"><i class="icon-arrow-right2"></i></span>
+                    </div>
+                </div>
+                <!-- End Direction -->
+                <!-- Start Team Item -->
+                <div id="team-list" class="owl-carousel owl-theme team-list">
+                    <div class="team-item primary">
+                        <img src="img/team/1.jpg" alt="">
+                        <div class="caption">
+                            <h5><b>Ipah</b> saripah</h5>
+                            <h6>Founder</h6>
+                            <ul>
+                                <li><a href="#"><span class="icon icon-facebook"></span></a></li>
+                                <li><a href="#"><span class="icon icon-tumblr"></span></a></li>
+                                <li><a href="#"><span class="icon icon-linkedin"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="team-item secondary">
+                        <img src="img/team/2.jpg" alt="">
+                        <div class="caption">
+                            <h5><b>Aceng</b> Kosasih</h5>
+                            <h6>Manager</h6>
+                            <ul>
+                                <li><a href="#"><span class="icon icon-facebook"></span></a></li>
+                                <li><a href="#"><span class="icon icon-tumblr"></span></a></li>
+                                <li><a href="#"><span class="icon icon-linkedin"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="team-item tertiary">
+                        <img src="img/team/3.jpg" alt="">
+                        <div class="caption">
+                            <h5><b>Oneng</b> Alit</h5>
+                            <h6>Marketing</h6>
+                            <ul>
+                                <li><a href="#"><span class="icon icon-facebook"></span></a></li>
+                                <li><a href="#"><span class="icon icon-tumblr"></span></a></li>
+                                <li><a href="#"><span class="icon icon-linkedin"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="team-item quaternary">
+                        <img src="img/team/4.jpg" alt="">
+                        <div class="caption">
+                            <h5><b>Ade</b> sunarya</h5>
+                            <h6>Designer</h6>
+                            <ul>
+                                <li><a href="#"><span class="icon icon-facebook"></span></a></li>
+                                <li><a href="#"><span class="icon icon-tumblr"></span></a></li>
+                                <li><a href="#"><span class="icon icon-linkedin"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="team-item primary">
+                        <img src="img/team/5.jpg" alt="">
+                        <div class="caption">
+                            <h5><b>Neng</b> nengsih</h5>
+                            <h6>Designer</h6>
+                            <ul>
+                                <li><a href="#"><span class="icon icon-facebook"></span></a></li>
+                                <li><a href="#"><span class="icon icon-tumblr"></span></a></li>
+                                <li><a href="#"><span class="icon icon-linkedin"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="team-item secondary">
+                        <img src="img/team/6.jpg" alt="">
+                        <div class="caption">
+                            <h5><b>Ajat</b> sudrajat</h5>
+                            <h6>Designer</h6>
+                            <ul>
+                                <li><a href="#"><span class="icon icon-facebook"></span></a></li>
+                                <li><a href="#"><span class="icon icon-tumblr"></span></a></li>
+                                <li><a href="#"><span class="icon icon-linkedin"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Team Item -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Team -->
+
+<div class="clearfix"></div>
+
+<!-- Start Twitter -->
+<div class="parallax bg-twitter"  data-background="img/parallax/2.jpg" data-speed="0.2">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 text-center">
+                <span class="icon icon-twitter4 title-icon-primary"></span>
+                <!-- Start Twitter Feed -->
+                <div id="tweecool"></div>
+                <!-- End Twitter Feed -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Twitter -->
+
+<div class="clearfix"></div>
+
+<!-- Start Blog -->
+<section id="blog">
+    <div class="container">
+        <!-- Start title -->
+        <div class="title-section">
+            <h3>Recent News & Article <strong>Our Blog</strong></h3>
+        </div>
+        <!-- End title -->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Start Direction -->
+                <div class="direction">
+                    <div class="direction-nav">
+                        <span class="direct-prev prev-blog"><i class="icon-arrow-left2"></i></span>
+                        <span class="direct-next next-blog"><i class="icon-arrow-right2"></i></span>
+                    </div>
+                </div>
+                <!-- End Direction -->
+                <!-- Start Blog Item -->
+                <div id="post" class="owl-carousel owl-theme post">
+                    <!-- Start Post 01 -->
+                    <div class="post-item primary">
+                        <div class="post-meta">
+                            <div class="date">28</div>
+                            <div class="month">August</div>
+                            <div class="comment">
+                                <a href="#"><span class="icon icon-chat"></span> 4 Comments</a>
+                            </div>
+                        </div>
+                        <div class="post-image">
+                            <a href="#"><img src="img/blog/1.jpg" class="img-responsive" alt=""></a>
+                        </div>
+                        <div class="post-article">
+                            <h5 class="post-title"><a href="#">Harum tibique ancillae quo no</a></h5>
+                            <p>
+                                Nam quis ferri theophrastus id. Eu vivendum eleifend eam, id mei velit scripserit, his alterum euripidis reprimique ei. Vis dolore tempor neglegentur ne. Nec dolor perfecto ne appareat cu mel, vel id quodsi mediocrem urbanitas.
+                            </p>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-bavel">Read More</a>
+                    </div>
+                    <!-- End Post 01 -->
+
+                    <!-- Start Post 02 -->
+                    <div class="post-item secondary">
+                        <div class="post-meta">
+                            <div class="date">24</div>
+                            <div class="month">August</div>
+                            <div class="comment">
+                                <a href="#"><span class="icon icon-chat"></span> 2 Comments</a>
+                            </div>
+                        </div>
+                        <div class="post-image">
+                            <a href="#"><img src="img/blog/2.jpg" class="img-responsive" alt=""></a>
+                        </div>
+                        <div class="post-article">
+                            <h5 class="post-title"><a href="#">Suscipit vulputate usu an cum</a></h5>
+                            <p>
+                                Pertinax partiendo maiestatis sit id, sea eirmod appellantur reprehendunt cu. Has putant vituperata ei, ullum alienum ei vis. Mei lorem atomorum no, sed aeque commodo minimum an, ut mel porro salutatus tincidunt  alia decore.
+                            </p>
+                        </div>
+                        <a href="#" class="btn btn-secondary btn-bavel">Read More</a>
+                    </div>
+                    <!-- End Post 02 -->
+
+                    <!-- Start Post 03 -->
+                    <div class="post-item tertiary">
+                        <div class="post-meta">
+                            <div class="date">22</div>
+                            <div class="month">August</div>
+                            <div class="comment">
+                                <a href="#"><span class="icon icon-chat"></span> 0 Comments</a>
+                            </div>
+                        </div>
+                        <div class="post-image">
+                            <a href="#"><img src="img/blog/3.jpg" class="img-responsive" alt=""></a>
+                        </div>
+                        <div class="post-article">
+                            <h5 class="post-title"><a href="#">orro debitis adversarium ne pri</a></h5>
+                            <p>
+                                Sit et tale dicat mazim, ipsum ceteros eu sed, mel ne euismod pertinax tincidunt. Quo eu animal minimum accumsan, ne eros probo aeque vis. Suscipit vulputate usu an, cu cum possit placerat. Iudico blandit sapientem ex per diam.
+                            </p>
+                        </div>
+                        <a href="#" class="btn btn-tertiary btn-bavel">Read More</a>
+                    </div>
+                    <!-- End Post 03 -->
+
+                    <!-- Start Post 04 -->
+                    <div class="post-item quaternary">
+                        <div class="post-meta">
+                            <div class="date">20</div>
+                            <div class="month">August</div>
+                            <div class="comment">
+                                <a href="#"><span class="icon icon-chat"></span> 1 Comments</a>
+                            </div>
+                        </div>
+                        <div class="post-image">
+                            <a href="#"><img src="img/blog/4.jpg" class="img-responsive" alt=""></a>
+                        </div>
+                        <div class="post-article">
+                            <h5 class="post-title"><a href="#">Altera delicata inimicus sit in et</a></h5>
+                            <p>
+                                His ea discere minimum legendos. Virtute nonumes quaestio an mei, ipsum consul in est. Democritum mnesarchum necessitatibus vis cu, dicta commodo iracundia eos ut. Labore labitur fierent no sit Ad prima dolores his.
+                            </p>
+                        </div>
+                        <a href="#" class="btn btn-quaternary btn-bavel">Read More</a>
+                    </div>
+                    <!-- End Post 04 -->
+                </div>
+                <!-- End Blog Item -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Blog -->
+
+<div class="clearfix"></div>
+
+<!-- Start Contact Us -->
+<section id="contact" class="gray">
+    <div class="container">
+        <!-- Start title -->
+        <div class="title-section">
+            <h3>Get in touch with us <strong>Contact</strong></h3>
+        </div>
+        <!-- End title -->
+        <!-- Start Form Contact -->
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-12">
+        <form id="contactform" action="contact/contact.php" method="post" class="validateform" name="leaveContact">
+          <div class="clearfix"></div>
+          <div id="sendmessage">
+            <div class="alert alert-info marginbot35">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>Your message has been sent. Thank you!</strong><br />
+            </div>
+          </div>
+          <ul class="listForm">
+            <li>
+              <label>Name :</label>
+              <div class="input-form">
+                <span class="icon icon-profile-male icon-primary icon-form"></span>
+                <input type="text" class="form-control input-lg" name="name" data-rule="required" data-msg="Required field" placeholder="Enter your full name...">
+                <div class="validation"></div>
+              </div>
+
+            </li>
+            <li>
+              <label>Email :</label>
+              <div class="input-form">
+                <span class="icon icon-envelope icon-secondary icon-form"></span>
+                <input type="text" class="form-control input-lg" name="email" data-rule="email" data-msg="Please enter a valid email" placeholder="Enter your email address...">
+                <div class="validation"></div>
+              </div>
+
+            </li>
+            <li class="full-list">
+              <label>Message :</label>
+              <div class="input-form">
+                <span class="icon icon-pencil icon-tertiary icon-form"></span>
+                <textarea class="form-control textarea-lg" name="message" data-rule="required" data-msg="Please write something for us" placeholder="Write your message here..." rows="7"></textarea>
+                <div class="validation"></div>
+              </div>
+
+            </li>
+            <li class="full-list text-center">
+              <div class="input-form cm-bottom">
+                <input type="submit" value="Send message" class="btn btn-primary btn-bavel btn-lg btn-x-lg" name="Submit" />
+              </div>
+            </li>
+          </ul>
+        </form>
+                </div>
+            </div>
+        </div>
+        <!-- End Form Contact -->
+    </div>
+</section>
+<!-- End Contact Us -->
+
+<div class="clearfix"></div>
+
+<!-- Start Contact Icon -->
+<div class="parallax contact-icon"  data-background="img/parallax/3.jpg" data-speed="0.2">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <!-- Start icon box -->
+                <div class="col-md-4 col-sm-4 box-icon text-center">
+                    <span class="icon icon-map icon-primary"></span>
+                    <p class="size16">
+                    Jl.Kemacetan No.13 Block.04 <br> Jakarta - Indonesia
+                    </p>
+                </div>
+                <div class="col-md-4 col-sm-4 box-icon text-center">
+                    <span class="icon icon-envelope icon-secondary"></span>
+                    <p class="size16">
+                    info@yourdamainname.com
+                    </p>
+                </div>
+                <div class="col-md-4 col-sm-4 box-icon text-center">
+                    <span class="icon icon-mobile icon-tertiary"></span>
+                    <p class="size16">
+                    (8080)6554-455-62
+                    </p>
+                </div>
+                <!-- End icon box -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Contact Icon  -->
+
+<div class="clearfix"></div>
+
+<!-- Start Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 footer-item">
+                <!-- Start Social Link -->
+                <ul class="social-network">
+                    <li><a href="#"><span class="icon icon-facebook"></span></a></li>
+                    <li><a href="#"><span class="icon icon-twitter"></span></a></li>
+                    <li><a href="#"><span class="icon icon-linkedin"></span></a></li>
+                    <li><a href="#"><span class="icon icon-googleplus"></span></a></li>
+                </ul>
+                <!-- End Social Link -->
+                <p>
+                2015 &copy; Copyright <a href="http://99webpage.com/">nce18cex.</a><br> All rights Reserved.
+                </p>
+            </div>
+            <div class="col-md-2 footer-item">
+                <!-- Start List Link -->
+                <ul class="list-link">
+                    <li><a href="#">About sonno</a></li>
+                    <li><a href="#">Become member</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+                <!-- End List Link -->
+            </div>
+            <div class="col-md-2 footer-item">
+                <!-- Start List Link -->
+                <ul class="list-link">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Peivacy Policy</a></li>
+                    <li><a href="#">Term Conditions</a></li>
+                </ul>
+                <!-- End List Link -->
+            </div>
+            <div class="col-md-5 footer-item">
+                <!-- Start Subscribe -->
+                <h5>Stay update with us ! </h5>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Enter your email address...">
+                  <span class="input-group-btn right">
+                    <button class="btn btn-primary btn-bavel btn-lg" type="button">Subscribe</button>
+                  </span>
+                </div>
+                <!-- End Subscribe -->
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer -->
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!-- <script src="js/jquery.min.js"></script> -->
+<!-- <script src="js/bootstrap.min.js"></script> -->
+<%= javascript_include_tag "landing_page/jquery.min" %>
+<%= javascript_include_tag "landing_page/bootstrap.min" %>
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!-- <script src="js/ie10-viewport-bug-workaround.js"></script> -->
+<%= javascript_include_tag "landing_page/ie10-viewport-bug-workaround" %>
+
+<!-- jquery easing -->
+<!-- <script src="js/jquery.easing.1.3.js"></script> -->
+<%= javascript_include_tag "landing_page/jquery.easing.1.3" %>
+
+<!-- Owl carousel -->
+<!-- <script src="js/owlcarousel/owl.carousel.js"></script> -->
+<!-- <script src="js/owlcarousel/setting.js"></script> -->
+<%= javascript_include_tag "landing_page/owlcarousel/owl.carousel" %>
+<%= javascript_include_tag "landing_page/owlcarousel/setting" %>
+
+<!-- Jwg Slider -->
+<!-- <script src="js/jwgslider/jwgSlider.js"></script> -->
+<!-- <script src="js/jwgslider/setting.js"></script> -->
+<%= javascript_include_tag "landing_page/jwgslider/jwgSlider" %>
+<%= javascript_include_tag "landing_page/jwgslider/setting" %>
+
+<!-- Parallax -->
+<!-- <script src="js/parallax/jquery.parallax-1.1.3.js"></script> -->
+<!-- <script src="js/parallax/setting.js"></script> -->
+<%= javascript_include_tag "landing_page/parallax/jquery.parallax-1.1.3" %>
+<%= javascript_include_tag "landing_page/parallax/setting" %>
+
+<!-- masonry -->
+<!-- <script src="js/masonry/masonry-3.1.4.js"></script> -->
+<!-- <script src="js/masonry/masonry.filter.js"></script> -->
+<!-- <script src="js/masonry/setting.js"></script> -->
+<%= javascript_include_tag "landing_page/masonry/masonry-3.1.4" %>
+<%= javascript_include_tag "landing_page/masonry/masonry.filter" %>
+<%= javascript_include_tag "landing_page/masonry/setting" %>
+
+<!-- ticker -->
+<!-- <script src="js/ticker/ticker.js"></script> -->
+<!-- <script src="js/ticker/setting.js"></script> -->
+<%= javascript_include_tag "landing_page/ticker/ticker" %>
+<%= javascript_include_tag "landing_page/ticker/setting" %>
+
+<!-- prettyPhoto -->
+<!-- <script src="js/prettyPhoto/jquery.prettyPhoto.js"></script> -->
+<!-- <script src="js/prettyPhoto/setting.js"></script> -->
+<%= javascript_include_tag "landing_page/prettyPhoto/setting" %>
+<%= javascript_include_tag "landing_page/prettyPhoto/jquery.prettyPhoto" %>
+
+<!-- Hover Direction -->
+<!-- <script src="js/hoverdirection/jquery.directional-hover.min.js"></script> -->
+<!-- <script src="js/hoverdirection/setting.js"></script> -->
+<%= javascript_include_tag "landing_page/hoverdirection/jquery.directional-hover.min" %>
+<%= javascript_include_tag "landing_page/hoverdirection/setting" %>
+
+<!--[if lte IE 9]>
+  <script src="js/tweecool/jquery.xdomainrequest.min.js"></script>
+<![endif]-->
+<!-- Twitter Feed -->
+<!-- <script src="js/tweecool/tweecool.js"></script> -->
+<!-- <script src="js/tweecool/setting.js"></script> -->
+<%= javascript_include_tag "landing_page/tweecool/tweecool" %>
+<%= javascript_include_tag "landing_page/tweecool/setting" %>
+
+<!-- Contact validation -->
+<!-- <script src="js/validation.js"></script> -->
+<%= javascript_include_tag "landing_page/validation" %>
+
+<!-- Go to top -->
+<!-- <script src="js/totop/jquery.ui.totop.js"></script> -->
+<!-- <script src="js/totop/setting.js"></script> -->
+<%= javascript_include_tag "landing_page/totop/jquery.ui.totop" %>
+<%= javascript_include_tag "landing_page/totop/setting" %>
+
+<!-- custom javascript -->
+<!-- <script src="js/custom.js"></script> -->
+<%= javascript_include_tag "landing_page/custom" %>
