@@ -27,7 +27,7 @@ CSS structure
     01.1. Color
     01.1. Background color
 	01.2. Border color
-	
+
 ============================================================== */
 
 /*
@@ -246,7 +246,7 @@ Background
 .inner-heading,
 #loading,
 .demo-heading{
-    background: #f6a525;
+    background: #fff;
 }
 
 .btn-tertiary:hover,

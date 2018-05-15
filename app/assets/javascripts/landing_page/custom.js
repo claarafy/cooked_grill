@@ -26,11 +26,11 @@
     }
     $(window).load(hover_effect);
     $(window).resize(hover_effect);
-    
+
 	/*
 	Video play
 	=========================== */
-	$("#ytplayer").css({'opacity':'0','filter':'alpha(opacity=0)'});	
+	$("#ytplayer").css({'opacity':'0','filter':'alpha(opacity=0)'});
 	$( ".start-video" ).on("click",function(){
 		$('#ytplayer').fadeTo(900, 1);$( ".video-image" ).fadeOut(800);
 		return false;
@@ -40,7 +40,7 @@
 		player.playVideo();
 		return false;
 	});
-	
+
     /*
 	Input Form
 	=========================== */
@@ -54,20 +54,20 @@
 			return false;
         });
     });
-    
+
     /*
 	Scrollspy
-	=========================== */       
+	=========================== */
     $(window).on('load',function(){
         // Scrollspy Option
-        var $body   = $('body'), 
+        var $body   = $('body'),
             $navtop = $('nav.navbar'),
             $offset_section = 89,
             offset  = $navtop.outerHeight();
-        
+
         $body.css('padding-top', offset);
         $body.scrollspy({target: '.navbar', offset: offset });
-        
+
         // Update Offset
         function scrollAnimate(){
             var $window_width = $(window).width();
@@ -79,7 +79,7 @@
                 $offset_section = 89;
             }
         }
-        
+
         // Animation Scrollspy
         scrollAnimate();
         $('.page-scroll').on('click', function(event) {
@@ -93,7 +93,7 @@
             }, 1500, 'easeInOutExpo');
 			return false;
         });
-        
+
         // Activated Navigation
         function fixSpy() {
             var data = $body.data('bs.scrollspy');
@@ -105,7 +105,7 @@
                 $body.scrollspy('refresh');
             }
         }
-        
+
         // Call function on resize
         var resizeTimer;
         $(this).on('resize', function() {
@@ -116,6 +116,4 @@
         });
 		return false;
     });
-    
-
 })(jQuery);
