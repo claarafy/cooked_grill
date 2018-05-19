@@ -133,6 +133,9 @@
           Now you can share your culinary skills with your community and make extra money at the same time.
           Cook when you want, charge what you want. <br />Sign up for a Cook Account. It's free.
         </p>
+
+
+
         <form class="form-horizontal">
           <div class="form-group">
             <div class="col-xs-6">
@@ -166,11 +169,95 @@
           </div>
         </div>
       </form>
+
+
+
+
     </div>
   </div>
 </div>
 </div>
 <!-- End featured -->
+
+
+
+
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name),  html: { class: "form-horizontal"}) do |f| %>
+  <%= devise_error_messages! %>
+  <div class="form-group">
+    <%= f.label "Name", class: "col-sm-3 control-label"%>
+    <div class="col-sm-9">
+      <%= f.text_field :first_name, class: "form-control", autocomplete: "first_name", :required => true, placeholder: "Name" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "Email", class: "col-sm-3 control-label"%>
+    <div class="col-sm-9">
+      <%= f.email_field :email, autofocus: true, class: "form-control", autocomplete: "email", :required => true, placeholder: "Email" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "Zip Code", class: "col-sm-3 control-label"%>
+    <div class="col-sm-9">
+      <%= f.text_field :zip, autofocus: true, class: "form-control", autocomplete: "zip", :required => true, placeholder: "Zip Code" %>
+    </div>
+  </div>
+<!-- Personal Information Ends -->
+<!-- Password Area Starts -->
+  <h3 class="panel-heading inner">
+    Password
+  </h3>
+  <div class="form-group">
+    <%= f.label :password, class: "col-sm-3 control-label"%>
+    <div class="col-sm-9">
+      <!--  TODO Change later. Harcoded password requirement -->
+      <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password (6 characters minimum)"%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "Re-Password", class: "col-sm-3 control-label"%>
+    <div class="col-sm-9">
+      <!--  TODO Change later. Harcoded password requirement -->
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Re-Password (6 characters minimum)"%>
+    </div>
+  </div>
+<!-- Password Area Ends -->
+<!-- Profile Image Upload Starts -->
+  <h3 class="panel-heading inner">
+    Upload a Profile Image
+  </h3>
+  <div class="form-group">
+    <%= f.label "Profile Image", class: "col-sm-3 control-label"%>
+    <div class="col-sm-9">
+      <%= f.file_field :profile_image %>
+    </div>
+  </div>
+<!-- Profile Image Upload Ends -->
+<div class="form-group">
+  <div class="col-sm-offset-3 col-sm-9">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" required="required"> I have read and agreed to the Terms & Conditions
+      </label>
+    </div>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-sm-offset-3 col-sm-9">
+    <div class="actions">
+      <%= f.submit "Sign Up", class: "btn btn-black" %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+
+
+
+
+
+
 
 <div class="clearfix"></div>
 
