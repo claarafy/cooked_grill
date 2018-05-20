@@ -1096,45 +1096,48 @@
             <div class="row">
                 <div class="col-md-12">
 
-
-        <form id="contactform" action="contact/contact.php" method="post" class="validateform" name="leaveContact">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name),  html: { id: "contactform", class: "form-horizontal"}) do |f| %>
+        <!-- <form id="contactform" action="contact/contact.php" method="post" class="validateform" name="leaveContact"> -->
           <div class="clearfix"></div>
-          <div id="sendmessage">
-            <div class="alert alert-info marginbot35">
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <strong>Your message has been sent. Thank you!</strong><br />
-            </div>
-          </div>
+
           <ul class="listForm">
             <li>
-              <label>Name :</label>
+              <%= f.label "Name" %>
+              <!-- <label>Name :</label> -->
               <div class="input-form">
                 <span class="icon icon-profile-male icon-primary icon-form"></span>
-                <input type="text" class="form-control input-lg" name="name" data-rule="required" data-msg="Required field" placeholder="Enter Name...">
+                <%= f.text_field :first_name, autofocus: true, class: "form-control input-lg", autocomplete: "first_name", :required => true, placeholder: "Enter Name..." %>
+                <!-- <input type="text" class="form-control input-lg" name="name" data-rule="required" data-msg="Required field" placeholder="Enter Name..."> -->
                 <div class="validation"></div>
               </div>
             </li>
             <li>
-              <label>Zip :</label>
+              <%= f.label "Zip Code" %>
+              <!-- <label>Zip :</label> -->
               <div class="input-form">
                 <span class="icon icon-profile-male icon-primary icon-form"></span>
-                <input type="text" class="form-control input-lg" name="name" data-rule="required" data-msg="Required field" placeholder="Enter Zip Code...">
+                <%= f.text_field :zip, class: "form-control input-lg", autocomplete: "zip", :required => true, placeholder: "Enter Zip Code..." %>
+                <!-- <input type="text" class="form-control input-lg" name="name" data-rule="required" data-msg="Required field" placeholder="Enter Zip Code..."> -->
                 <div class="validation"></div>
               </div>
             </li>
             <li>
-              <label>Email :</label>
+              <%= f.label "Email" %>
+               <!-- <label>Email :</label> -->
               <div class="input-form">
                 <span class="icon icon-envelope icon-secondary icon-form"></span>
-                <input type="text" class="form-control input-lg" name="email" data-rule="email" data-msg="Please enter a valid email" placeholder="Enter Email Address...">
+                <%= f.email_field :email, class: "form-control input-lg", autocomplete: "email", :required => true, placeholder: "Enter Email Address..." %>
+                <!-- <input type="text" class="form-control input-lg" name="email" data-rule="email" data-msg="Please enter a valid email" placeholder="Enter Email Address..."> -->
                 <div class="validation"></div>
               </div>
             </li>
             <li>
-              <label>Password :</label>
+              <%= f.label :password %>
+              <!-- <label>Password :</label> -->
               <div class="input-form">
                 <span class="icon icon-profile-male icon-primary icon-form"></span>
-                <input type="text" class="form-control input-lg" name="name" data-rule="required" data-msg="Required field" placeholder="Enter Password">
+                <%= f.password_field :password, autocomplete: "off", class: "form-control input-lg", placeholder: "6 characters minimum"%>
+                <!-- <input type="text" class="form-control input-lg" name="name" data-rule="required" data-msg="Required field" placeholder="Enter Password"> -->
                 <div class="validation"></div>
               </div>
             </li>
@@ -1148,11 +1151,13 @@
             </li> -->
             <li class="full-list text-center">
               <div class="input-form cm-bottom">
-                <input type="submit" value="Sign Up" class="btn btn-primary btn-bavel btn-lg btn-x-lg" name="Submit" />
+                <%= f.submit "Sign Up", class: "btn btn-primary btn-bavel btn-lg btn-x-lg" %>
+                <!-- <input type="submit" value="Sign Up" class="btn btn-primary btn-bavel btn-lg btn-x-lg" name="Submit" /> -->
               </div>
             </li>
           </ul>
-        </form>
+        <% end %>
+        <!-- </form> -->
 
 
 
