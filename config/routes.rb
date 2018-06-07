@@ -12,7 +12,11 @@ Rails.application.routes.draw do
 
   get 'withdraw_form/create'
 
-  get 'landing_page/new_cook'
+  # get 'landing_page/new_cook'
+  match 'free_sign_up', to: 'landing_page#new_cook', via: 'get'
+
+
+  post 'landing_page/create'
 
   devise_for :admins
   get 'admin' => 'admin#home'
