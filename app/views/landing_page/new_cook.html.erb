@@ -1,4 +1,34 @@
 <!DOCTYPE html>
+<head>
+
+
+
+<!-- Global site tag (gtag.js) - Google AdWords: 1068902831 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-1068902831"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-1068902831');
+</script>
+
+<!-- Event snippet for Cooked Nearby Sign Ups conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-1068902831/CIjKCLih5IMBEK_T2P0D',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+
 <!-- Bootstrap core CSS -->
 <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
 <%= stylesheet_link_tag 'landing_page/bootstrap.min', media: 'all' %>
@@ -92,8 +122,7 @@
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
       <span class="icon icon-menu"></span>
     </button>
-    <a class="navbar-brand" href="#">
-      Cooked Nearby
+    <%= link_to "Cooked Nearby", root_path,  class: "navbar-brand" %>
       <!-- <%= image_tag "img/logo.png" %> -->
       <!-- <%= image_tag "img/logo.png" %> -->
     </a>
@@ -173,7 +202,7 @@
         </div> -->
         <div class="form-group">
           <div class="col-lg-12">
-            <%= f.submit "Sign Up", class: "btn btn-primary btn-bavel" %>
+            <%= f.submit "Sign Up", class: "btn btn-primary btn-bavel", onclick: 'gtag_report_conversion()'%>
             <!-- <button class="btn btn-primary btn-bavel">Sign Up</button> -->
           </div>
         </div>
@@ -239,7 +268,7 @@
                     <!-- Start Navigation Tab -->
                     <div class="tabbed_navigation">
                       <ul>
-                        <li class="active">Overview</li>
+                        <li>Overview</li>
                         <li>How It Works</li>
                         <li>Q&A</li>
                       </ul>
@@ -1190,7 +1219,7 @@
                       </li> -->
                       <li class="full-list text-center">
                         <div class="input-form cm-bottom">
-                          <%= f.submit "Sign Up", class: "btn btn-primary btn-bavel btn-lg btn-x-lg" %>
+                          <%= f.submit "Sign Up", class: "btn btn-primary btn-bavel btn-lg btn-x-lg", onclick: 'gtag_report_conversion()' %>
                           <!-- <input type="submit" value="Sign Up" class="btn btn-primary btn-bavel btn-lg btn-x-lg" name="Submit" /> -->
                         </div>
                       </li>
