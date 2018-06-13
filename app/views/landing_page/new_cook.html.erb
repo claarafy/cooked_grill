@@ -2,32 +2,43 @@
 <head>
 
 
+<% if Rails.env == "production"  %>
+  <!-- Global site tag (gtag.js) - Google AdWords: 1068902831 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1068902831"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-1068902831');
+  </script>
 
-<!-- Global site tag (gtag.js) - Google AdWords: 1068902831 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-1068902831"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-1068902831');
-</script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120815080-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-<!-- Event snippet for Cooked Nearby Sign Ups conversion page
-In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
-<script>
-function gtag_report_conversion(url) {
-  var callback = function () {
-    if (typeof(url) != 'undefined') {
-      window.location = url;
-    }
-  };
-  gtag('event', 'conversion', {
-      'send_to': 'AW-1068902831/CIjKCLih5IMBEK_T2P0D',
-      'event_callback': callback
-  });
-  return false;
-}
-</script>
+    gtag('config', 'UA-120815080-1');
+  </script>
+
+  <!-- Event snippet for Cooked Nearby Sign Ups conversion page
+  In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+  <script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-1068902831/CIjKCLih5IMBEK_T2P0D',
+        'event_callback': callback
+    });
+    return false;
+  }
+  </script>
+<% end %>
 
 <!-- Bootstrap core CSS -->
 <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
