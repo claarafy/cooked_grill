@@ -86,7 +86,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 
 # From development enviroment. Might not be necessary in Production.
-gem 'listen', '>= 3.0.5', '< 3.2'
+gem 'listen', '>= 3.0.5'
 
 # ** UNUSED **
 # Use Redis adapter to run Action Cable in production

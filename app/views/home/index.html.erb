@@ -81,8 +81,9 @@
                 </div>
                 <div class="caption">
                   <div class="price">
-                    <span class="price-new">$<%= sprintf('%.2f', meal.meal_cost) %></span>
-                    <span class="price-old" style="visibility: hidden;">$249.50</span>
+                    <span class="price-new">$<%= sprintf('%.2f', meal.meal_cost) %></span><br>
+                    + <span class="price-delivery">$5.00 (Delivery Fee) or </span><span class="price-green">Free Pickup</span>
+                    <!-- <span class="price-old" style="visibility: hidden;">$249.50</span> -->
                   </div>
                   <h4><%= link_to meal.title.truncate(25), meal %></h4>
                     <div class="star-ratings-css-meal">

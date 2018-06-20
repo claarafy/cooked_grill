@@ -817,6 +817,14 @@ input[type=number] {
 					color: #ec2f2f;
 					font-size: 24px;
 				}
+				.product-col .price span.price-green {
+					color: #16a032;
+					font-size: 14px;
+				}
+				.product-col .price span.price-delivery {
+					// padding-right: 5px;
+					font-size: 14px;
+				}
 				.product-col .price span.price-old {
 					color: #787878;
 					font-size: 18px;
