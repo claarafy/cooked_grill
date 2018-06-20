@@ -449,11 +449,7 @@ DEPENDENCIES
   foreman
   jbuilder (~> 2.5)
   jquery-rails
-<<<<<<< HEAD
   listen (>= 3.0.5)
-=======
-  listen (~> 3.1, >= 3.1.5)
->>>>>>> e25baf1888c5859e91ac1785081d3575e77432f8
   mail_form
   mini_magick
   omniauth
