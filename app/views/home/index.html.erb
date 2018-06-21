@@ -1,3 +1,31 @@
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form id="distance_form">
+      <!-- <div class="form-group"><label>Origin: </label> <input class="form-control" id="from_places" placeholder="Enter a location" /> <input id="origin" name="origin" required="" type="hidden" /></div> -->
+      <div class="form-group"> <input class="form-control" id="to_places" placeholder="Enter Delivery Address" /> <input id="destination" name="destination" required="" type="hidden" /></div>
+      <div class="col-md-6">
+        <div class="form-group"><label>Origin: </label> <input class="form-control" id="from_places" placeholder="Enter a location" /> <input id="origin" name="origin" required="" type="hidden" /></div>
+        <!-- <input class="btn btn-primary" type="submit" value="Calculate" /> -->
+        <input class="btn btn-xs btn-primary" type="submit" value="Estimate" />
+      </form>
+
+      <div id="result">
+        <ul class="list-group">
+        	<li class="list-group-item d-flex justify-content-between align-items-center">Distance In Mile :</li>
+        	<li class="list-group-item d-flex justify-content-between align-items-center">Distance is Kilo:</li>
+        	<li class="list-group-item d-flex justify-content-between align-items-center">IN TEXT:</li>
+        	<li class="list-group-item d-flex justify-content-between align-items-center">IN MINUTES:</li>
+        	<li class="list-group-item d-flex justify-content-between align-items-center">FROM:</li>
+        	<li class="list-group-item d-flex justify-content-between align-items-center">TO:</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Slider Starts -->
 <div id="main-carousel" class="carousel slide carousel-fade" data-ride="carousel">
 <!-- Indicators Starts -->
@@ -82,7 +110,14 @@
                 <div class="caption">
                   <div class="price">
                     <span class="price-new">$<%= sprintf('%.2f', meal.meal_cost) %></span><br>
-                    + <span class="price-delivery">$5.00 (Delivery Fee) or </span><span class="price-green">Free Pickup</span>
+                    <div class="estimate-delivery">
+                      <!-- <button type="button" onclick="getAddressModal(this)" class="btn btn-xs btn-primary"> ESTIMATE DELIVERY FEE </button> OR </span><span class="price-green">Free Pickup</span> -->
+                      <span class="price-text-italic">Delivery Available </span><span class="price-text">OR </span><span class="price-green-italic">Free Pickup</span>
+                    </div>
+                    <div class="show-delivery">
+                      <!-- <span class="price-delivery">$5.00</span><span class="price-text"> OR </span><span class="price-green">Free Pickup</span> -->
+                    </div>
+                    <!-- + <span class="price-delivery">$5.00 (Delivery Fee) or </span><span class="price-green">Free Pickup</span> -->
                     <!-- <span class="price-old" style="visibility: hidden;">$249.50</span> -->
                   </div>
                   <h4><%= link_to meal.title.truncate(25), meal %></h4>
@@ -133,20 +168,22 @@
   </section>
 <!-- Near You Meals Ends -->
 
+
 <!-- Two Column Banner Starts -->
   <div class="row">
   <!-- Banner #1 Starts -->
     <div class="col-sm-6 col-xs-12">
-      <%= image_tag("images/home_cooked_1_lean.jpg", class:"img-responsive img-center col2-banners") %>
+      <!-- <%= image_tag("images/home_cooked_1_lean.jpg", class:"img-responsive img-center col2-banners") %> -->
     </div>
   <!-- Banner #1 Ends -->
   <!-- Banner #2 Starts -->
     <div class="col-sm-6 col-xs-12">
-      <%= image_tag("images/home_cooked_2_lean.jpg", class:"img-responsive img-center col2-banners") %>
+      <!-- <%= image_tag("images/home_cooked_2_lean.jpg", class:"img-responsive img-center col2-banners") %> -->
     </div>
   <!-- Banner #2 Ends -->
   </div>
 <!-- Two Column Banner Ends -->
+
 
 <!-- Family & Low Carb Meals Starts -->
   <div class="row">
@@ -179,7 +216,7 @@
                     <div class="caption">
                       <div class="price">
                         <span class="price-new">$<%= sprintf('%.2f', meal.meal_cost) %></span>
-                        <span class="price-old" style="visibility: hidden;">$249.50</span>
+                        <!-- <span class="price-old" style="visibility: hidden;">$249.50</span> -->
                       </div>
                       <h4><%= link_to meal.title.truncate(25), meal %></h4>
                         <div class="star-ratings-css-meal">
@@ -230,7 +267,7 @@
                   <div class="caption">
                     <div class="price">
                       <span class="price-new">$35.99</span>
-                      <span class="price-old" style="visibility: hidden;">$249.50</span>
+                      <!-- <span class="price-old" style="visibility: hidden;">$249.50</span> -->
                     </div>
                     <h4>King Ranch Mac & Cheese</h4>
                     <div class="star-ratings-css-meal">

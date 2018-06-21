@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180510061203) do
+ActiveRecord::Schema.define(version: 20180621213325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 20180510061203) do
     t.string "s3_profile_image"
     t.text "about_me"
     t.string "zip"
+    t.string "default_pickup_address"
+    t.string "phone_number"
     t.index ["email"], name: "index_cooks_on_email", unique: true
     t.index ["reset_password_token"], name: "index_cooks_on_reset_password_token", unique: true
   end
@@ -134,6 +136,8 @@ ActiveRecord::Schema.define(version: 20180510061203) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "zip"
+    t.string "default_delivery_address"
+    t.string "phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
