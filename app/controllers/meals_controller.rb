@@ -3,8 +3,6 @@ class MealsController < ApplicationController
   before_action :admin_or_cook, :except => [:show]
   skip_before_action :verify_authenticity_token
 
-
-
   def admin_or_cook
       if admin_signed_in?
         return true
@@ -46,6 +44,19 @@ class MealsController < ApplicationController
   # GET /meals/new
   def new
     @meal = Meal.new
+    @default_pickup_address = ""
+    @has_default_pickup_address_set = false
+    @phone_number = ""
+    @has_phone_number_set = false
+    cook = current_cook
+    if cook.default_pickup_address && cook.default_pickup_address != ""
+      @has_default_pickup_address_set = true
+      @default_pickup_address = cook.default_pickup_address
+    end
+    if cook.phone_number && cook.phone_number != ""
+      @has_phone_number_set = true
+      @phone_number = cook.phone_number
+    end
   end
 
   # GET /meals/1/edit
@@ -57,6 +68,19 @@ class MealsController < ApplicationController
     if @meal.availability_to
       @availability_to_formatted = @meal.availability_to.strftime(Constants::TIME_FORMAT)
     end
+    @default_pickup_address = ""
+    @has_default_pickup_address_set = false
+    @phone_number = ""
+    @has_phone_number_set = false
+    cook = current_cook
+    if cook.default_pickup_address && cook.default_pickup_address != ""
+      @has_default_pickup_address_set = true
+      @default_pickup_address = cook.default_pickup_address
+    end
+    if cook.phone_number && cook.phone_number != ""
+      @has_phone_number_set = true
+      @phone_number = cook.phone_number
+    end
   end
 
   # POST /meals
@@ -67,6 +91,14 @@ class MealsController < ApplicationController
     @meal = Meal.new(meal_params)
     @meal.cook_id = current_cook.id
     @meal.active = true
+    cook = current_cook
+    if !cook.default_pickup_address || cook.default_pickup_address == ""
+        cook.default_pickup_address = params[:meal][:location]
+    end
+    if !cook.phone_number || cook.phone_number == ""
+        cook.phone_number = params[:meal][:phone_number]
+    end
+    cook.save
 
     available_from_string = params[:meal][:availability_from]
     available_to_string = params[:meal][:availability_to]
@@ -121,6 +153,6 @@ class MealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meal_params
-      params.require(:meal).permit(:family_deal, :low_carb, :title, :description, :ingredients, :portion_info, :availability_from, :availability_to, :images, :location, :pickup_only, :delivery_only, :tags, :meal_cost, :active)
+      params.require(:meal).permit(:family_deal, :low_carb, :title, :description, :ingredients, :portion_info, :availability_from, :availability_to, :images, :location, :tags, :meal_cost, :active, :phone_number)
     end
 end

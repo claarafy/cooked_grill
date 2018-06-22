@@ -21,6 +21,12 @@ function getAddressModal(elem) {
 $(function() {
     // add input listeners
     google.maps.event.addDomListener(window, 'load', function () {
+        // Added by AV
+        var user_delivery_address = new google.maps.places.Autocomplete(document.getElementById('default_delivery_address'));
+        var cook_pickup_address = new google.maps.places.Autocomplete(document.getElementById('default_pickup_address'));
+        var cook_meal_location = new google.maps.places.Autocomplete(document.getElementById('meal_location'));
+        // END AV
+
         var from_places = new google.maps.places.Autocomplete(document.getElementById('from_places'));
         var to_places = new google.maps.places.Autocomplete(document.getElementById('to_places'));
 

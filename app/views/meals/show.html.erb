@@ -64,7 +64,7 @@
               <li>
                 <span>Availability To:</span> <%= @meal.availability_to.strftime(Constants::TIME_FORMAT) %>
               </li>
-              <li>
+              <!-- <li>
                 <span>Pickup/Delivery:</span>
 								<% if @meal.pickup_only %>
 									Pickup Only
@@ -73,7 +73,7 @@
 								<% else %>
 									Pickup Or Delivery
 								<% end %>
-              </li>
+              </li> -->
               <li><span>Portion Info:</span>
 								<%= @meal.portion_info %>
 							</li>

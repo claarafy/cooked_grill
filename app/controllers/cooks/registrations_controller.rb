@@ -6,11 +6,11 @@ class Cooks::RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    params.require(:cook).permit(:first_name, :email, :password, :password_confirmation, :profile_image, :about_me, :zip)
+    params.require(:cook).permit(:first_name, :email, :password, :password_confirmation, :profile_image, :about_me, :default_pickup_address, :phone_number)
   end
 
   def account_update_params
-    params.require(:cook).permit(:first_name, :email, :password, :password_confirmation, :current_password, :profile_image, :about_me, :zip)
+    params.require(:cook).permit(:first_name, :email, :password, :password_confirmation, :current_password, :profile_image, :about_me, :default_pickup_address, :phone_number)
   end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]

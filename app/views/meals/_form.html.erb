@@ -116,7 +116,7 @@
       </div>
     <!-- Form Div Ends -->
     <!-- Form Div Starts -->
-      <div class="form-horizontal" role="form">
+      <!-- <div class="form-horizontal" role="form">
         <div class="form-group">
           <label for="inputFname" class="col-sm-3 control-label">(Optional):</label>
           <div class="col-sm-9">
@@ -126,14 +126,32 @@
             <%= form.check_box :delivery_only, :second_name => "foo[1]", id: :meal_delivery_only, :class => "radio form-control" %>
           </div>
         </div>
-      </div>
+      </div> -->
     <!-- Form Div Ends -->
     <!-- Form Div Starts -->
       <div class="form-horizontal" role="form">
         <div class="form-group">
-          <label for="inputFname" class="col-sm-3 control-label">Pickup Location :</label>
+          <label for="inputFname" class="col-sm-3 control-label">Pickup Address :</label>
           <div class="col-sm-9">
-            <%= form.text_field :location, id: :meal_location, class: "form-control", placeholder: "Location Address (Must be provided if pickup only)" %>
+						<%= if @has_default_pickup_address_set
+							form.text_field :location, id: :meal_location, :required => true, class: "form-control", :readonly => true, :value => @default_pickup_address
+						else
+						  form.text_field :location, id: :meal_location, :required => true, class: "form-control", placeholder: "Pickup Address (Will Be Set as Default)"
+						end %>
+          </div>
+        </div>
+      </div>
+    <!-- Form Div Ends -->
+		<!-- Form Div Starts -->
+      <div class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="inputFname" class="col-sm-3 control-label">Phone Number :</label>
+          <div class="col-sm-9">
+						<%= if @has_phone_number_set
+							form.text_field :phone_number, id: :meal_phone_number, :required => true, class: "form-control", :readonly => true, :value => @phone_number
+						else
+						  form.text_field :phone_number, id: :meal_phone_number, :required => true, class: "form-control", placeholder: "Phone Number (Will Be Set as Default)"
+						end %>
           </div>
         </div>
       </div>
