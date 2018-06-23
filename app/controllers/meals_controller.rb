@@ -122,6 +122,19 @@ class MealsController < ApplicationController
   # PATCH/PUT /meals/1
   # PATCH/PUT /meals/1.json
   def update
+    @default_pickup_address = ""
+    @has_default_pickup_address_set = false
+    @phone_number = ""
+    @has_phone_number_set = false
+    cook = current_cook
+    if cook.default_pickup_address && cook.default_pickup_address != ""
+      @has_default_pickup_address_set = true
+      @default_pickup_address = cook.default_pickup_address
+    end
+    if cook.phone_number && cook.phone_number != ""
+      @has_phone_number_set = true
+      @phone_number = cook.phone_number
+    end
     respond_to do |format|
       if validDates?(meal_params, @meal) && @meal.update(meal_params)
         format.html { redirect_to @meal, notice: 'Meal was successfully updated.' }
@@ -153,6 +166,6 @@ class MealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meal_params
-      params.require(:meal).permit(:family_deal, :low_carb, :title, :description, :ingredients, :portion_info, :availability_from, :availability_to, :images, :location, :tags, :meal_cost, :active, :phone_number)
+      params.require(:meal).permit(:family_deal, :low_carb, :title, :description, :ingredients, :portion_info, :availability_from, :availability_to, :images, :location, :tags, :meal_cost, :active)
     end
 end

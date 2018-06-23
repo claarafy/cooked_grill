@@ -24,4 +24,3 @@
 //= require ./pickadate/picker.date
 //= require ./pickadate/picker.time
 //= require  ./pickadate/form_datepicker
-//= require  delivery_address_modal

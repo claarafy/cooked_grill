@@ -8,6 +8,7 @@ class HomeController < ApplicationController
     end
     # TODO temp fix, change later
     @chefs = Cook.limit(10)
+
   end
 
   def subscribe_create
@@ -35,4 +36,12 @@ class HomeController < ApplicationController
 
   def about_payment
   end
+
+  # TODO Delete later
+  # def calculate_delivery_fee(fromAddress, toAddress)
+  #   return "5.34"
+  # end
+  #
+  # helper_method :calculate_delivery_fee
+
 end

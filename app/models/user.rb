@@ -7,12 +7,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 
-   validate :valid_zip_code
+   # validate :valid_zip_code
+   #
+   # def valid_zip_code
+   #   if ZipCodes.identify(zip) == nil
+   #     errors.add(:zip, " is invalid")
+   #   end
+   # end
 
-   def valid_zip_code
-     if ZipCodes.identify(zip) == nil
-       errors.add(:zip, " is invalid")
-     end
-   end
-   
 end

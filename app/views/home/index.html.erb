@@ -112,7 +112,17 @@
                     <span class="price-new">$<%= sprintf('%.2f', meal.meal_cost) %></span><br>
                     <div class="estimate-delivery">
                       <!-- <button type="button" onclick="getAddressModal(this)" class="btn btn-xs btn-primary"> ESTIMATE DELIVERY FEE </button> OR </span><span class="price-green">Free Pickup</span> -->
-                      <span class="price-text-italic">Delivery Available </span><span class="price-text">OR </span><span class="price-green-italic">Free Pickup</span>
+                      <!--  Use origin and destination addresses as unique id for each meal listed -->
+                      <% if user_signed_in? && current_user.default_delivery_address && current_user.default_delivery_address != "" %>
+                          <%= javascript_tag "calculateDeliveryFee('#{meal.location}', '#{current_user.default_delivery_address}')" %>
+                          <% id_part1 = meal.location.delete(' ').delete(',').truncate(10).delete('.')
+                             id_part2 = current_user.default_delivery_address.delete(' ').delete(',').truncate(10).delete('.')
+                              %>
+                          <span class="price-text-italic <%= id_part1 + id_part2 %>"></span><span class="price-text"> (estimated delivery) OR </span><span class="price-green-italic">Free Pickup</span>
+                          <!-- <span class="price-text-italic" id="<%= meal.location + current_user.default_delivery_address %>"> </span><span class="price-text">OR </span><span class="price-green-italic">Free Pickup</span> -->
+                      <% else %>
+                          <span class="price-text-italic">Delivery Available </span><span class="price-text">OR </span><span class="price-green-italic">Free Pickup</span>
+                      <% end %>
                     </div>
                     <div class="show-delivery">
                       <!-- <span class="price-delivery">$5.00</span><span class="price-text"> OR </span><span class="price-green">Free Pickup</span> -->
@@ -215,7 +225,25 @@
                     </div>
                     <div class="caption">
                       <div class="price">
-                        <span class="price-new">$<%= sprintf('%.2f', meal.meal_cost) %></span>
+                        <span class="price-new">$<%= sprintf('%.2f', meal.meal_cost) %></span><br>
+                        <div class="estimate-delivery">
+                          <!-- <button type="button" onclick="getAddressModal(this)" class="btn btn-xs btn-primary"> ESTIMATE DELIVERY FEE </button> OR </span><span class="price-green">Free Pickup</span> -->
+                          <!--  Use origin and destination addresses as unique id for each meal listed -->
+                          <% if user_signed_in? && current_user.default_delivery_address && current_user.default_delivery_address != "" %>
+                              <%= javascript_tag "calculateDeliveryFee('#{meal.location}', '#{current_user.default_delivery_address}')" %>
+                              <% id_part1 = meal.location.delete(' ').delete(',').truncate(10).delete('.')
+                                 id_part2 = current_user.default_delivery_address.delete(' ').delete(',').truncate(10).delete('.')
+                                  %>
+                              <span class="price-text-italic <%= id_part1 + id_part2 %>"></span><span class="price-text"> (estimated delivery) OR </span><span class="price-green-italic">Free Pickup</span>
+                              <!-- <span class="price-text-italic" id="<%= meal.location + current_user.default_delivery_address %>"> </span><span class="price-text">OR </span><span class="price-green-italic">Free Pickup</span> -->
+                          <% else %>
+                              <span class="price-text-italic">Delivery Available </span><span class="price-text">OR </span><span class="price-green-italic">Free Pickup</span>
+                          <% end %>
+                        </div>
+                        <div class="show-delivery">
+                          <!-- <span class="price-delivery">$5.00</span><span class="price-text"> OR </span><span class="price-green">Free Pickup</span> -->
+                        </div>
+                        <!-- + <span class="price-delivery">$5.00 (Delivery Fee) or </span><span class="price-green">Free Pickup</span> -->
                         <!-- <span class="price-old" style="visibility: hidden;">$249.50</span> -->
                       </div>
                       <h4><%= link_to meal.title.truncate(25), meal %></h4>
@@ -397,8 +425,26 @@
                     </div>
                     <div class="caption">
                       <div class="price">
-                        <span class="price-new">$<%= sprintf('%.2f', meal.meal_cost) %></span>
-                        <span class="price-old" style="visibility: hidden;">$249.50</span>
+                        <span class="price-new">$<%= sprintf('%.2f', meal.meal_cost) %></span><br>
+                        <div class="estimate-delivery">
+                          <!-- <button type="button" onclick="getAddressModal(this)" class="btn btn-xs btn-primary"> ESTIMATE DELIVERY FEE </button> OR </span><span class="price-green">Free Pickup</span> -->
+                          <!--  Use origin and destination addresses as unique id for each meal listed -->
+                          <% if user_signed_in? && current_user.default_delivery_address && current_user.default_delivery_address != "" %>
+                              <%= javascript_tag "calculateDeliveryFee('#{meal.location}', '#{current_user.default_delivery_address}')" %>
+                              <% id_part1 = meal.location.delete(' ').delete(',').truncate(10).delete('.')
+                                 id_part2 = current_user.default_delivery_address.delete(' ').delete(',').truncate(10).delete('.')
+                                  %>
+                              <span class="price-text-italic <%= id_part1 + id_part2 %>"></span><span class="price-text"> (estimated delivery) OR </span><span class="price-green-italic">Free Pickup</span>
+                              <!-- <span class="price-text-italic" id="<%= meal.location + current_user.default_delivery_address %>"> </span><span class="price-text">OR </span><span class="price-green-italic">Free Pickup</span> -->
+                          <% else %>
+                              <span class="price-text-italic">Delivery Available </span><span class="price-text">OR </span><span class="price-green-italic">Free Pickup</span>
+                          <% end %>
+                        </div>
+                        <div class="show-delivery">
+                          <!-- <span class="price-delivery">$5.00</span><span class="price-text"> OR </span><span class="price-green">Free Pickup</span> -->
+                        </div>
+                        <!-- + <span class="price-delivery">$5.00 (Delivery Fee) or </span><span class="price-green">Free Pickup</span> -->
+                        <!-- <span class="price-old" style="visibility: hidden;">$249.50</span> -->
                       </div>
                       <h4><%= link_to meal.title.truncate(25), meal %></h4>
                         <div class="star-ratings-css-meal">

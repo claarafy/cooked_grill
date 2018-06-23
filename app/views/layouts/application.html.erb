@@ -26,7 +26,8 @@
 
 	<%= stylesheet_link_tag 'application', media: 'all' %>
 	<%= javascript_include_tag 'application' %>
-	<script  defer src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key=<%= ENV["GOOGLE_MAPS_API"] %>"  type="text/javascript"></script>
+	<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key=#{ENV['GOOGLE_MAPS_API']}" %>
+	<%= javascript_include_tag "delivery_address_modal.js" %>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Cooked Nearby </title>

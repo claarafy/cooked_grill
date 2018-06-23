@@ -122,14 +122,7 @@
 							<div class="form-horizontal" role="form">
 								<div class="form-group">
 									<div class="col-sm-9">
-
-										  <% if @meal && @meal.delivery_only %>
-												<%= select_tag(:inputPickupDelivery, options_for_select([['- Select One -', 'No_Selection'],['Delivery', 'Delivery']]), class: "form-control") %>
-											<% elsif @meal && @meal.pickup_only %>
-												<%= select_tag(:inputPickupDelivery, options_for_select([['- Select One -', 'No_Selection'], ['Pickup', 'Pickup']]), class: "form-control") %>
-											<% else %>
-												<%= select_tag(:inputPickupDelivery, options_for_select([['- Select One -', 'No_Selection'],['Delivery', 'Delivery'], ['Pickup', 'Pickup']]), class: "form-control") %>
-											<% end %>
+										<%= select_tag(:inputPickupDelivery, options_for_select([['- Select One -', 'No_Selection'],['Delivery', 'Delivery'], ['Pickup', 'Pickup']]), class: "form-control") %>
 									</div>
 								</div>
 							</div>
