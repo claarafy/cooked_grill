@@ -148,7 +148,12 @@
 										<%= form.text_field :address_city, id: :order_address_city, :required => true, class: "form-control", placeholder: "City" %>
 										<%= form.text_field :address_state, id: :order_address_state, :required => true, class: "form-control", placeholder: "State" %>
 										<%= form.text_field :address_zip, id: :order_address_zip, :required => true, class: "form-control", placeholder: "Zip Code" %> <br /> -->
-                    <%= form.text_area :delivery_address, id: :order_delivery_address, :required => true, class: "form-control", placeholder: "Your Name, Street, City, State Zip" %>
+                    <!-- <%= form.text_area :delivery_address, id: :order_delivery_address, :required => true, class: "form-control", placeholder: "Your Name, Street, City, State Zip" %> -->
+										<%= if @has_default_delivery_address_set
+											form.text_field :delivery_address, id: :order_delivery_address, class: "form-control", :readonly => true, :value => @default_delivery_address
+										else
+										  form.text_field :delivery_address, id: :order_delivery_address, class: "form-control", placeholder: "Delivery Address (Will Be Set as Default)"
+										end %>
 									</div>
 								</div>
 							</div>
@@ -190,13 +195,18 @@
 								<div class="form-group">
 									<label for="inputFname" class="col-sm-3 control-label">Phone Number :</label>
 									<div class="col-sm-9">
-                    <%= form.text_field :customer_phone, id: :order_customer_phone, class: "form-control", placeholder: "Phone Number" %>
+										<%= if @has_phone_number_set
+											form.text_field :customer_phone, id: :order_customer_phone, :required => true, class: "form-control", :readonly => true, :value => @phone_number
+										else
+										  form.text_field :customer_phone, id: :order_customer_phone, :required => true, class: "form-control", placeholder: "Phone Number (Will Be Set as Default)"
+										end %>
+                    <!-- <%= form.text_field :customer_phone, id: :order_customer_phone, class: "form-control", placeholder: "Phone Number" %> -->
 									</div>
 								</div>
 							</div>
 						<!-- Form Div Ends -->
 						<!-- Form Div Starts -->
-							<div class="form-horizontal" role="form">
+							<!-- <div class="form-horizontal" role="form">
 								<div class="form-group">
 									<label for="inputFname" class="col-sm-3 control-label">Pickup/Delivery:</label>
 									<div class="col-sm-9">
@@ -223,7 +233,7 @@
 			              </span>
 									</div>
 								</div>
-							</div>
+							</div> -->
 						<!-- Form Div Ends -->
 						</div>
 					</div>

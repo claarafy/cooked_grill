@@ -55,17 +55,30 @@ class OrdersController < ApplicationController
       @cook = Cook.find(@meal.cook_id)
       @price =  Meal.find(@meal.id).meal_cost
       #  TODO Currently not used
-      delivery_pickup = ""
-      if @meal.delivery_only
-        delivery_pickup = "delivery"
-      elsif @meal.pickup_only
-        delivery_pickup = "pickup"
-      else
-        delivery_pickup = "delivery or pickup"
-      end
+      # delivery_pickup = ""
+      # if @meal.delivery_only
+      #   delivery_pickup = "delivery"
+      # elsif @meal.pickup_only
+      #   delivery_pickup = "pickup"
+      # else
+      #   delivery_pickup = "delivery or pickup"
+      # end
       # End of unused code
     else
         redirect_to root_path, :alert => "Must provide mealID and must be signed in as a non-cook user"
+    end
+    @default_delivery_address = ""
+    @has_default_delivery_address_set = false
+    @phone_number = ""
+    @has_phone_number_set = false
+    user = current_user
+    if user.default_delivery_address && user.default_delivery_address != ""
+      @has_default_delivery_address_set = true
+      @default_delivery_address = user.default_delivery_address
+    end
+    if user.phone_number && user.phone_number != ""
+      @has_phone_number_set = true
+      @phone_number = user.phone_number
     end
   end
 
@@ -77,8 +90,22 @@ class OrdersController < ApplicationController
     @meal = Meal.find(@order.meal_id)
     @cook = Cook.find(@meal.cook_id)
     @price =  @meal.meal_cost
-    if @order.pickup_date
-      @pickup_date_formatted = @order.pickup_date.strftime(Constants::TIME_FORMAT)
+    # TODO Commented out
+    # if @order.pickup_date
+    #   @pickup_date_formatted = @order.pickup_date.strftime(Constants::TIME_FORMAT)
+    # end
+    @default_delivery_address = ""
+    @has_default_delivery_address_set = false
+    @phone_number = ""
+    @has_phone_number_set = false
+    user = current_user
+    if user.default_delivery_address && user.default_delivery_address != ""
+      @has_default_delivery_address_set = true
+      @default_delivery_address = user.default_delivery_address
+    end
+    if user.phone_number && user.phone_number != ""
+      @has_phone_number_set = true
+      @phone_number = user.phone_number
     end
   end
 
@@ -100,6 +127,15 @@ class OrdersController < ApplicationController
       @cook = Cook.find(@meal.cook_id)
       @price =  @meal.meal_cost
 
+      user = current_user
+      if !user.default_delivery_address || user.default_delivery_address == ""
+          user.default_delivery_address = params[:order][:delivery_address]
+      end
+      if !user.phone_number || user.phone_number == ""
+          user.phone_number = params[:order][:customer_phone]
+      end
+      user.save
+
       # Pickup / Delivery TODO somewhat sloppy. Doesn't handle errors.
       if params[:inputPickupDelivery] == "Delivery"
         @order.delivery = true
@@ -107,10 +143,10 @@ class OrdersController < ApplicationController
         @order.pickup = true
       end
 
-      # Pickup/Delivery DateTime
-      pickup_datetime_string = order_params[:pickup_date]
-      pickup_datetime = DateTime.parse(pickup_datetime_string + @tz)
-      @order.pickup_date = pickup_datetime
+      # TODO commented out Pickup/Delivery DateTime
+      # pickup_datetime_string = order_params[:pickup_date]
+      # pickup_datetime = DateTime.parse(pickup_datetime_string + @tz)
+      # @order.pickup_date = pickup_datetime
 
       # Pickup Address
       pickupAddress = @meal.location
@@ -147,8 +183,10 @@ class OrdersController < ApplicationController
       # Attach an empty review
       @order.review = Review.new
 
+      # TODO Commented out
       respond_to do |format|
-        if validDate?(order_params, @meal, @order) && @order.save
+        # if validDate?(order_params, @meal, @order) && @order.save
+        if  @order.save
           format.html { redirect_to @order, notice: 'Pay to Finish the Transaction.' }
           format.json { render :show, status: :created, location: @order }
         else
@@ -183,8 +221,10 @@ class OrdersController < ApplicationController
       @order.pickup = true
     end
 
+    # TODO commented out
     respond_to do |format|
-      if validDate?(order_params, @meal, @order) && @order.update(order_params)
+      if @order.update(order_params)
+        # if validDate?(order_params, @meal, @order) && @order.update(order_params)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
 
@@ -193,6 +233,15 @@ class OrdersController < ApplicationController
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
+
+    user = current_user
+    if !user.default_delivery_address || user.default_delivery_address == ""
+        user.default_delivery_address = params[:order][:delivery_address]
+    end
+    if !user.phone_number || user.phone_number == ""
+        user.phone_number = params[:order][:customer_phone]
+    end
+    user.save
   end
 
   # DELETE /orders/1
@@ -239,6 +288,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:quantity, :delivery_address, :delivery, :pickup, :order_date, :pickup_date, :customer_phone, :meal_id, :inputPickupDelivery)
+      params.require(:order).permit(:quantity, :delivery_address, :delivery, :pickup, :order_date, :customer_phone, :meal_id, :inputPickupDelivery)
     end
 end
