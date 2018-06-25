@@ -10,20 +10,32 @@
 // });
 //
 
-if ($("#order_quantity").val() == null && $("#order_quantity").val() == ""){
-  $("#order_quantity").val(1);
-}
-var sub_total = $("#order_quantity").val() * parseFloat($("#meal_price_hidden").text());
-var taxes = sub_total * 0.095
-var total = sub_total + taxes;
-divs = document.getElementsByClassName( 'sub_total' );
-[].slice.call( divs ).forEach(function ( div ) {
-    div.innerHTML = sub_total.toFixed(2);;
-});
-if(document.getElementById('tax_amount') != null && document.getElementById('total_amount') != null){
-  document.getElementById('tax_amount').innerHTML = taxes.toFixed(2);
-  document.getElementById('total_amount').innerHTML = total.toFixed(2);
-}
+// Setup
+  if ($("#order_quantity").val() == null && $("#order_quantity").val() == ""){
+    $("#order_quantity").val(1);
+  }
+
+  var include_delivery = false;
+  // var delivery_cost = 2;
+  var delivery_cost = parseFloat($("#delivery_amount").text().replace('$',''));
+  // alert($("#delivery_amount").text());
+  var sub_total = $("#order_quantity").val() * parseFloat($("#meal_price_hidden").text());
+  var taxes = sub_total * 0.095
+  var total;
+  if(include_delivery){
+    total = sub_total + taxes + delivery_cost;
+  }else {
+    total = sub_total + taxes;
+  }
+
+  divs = document.getElementsByClassName( 'sub_total' );
+  [].slice.call( divs ).forEach(function ( div ) {
+      div.innerHTML = sub_total.toFixed(2);;
+  });
+  if(document.getElementById('tax_amount') != null && document.getElementById('total_amount') != null){
+    document.getElementById('tax_amount').innerHTML = taxes.toFixed(2);
+    document.getElementById('total_amount').innerHTML = total.toFixed(2);
+  }
 
 // Increment Quantity
 $("#increment_qty").on("click", function() {
@@ -33,7 +45,11 @@ $("#increment_qty").on("click", function() {
 
   var sub_total = $("#order_quantity").val() * parseFloat($("#meal_price_hidden").text());
   var taxes = sub_total * 0.095
-  var total = sub_total + taxes;
+  if(include_delivery){
+    total = sub_total + taxes + delivery_cost;
+  }else {
+    total = sub_total + taxes;
+  }
   divs = document.getElementsByClassName( 'sub_total' );
 
   [].slice.call( divs ).forEach(function ( div ) {
@@ -42,6 +58,7 @@ $("#increment_qty").on("click", function() {
   document.getElementById('tax_amount').innerHTML = taxes.toFixed(2);
   document.getElementById('total_amount').innerHTML = total.toFixed(2);
 });
+
 // Decrement Quantity
 $("#decrement_qty").on("click", function() {
   var oldValue = $("#order_quantity").val();
@@ -54,7 +71,11 @@ $("#decrement_qty").on("click", function() {
 
   var sub_total = $("#order_quantity").val() * parseFloat($("#meal_price_hidden").text());
   var taxes = sub_total * 0.095
-  var total = sub_total + taxes;
+  if(include_delivery){
+    total = sub_total + taxes + delivery_cost;
+  }else {
+    total = sub_total + taxes;
+  }
   divs = document.getElementsByClassName( 'sub_total' );
   [].slice.call( divs ).forEach(function ( div ) {
       div.innerHTML = sub_total.toFixed(2);;
@@ -63,29 +84,20 @@ $("#decrement_qty").on("click", function() {
   document.getElementById('total_amount').innerHTML = total.toFixed(2);
 });
 
-
-
-
-
-
 // Handle Delivery and Pickup Dropdown Selection on change
 $("#inputPickupDelivery").on("change", function() {
    if (this.value == "Delivery"){
-     $('#delivery-panel').show();
-     $('#order_delivery_address').prop('required',true);
+     deliveryOption(true);
    } else {
-     $('#delivery-panel').hide();
-     $('#order_delivery_address').prop('required',false);
+    deliveryOption(false);
    }
 });
 
 // Handle Delivery and Pickup Dropdown Selection on load
  if ($("#inputPickupDelivery").val() == "Delivery"){
-   $('#delivery-panel').show();
-   $('#delivery-panel').prop('required',true);
+  deliveryOption(true);
  } else {
-   $('#delivery-panel').hide();
-   $('#delivery-panel').prop('required',false);
+  deliveryOption(false);
  }
 
 $("input:checkbox").on('click', function() {
@@ -122,6 +134,7 @@ $("input:checkbox").on('click', function() {
     $box.prop("checked", false);
   }
 });
+
 // Make sure at least one checkbox selection is checked
 $('#order_submit').click(function() {
      checked = $("input[type=checkbox]:checked").length;
@@ -138,3 +151,34 @@ $('#order_submit').click(function() {
        return false;
      }
    });
+
+ //Helper methods
+ function deliveryOption(want_delivered){
+   if(want_delivered){
+     include_delivery = true;
+     $('#delivery-panel').show();
+     $('#delivery_fee').show();
+     $('#order_delivery_address').prop('required',true);
+     updateTotal();
+   }else {
+     include_delivery = false;
+     $('#delivery-panel').hide();
+     $('#delivery_fee').hide();
+     $('#order_delivery_address').prop('required',false);
+     updateTotal();
+   }
+ }
+
+ function updateTotal(){
+   delivery_cost = parseFloat($("#delivery_amount").text().replace('$',''));
+   if(include_delivery){
+     total = sub_total + taxes + delivery_cost;
+   }else {
+     total = sub_total + taxes;
+   }
+   divs = document.getElementsByClassName( 'sub_total' );
+   [].slice.call( divs ).forEach(function ( div ) {
+       div.innerHTML = sub_total.toFixed(2);;
+   });
+   document.getElementById('total_amount').innerHTML = total.toFixed(2);
+ }

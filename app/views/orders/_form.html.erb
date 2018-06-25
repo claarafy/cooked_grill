@@ -298,8 +298,13 @@
 								<dd>$<span id="sub_total" class="sub_total"></span></dd>
 								<dt>Coupon Discount :</dt>
 								<dd>$0.00</dd>
-								<dt>Delivery Fee :</dt>
-								<dd>$0.00</dd>
+								<span id="delivery_fee">
+									<dt>Delivery Fee :</dt>
+									<dd id="delivery_amount">$0.00</dd>
+									<% if user_signed_in? && current_user.default_delivery_address && current_user.default_delivery_address != "" %>
+											<%= javascript_tag "calculateDeliveryFee('#{@meal.location}', '#{current_user.default_delivery_address}')" %>
+									<% end %>
+								</span>
 								<dt>Taxes :</dt>
 								<dd>$<span id="tax_amount"></span></dd>
 							</dl>
@@ -312,6 +317,10 @@
               <div class="field" id="hidden">
                 <%= form.label :meal_id %><br />
                 <%= form.text_field :meal_id, id: :order_meal_id %>
+              </div>
+							<div class="field" id="hidden">
+                <%= form.label :delivery_fee %><br />
+                <%= form.text_field :delivery_fee, id: :order_delivery_fee %>
               </div>
 							<div class="text-uppercase clearfix">
 								<!-- <a href="#" class="btn btn-default pull-right"> -->

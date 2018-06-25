@@ -63,6 +63,9 @@ function callback(response, status) {
             for (var i = 0; i < allMeals.length; i++) {
               allMeals[i].innerHTML = '$' + cost;
             }
+            $('#delivery_amount').text('$' + cost);
+            $('#order_delivery_fee').value(cost);
+            updateTotal();
         }
     }
 }
