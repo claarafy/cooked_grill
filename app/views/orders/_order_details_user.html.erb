@@ -21,7 +21,31 @@
             <!-- Form Div Starts -->
   							<div class="form-horizontal" role="form">
 								<div class="form-group">
-									<label for="inputFname" class="col-sm-3 control-label">Total :</label>
+									<label for="inputFname" class="col-sm-3 control-label">Subtotal :</label>
+									<div class="col-sm-9 detail-info">
+                    $<%= if @order.total
+                         "%.2f" % BigDecimal(@order.total).truncate(2)
+                        end %>
+									</div>
+								</div>
+							</div>
+						<!-- Form Div Ends -->
+            <!-- Form Div Starts -->
+                <div class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="inputFname" class="col-sm-3 control-label">Delivery Fee :</label>
+                  <div class="col-sm-9 detail-info">
+                    $<%= if @order.delivery && @order.delivery_fee 
+                         "%.2f" % BigDecimal(@order.delivery_fee).truncate(2)
+                        end %>
+                  </div>
+                </div>
+              </div>
+            <!-- Form Div Ends -->
+            <!-- Form Div Starts -->
+  							<div class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="inputFname" class="col-sm-3 control-label">Grand Total :</label>
 									<div class="col-sm-9 detail-info">
                     $<%= if @order.total_cost
                          "%.2f" % BigDecimal(@order.total_cost).truncate(2)

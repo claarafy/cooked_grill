@@ -42,7 +42,7 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
-    autoprefixer-rails (8.6.3)
+    autoprefixer-rails (8.6.4)
       execjs
     bcrypt (3.1.12)
     bindex (0.5.0)
@@ -130,9 +130,9 @@ GEM
       fog-xml (~> 0.1.1)
       ipaddress (~> 0.5)
       json (~> 2.0)
-    fog-aliyun (0.2.2)
-      fog-core (~> 1.27)
-      fog-json (~> 1.0)
+    fog-aliyun (0.3.2)
+      fog-core
+      fog-json
       ipaddress (~> 0.8)
       xml-simple (~> 1.1)
     fog-atmos (0.1.0)
@@ -183,25 +183,25 @@ GEM
     fog-joyent (0.0.1)
       fog-core (~> 1.42)
       fog-json (>= 1.0)
-    fog-json (1.0.2)
-      fog-core (~> 1.0)
+    fog-json (1.2.0)
+      fog-core
       multi_json (~> 1.10)
     fog-local (0.5.0)
       fog-core (>= 1.27, < 3.0)
-    fog-openstack (0.1.25)
-      fog-core (~> 1.40)
+    fog-openstack (0.1.26)
+      fog-core (~> 1.45.0)
       fog-json (>= 1.0)
       ipaddress (>= 0.8)
-    fog-ovirt (1.0.4)
-      fog-core (~> 1.45)
+    fog-ovirt (1.1.0)
+      fog-core
       fog-json
-      fog-xml (~> 0.1.1)
+      fog-xml
       ovirt-engine-sdk (>= 4.1.3)
       rbovirt (~> 0.1.5)
-    fog-powerdns (0.1.1)
-      fog-core (~> 1.27)
-      fog-json (~> 1.0)
-      fog-xml (~> 0.1)
+    fog-powerdns (0.2.0)
+      fog-core
+      fog-json
+      fog-xml
     fog-profitbricks (4.1.1)
       fog-core (~> 1.42)
       fog-json (~> 1.0)
@@ -281,9 +281,7 @@ GEM
       actionmailer (>= 3.2, < 6)
       activemodel (>= 3.2, < 6)
     method_source (0.9.0)
-    mime-types (3.1)
-      mime-types-data (~> 3.2015)
-    mime-types-data (3.2016.0521)
+    mime-types (2.99.3)
     mimemagic (0.3.2)
     mini_magick (4.8.0)
     mini_mime (1.0.0)
@@ -299,6 +297,8 @@ GEM
     omniauth (1.8.1)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
+    onfleet-ruby (0.1.4)
+      rest-client (~> 1.4)
     orm_adapter (0.5.0)
     ovirt-engine-sdk (4.2.4)
       json (>= 1, < 3)
@@ -362,10 +362,10 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rest-client (2.0.2)
+    rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 4.0)
-      netrc (~> 0.8)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     ruby_dep (1.5.0)
     ruby_http_client (3.3.0)
     rubyzip (1.2.1)
@@ -380,7 +380,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    selenium-webdriver (3.12.0)
+    selenium-webdriver (3.13.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     sendgrid-ruby (5.2.0)
@@ -414,7 +414,7 @@ GEM
     trollop (2.1.2)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.11)
+    uglifier (4.1.12)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
@@ -453,12 +453,14 @@ DEPENDENCIES
   mail_form
   mini_magick
   omniauth
+  onfleet-ruby
   paperclip (~> 5.2.1)
   pg
   pickadate-rails
   puma (~> 3.7)
   rails (~> 5.1.4)
   rails_12factor
+  rest-client
   sass-rails (~> 5.0)
   selenium-webdriver
   sendgrid-ruby

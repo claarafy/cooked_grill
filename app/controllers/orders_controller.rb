@@ -174,7 +174,12 @@ class OrdersController < ApplicationController
       total = quantity * price
       @order.cook_total = (total * Constants::COOKS_NET_PRECENTAGE)
       total = total + (total * Constants::TAX_RATE_LAWNDALE)
-      @order.total_cost = total
+      @order.total = total
+      if @order.delivery
+        @order.total_cost = total + @order.delivery_fee
+      else
+        @order.total_cost = total
+      end
 
       # order_date
       now = Time.zone.now
@@ -209,7 +214,12 @@ class OrdersController < ApplicationController
     total = quantity * price
     @order.cook_total = (total * Constants::COOKS_NET_PRECENTAGE)
     total = total + (total * Constants::TAX_RATE_LAWNDALE)
-    @order.total_cost = total
+    @order.total = total
+    if @order.delivery
+      @order.total_cost = total + @order.delivery_fee
+    else
+      @order.total_cost = total
+    end
 
     # Attach an empty review
     @order.review = Review.new

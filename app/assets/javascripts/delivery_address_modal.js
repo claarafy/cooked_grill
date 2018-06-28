@@ -37,7 +37,6 @@ function calculateDeliveryFee(from, to) {
 }
 // END AV
 
-
 function callback(response, status) {
     if (status != google.maps.DistanceMatrixStatus.OK) {
         $('#result').html(err);
@@ -64,7 +63,7 @@ function callback(response, status) {
               allMeals[i].innerHTML = '$' + cost;
             }
             $('#delivery_amount').text('$' + cost);
-            $('#order_delivery_fee').value(cost);
+            $('#order_delivery_fee').val(cost);
             updateTotal();
         }
     }

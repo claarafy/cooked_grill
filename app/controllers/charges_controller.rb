@@ -1,6 +1,9 @@
+require 'common_methods'
+
 class ChargesController < ApplicationController
-  def new
-  end
+  include CommonMethods
+
+  def new; end
 
   def create
     # Amount in cents
@@ -8,15 +11,15 @@ class ChargesController < ApplicationController
     @amount = params[:total].to_f
 
     customer = Stripe::Customer.create(
-      :email => params[:stripeEmail],
-      :source  => params[:stripeToken]
+      email: params[:stripeEmail],
+      source: params[:stripeToken]
     )
 
     charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => @amount_cents,
-      :description => 'Rails Stripe customer',
-      :currency    => 'usd'
+      customer: customer.id,
+      amount: @amount_cents,
+      description: 'Rails Stripe customer',
+      currency: 'usd'
     )
 
     orderID = params[:orderID]
@@ -35,12 +38,12 @@ class ChargesController < ApplicationController
     @order.review = Review.new
 
     if !@order.save
-      flash[:error] = "Sorry, Order did not go through!"
+      flash[:error] = 'Sorry, Order did not go through!'
     else
+      invite_user_to_onfleet(@order.user) if @order.pickup
       MessageMailer.order_paid_message_user(@user, @order).deliver_now
       MessageMailer.order_paid_message_cook(@user, @cook, @order).deliver_now
     end
-
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path

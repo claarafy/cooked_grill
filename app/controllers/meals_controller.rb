@@ -1,14 +1,14 @@
 class MealsController < ApplicationController
-  before_action :set_meal, only: [:show, :edit, :update, :destroy]
-  before_action :admin_or_cook, :except => [:show]
+  before_action :set_meal, only: %i[show edit update destroy]
+  before_action :admin_or_cook, except: [:show]
   skip_before_action :verify_authenticity_token
 
   def admin_or_cook
-      if admin_signed_in?
-        return true
-      else
-        authenticate_cook!
-      end
+    if admin_signed_in?
+      true
+    else
+      authenticate_cook!
+    end
   end
 
   def validDates?(params, meal)
@@ -16,10 +16,10 @@ class MealsController < ApplicationController
     to =   Time.zone.parse(params[:availability_to])
     now = Time.zone.now
     if to < from
-      meal.errors[:base] << "Meal availability end date cannot be before the begin date"
+      meal.errors[:base] << 'Meal availability end date cannot be before the begin date'
       return false
     elsif from < now
-      meal.errors[:base] << "Meal begin date must be after todays date and time"
+      meal.errors[:base] << 'Meal begin date must be after todays date and time'
       return false
     else
       return true
@@ -29,7 +29,7 @@ class MealsController < ApplicationController
   # GET /meals
   # GET /meals.json
   def index
-      @meals = Meal.where('cook_id' => current_cook.id)
+    @meals = Meal.where('cook_id' => current_cook.id)
   end
 
   # GET /meals/1
@@ -37,23 +37,22 @@ class MealsController < ApplicationController
   def show
     @cook = Cook.where('id' => @meal.cook_id).first
     @reviews = @meal.reviews
-    @meals = Meal.where("availability_to > ?", Time.zone.now.beginning_of_day).where(active: true).limit(4)
-
+    @meals = Meal.where('availability_to > ?', Time.zone.now.beginning_of_day).where(active: true).limit(4)
   end
 
   # GET /meals/new
   def new
     @meal = Meal.new
-    @default_pickup_address = ""
+    @default_pickup_address = ''
     @has_default_pickup_address_set = false
-    @phone_number = ""
+    @phone_number = ''
     @has_phone_number_set = false
     cook = current_cook
-    if cook.default_pickup_address && cook.default_pickup_address != ""
+    if cook.default_pickup_address && cook.default_pickup_address != ''
       @has_default_pickup_address_set = true
       @default_pickup_address = cook.default_pickup_address
     end
-    if cook.phone_number && cook.phone_number != ""
+    if cook.phone_number && cook.phone_number != ''
       @has_phone_number_set = true
       @phone_number = cook.phone_number
     end
@@ -68,16 +67,16 @@ class MealsController < ApplicationController
     if @meal.availability_to
       @availability_to_formatted = @meal.availability_to.strftime(Constants::TIME_FORMAT)
     end
-    @default_pickup_address = ""
+    @default_pickup_address = ''
     @has_default_pickup_address_set = false
-    @phone_number = ""
+    @phone_number = ''
     @has_phone_number_set = false
     cook = current_cook
-    if cook.default_pickup_address && cook.default_pickup_address != ""
+    if cook.default_pickup_address && cook.default_pickup_address != ''
       @has_default_pickup_address_set = true
       @default_pickup_address = cook.default_pickup_address
     end
-    if cook.phone_number && cook.phone_number != ""
+    if cook.phone_number && cook.phone_number != ''
       @has_phone_number_set = true
       @phone_number = cook.phone_number
     end
@@ -87,16 +86,16 @@ class MealsController < ApplicationController
   # POST /meals.json
   def create
     # Setting timezone to Pacific Standard
-    @tz = " -08:00"
+    @tz = ' -08:00'
     @meal = Meal.new(meal_params)
     @meal.cook_id = current_cook.id
     @meal.active = true
     cook = current_cook
-    if !cook.default_pickup_address || cook.default_pickup_address == ""
-        cook.default_pickup_address = params[:meal][:location]
+    if !cook.default_pickup_address || cook.default_pickup_address == ''
+      cook.default_pickup_address = params[:meal][:location]
     end
-    if !cook.phone_number || cook.phone_number == ""
-        cook.phone_number = params[:meal][:phone_number]
+    if !cook.phone_number || cook.phone_number == ''
+      cook.phone_number = params[:meal][:phone_number]
     end
     cook.save
 
@@ -108,7 +107,7 @@ class MealsController < ApplicationController
     @meal.availability_from = available_from
     @meal.availability_to = available_to
     respond_to do |format|
-      if validDates?(meal_params, @meal) &&  @meal.save
+      if validDates?(meal_params, @meal) && @meal.save
         MessageMailer.new_meal(@meal).deliver_now
         format.html { redirect_to @meal, notice: 'Meal was successfully created.' }
         format.json { render :show, status: :created, location: @meal }
@@ -122,16 +121,16 @@ class MealsController < ApplicationController
   # PATCH/PUT /meals/1
   # PATCH/PUT /meals/1.json
   def update
-    @default_pickup_address = ""
+    @default_pickup_address = ''
     @has_default_pickup_address_set = false
-    @phone_number = ""
+    @phone_number = ''
     @has_phone_number_set = false
     cook = current_cook
-    if cook.default_pickup_address && cook.default_pickup_address != ""
+    if cook.default_pickup_address && cook.default_pickup_address != ''
       @has_default_pickup_address_set = true
       @default_pickup_address = cook.default_pickup_address
     end
-    if cook.phone_number && cook.phone_number != ""
+    if cook.phone_number && cook.phone_number != ''
       @has_phone_number_set = true
       @phone_number = cook.phone_number
     end
@@ -159,13 +158,14 @@ class MealsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_meal
-      @meal = Meal.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def meal_params
-      params.require(:meal).permit(:family_deal, :low_carb, :title, :description, :ingredients, :portion_info, :availability_from, :availability_to, :images, :location, :tags, :meal_cost, :active)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_meal
+    @meal = Meal.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def meal_params
+    params.require(:meal).permit(:family_deal, :low_carb, :title, :description, :ingredients, :portion_info, :availability_from, :availability_to, :images, :location, :tags, :meal_cost, :active)
+  end
 end

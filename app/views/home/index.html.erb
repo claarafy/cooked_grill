@@ -118,7 +118,7 @@
                           <% id_part1 = meal.location.delete(' ').delete(',').truncate(10).delete('.')
                              id_part2 = current_user.default_delivery_address.delete(' ').delete(',').truncate(10).delete('.')
                               %>
-                          <span class="price-text-italic <%= id_part1 + id_part2 %>"></span><span class="price-text"> (estimated delivery) OR </span><span class="price-green-italic">Free Pickup</span>
+                          <span class="price-text-italic">+ </span><span class="price-text-italic <%= id_part1 + id_part2 %>"></span><span class="price-text"> (estimated delivery) OR </span><span class="price-green-italic">Free Pickup</span>
                           <!-- <span class="price-text-italic" id="<%= meal.location + current_user.default_delivery_address %>"> </span><span class="price-text">OR </span><span class="price-green-italic">Free Pickup</span> -->
                       <% else %>
                           <span class="price-text-italic">Delivery Available </span><span class="price-text">OR </span><span class="price-green-italic">Free Pickup</span>
@@ -434,7 +434,7 @@
                               <% id_part1 = meal.location.delete(' ').delete(',').truncate(10).delete('.')
                                  id_part2 = current_user.default_delivery_address.delete(' ').delete(',').truncate(10).delete('.')
                                   %>
-                              <span class="price-text-italic <%= id_part1 + id_part2 %>"></span><span class="price-text"> (estimated delivery) OR </span><span class="price-green-italic">Free Pickup</span>
+                              <span class="price-text-italic">+ </span><span class="price-text-italic <%= id_part1 + id_part2 %>"></span><span class="price-text"> (estimated delivery) OR </span><span class="price-green-italic">Free Pickup</span>
                               <!-- <span class="price-text-italic" id="<%= meal.location + current_user.default_delivery_address %>"> </span><span class="price-text">OR </span><span class="price-green-italic">Free Pickup</span> -->
                           <% else %>
                               <span class="price-text-italic">Delivery Available </span><span class="price-text">OR </span><span class="price-green-italic">Free Pickup</span>

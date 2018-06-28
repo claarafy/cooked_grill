@@ -24,7 +24,7 @@
   var total;
   if(include_delivery){
     total = sub_total + taxes + delivery_cost;
-  }else {
+  }else { 
     total = sub_total + taxes;
   }
 
@@ -43,8 +43,8 @@ $("#increment_qty").on("click", function() {
 	var newVal = parseFloat(oldValue) + 1;
   $("#order_quantity").val(newVal);
 
-  var sub_total = $("#order_quantity").val() * parseFloat($("#meal_price_hidden").text());
-  var taxes = sub_total * 0.095
+  sub_total = $("#order_quantity").val() * parseFloat($("#meal_price_hidden").text());
+  taxes = sub_total * 0.095
   if(include_delivery){
     total = sub_total + taxes + delivery_cost;
   }else {
@@ -69,8 +69,8 @@ $("#decrement_qty").on("click", function() {
   }
   $("#order_quantity").val(newVal);
 
-  var sub_total = $("#order_quantity").val() * parseFloat($("#meal_price_hidden").text());
-  var taxes = sub_total * 0.095
+  sub_total = $("#order_quantity").val() * parseFloat($("#meal_price_hidden").text());
+  taxes = sub_total * 0.095
   if(include_delivery){
     total = sub_total + taxes + delivery_cost;
   }else {
@@ -170,6 +170,7 @@ $('#order_submit').click(function() {
  }
 
  function updateTotal(){
+   sub_total = $("#order_quantity").val() * parseFloat($("#meal_price_hidden").text());
    delivery_cost = parseFloat($("#delivery_amount").text().replace('$',''));
    if(include_delivery){
      total = sub_total + taxes + delivery_cost;
