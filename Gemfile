@@ -104,6 +104,9 @@ gem 'rest-client'
 # Onfleet has a gem?
 gem 'onfleet-ruby'
 
+# This is for enabling REST access to the application
+gem 'grape'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

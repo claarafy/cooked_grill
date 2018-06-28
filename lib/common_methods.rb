@@ -26,7 +26,13 @@ module CommonMethods
     # )
     # @response_2 = @request.execute
 
-    Onfleet.api_key = 'dd4a2769f818e57f4fd7af858f045ca2'
-    worker = Onfleet::Worker.create(name: 'Avan Sardar', email: 'avansardar@outlook.com', teams: ['XwBi3JUUWvvVcoYxK861XRCg'], vehicle: { type: 'CAR' }, phone: '424-283-1077')
+    Onfleet.api_key = ENV['ONFLEET_API_KEY']
+    team_id = getTeamID(_user)
+    worker = Onfleet::Worker.create(name: _user.first_name, email: _user.email, teams: [team_id], vehicle: { type: 'CAR' }, phone: _user.phone_number)
+  end
+
+  # TODO: hardcoded
+  def getTeamID(_user)
+    'XwBi3JUUWvvVcoYxK861XRCg'
   end
 end
