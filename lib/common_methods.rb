@@ -33,6 +33,7 @@ module CommonMethods
 
   # TODO: hardcoded
   def getTeamID(_user)
+    # Figure out zip code and return the correct team using the zip code
     'XwBi3JUUWvvVcoYxK861XRCg'
   end
 end

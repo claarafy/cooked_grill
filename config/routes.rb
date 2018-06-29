@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount API::Base, at: '/'
+
   resources :reviews
   get 'abouts/about_cook'
 
@@ -15,7 +17,6 @@ Rails.application.routes.draw do
   # get 'landing_page/new_cook'
   match 'free_sign_up', to: 'landing_page#new_cook', via: 'get'
 
-
   post 'landing_page/create'
 
   devise_for :admins
@@ -27,11 +28,10 @@ Rails.application.routes.draw do
   get 'home/index'
   root 'home#index'
 
-  devise_for :users, path: 'users', controllers: { sessions: "users/sessions", confirmations: "users/confirmations",  passwords: "users/passwords", registrations: "users/registrations", unlocks: "users/unlocks"}
+  devise_for :users, path: 'users', controllers: { sessions: 'users/sessions', confirmations: 'users/confirmations',  passwords: 'users/passwords', registrations: 'users/registrations', unlocks: 'users/unlocks' }
   # eg. http://localhost:3000/users/sign_in
-  devise_for :cooks, path: 'cooks', controllers: { sessions: "cooks/sessions", confirmations: "cooks/confirmations",  passwords: "cooks/passwords", registrations: "cooks/registrations", unlocks: "cooks/unlocks"}
+  devise_for :cooks, path: 'cooks', controllers: { sessions: 'cooks/sessions', confirmations: 'cooks/confirmations',  passwords: 'cooks/passwords', registrations: 'cooks/registrations', unlocks: 'cooks/unlocks' }
   # eg. http://localhost:3000/cooks/sign_in
-
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -47,9 +47,9 @@ Rails.application.routes.draw do
   match 'withdraw_form/create', to: 'withdraw_form#create', as: 'withdraw_forms', via: 'post'
   # resources :withdraw_form, only: [:new, :create]
 
-  #Mailer routes
+  # Mailer routes
   match '/contacts', to: 'contacts#new', via: 'get'
-  resources "contacts", only: [:new, :create]
+  resources 'contacts', only: %i[new create]
 
   # Admin routes
   match '/admin/meals', to: 'admin#meals', as: 'admin_meals', via: 'get'
@@ -65,5 +65,4 @@ Rails.application.routes.draw do
 
   # Contact us form in the Footer
   match '/subscribe_success', to: 'home#subscribe_create', as: 'subscribe_create', via: 'post'
-
 end
