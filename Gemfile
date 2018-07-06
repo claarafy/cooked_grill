@@ -110,8 +110,14 @@ gem 'grape'
 # Needed for Grape
 gem 'grape-active_model_serializers'
 
-# Allow Cross-Origin Resource Sharing. Related to grape. 
+# Allow Cross-Origin Resource Sharing. Related to grape.
 gem 'rack-cors', :require => 'rack/cors'
+
+# Documentation for Grape API
+gem 'grape-swagger'
+
+# Not sure wtf is going
+gem 'grape-swagger-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

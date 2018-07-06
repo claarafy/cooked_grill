@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount API::Base, at: '/'
+  mount GrapeSwaggerRails::Engine, at: '/documentation'
 
   resources :reviews
   get 'abouts/about_cook'
