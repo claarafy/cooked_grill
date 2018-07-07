@@ -32,7 +32,7 @@ module API
             raise 'Problem updating order, please notify admin.' unless @order.save
             # Update driver total
           end
-          @order
+
           # Order.where(id: permitted_params[:id]).first!
         end
 
