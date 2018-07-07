@@ -28,11 +28,19 @@ module API
           if :delivered
             @order.delivered = true
             @order.review = Review.new unless @order.review
+            # @order.driver = User.new unless @order.driver
             # Add delivery time stamp
-            raise 'Problem updating order, please notify admin.' unless @order.save
+            raise 'Problem updating order, please notify admin.' unless @order.save!
             # Update driver total
+            @driver = @order.driver
+            if @driver.driver_balance
+              @driver.driver_balance += 5.00
+            else
+              @driver.driver_balance = 5.00
+            end
+            @driver.save!
           end
-
+          @order
           # Order.where(id: permitted_params[:id]).first!
         end
 
