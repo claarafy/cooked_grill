@@ -32,11 +32,12 @@ module API
             # Add delivery time stamp
             raise 'Problem updating order, please notify admin.' unless @order.save!
             # Update driver total
+            # TODO Hardcoded driver balance. Change later.
             @driver = @order.driver
             if @driver.driver_balance
-              @driver.driver_balance += 5.00
+              @driver.driver_balance += @order.delivery_fee
             else
-              @driver.driver_balance = 5.00
+              @driver.driver_balance = @order.delivery_fee
             end
             @driver.save!
           end
