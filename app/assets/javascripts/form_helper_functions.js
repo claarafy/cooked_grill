@@ -24,7 +24,7 @@
   var total;
   if(include_delivery){
     total = sub_total + taxes + delivery_cost;
-  }else { 
+  }else {
     total = sub_total + taxes;
   }
 
@@ -101,6 +101,7 @@ $("#inputPickupDelivery").on("change", function() {
  }
 
 $("input:checkbox").on('click', function() {
+  alert("checked");
   // in the handler, 'this' refers to the box clicked on
   var $box = $(this);
 

@@ -1,15 +1,16 @@
 # frozen_string_literal: true
+
 include Accessible
 
 class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    params.require(:user).permit(:first_name, :email, :password, :password_confirmation, :default_delivery_address, :phone_number )
+    params.require(:user).permit(:first_name, :email, :password, :password_confirmation, :default_delivery_address, :phone_number, :driver)
   end
 
   def account_update_params
-    params.require(:user).permit(:first_name, :email, :password, :password_confirmation, :current_password, :default_delivery_address, :phone_number )
+    params.require(:user).permit(:first_name, :email, :password, :password_confirmation, :current_password, :default_delivery_address, :phone_number, :driver)
   end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
@@ -61,14 +62,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def after_sign_up_path_for(resource)
-    user = User.find_by email: params["user"]["email"]
+    user = User.find_by email: params['user']['email']
     MessageMailer.new_user(user).deliver_now
     super(resource)
   end
 
   # The path used after sign up for inactive accounts.
   def after_inactive_sign_up_path_for(resource)
-    user = User.find_by email: params["user"]["email"]
+    user = User.find_by email: params['user']['email']
     MessageMailer.new_user(user).deliver_now
     super(resource)
   end

@@ -130,15 +130,19 @@ class OrdersController < ApplicationController
     if !user.phone_number || user.phone_number == ''
       user.phone_number = params[:order][:customer_phone]
     end
-    user.save
 
     # Pickup / Delivery TODO somewhat sloppy. Doesn't handle errors.
     if params[:inputPickupDelivery] == 'Delivery'
       @order.delivery = true
+      @order.driver = User.new
     elsif params[:inputPickupDelivery] == 'Pickup'
+      user.driver = true
+      @order.driver = user
       @order.pickup = true
     end
-
+    unless user.save
+      # TODO: handle a failed save
+    end
     # TODO: commented out Pickup/Delivery DateTime
     # pickup_datetime_string = order_params[:pickup_date]
     # pickup_datetime = DateTime.parse(pickup_datetime_string + @tz)
@@ -158,11 +162,12 @@ class OrdersController < ApplicationController
     # @order.delivery_address = address_name + " " + address_street + " " + address_city + " " + address_state + " " + address_zip
 
     # Buyer/User
-    if user_signed_in?
-      @order.user_id = current_user.id
-    else
-      redirect_to root_path, alert: 'User is not logged in'
-    end
+    # No need to check if user is signed. Already checked above.
+    # if user_signed_in?
+    @order.user_id = current_user.id
+    # else
+    # redirect_to root_path, alert: 'User is not logged in'
+    # end
 
     # Total Cost
     quantity = order_params[:quantity].to_i
