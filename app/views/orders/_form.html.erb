@@ -24,6 +24,9 @@
           </ul>
         </div>
       <% end %>
+			<!--  TODO Change later. Not secure.-->
+			<%= javascript_tag "localStorage.pickupAddress = '#{@meal.location}';" %>
+
 	<!-- Shopping Cart Table Starts -->
 		<div class="table-responsive shopping-cart-table">
 			<table class="table table-bordered">
@@ -198,7 +201,7 @@
 										<%= if @has_phone_number_set
 											form.text_field :customer_phone, id: :order_customer_phone, :required => true, class: "form-control", :readonly => true, :value => @phone_number
 										else
-										  form.text_field :customer_phone, id: :order_customer_phone, :required => true, class: "form-control", placeholder: "Phone Number (Will Be Set as Default)"
+										  form.text_field :customer_phone, id: :order_customer_phone, :required => true, class: "form-control", placeholder: "E.g. (555)555-5555 (Will Be Set as Default)", onkeyup: 'backspacerUP(this,event)', onkeydown: 'backspacerDOWN(this,event)'
 										end %>
                     <!-- <%= form.text_field :customer_phone, id: :order_customer_phone, class: "form-control", placeholder: "Phone Number" %> -->
 									</div>
@@ -318,6 +321,15 @@
                 <%= form.label :meal_id %><br />
                 <%= form.text_field :meal_id, id: :order_meal_id %>
               </div>
+
+
+
+							<div class="hidden">
+                <%= %><br />
+              </div>
+
+
+
 							<div class="field hidden" >
                 <%= form.label :delivery_fee %><br />
                 <%= form.text_field :delivery_fee, id: :order_delivery_fee %>
@@ -343,3 +355,4 @@
 
 <%= javascript_include_tag "pickadate/form_datepicker" %>
 <%= javascript_include_tag "form_helper_functions" %>
+<%= javascript_include_tag "common_form_helper_functions" %>

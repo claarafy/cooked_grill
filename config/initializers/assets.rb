@@ -12,6 +12,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w[form_helper_functions.js]
 Rails.application.config.assets.precompile += %w[pickadate/form_datepicker.js]
 Rails.application.config.assets.precompile += %w[user_form_helper_functions.js]
+Rails.application.config.assets.precompile += %w[common_form_helper_functions.js]
 
 # Precompile landing page assets
 Rails.application.config.assets.precompile += %w[landing_page/bootstrap.min.css landing_page/overwrite.css landing_page/stylesheet.css landing_page/icons.css landing_page/jssor-slider.css landing_page/jwgslider.css landing_page/prettyPhoto.css landing_page/owl.carousel.css landing_page/owl.theme.css landing_page/owl.transitions.css landing_page/masonry.css landing_page/style.css landing_page/default.css]

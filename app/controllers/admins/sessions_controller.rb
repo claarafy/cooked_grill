@@ -1,8 +1,9 @@
-# TODO Not used!
+# TODO: Not used!
 class Admins::SessionsController < Devise::SessionsController
   skip_before_action :verify_authenticity_token
 
+  # TODO: Review?!
   def destroy
-    raise "hi"
+    raise 'hi'
   end
 end

@@ -150,7 +150,7 @@
 						<%= if @has_phone_number_set
 							form.text_field :phone_number, id: :default_phone_number, :required => true, class: "form-control", :readonly => true, :value => @phone_number
 						else
-						  form.text_field :phone_number, id: :default_phone_number, :required => true, class: "form-control", placeholder: "Phone Number (Will Be Set as Default)"
+						  form.text_field :phone_number, id: :default_phone_number, :required => true, class: "form-control", placeholder: "E.g. (555)555-5555 (Will Be Set as Default)", onkeyup: 'backspacerUP(this,event)', onkeydown: 'backspacerDOWN(this,event)'
 						end %>
           </div>
         </div>
@@ -240,3 +240,4 @@
 
 <%= javascript_include_tag "pickadate/form_datepicker" %>
 <%= javascript_include_tag "form_helper_functions" %>
+<%= javascript_include_tag "common_form_helper_functions" %>

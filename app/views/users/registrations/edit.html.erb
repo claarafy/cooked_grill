@@ -39,7 +39,7 @@
               <div class="form-group">
                 <%= f.label "Phone Number", class: "col-sm-3 control-label"%>
                 <div class="col-sm-9">
-                  <%= f.text_field :phone_number, class: "form-control", autocomplete: "phone_number", :required => false, placeholder: "Phone Number Without Dashes or Spaces (ex: 1234567890)" %>
+                  <%= f.text_field :phone_number, class: "form-control", autocomplete: "phone_number", :required => false, placeholder: "E.g. (555)555-5555 (Will Be Set as Default)", onkeyup: 'backspacerUP(this,event)', onkeydown: 'backspacerDOWN(this,event)' %>
                 </div>
               </div>
               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -100,3 +100,4 @@
 </div>
 
 <%= javascript_include_tag "user_form_helper_functions" %>
+<%= javascript_include_tag "common_form_helper_functions" %>

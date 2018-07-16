@@ -83,6 +83,14 @@ $(function() {
         var cook_pickup_address = new google.maps.places.Autocomplete(document.getElementById('default_pickup_address'));
         var cook_meal_location = new google.maps.places.Autocomplete(document.getElementById('meal_location'));
 
+        google.maps.event.addListener(user_order_delivery_address, 'place_changed', function() {
+          var delivery_address_extracted = user_order_delivery_address.getPlace().formatted_address;
+          // TODO Change later. Not secure
+          var fromAddress = localStorage.pickupAddress;
+          calculateDeliveryFee(fromAddress, delivery_address_extracted);
+    });
+  });
+});
         // END AV
 
         // var from_places = new google.maps.places.Autocomplete(document.getElementById('from_places'));
@@ -100,7 +108,7 @@ $(function() {
         //     $('#destination').val(to_address);
         // });
 
-    });
+
 
     // calculate distance
     // function calculateDistance() {
@@ -155,7 +163,8 @@ $(function() {
     //     e.preventDefault();
     //     calculateDistance();
     // });
-});
+
+
 
 // Added by Avan
 // function storeDeliveryAddress(address) {
