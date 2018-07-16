@@ -9,12 +9,26 @@ module API
           Order.all
         end
 
-        desc 'Return an order'
+        desc 'Return an Order'
         params do
           requires :id, type: String, desc: 'ID of the order'
         end
         get ':id', root: 'order' do
-          Order.where(id: permitted_params[:id]).first!
+          return Order.where(id: permitted_params[:id]).first!
+        end
+
+        desc 'Reset Driver Total to $0.00'
+        params do
+          requires :id, type: String, desc: 'ID of the user'
+        end
+        get ':id', root: 'user' do
+          user = User.where(id: permitted_params[:id]).first!
+          user.driver_balance = 0.00 if user.driver_balance
+          return user if user.save!
+          render json: {
+            error: 'Could not reset driver balance',
+            status: 400
+          }, status: 400
         end
 
         desc 'Mark Order Delivered'
@@ -30,6 +44,7 @@ module API
             @order.review = Review.new unless @order.review
             # @order.driver = User.new unless @order.driver
             # Add delivery time stamp
+            # TODO handle better
             raise 'Problem updating order, please notify admin.' unless @order.save!
             # Update driver total
             # TODO Hardcoded driver balance. Change later.
