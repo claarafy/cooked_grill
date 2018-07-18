@@ -47,14 +47,16 @@ module API
             # TODO handle better
             raise 'Problem updating order, please notify admin.' unless @order.save!
             # Update driver total
-            # TODO Hardcoded driver balance. Change later.
             @driver = @order.driver
             if @driver.driver_balance
               @driver.driver_balance += @order.delivery_fee
             else
               @driver.driver_balance = @order.delivery_fee
             end
-            @driver.save!
+            # TODO: Handle failed driver save
+            unless @driver.save!
+              # Do something here
+            end
           end
           @order
           # Order.where(id: permitted_params[:id]).first!

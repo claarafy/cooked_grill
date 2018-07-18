@@ -209,7 +209,7 @@
 			<% if current_user.driver? %>
 				<span class="white-font">Welcome  <%= current_user.first_name %>! You have a driver balance of  </span>
 				<% if current_user.driver_balance %>
-					<span class="balance"> $<%= (current_user.driver_balance / 100).round(2) %></span>
+					<span class="balance"> $<%= current_user.driver_balance.round(2) %></span>
 				<% else %>
 					<span class="balance"> $0.00</span>
 				<% end %>

@@ -57,21 +57,23 @@ function callback(response, status) {
             var originID = origin.replace(/\s+/g, '').replace(/,/g,'').substring(0,7);
             var destinationID = destination.replace(/\s+/g, '').replace(/,/g,'').substring(0,7);
             var uniqueID =  originID + destinationID;
-            var cost = calculateCost(distance_in_mile.toFixed(2), duration_value / 60);
+            var cost_in_cents = calculateCost(distance_in_mile.toFixed(2), duration_value / 60);
+            var cost_in_dollars = (cost_in_cents / 100).toFixed(2)
             var allMeals = document.getElementsByClassName(uniqueID);
             for (var i = 0; i < allMeals.length; i++) {
-              allMeals[i].innerHTML = '$' + cost;
+              allMeals[i].innerHTML = '$' + cost_in_dollars;
             }
-            $('#delivery_amount').text('$' + cost);
-            $('#order_delivery_fee').val(cost);
+            $('#delivery_amount').text('$' + cost_in_dollars);
+            $('#order_delivery_fee').val(cost_in_dollars);
             updateTotal();
         }
     }
 }
 
 function calculateCost(distance, duration){
-  var cost = 3 + (1.1 * distance) + (.11 * duration);
-  return cost.toFixed(2);
+  // In cents
+  var cost_in_cents = (3 + (1.1 * distance) + (.11 * duration)) * 100;
+  return cost_in_cents.toFixed(2);
 }
 
 $(function() {
